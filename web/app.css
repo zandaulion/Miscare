@@ -1682,3 +1682,20 @@ nav.app-nav {
 .done-today-icon { font-size: 1.5rem; flex-shrink: 0; }
 .done-today-title { font-weight: 700; font-size: 0.98rem; }
 .done-today-sub { font-size: 0.83rem; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+
+/* Ștergerea unei sesiuni din Progres. Discretă: e o corecție rară, nu o
+   acțiune de zi cu zi, și nu are de ce să concureze cu data. */
+.log-del {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: .55;
+  transition: opacity .15s, background .15s, color .15s;
+}
+.log-del:hover { opacity: 1; color: #B4483A; background: rgba(180, 72, 58, .1); }
+.log-del:disabled { opacity: .3; cursor: default; }

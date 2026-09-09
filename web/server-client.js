@@ -47,6 +47,11 @@ export async function revertProgression() {
   return api('/api/progression/revert', { method: 'POST' });
 }
 
+/** Șterge o sesiune. Totalurile vin recalculate în răspuns. */
+export async function deleteLog(id) {
+  return api(`/api/logs/${encodeURIComponent(id)}`, { method: 'DELETE' });
+}
+
 export async function probe() {
   state.isOffline = !navigator.onLine;
 
