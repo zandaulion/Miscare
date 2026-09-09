@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { generateDailyRoutine, filterSafeExercises, EXERCISES } from '../server/routine.js';
+import { CLIENT_EXERCISES } from '../web/exercises.js';
 
 test('routine generation & adaptive no-shaming logic', async (t) => {
   await t.test('zero baseline with bodyweight creates safe routine', () => {
@@ -169,6 +170,21 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
       'Should select compound heavy dumbbell exercises'
     );
   });
+
+  await t.test('exercise catalog parity between server and client compendium', () => {
+    assert.equal(CLIENT_EXERCISES.length, EXERCISES.length, 'Should have exact same number of exercises');
+    assert.equal(CLIENT_EXERCISES.length, 37, 'Should have 37 total exercises');
+
+    for (const serverEx of EXERCISES) {
+      const clientEx = CLIENT_EXERCISES.find((c) => c.id === serverEx.id);
+      assert.ok(clientEx, `Exercise ${serverEx.id} must exist in client compendium`);
+      assert.equal(clientEx.level, serverEx.level, `Level mismatch for ${serverEx.id}`);
+      assert.equal(clientEx.category, serverEx.category, `Category mismatch for ${serverEx.id}`);
+      assert.ok(clientEx.svg && clientEx.svg.includes('<svg'), `Exercise ${serverEx.id} must have SVG diagram`);
+      assert.ok(clientEx.description && clientEx.description.length > 10, `Exercise ${serverEx.id} must have instructions`);
+    }
+  });
 });
+
 
 

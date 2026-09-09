@@ -1,6 +1,7 @@
 import { installUpdates } from '/pwa-update.js';
 import { probe, redeem, state, updateProfile } from './server-client.js';
 import { renderRoutineView } from './routine-view.js';
+import { renderCompendiumView } from './compendium-view.js';
 import { renderEquipmentView } from './equipment-view.js';
 import { renderLogView } from './log-view.js';
 
@@ -55,8 +56,6 @@ async function init() {
   const navButtons = document.querySelectorAll('.nav-item');
   navButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      navButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
       const tab = btn.dataset.tab;
       switchTab(tab);
     });
@@ -84,15 +83,23 @@ function updateDeviceBadge() {
   }
 }
 
-function switchTab(tab) {
+export function switchTab(tab, options = {}) {
   const main = document.getElementById('main-content');
   if (!main) return;
+
+  const navButtons = document.querySelectorAll('.nav-item');
+  navButtons.forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
 
   window.scrollTo({ top: 0, behavior: 'instant' });
 
   switch (tab) {
     case 'today':
       renderRoutineView(main);
+      break;
+    case 'compendium':
+      renderCompendiumView(main, options);
       break;
     case 'equipment':
       renderEquipmentView(main);
@@ -105,6 +112,7 @@ function switchTab(tab) {
       break;
   }
 }
+
 
 function renderSettingsView(container) {
   container.innerHTML = `
