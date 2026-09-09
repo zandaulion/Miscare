@@ -587,6 +587,7 @@ nav.app-nav {
 }
 
 .nav-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -598,21 +599,60 @@ nav.app-nav {
   font-size: 0.72rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 6px 6px;
+  padding: 4px 4px 6px;
   border-radius: 12px;
   transition: color 0.15s ease;
   flex: 1;
   min-width: 0;
+  height: 100%;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 32px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--primary);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item.active::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-icon {
+  width: 44px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+  opacity: 0.65;
+  filter: grayscale(20%);
 }
 
 .nav-item.active {
   color: var(--primary);
-  font-weight: 700;
 }
 
-.nav-icon {
-  font-size: 1.2rem;
-  line-height: 1;
+.nav-item.active .nav-icon {
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  opacity: 1;
+  filter: none;
+  transform: translateY(-1px);
+}
+
+.nav-item.active span:not(.nav-icon) {
+  font-weight: 700;
+  color: var(--primary);
 }
 
 /* Toast (from pwa-kit contract) */
