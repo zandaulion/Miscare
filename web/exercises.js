@@ -265,6 +265,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['chair', 'bodyweight'],
     default_reps: '8-10 repetări',
     duration_s: 50,
+    image: '/images/exercises/box_squat_touch.jpg',
     description: 'Coboară într-o genuflexiune până când atingi ușor scaunul cu bazinul, apoi te ridici imediat fără să te așezi complet.',
     focus: 'Coapse, fesieri și control',
     tip: 'Genunchii urmăresc direcția degetelor de la picioare.',
