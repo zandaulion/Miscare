@@ -91,4 +91,29 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
     assert.ok(routine.exercises.length <= 3);
     assert.match(routine.title, /5 minute/i);
   });
+
+  await t.test('intermediate level generates level 2 movements (floor pushups, squats, plank)', () => {
+    const profile = {
+      level: 'intermediate',
+      daily_time: 10,
+      equipment: ['bodyweight', 'chair', 'wall', 'yoga_mat']
+    };
+
+    const routine = generateDailyRoutine(profile);
+    assert.ok(routine.exercises.some((e) => e.level === 2));
+    assert.match(routine.title, /Intermediar/i);
+  });
+
+  await t.test('advanced level generates level 3 movements (diamond pushups, jump squats, burpees)', () => {
+    const profile = {
+      level: 'advanced',
+      daily_time: 10,
+      equipment: ['bodyweight', 'yoga_mat']
+    };
+
+    const routine = generateDailyRoutine(profile);
+    assert.ok(routine.exercises.some((e) => e.level === 3));
+    assert.match(routine.title, /Avansat/i);
+  });
 });
+
