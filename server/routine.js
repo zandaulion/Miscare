@@ -603,7 +603,13 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     forceDurationMinutes = null,
     daysSinceLastSession = 0,
     lastFeedback = profile.last_feedback || null,
-    repStep = profile.rep_step || 0
+    repStep = profile.rep_step || 0,
+    // Câte sesiuni s-au făcut. Rotația avansează când se muncește, nu odată cu
+    // calendarul: cine se mișcă de două ori pe săptămână trece prin tot
+    // catalogul la fel de sigur ca cine se mișcă zilnic, doar mai lent. Iar o
+    // zi sărită nu consumă o poziție -- primești înapoi sesiunea pe care n-ai
+    // făcut-o, nu următoarea.
+    rotation = profile.total_active_days || 0
   } = options;
 
   const targetMinutes = forceDurationMinutes || profile.daily_time || 10;
@@ -663,34 +669,76 @@ export function generateDailyRoutine(profile = {}, options = {}) {
 
   const exerciseCount = isShortSession ? 2 : targetMinutes <= 10 ? 3 : 4;
 
-  const mobility = candidateExercises.filter((e) => e.category === 'mobility');
-  const upper = candidateExercises.filter((e) => e.category === 'upper');
-  const lower = candidateExercises.filter((e) => e.category === 'lower');
-  const core = candidateExercises.filter((e) => e.category.includes('core'));
+  const inCategory = (list, name) => list.filter((e) =>
+    name === 'core' ? e.category.includes('core') : e.category === name);
+
+  /**
+   * O categorie cu o singură opțiune nu e o alegere, e o rutină înțepenită.
+   *
+   * La Nivel 0 există exact o mișcare de sus care cere doar un perete --
+   * flotările la perete. Oricât ar roti, cine nu are bandă elastică le
+   * primește la fiecare sesiune. Aici categoria subțire se completează cu
+   * nivelul imediat următor, nu mai mult, și trecând prin același
+   * filterSafeExercises: limitările și echipamentul rămân exact cum erau,
+   * fiindcă lărgirea asta e despre varietate, nu despre relaxarea siguranței.
+   */
+  const LEVEL_ORDER = ['zero', 'beginner', 'intermediate', 'advanced'];
+  const MIN_PER_CATEGORY = 2;
+
+  const withNextLevel = (name) => {
+    const base = inCategory(candidateExercises, name);
+    const upKey = LEVEL_ORDER[targetLevel + 1];
+    if (base.length >= MIN_PER_CATEGORY || !upKey) return base;
+
+    const wider = filterSafeExercises(EXERCISES, { ...profile, level: upKey });
+    const extra = inCategory(wider, name).filter((e) => !base.includes(e));
+    return base.concat(extra);
+  };
+
+  const mobility = withNextLevel('mobility');
+  const upper = withNextLevel('upper');
+  const lower = withNextLevel('lower');
+  const core = withNextLevel('core');
 
   const chosen = [];
 
+  /**
+   * Ia din listă începând de la poziția de rotație, nu de la zero.
+   *
+   * Structura zilei rămâne aceeași -- încălzire, sus, jos, centru -- fiindcă
+   * forma e bună. Se schimbă doar cine ocupă fiecare loc. Rotația e o simplă
+   * deplasare, nu o alegere la întâmplare: la întâmplare înseamnă că același
+   * exercițiu poate ieși trei zile la rând iar altul niciodată, pe când o
+   * rotație trece prin tot catalogul și se întoarce.
+   */
+  const pickFrom = (list) => {
+    if (!list.length) return null;
+    const start = ((rotation % list.length) + list.length) % list.length;
+    for (let i = 0; i < list.length; i++) {
+      const ex = list[(start + i) % list.length];
+      if (!chosen.includes(ex)) return ex;
+    }
+    return null;
+  };
+
+  const take = (ex) => {
+    if (ex && chosen.length < exerciseCount && !chosen.includes(ex)) chosen.push(ex);
+  };
+
   // 1. Warm-up / prima mișcare: dacă suntem la nivel avansat/intermediar, warm-up e opțional dacă vrea direct forță
   if (targetLevel < 2 && mobility.length) {
-    chosen.push(mobility[0]);
+    chosen.push(pickFrom(mobility));
   }
 
-  // 2. Upper body principal
-  const nextUpper = upper.find((e) => !chosen.includes(e));
-  if (nextUpper && chosen.length < exerciseCount) chosen.push(nextUpper);
+  take(pickFrom(upper));   // 2. Sus
+  take(pickFrom(lower));   // 3. Jos
+  take(pickFrom(core));    // 4. Centru / final
 
-  // 3. Lower body principal
-  const nextLower = lower.find((e) => !chosen.includes(e));
-  if (nextLower && chosen.length < exerciseCount) chosen.push(nextLower);
-
-  // 4. Core / finisher
-  const nextCore = core.find((e) => !chosen.includes(e));
-  if (nextCore && chosen.length < exerciseCount) chosen.push(nextCore);
-
-  // Dacă încă nu avem suficiente exerciții, adăugăm din cele mai potrivite rămase
-  for (const ex of candidateExercises) {
-    if (chosen.length >= exerciseCount) break;
-    if (!chosen.includes(ex)) chosen.push(ex);
+  // Dacă încă nu avem suficiente exerciții, completăm din rest -- tot rotit, ca
+  // umplutura să nu fie mereu aceleași două mișcări de la începutul listei.
+  for (let i = 0; i < candidateExercises.length && chosen.length < exerciseCount; i++) {
+    const start = ((rotation % candidateExercises.length) + candidateExercises.length) % candidateExercises.length;
+    take(candidateExercises[(start + i) % candidateExercises.length]);
   }
 
   // Calculăm mesaje de suport și ajustare

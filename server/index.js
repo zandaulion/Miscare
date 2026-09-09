@@ -278,14 +278,16 @@ app.get('/api/routine/today', requireDevice, (req, res) => {
       limitations: JSON.parse(profileRow.limitations_json || '[]'),
       equipment: JSON.parse(profileRow.equipment_json || '["bodyweight","chair","wall"]'),
       last_feedback: profileRow.last_feedback || (lastLog ? lastLog.feedback : null),
-      rep_step: profileRow.rep_step || 0
+      rep_step: profileRow.rep_step || 0,
+      total_active_days: profileRow.total_active_days || 0
     };
 
     const routine = generateDailyRoutine(profile, {
       forceDurationMinutes: forceDuration,
       daysSinceLastSession: daysSinceLast,
       lastFeedback: profile.last_feedback,
-      repStep: profile.rep_step
+      repStep: profile.rep_step,
+      rotation: profile.total_active_days
     });
 
     // Cel mult o întrebare, și niciodată aplicată din oficiu: sesiunea de mai
