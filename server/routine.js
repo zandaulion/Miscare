@@ -107,6 +107,19 @@ export const EXERCISES = [
     tip: 'Cu cât suprafața e mai înaltă, cu atât e mai ușor.'
   },
   {
+    id: 'knee_pushups',
+    name: 'Flotări pe genunchi',
+    category: 'upper',
+    level: 1,
+    equipment: ['bodyweight'],
+    safe_for: ['back'],
+    default_reps: '8-12 repetări',
+    duration_s: 45,
+    description: 'Sprijin pe palme și genunchi, cu trunchiul formând o linie dreaptă. Coboară pieptul spre podea îndoind coatele la 45°, apoi împinge ferm.',
+    focus: 'Piept, umeri și triceps',
+    tip: 'Ține abdomenul activ; nu lăsa zona lombară să se lase în jos.'
+  },
+  {
     id: 'box_squat_touch',
     name: 'Genuflexiune cu atingerea scaunului',
     category: 'lower',
@@ -118,6 +131,32 @@ export const EXERCISES = [
     description: 'Coboară într-o genuflexiune până când atingi ușor scaunul cu bazinul, apoi te ridici imediat fără să te așezi complet.',
     focus: 'Coapse, fesieri și control',
     tip: 'Genunchii urmăresc direcția degetelor de la picioare.'
+  },
+  {
+    id: 'wall_sit',
+    name: 'Scaunul invizibil la perete (Wall Sit)',
+    category: 'lower',
+    level: 1,
+    equipment: ['wall'],
+    safe_for: ['back', 'wrists'],
+    default_reps: '20-30 secunde menținere',
+    duration_s: 40,
+    description: 'Lipește spatele de perete și coboară ca pe un scaun până când genunchii sunt la 90°. Menține poziția nemișcat.',
+    focus: 'Cvadricepși (coapse) și anduranță musculară',
+    tip: 'Presează călcâiele ferm în podea și respiră constant.'
+  },
+  {
+    id: 'prone_cobra',
+    name: 'Cobra blândă (Extensii de spate la sol)',
+    category: 'mobility',
+    level: 1,
+    equipment: ['bodyweight'],
+    safe_for: ['knees', 'wrists'],
+    default_reps: '8-10 repetări (menținere 2s)',
+    duration_s: 45,
+    description: 'Întins pe burtă cu brațele pe lângă corp. Ridică ușor pieptul de pe podea trăgând omoplații spre spate și rotind degetele mari spre tavan.',
+    focus: 'Partea superioară a spatelui, romboizi și postură',
+    tip: 'Privește spre podea pentru a păstra gâtul relaxat și aliniat.'
   },
   {
     id: 'bird_dog_gentle',
@@ -157,6 +196,19 @@ export const EXERCISES = [
     description: 'Întins pe spate cu genunchii îndoiți și tălpile pe sol. Ridică doar omoplații contractând abdomenul, menține 1 secundă și coboară lent.',
     focus: 'Abdomen (dreptul abdominal)',
     tip: 'Nu trage de ceafă cu mâinile; ține bărbia depărtată de piept și privește la 45° spre tavan.'
+  },
+  {
+    id: 'side_plank',
+    name: 'Plank lateral pe genunchi (Scândură laterală)',
+    category: 'core',
+    level: 1,
+    equipment: ['bodyweight'],
+    safe_for: ['knees_cushioned'],
+    default_reps: '15-20 secunde pe fiecare parte',
+    duration_s: 50,
+    description: 'Pe o parte, sprijină-te pe antebraț cu cotul sub umăr și genunchii îndoiți la 90°. Ridică bazinul formând o linie dreaptă de la genunchi la umeri.',
+    focus: 'Abdomen oblic, talie și stabilitate laterală',
+    tip: 'Ține gâtul drept și nu lăsa șoldul să cadă spre sol.'
   },
   {
     id: 'dumbbell_seated_bicep_curl',

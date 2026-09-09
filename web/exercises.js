@@ -258,6 +258,32 @@ export const CLIENT_EXERCISES = [
     </svg>`
   },
   {
+    id: 'knee_pushups',
+    name: 'Flotări pe genunchi',
+    category: 'upper',
+    level: 1,
+    equipment: ['bodyweight'],
+    default_reps: '8-12 repetări',
+    duration_s: 45,
+    description: 'Sprijin pe palme și genunchi, cu trunchiul formând o linie dreaptă. Coboară pieptul spre podea îndoind coatele la 45°, apoi împinge ferm.',
+    focus: 'Piept, umeri și triceps',
+    tip: 'Ține abdomenul activ; nu lăsa zona lombară să se lase în jos.',
+    swaps: ['incline_pushups', 'standard_pushups', 'wall_pushups'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Genunchi pe sol la x=70, picioare ridicate ușor în spate -->
+      <path d="M 80,74 L 70,84" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+      <!-- Trunchi în linie dreaptă de la genunchi la umeri -->
+      <line x1="70" y1="84" x2="40" y2="60" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Cap privind spre podea -->
+      <circle cx="30" cy="54" r="5.5" fill="currentColor" />
+      <!-- Brațe îndoite la 90 grade sprijinite pe sol -->
+      <path d="M 40,60 L 46,72 L 36,84" stroke="#2A7B4C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Săgeată împingere piept -->
+      <path d="M 32,70 L 32,60 M 28,64 L 32,60 L 36,64" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
     id: 'box_squat_touch',
     name: 'Genuflexiune cu atingerea scaunului',
     category: 'lower',
@@ -281,6 +307,64 @@ export const CLIENT_EXERCISES = [
       <path d="M 50,38 L 36,40 L 24,38" stroke="#2A7B4C" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
       <!-- Punct atingere bazin scaun -->
       <circle cx="66" cy="60" r="3" fill="#2A7B4C" />
+    </svg>`
+  },
+  {
+    id: 'wall_sit',
+    name: 'Scaunul invizibil la perete (Wall Sit)',
+    category: 'lower',
+    level: 1,
+    equipment: ['wall'],
+    default_reps: '20-30 secunde menținere',
+    duration_s: 40,
+    description: 'Lipește spatele de perete și coboară ca pe un scaun până când genunchii sunt la 90°. Menține poziția nemișcat.',
+    focus: 'Cvadricepși (coapse) și anduranță musculară',
+    tip: 'Presează călcâiele ferm în podea și respiră constant.',
+    swaps: ['chair_sit_to_stand', 'box_squat_touch'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <!-- Podea și perete -->
+      <line x1="10" y1="88" x2="90" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <line x1="30" y1="20" x2="30" y2="88" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+      <!-- Cap sprijinit de perete -->
+      <circle cx="37" cy="30" r="5.5" fill="currentColor" />
+      <!-- Trunchi vertical lipit de perete de la umăr la șold -->
+      <line x1="34" y1="36" x2="34" y2="62" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Coapse orizontale la 90 grade -->
+      <line x1="34" y1="62" x2="60" y2="62" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Gambe verticale la podea la 90 grade -->
+      <line x1="60" y1="62" x2="60" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Tălpi ferme pe podea -->
+      <line x1="58" y1="88" x2="68" y2="88" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <!-- Mâini pe coapse sau încrucișate pe piept -->
+      <path d="M 34,44 L 46,52 L 54,60" stroke="#2A7B4C" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Arc unghi 90 grade la genunchi -->
+      <path d="M 52,62 A 8 8 0 0 1 60,70" stroke="#2A7B4C" stroke-width="2" fill="none" stroke-linecap="round" />
+    </svg>`
+  },
+  {
+    id: 'prone_cobra',
+    name: 'Cobra blândă (Extensii de spate la sol)',
+    category: 'mobility',
+    level: 1,
+    equipment: ['bodyweight'],
+    default_reps: '8-10 repetări (menținere 2s)',
+    duration_s: 45,
+    description: 'Întins pe burtă cu brațele pe lângă corp. Ridică ușor pieptul de pe podea trăgând omoplații spre spate și rotind degetele mari spre tavan.',
+    focus: 'Partea superioară a spatelui, romboizi și postură',
+    tip: 'Privește spre podea pentru a păstra gâtul relaxat și aliniat.',
+    swaps: ['shoulder_rolls_reach', 'chest_opener_stretch'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Picioare întinse pe sol -->
+      <line x1="46" y1="84" x2="82" y2="84" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <!-- Trunchi arcuit ușor în sus de la bazin la piept -->
+      <path d="M 46,84 C 38,80 30,70 24,62" stroke="currentColor" stroke-width="4.5" fill="none" stroke-linecap="round" />
+      <!-- Cap privind spre podea la 45 grade -->
+      <circle cx="20" cy="54" r="5.5" fill="currentColor" />
+      <!-- Brațe extinse spre spate pe lângă șolduri -->
+      <line x1="26" y1="64" x2="52" y2="68" stroke="#2A7B4C" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Săgeată de ridicare a pieptului -->
+      <path d="M 18,74 L 18,65 M 15,69 L 18,65 L 21,69" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </svg>`
   },
   {
@@ -360,6 +444,35 @@ export const CLIENT_EXERCISES = [
       <circle cx="34" cy="74" r="3.5" fill="#2A7B4C" />
       <!-- Săgeată curbă de ridicare omoplați -->
       <path d="M 32,78 C 30,73 28,68 28,63 M 24,67 L 28,63 L 32,67" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'side_plank',
+    name: 'Plank lateral pe genunchi (Scândură laterală)',
+    category: 'core',
+    level: 1,
+    equipment: ['bodyweight'],
+    default_reps: '15-20 secunde pe fiecare parte',
+    duration_s: 50,
+    description: 'Pe o parte, sprijină-te pe antebraț cu cotul sub umăr și genunchii îndoiți la 90°. Ridică bazinul formând o linie dreaptă de la genunchi la umeri.',
+    focus: 'Abdomen oblic, talie și stabilitate laterală',
+    tip: 'Ține gâtul drept și nu lăsa șoldul să cadă spre sol.',
+    swaps: ['deadbug_assisted', 'forearm_plank'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Genunchi pe sol la x=70, gambe îndoite în spate -->
+      <path d="M 80,74 L 70,84" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+      <!-- Linie dreaptă ridicată de la genunchi la umăr -->
+      <line x1="70" y1="84" x2="38" y2="56" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Cap aliniat cu trunchiul -->
+      <circle cx="28" cy="50" r="5.5" fill="currentColor" />
+      <!-- Braț de sprijin: antebraț pe sol și braț vertical -->
+      <line x1="38" y1="56" x2="38" y2="84" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <line x1="38" y1="84" x2="24" y2="84" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <!-- Braț de sus pe șold -->
+      <path d="M 40,56 L 48,50 L 54,64" stroke="#2A7B4C" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Săgeată ridicare bazin -->
+      <path d="M 52,78 L 52,70 M 48,74 L 52,70 L 56,74" stroke="#2A7B4C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
     </svg>`
   },
   {
