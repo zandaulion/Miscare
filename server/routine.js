@@ -573,8 +573,13 @@ export function filterSafeExercises(allExercises, profile) {
     const hasRequiredEquipment = ex.equipment.every((eq) => equipment.includes(eq));
     if (!hasRequiredEquipment) return false;
 
-    // Verifică limitările
-    if (limitations.includes('knees') && ex.category === 'lower' && !ex.safe_for.includes('knees')) {
+    // Verifică limitările.
+    //
+    // Genunchii se verifică pe toate categoriile, ca spatele și încheieturile.
+    // Cât timp verificarea era limitată la category === 'lower', treceau de
+    // filtru cinci mișcări nesigure pentru genunchi — printre care
+    // knee_pushups, adică exact exercițiul numit după articulația protejată.
+    if (limitations.includes('knees') && !ex.safe_for.includes('knees')) {
       return false;
     }
     if (limitations.includes('back') && !ex.safe_for.includes('back')) {
@@ -610,10 +615,28 @@ export function generateDailyRoutine(profile = {}, options = {}) {
   };
   const targetLevel = levelMap[profile.level] ?? 0;
 
+  // Când nu ies destule exerciții, lărgim — dar numai ce e preferință.
+  //
+  // Varianta veche relua filtrarea de la zero pe level + bodyweight și pierdea
+  // pe drum `limitations`. Efectul era invers decât cel dorit: cu cât cineva
+  // bifa mai multe zone sensibile, cu atât rămâneau mai puține exerciții, cu
+  // atât mai sigur intra pe ramura asta — și primea exact mișcările pe care
+  // tocmai le exclusese. Un profil cu genunchi + spate + încheieturi primea
+  // flotări la perete (nesigure pentru încheieturi) și ridicări de pe scaun
+  // (nesigure pentru genunchi).
+  //
+  // Echipamentul e o preferință: dacă nu ai ganteră, exercițiul cu greutatea
+  // corpului rămâne o alternativă onestă. Limitările nu sunt o preferință.
+  // Deci lărgim echipamentul și, dacă tot nu ajunge, servim mai puțin.
+  const MIN_EXERCISES = 3;
   let candidateExercises = filterSafeExercises(EXERCISES, profile);
-  if (candidateExercises.length < 3) {
-    candidateExercises = EXERCISES.filter((e) => e.level <= Math.max(1, targetLevel) && e.equipment.includes('bodyweight'));
+  if (candidateExercises.length < MIN_EXERCISES) {
+    candidateExercises = filterSafeExercises(EXERCISES, {
+      ...profile,
+      equipment: ['bodyweight', 'chair', 'wall']
+    });
   }
+  const shortOnSafeMoves = candidateExercises.length < MIN_EXERCISES;
 
   // Sortăm favorizând nivelul țintă și echipamentele dedicate declarate (bară, gantere, bandă)
   const userEquip = Array.isArray(profile.equipment) ? profile.equipment : [];
@@ -681,6 +704,20 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     adjustmentNote = 'Volum adaptat automat după ultima sesiune.';
   } else if (lastFeedback === 'easy') {
     supportiveMessage = 'Data trecută a fost ușor și plăcut. Menținem ritmul bun!';
+  }
+
+  // O sesiune scurtă și sigură bate una completă și nepotrivită. Spunem de ce
+  // e scurtă, ca să nu pară că aplicația a rămas fără idei — și ca zonele
+  // bifate să poată fi reconsiderate dacă au fost bifate din precauție.
+  if (shortOnSafeMoves) {
+    adjustmentNote = chosen.length
+      ? `Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.`
+      : 'Nu am găsit nicio mișcare sigură pentru zonele bifate.';
+    if (!chosen.length) {
+      supportiveMessage =
+        'Zonele pe care le-ai bifat exclud toate mișcările din catalog. '
+        + 'Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.';
+    }
   }
 
   const estimatedSeconds = chosen.reduce((acc, curr) => acc + (curr.duration_s || 50) * 2 + 30, 0);
