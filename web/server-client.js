@@ -112,6 +112,9 @@ export async function getProfile() {
 export async function updateProfile(updates) {
   state.profile = { ...state.profile, ...updates };
   localStorage.setItem(PROFILE_KEY, JSON.stringify(state.profile));
+  if (updates.level) {
+    localStorage.removeItem(ROUTINE_KEY);
+  }
 
   if (state.linked) {
     try {
@@ -125,29 +128,10 @@ export async function updateProfile(updates) {
   return state.profile;
 }
 
-export async function getTodayRoutine(duration = null) {
-  if (state.linked) {
-    try {
-      const query = duration ? `?duration=${duration}` : '';
-      const data = await api(`/api/routine/today${query}`);
-      localStorage.setItem(ROUTINE_KEY, JSON.stringify(data.routine));
-      return data.routine;
-    } catch {}
-  }
-
-  // Fallback offline: generăm direct din client
-  const cached = localStorage.getItem(ROUTINE_KEY);
-  if (cached) {
-    try { return JSON.parse(cached); } catch {}
-  }
-
-  return {
-    id: 'local_today',
-    title: 'Mișcarea ta de azi',
-    target_minutes: duration || state.profile.daily_time || 10,
-    supportive_message: 'Fiecare pas contează. Fără grabă și fără comparații.',
-    adjustment_note: null,
-    is_reentry: false,
+const FALLBACK_ROUTINES = {
+  zero: {
+    title: 'Mișcarea ta de azi — Nivel 0 (De la 0)',
+    supportiveMessage: 'Fiecare pas contează. Fără grabă și fără comparații.',
     exercises: [
       {
         id: 'wall_pushups',
@@ -180,6 +164,150 @@ export async function getTodayRoutine(duration = null) {
         tip: 'Respiră adânc.'
       }
     ]
+  },
+  beginner: {
+    title: 'Mișcarea ta de azi — Nivel 1 (Începător)',
+    supportiveMessage: 'Construiești forță și mobilitate zi de zi. Menține ritmul!',
+    exercises: [
+      {
+        id: 'incline_pushups',
+        name: 'Flotări înclinate (pe spătar/masă)',
+        category: 'upper',
+        adjusted_reps: '8-10 repetări',
+        duration_s: 50,
+        description: 'Sprijină palmele pe marginea unei mese sau pe spătarul unui scaun rezistent. Coboară pieptul și împinge controlat.',
+        focus: 'Piept, brațe și stabilitate trunchi',
+        tip: 'Păstrează trunchiul aliniat drept.'
+      },
+      {
+        id: 'box_squat_touch',
+        name: 'Genuflexiune cu atingerea scaunului',
+        category: 'lower',
+        adjusted_reps: '8-10 repetări',
+        duration_s: 50,
+        description: 'Coboară într-o genuflexiune până atingi ușor marginea scaunului, apoi te ridici fără să te așezi complet.',
+        focus: 'Picioare, fesieri și echilibru',
+        tip: 'Genunchii rămân orientați spre degetele picioarelor.'
+      },
+      {
+        id: 'bird_dog_gentle',
+        name: 'Bird-dog pe saltea',
+        category: 'core_glutes',
+        adjusted_reps: '6-8 pe parte',
+        duration_s: 50,
+        description: 'În sprijin pe palme și genunchi. Întinde un braț în față și piciorul opus în spate, ține 2 secunde și revino.',
+        focus: 'Stabilitate lombară, coordonare și fesieri',
+        tip: 'Păstrează spatele drept ca o masă.'
+      }
+    ]
+  },
+  intermediate: {
+    title: 'Mișcarea ta de azi — Nivel 2 (Intermediar)',
+    supportiveMessage: 'Pregătit pentru o sesiune activă și energică? Forță solidă la podea!',
+    exercises: [
+      {
+        id: 'standard_pushups',
+        name: 'Flotări clasice la podea',
+        category: 'upper',
+        adjusted_reps: '10-15 repetări',
+        duration_s: 50,
+        description: 'Palmele sub umeri, picioarele întinse. Coboară pieptul până aproape de podea, menținând corpul drept ca o scândură, apoi împinge ferm.',
+        focus: 'Piept, triceps, umeri și stabilitate trunchi',
+        tip: 'Nu lăsa capul să cadă în față; privește la 20cm în fața palmelor.'
+      },
+      {
+        id: 'full_squats',
+        name: 'Genuflexiuni libere (adânci)',
+        category: 'lower',
+        adjusted_reps: '12-16 repetări',
+        duration_s: 50,
+        description: 'Picioarele la lățimea umerilor. Coboară bazinul sub nivelul genunchilor, păstrând călcâiele bine lipite de sol și pieptul ridicat.',
+        focus: 'Cvadricepși, fesieri și mobilitate șolduri',
+        tip: 'Împinge puternic în călcâie la urcare și expiră.'
+      },
+      {
+        id: 'forearm_plank',
+        name: 'Scândură / Plank pe antebrațe',
+        category: 'core',
+        adjusted_reps: '35-50 secunde',
+        duration_s: 45,
+        description: 'Sprijin pe antebrațe și vârfuri de picioare. Menține corpul perfect aliniat, cu abdomenul și fesierii contractați.',
+        focus: 'Stabilitate trunchi, abdomen profund și umeri',
+        tip: 'Respiră constant, nu-ți ține respirația.'
+      }
+    ]
+  },
+  advanced: {
+    title: 'Mișcarea ta de azi — Nivel 3 (Avansat)',
+    supportiveMessage: 'Intensitate maximă, control total. Dă tot ce ai!',
+    exercises: [
+      {
+        id: 'diamond_pushups',
+        name: 'Flotări diamant',
+        category: 'upper',
+        adjusted_reps: '10-12 repetări',
+        duration_s: 50,
+        description: 'Palmele lipite la sol sub piept cu degetele formând un diamant. Coboară pieptul și împinge exploziv.',
+        focus: 'Triceps intens și piept interior',
+        tip: 'Coatele rămân pe lângă corp.'
+      },
+      {
+        id: 'jump_squats',
+        name: 'Genuflexiuni sărite (Putere)',
+        category: 'lower',
+        adjusted_reps: '10-14 repetări',
+        duration_s: 45,
+        description: 'Genuflexiune adâncă urmată de o desprindere explozivă în sus. Aterizează lin pe vârfuri și coboară fluid.',
+        focus: 'Putere explozivă și anduranță musculară',
+        tip: 'Aterizarea trebuie să fie complet silențioasă.'
+      },
+      {
+        id: 'plank_shoulder_taps',
+        name: 'Plank cu atingeri de umeri',
+        category: 'core',
+        adjusted_reps: '16-20 atingeri',
+        duration_s: 45,
+        description: 'Din poziția de flotare, atinge umărul opus cu o mână fără a roti bazinul. Menține corpul perfect imobil.',
+        focus: 'Anti-rotație, stabilitate și forță izometrică',
+        tip: 'Picioarele puțin mai depărtate oferă o bază solidă.'
+      }
+    ]
+  }
+};
+
+export async function getTodayRoutine(duration = null) {
+  if (state.linked) {
+    try {
+      const query = duration ? `?duration=${duration}` : '';
+      const data = await api(`/api/routine/today${query}`);
+      localStorage.setItem(ROUTINE_KEY, JSON.stringify(data.routine));
+      return data.routine;
+    } catch {}
+  }
+
+  // Fallback offline: verificăm dacă avem o rutină cache potrivită nivelului curent
+  const currentLevel = state.profile?.level || 'zero';
+  const cached = localStorage.getItem(ROUTINE_KEY);
+  if (cached) {
+    try {
+      const parsed = JSON.parse(cached);
+      if (parsed && (parsed.level === currentLevel || !parsed.level && currentLevel === 'zero')) {
+        return parsed;
+      }
+    } catch {}
+  }
+
+  const tmpl = FALLBACK_ROUTINES[currentLevel] || FALLBACK_ROUTINES.zero;
+
+  return {
+    id: 'local_today',
+    title: tmpl.title,
+    level: currentLevel,
+    target_minutes: duration || state.profile?.daily_time || 10,
+    supportive_message: tmpl.supportiveMessage,
+    adjustment_note: null,
+    is_reentry: false,
+    exercises: tmpl.exercises
   };
 }
 

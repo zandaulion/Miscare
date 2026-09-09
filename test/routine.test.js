@@ -92,27 +92,43 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
     assert.match(routine.title, /5 minute/i);
   });
 
-  await t.test('intermediate level generates level 2 movements (floor pushups, squats, plank)', () => {
+  await t.test('intermediate level generates level 2 movements (floor pushups, squats, plank) with default equipment and without yoga mat', () => {
     const profile = {
       level: 'intermediate',
       daily_time: 10,
-      equipment: ['bodyweight', 'chair', 'wall', 'yoga_mat']
+      equipment: ['bodyweight', 'chair', 'wall']
     };
 
     const routine = generateDailyRoutine(profile);
     assert.ok(routine.exercises.some((e) => e.level === 2));
+    assert.ok(routine.exercises.some((e) => e.id === 'standard_pushups'), 'Should propose standard floor pushups');
+    assert.ok(!routine.exercises.some((e) => e.id === 'wall_pushups'), 'Should NOT propose wall pushups for intermediate');
     assert.match(routine.title, /Intermediar/i);
   });
 
-  await t.test('advanced level generates level 3 movements (diamond pushups, jump squats, burpees)', () => {
+  await t.test('intermediate level with ONLY bodyweight generates floor pushups and squats', () => {
+    const profile = {
+      level: 'intermediate',
+      daily_time: 10,
+      equipment: ['bodyweight']
+    };
+
+    const routine = generateDailyRoutine(profile);
+    assert.ok(routine.exercises.some((e) => e.id === 'standard_pushups'));
+    assert.ok(routine.exercises.some((e) => e.id === 'full_squats'));
+    assert.ok(routine.exercises.some((e) => e.id === 'forearm_plank'));
+  });
+
+  await t.test('advanced level generates level 3 movements with ONLY bodyweight', () => {
     const profile = {
       level: 'advanced',
       daily_time: 10,
-      equipment: ['bodyweight', 'yoga_mat']
+      equipment: ['bodyweight']
     };
 
     const routine = generateDailyRoutine(profile);
     assert.ok(routine.exercises.some((e) => e.level === 3));
+    assert.ok(routine.exercises.some((e) => e.id === 'diamond_pushups'));
     assert.match(routine.title, /Avansat/i);
   });
 });
