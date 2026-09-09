@@ -1,0 +1,23 @@
+FROM docker.io/library/node:22-alpine
+
+ENV NODE_ENV=production
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+COPY server ./server
+COPY web ./web
+
+RUN addgroup -g 10009 appgroup && \
+    adduser -u 10009 -G appgroup -s /bin/sh -D appuser && \
+    mkdir -p /data && chown -R 10009:10009 /data /app
+
+VOLUME /data
+ENV DATA_DIR=/data
+ENV PORT=3000
+
+USER 10009
+EXPOSE 3000
+
+CMD ["node", "server/index.js"]
