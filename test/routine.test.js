@@ -131,5 +131,21 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
     assert.ok(routine.exercises.some((e) => e.id === 'diamond_pushups'));
     assert.match(routine.title, /Avansat/i);
   });
+
+  await t.test('intermediate level with pullup_bar utilizes the bar (chin-ups or hanging knee raises)', () => {
+    const profile = {
+      level: 'intermediate',
+      daily_time: 10,
+      equipment: ['bodyweight', 'chair', 'wall', 'pullup_bar']
+    };
+
+    const routine = generateDailyRoutine(profile);
+    const usesBar = routine.exercises.some((e) => e.equipment.includes('pullup_bar'));
+    assert.ok(usesBar, 'Routine should utilize the pullup bar when available');
+    assert.ok(
+      routine.exercises.some((e) => ['chin_ups', 'negative_pullups', 'hanging_knee_raises'].includes(e.id)),
+      'Should select intermediate pull-up bar movements'
+    );
+  });
 });
 

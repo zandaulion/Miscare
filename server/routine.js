@@ -197,6 +197,19 @@ export const EXERCISES = [
     focus: 'Mușchii spatelui și postură',
     tip: 'Păstrează pieptul deschis și umerii coborâți.'
   },
+  {
+    id: 'active_hang',
+    name: 'Atârnare activă la bară (Active Hang)',
+    category: 'mobility',
+    level: 1,
+    equipment: ['pullup_bar'],
+    safe_for: ['knees', 'back'],
+    default_reps: '20-30 secunde',
+    duration_s: 35,
+    description: 'Prinde bara ferm și lasă corpul să atârne, dar trage omopații în jos și depărtează umerii de urechi. Respiră calm.',
+    focus: 'Decompresie lombară, stabilitate umeri și forță priză',
+    tip: 'Eliberează presiunea din coloană și pregătește umerii pentru tracțiuni.'
+  },
 
   // --- Nivel 2 (Intermediar / Activ — forță solidă la sol, tempo susținut)
   {
@@ -302,6 +315,45 @@ export const EXERCISES = [
     description: 'Pe spate, întinde un picior în aer și împinge în călcâiul celuilalt pentru a ridica bazinul. Menține 1 secundă sus.',
     focus: 'Fesieri profunzi, biceps femural și stabilitate pelviană',
     tip: 'Păstrează șoldurile paralele, nu lăsa o parte să cadă.'
+  },
+  {
+    id: 'chin_ups',
+    name: 'Tracțiuni în supinație (Chin-ups)',
+    category: 'upper',
+    level: 2,
+    equipment: ['pullup_bar'],
+    safe_for: ['knees', 'back'],
+    default_reps: '4-8 repetări',
+    duration_s: 50,
+    description: 'Prinde bara cu palmele orientate spre tine la lățimea umerilor. Trage pieptul spre bară până când bărbia trece peste, apoi coboară lent.',
+    focus: 'Bicepși, dorsali și forță de tragere',
+    tip: 'Priza în supinație folosește mai mult bicepșii, fiind o mișcare naturală și accesibilă la nivel intermediar.'
+  },
+  {
+    id: 'negative_pullups',
+    name: 'Tracțiuni negative (coborâre controlată)',
+    category: 'upper',
+    level: 2,
+    equipment: ['pullup_bar'],
+    safe_for: ['knees', 'back'],
+    default_reps: '5-6 repetări (coborâre 3-4s)',
+    duration_s: 50,
+    description: 'Sari ușor sau folosește un scaun pentru a ajunge cu bărbia deasupra barei. Coboară cât mai lent posibil (3-4 secunde) până la întinderea completă a brațelor.',
+    focus: 'Forță excentrică, spate, brațe și priză',
+    tip: 'Coborârea controlată crește cel mai rapid numărul de tracțiuni complete.'
+  },
+  {
+    id: 'hanging_knee_raises',
+    name: 'Ridicări de genunchi din atârnat la bară',
+    category: 'core',
+    level: 2,
+    equipment: ['pullup_bar'],
+    safe_for: ['knees', 'back'],
+    default_reps: '8-12 repetări',
+    duration_s: 45,
+    description: 'Din atârnat la bară cu brațele drepte și umerii fermi, ridică genunchii controlat spre piept fără balans, ține o fracțiune de secundă și coboară lent.',
+    focus: 'Abdomen inferior, flexori șold și anduranță priză',
+    tip: 'Evită balansul trunchiului — mișcarea trebuie să fie strict din contracția abdomenului.'
   },
 
   // --- Nivel 3 (Avansat / Intens — forță explozivă, variații compuse)
@@ -431,10 +483,25 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     candidateExercises = EXERCISES.filter((e) => e.level <= Math.max(1, targetLevel) && e.equipment.includes('bodyweight'));
   }
 
-  // Pentru nivel intermediar sau avansat, sortăm astfel încât să favorizăm exercițiile de nivel înalt
-  if (targetLevel >= 2) {
-    candidateExercises.sort((a, b) => b.level - a.level);
-  }
+  // Sortăm favorizând nivelul țintă și echipamentele dedicate declarate (bară, gantere, bandă)
+  const userEquip = Array.isArray(profile.equipment) ? profile.equipment : [];
+  const specialEquipment = ['pullup_bar', 'dumbbells', 'resistance_band', 'kettlebell'];
+  const hasUserSpecial = userEquip.some((eq) => specialEquipment.includes(eq));
+
+  candidateExercises.sort((a, b) => {
+    // 1. Favorizează nivelul utilizatorului
+    if (targetLevel >= 2 && b.level !== a.level) {
+      return b.level - a.level;
+    }
+    // 2. Dacă utilizatorul are echipament dedicat, favorizează exercițiile care îl utilizează
+    if (hasUserSpecial) {
+      const aHas = a.equipment.some((eq) => specialEquipment.includes(eq) && userEquip.includes(eq));
+      const bHas = b.equipment.some((eq) => specialEquipment.includes(eq) && userEquip.includes(eq));
+      if (aHas && !bHas) return -1;
+      if (!aHas && bHas) return 1;
+    }
+    return 0;
+  });
 
   const exerciseCount = isShortSession ? 2 : targetMinutes <= 10 ? 3 : 4;
 
