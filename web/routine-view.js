@@ -1,5 +1,5 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
-import { getTodayRoutine, logWorkout, updateProfile, state } from './server-client.js';
+import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state } from './server-client.js';
 
 let currentRoutine = null;
 let guidedState = {
@@ -30,14 +30,18 @@ function playGentleChime() {
   } catch {}
 }
 
-export async function renderRoutineView(container, { forceDuration = null } = {}) {
-  container.innerHTML = `
-    <div style="text-align: center; padding: 40px 20px;">
-      <div class="brand-tagline">Pregătim mișcarea de azi...</div>
-    </div>
-  `;
+export async function renderRoutineView(container, { forceDuration = null, routine = null, forceRefresh = false } = {}) {
+  if (routine) {
+    currentRoutine = routine;
+  } else {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 40px 20px;">
+        <div class="brand-tagline">Pregătim mișcarea de azi...</div>
+      </div>
+    `;
 
-  currentRoutine = await getTodayRoutine(forceDuration);
+    currentRoutine = await getTodayRoutine(forceDuration, forceRefresh);
+  }
 
   const currentLevel = state.profile?.level || currentRoutine.level || 'zero';
   const isReentry = currentRoutine.is_reentry;
@@ -134,12 +138,12 @@ export async function renderRoutineView(container, { forceDuration = null } = {}
       const newLvl = e.currentTarget.dataset.level;
       if (newLvl === currentLevel) return;
       await updateProfile({ level: newLvl });
-      renderRoutineView(container);
+      renderRoutineView(container, { forceRefresh: true });
     });
   });
 
   container.querySelector('#btn-shorten')?.addEventListener('click', () => {
-    renderRoutineView(container, { forceDuration: 5 });
+    renderRoutineView(container, { forceDuration: 5, forceRefresh: true });
   });
 
   container.querySelector('#btn-start-guided')?.addEventListener('click', () => {
@@ -158,26 +162,59 @@ export async function renderRoutineView(container, { forceDuration = null } = {}
   });
 }
 
-function swapExercise(index, container) {
-  if (!currentRoutine || !currentRoutine.exercises[index]) return;
-  const current = currentRoutine.exercises[index];
-  const userEquipment = state.profile?.equipment || ['bodyweight', 'chair', 'wall'];
-  const userLevel = state.profile?.level || 'zero';
-  const levelMap = { zero: 0, beginner: 1, intermediate: 2, advanced: 3 };
-  const targetLevel = levelMap[userLevel] ?? 0;
+function notifyToast(message) {
+  const toastContainer = document.querySelector('.toast-container') || document.body;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  toastContainer.appendChild(toast);
+  setTimeout(() => toast.remove(), 3500);
+}
 
-  // Găsește toți candidații compatibili cu echipamentul și nivelul
-  const eligible = CLIENT_EXERCISES.filter((e) => {
+function swapExercise(index, container) {
+  if (!currentRoutine || !currentRoutine.exercises || !currentRoutine.exercises[index]) return;
+  const current = currentRoutine.exercises[index];
+  const currentDef = getExerciseById(current.id) || current;
+
+  const routineLevel = currentRoutine.level || state.profile?.level || 'zero';
+  const levelMap = { zero: 0, beginner: 1, intermediate: 2, advanced: 3 };
+  const currentLevelNum = levelMap[routineLevel] ?? (levelMap[state.profile?.level] ?? 0);
+  const targetLevel = Math.max(currentLevelNum, currentDef.level ?? 0);
+
+  const profileEquipment = Array.isArray(state.profile?.equipment)
+    ? state.profile.equipment
+    : ['bodyweight', 'chair', 'wall'];
+  const userEquipment = new Set(['bodyweight', 'chair', 'wall', ...profileEquipment]);
+  if (Array.isArray(currentDef.equipment)) {
+    currentDef.equipment.forEach((eq) => userEquipment.add(eq));
+  }
+
+  // Candidați compatibili (fără exercițiul curent și fără duplicate în alte sloturi)
+  let eligible = CLIENT_EXERCISES.filter((e) => {
     if (e.id === current.id) return false;
-    if (currentRoutine.exercises.some((ce) => ce.id === e.id)) return false;
+    if (currentRoutine.exercises.some((ce, idx) => idx !== index && ce.id === e.id)) return false;
     if (e.level > targetLevel) return false;
-    return e.equipment.every((eq) => userEquipment.includes(eq));
+    return e.equipment.every((eq) => userEquipment.has(eq));
   });
+
+  if (eligible.length === 0) {
+    // Relaxare condiție echipament la accesorii de bază fără unelte dedicate
+    eligible = CLIENT_EXERCISES.filter((e) => {
+      if (e.id === current.id) return false;
+      if (currentRoutine.exercises.some((ce, idx) => idx !== index && ce.id === e.id)) return false;
+      return e.equipment.every((eq) => ['bodyweight', 'chair', 'wall'].includes(eq));
+    });
+  }
+
+  if (eligible.length === 0) {
+    eligible = CLIENT_EXERCISES.filter((e) => e.id !== current.id);
+  }
 
   if (eligible.length === 0) return;
 
-  // 1. Prioritate maximă: alternativele declarate explicit în exercițiu (current.swaps)
-  const declaredSwaps = (current.swaps || [])
+  // 1. Prioritate maximă: alternativele declarate explicit în exercițiu (swaps)
+  const swapIds = currentDef.swaps || current.swaps || [];
+  const declaredSwaps = swapIds
     .map((id) => eligible.find((e) => e.id === id))
     .filter(Boolean);
 
@@ -190,9 +227,6 @@ function swapExercise(index, container) {
     ? sameCategory
     : eligible;
 
-  // Sortăm candidații astfel încât să favorizăm nivelul cel mai apropiat de cel curent
-  pool.sort((a, b) => Math.abs(b.level - targetLevel) - Math.abs(a.level - targetLevel));
-
   const next = pool[Math.floor(Math.random() * pool.length)];
 
   currentRoutine.exercises[index] = {
@@ -200,7 +234,17 @@ function swapExercise(index, container) {
     adjusted_reps: next.default_reps
   };
 
-  renderRoutineView(container);
+  saveCachedRoutine(currentRoutine);
+
+  renderRoutineView(container, { routine: currentRoutine });
+
+  // Evidențiere vizuală card schimbat
+  const updatedCard = container.querySelector(`.exercise-card[data-index="${index}"]`);
+  if (updatedCard) {
+    updatedCard.classList.add('swapped');
+  }
+
+  notifyToast(`🔄 Schimbat cu: ${next.name}`);
 }
 
 // ---------------------------------------------------------------- Guided Workout Runner

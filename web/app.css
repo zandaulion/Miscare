@@ -207,6 +207,15 @@ header.app-header {
   transform: scale(0.99);
 }
 
+@keyframes exerciseSwapped {
+  0% { transform: scale(0.96); border-color: var(--primary); background: rgba(42, 123, 76, 0.1); }
+  100% { transform: scale(1); border-color: var(--border); background: var(--surface); }
+}
+
+.exercise-card.swapped {
+  animation: exerciseSwapped 0.4s ease-out;
+}
+
 .exercise-visual {
   width: 68px;
   height: 68px;
@@ -284,10 +293,21 @@ header.app-header {
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 4px 6px;
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-swap:hover {
+  background: rgba(42, 123, 76, 0.08);
+}
+
+.btn-swap:active {
+  transform: scale(0.96);
+  opacity: 0.8;
 }
 
 /* Buttons */

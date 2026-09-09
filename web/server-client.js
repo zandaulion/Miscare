@@ -275,23 +275,55 @@ const FALLBACK_ROUTINES = {
   }
 };
 
-export async function getTodayRoutine(duration = null) {
+export function saveCachedRoutine(routine) {
+  try {
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const toSave = { ...routine, cached_date: todayStr };
+    localStorage.setItem(ROUTINE_KEY, JSON.stringify(toSave));
+  } catch {}
+}
+
+export async function getTodayRoutine(duration = null, forceRefresh = false) {
+  const currentLevel = state.profile?.level || 'zero';
+  const todayStr = new Date().toISOString().slice(0, 10);
+
+  // Verificăm dacă avem deja o rutină salvată/personalizată pentru azi cu același nivel
+  if (!forceRefresh && !duration) {
+    const cached = localStorage.getItem(ROUTINE_KEY);
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached);
+        if (
+          parsed &&
+          parsed.cached_date === todayStr &&
+          (parsed.level === currentLevel || (!parsed.level && currentLevel === 'zero'))
+        ) {
+          return parsed;
+        }
+      } catch {}
+    }
+  }
+
   if (state.linked) {
     try {
       const query = duration ? `?duration=${duration}` : '';
       const data = await api(`/api/routine/today${query}`);
-      localStorage.setItem(ROUTINE_KEY, JSON.stringify(data.routine));
-      return data.routine;
+      const routineWithDate = {
+        ...data.routine,
+        level: data.routine.level || currentLevel,
+        cached_date: todayStr
+      };
+      localStorage.setItem(ROUTINE_KEY, JSON.stringify(routineWithDate));
+      return routineWithDate;
     } catch {}
   }
 
   // Fallback offline: verificăm dacă avem o rutină cache potrivită nivelului curent
-  const currentLevel = state.profile?.level || 'zero';
   const cached = localStorage.getItem(ROUTINE_KEY);
   if (cached) {
     try {
       const parsed = JSON.parse(cached);
-      if (parsed && (parsed.level === currentLevel || !parsed.level && currentLevel === 'zero')) {
+      if (parsed && (parsed.level === currentLevel || (!parsed.level && currentLevel === 'zero'))) {
         return parsed;
       }
     } catch {}
@@ -299,7 +331,7 @@ export async function getTodayRoutine(duration = null) {
 
   const tmpl = FALLBACK_ROUTINES[currentLevel] || FALLBACK_ROUTINES.zero;
 
-  return {
+  const fallbackRoutine = {
     id: 'local_today',
     title: tmpl.title,
     level: currentLevel,
@@ -307,8 +339,11 @@ export async function getTodayRoutine(duration = null) {
     supportive_message: tmpl.supportiveMessage,
     adjustment_note: null,
     is_reentry: false,
+    cached_date: todayStr,
     exercises: tmpl.exercises
   };
+  localStorage.setItem(ROUTINE_KEY, JSON.stringify(fallbackRoutine));
+  return fallbackRoutine;
 }
 
 export async function logWorkout(payload) {
