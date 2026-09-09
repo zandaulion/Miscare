@@ -107,3 +107,10 @@ handle /miscare/* {
     }
 }
 ```
+
+---
+
+## Licență
+
+Acest proiect este licențiat sub termenii licenței **GNU General Public License v3.0 or later** (GPL-3.0-or-later). Consultă fișierul [LICENSE](LICENSE) pentru detalii complete.
+
