@@ -490,27 +490,6 @@ header.app-header {
 }
 
 /* Equipment Screen */
-.camera-dropzone {
-  border: 2px dashed var(--border-strong);
-  border-radius: var(--radius-lg);
-  padding: 24px 16px;
-  text-align: center;
-  cursor: pointer;
-  background: var(--surface-subtle);
-  transition: border-color 0.2s ease;
-  margin-bottom: 16px;
-}
-
-.camera-dropzone:hover {
-  border-color: var(--primary);
-}
-
-.camera-icon {
-  font-size: 2.4rem;
-  display: block;
-  margin-bottom: 8px;
-}
-
 .equipment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
