@@ -705,6 +705,164 @@ export const CLIENT_EXERCISES = [
     </svg>`
   },
 
+  // --- Gantere reglabile / grele (5-20 kg) - Forță compusă Nivel 2
+  {
+    id: 'dumbbell_goblet_squat',
+    name: 'Genuflexiuni Goblet (cu ganteră la piept)',
+    category: 'lower',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Ține o ganteră pe verticală, lipită de piept cu ambele palme. Coboară într-o genuflexiune adâncă menținând pieptul ridicat și coatele între genunchi, apoi împinge ferm în călcâie.',
+    focus: 'Cvadricepși, fesieri, mobilitate șolduri și stabilitate trunchi',
+    tip: 'Greutatea ținută în față activează abdomenul și te ajută să cobori adânc fără a rotunji spatele.',
+    swaps: ['full_squats', 'box_squat_touch', 'dumbbell_romanian_deadlift'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Cap & trunchi drept coborât în squat -->
+      <circle cx="48" cy="24" r="5.5" fill="currentColor" />
+      <line x1="48" y1="30" x2="48" y2="52" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Picioare flectate în genuflexiune -->
+      <path d="M 48,52 L 32,56 L 28,88 M 48,52 L 64,56 L 68,88" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Ganteră ținută vertical la piept -->
+      <rect x="44" y="32" width="8" height="16" rx="2" fill="#64748B" />
+      <rect x="41" y="30" width="14" height="4" rx="1.5" fill="#475569" />
+      <rect x="41" y="46" width="14" height="4" rx="1.5" fill="#475569" />
+      <!-- Brațe ținând gantera la piept -->
+      <path d="M 48,34 L 40,40 L 44,38 M 48,34 L 56,40 L 52,38" stroke="#2A7B4C" stroke-width="3" fill="none" stroke-linecap="round" />
+      <!-- Săgeată dinamică de adâncime squat -->
+      <path d="M 76,46 L 76,64 M 72,58 L 76,64 L 80,58" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'dumbbell_romanian_deadlift',
+    name: 'Îndreptări românești (RDL cu gantere)',
+    category: 'lower',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Picioarele la lățimea șoldurilor, ganterele în față. Împinge bazinul în spate flexând doar ușor genunchii, coborând ganterele până sub genunchi cu spatele perfect drept, apoi strânge fesierii la ridicare.',
+    focus: 'Biceps femural, fesieri și lanț posterior',
+    tip: 'Mișcarea este o împingere a fundului spre peretele din spate, nu o aplecare din talie.',
+    swaps: ['glute_bridge_gentle', 'dumbbell_goblet_squat', 'single_leg_glute_bridge'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Bazin împins în spate, spate drept înclinat -->
+      <circle cx="58" cy="30" r="5.5" fill="currentColor" />
+      <line x1="58" y1="35" x2="40" y2="48" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Picioare ușor îndoite -->
+      <path d="M 40,48 L 44,66 L 46,88 M 40,48 L 38,66 L 36,88" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+      <!-- Brațe coborând cu gantere -->
+      <line x1="54" y1="38" x2="52" y2="64" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Ganteră sub genunchi -->
+      <rect x="46" y="63" width="12" height="5" rx="1.5" fill="#475569" />
+      <circle cx="45" cy="65.5" r="3.5" fill="#64748B" />
+      <circle cx="59" cy="65.5" r="3.5" fill="#64748B" />
+      <!-- Săgeată hip-hinge spre spate -->
+      <path d="M 36,44 L 22,44 M 28,40 L 22,44 L 28,48" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'dumbbell_floor_press',
+    name: 'Împins de la podea cu gantere',
+    category: 'upper',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Întins pe spate cu genunchii îndoiți. Împinge ganterele deasupra pieptului până când brațele sunt întinse, apoi coboară lent până când tricepșii ating ușor podeaua.',
+    focus: 'Piept, triceps și stabilitate articulară umeri',
+    tip: 'Podeaua blochează coborârea exagerată a coatelor, protejând articulațiile umerilor chiar și cu greutăți mari.',
+    swaps: ['standard_pushups', 'incline_pushups', 'chair_dips'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="84" x2="88" y2="84" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Corp pe spate la podea -->
+      <circle cx="28" cy="78" r="5.5" fill="currentColor" />
+      <line x1="33" y1="82" x2="62" y2="82" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Genunchi îndoiți pe podea -->
+      <path d="M 62,82 L 72,70 L 78,84" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Brațe împingând ganterele sus -->
+      <line x1="44" y1="80" x2="44" y2="50" stroke="#2A7B4C" stroke-width="4" stroke-linecap="round" />
+      <!-- Gantera sus în aer -->
+      <rect x="36" y="47" width="16" height="5" rx="1.5" fill="#475569" />
+      <circle cx="35" cy="49.5" r="4" fill="#64748B" />
+      <circle cx="53" cy="49.5" r="4" fill="#64748B" />
+      <!-- Săgeată împingere în sus -->
+      <path d="M 44,42 L 44,30 M 40,35 L 44,30 L 48,35" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'dumbbell_single_arm_row',
+    name: 'Ramat cu un braț sprijinit pe scaun',
+    category: 'upper',
+    level: 2,
+    equipment: ['adjustable_dumbbells', 'chair'],
+    default_reps: '8-10 / braț',
+    duration_s: 50,
+    description: 'Sprijină un genunchi și o mână pe scaun, cu spatele orizontal. Cu cealaltă mână, trage gantera grea spre șold contractând omoplatul, ține o fracțiune de secundă și coboară controlat.',
+    focus: 'Dorsali, romboizi, bicepși și forță unilaterală spate',
+    tip: 'Nu roti trunchiul; menține umerii paraleli cu podeaua.',
+    swaps: ['negative_pullups', 'chin_ups', 'standard_pushups', 'dumbbell_bent_over_row'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Scaun conturat pe stânga -->
+      <line x1="20" y1="62" x2="42" y2="62" stroke="#64748B" stroke-width="3" stroke-linecap="round" />
+      <line x1="24" y1="62" x2="24" y2="88" stroke="#64748B" stroke-width="2.5" />
+      <line x1="38" y1="62" x2="38" y2="88" stroke="#64748B" stroke-width="2.5" />
+      <!-- Corp sprijinit orizontal -->
+      <circle cx="34" cy="42" r="5" fill="currentColor" />
+      <line x1="36" y1="46" x2="68" y2="48" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Braț de sprijin pe scaun -->
+      <line x1="36" y1="46" x2="32" y2="62" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Genunchi pe scaun + picior la sol -->
+      <path d="M 68,48 L 42,62 M 68,48 L 74,68 L 76,88" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      <!-- Braț trăgând gantera la șold -->
+      <path d="M 50,48 L 56,58" stroke="#2A7B4C" stroke-width="4" stroke-linecap="round" />
+      <rect x="50" y="56" width="14" height="5" rx="1.5" fill="#475569" />
+      <circle cx="49" cy="58.5" r="3.5" fill="#64748B" />
+      <circle cx="65" cy="58.5" r="3.5" fill="#64748B" />
+      <!-- Săgeată tragere sus -->
+      <path d="M 57,68 L 57,56 M 54,61 L 57,56 L 60,61" stroke="#2A7B4C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'dumbbell_farmers_carry',
+    name: 'Mersul fermierului (Farmer\'s Carry)',
+    category: 'core',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    default_reps: '35-45 secunde',
+    duration_s: 45,
+    description: 'Ține o ganteră grea în fiecare mână pe lângă corp. Menține umerii trași în spate, pieptul sus și pășește lent și controlat (sau menține postura fermă pe loc).',
+    focus: 'Priză, antebrațe, trapez, abdomen și stabilitate posturală',
+    tip: 'Menține corpul perfect vertical; nu lăsa greutățile să te tragă în față sau lateral.',
+    swaps: ['forearm_plank', 'plank_shoulder_taps', 'hanging_knee_raises'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Corp drept vertical în mers cu gantere -->
+      <circle cx="50" cy="18" r="5.5" fill="currentColor" />
+      <line x1="50" y1="24" x2="50" y2="56" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Picioare pas ferm -->
+      <line x1="50" y1="56" x2="44" y2="88" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <line x1="50" y1="56" x2="56" y2="88" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <!-- Brațe drepte în jos ținând gantere masive -->
+      <line x1="48" y1="28" x2="36" y2="54" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="52" y1="28" x2="64" y2="54" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Ganteră stânga -->
+      <rect x="31" y="52" width="10" height="6" rx="1.5" fill="#475569" />
+      <circle cx="30" cy="55" r="4.5" fill="#64748B" />
+      <circle cx="42" cy="55" r="4.5" fill="#64748B" />
+      <!-- Ganteră dreapta -->
+      <rect x="59" y="52" width="10" height="6" rx="1.5" fill="#475569" />
+      <circle cx="58" cy="55" r="4.5" fill="#64748B" />
+      <circle cx="70" cy="55" r="4.5" fill="#64748B" />
+      <!-- Indicatoare postură mândră sus -->
+      <path d="M 50,11 L 50,4 M 47,8 L 50,4 L 53,8" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+
   // =========================================================================
   // NIVEL 3 (Avansat / Intens — forță compusă, explozie)
   // =========================================================================

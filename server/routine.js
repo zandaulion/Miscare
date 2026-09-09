@@ -356,6 +356,73 @@ export const EXERCISES = [
     tip: 'Evită balansul trunchiului — mișcarea trebuie să fie strict din contracția abdomenului.'
   },
 
+  // --- Gantere reglabile / grele (5-20 kg) - Forță compusă Nivel 2
+  {
+    id: 'dumbbell_goblet_squat',
+    name: 'Genuflexiuni Goblet (cu ganteră la piept)',
+    category: 'lower',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    safe_for: ['knees', 'back'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Ține o ganteră pe verticală, lipită de piept cu ambele palme. Coboară într-o genuflexiune adâncă menținând pieptul ridicat și coatele între genunchi, apoi împinge ferm în călcâie.',
+    focus: 'Cvadricepși, fesieri, mobilitate șolduri și stabilitate trunchi',
+    tip: 'Greutatea ținută în față activează abdomenul și te ajută să cobori adânc fără a rotunji spatele.'
+  },
+  {
+    id: 'dumbbell_romanian_deadlift',
+    name: 'Îndreptări românești (RDL cu gantere)',
+    category: 'lower',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    safe_for: ['knees'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Picioarele la lățimea șoldurilor, ganterele în față. Împinge bazinul în spate flexând doar ușor genunchii, coborând ganterele până sub genunchi cu spatele perfect drept, apoi strânge fesierii la ridicare.',
+    focus: 'Biceps femural, fesieri și lanț posterior',
+    tip: 'Mișcarea este o împingere a fundului spre peretele din spate, nu o aplecare din talie.'
+  },
+  {
+    id: 'dumbbell_floor_press',
+    name: 'Împins de la podea cu gantere',
+    category: 'upper',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    safe_for: ['knees', 'back'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Întins pe spate cu genunchii îndoiți. Împinge ganterele deasupra pieptului până când brațele sunt întinse, apoi coboară lent până când tricepșii ating ușor podeaua.',
+    focus: 'Piept, triceps și stabilitate articulară umeri',
+    tip: 'Podeaua blochează coborârea exagerată a coatelor, protejând articulațiile umerilor chiar și cu greutăți mari.'
+  },
+  {
+    id: 'dumbbell_single_arm_row',
+    name: 'Ramat cu un braț sprijinit pe scaun',
+    category: 'upper',
+    level: 2,
+    equipment: ['adjustable_dumbbells', 'chair'],
+    safe_for: ['knees'],
+    default_reps: '8-10 / braț',
+    duration_s: 50,
+    description: 'Sprijină un genunchi și o mână pe scaun, cu spatele orizontal. Cu cealaltă mână, trage gantera grea spre șold contractând omoplatul, ține o fracțiune de secundă și coboară controlat.',
+    focus: 'Dorsali, romboizi, bicepși și forță unilaterală spate',
+    tip: 'Nu roti trunchiul; menține umerii paraleli cu podeaua.'
+  },
+  {
+    id: 'dumbbell_farmers_carry',
+    name: 'Mersul fermierului (Farmer\'s Carry)',
+    category: 'core',
+    level: 2,
+    equipment: ['adjustable_dumbbells'],
+    safe_for: ['knees', 'back'],
+    default_reps: '35-45 secunde',
+    duration_s: 45,
+    description: 'Ține o ganteră grea în fiecare mână pe lângă corp. Menține umerii trași în spate, pieptul sus și pășește lent și controlat (sau menține postura fermă pe loc).',
+    focus: 'Priză, antebrațe, trapez, abdomen și stabilitate posturală',
+    tip: 'Menține corpul perfect vertical; nu lăsa greutățile să te tragă în față sau lateral.'
+  },
+
   // --- Nivel 3 (Avansat / Intens — forță explozivă, variații compuse)
   {
     id: 'diamond_pushups',
@@ -485,7 +552,7 @@ export function generateDailyRoutine(profile = {}, options = {}) {
 
   // Sortăm favorizând nivelul țintă și echipamentele dedicate declarate (bară, gantere, bandă)
   const userEquip = Array.isArray(profile.equipment) ? profile.equipment : [];
-  const specialEquipment = ['pullup_bar', 'dumbbells', 'resistance_band', 'kettlebell'];
+  const specialEquipment = ['pullup_bar', 'adjustable_dumbbells', 'dumbbells', 'resistance_band', 'kettlebell'];
   const hasUserSpecial = userEquip.some((eq) => specialEquipment.includes(eq));
 
   candidateExercises.sort((a, b) => {

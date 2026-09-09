@@ -13,7 +13,8 @@ export const EQUIPMENT_CATALOG = [
   { id: 'chair', name_ro: 'Scaun stabil', category: 'household', default: true },
   { id: 'wall', name_ro: 'Perete liber', category: 'household', default: true },
   { id: 'yoga_mat', name_ro: 'Saltea / Covoraș fitness', category: 'floor' },
-  { id: 'dumbbells', name_ro: 'Gantere', category: 'weights' },
+  { id: 'dumbbells', name_ro: 'Gantere mici', category: 'weights' },
+  { id: 'adjustable_dumbbells', name_ro: 'Gantere reglabile (5 - 20 kg)', category: 'weights' },
   { id: 'resistance_band', name_ro: 'Bandă elastică', category: 'bands' },
   { id: 'kettlebell', name_ro: 'Kettlebell', category: 'weights' },
   { id: 'pullup_bar', name_ro: 'Bară de tracțiuni', category: 'bar' },
@@ -32,7 +33,7 @@ export const RESPONSE_SCHEMA = {
         properties: {
           id: {
             type: 'STRING',
-            description: 'Identificator standard: bodyweight, chair, wall, yoga_mat, dumbbells, resistance_band, kettlebell, pullup_bar, foam_roller, step_box, cushion, other'
+            description: 'Identificator standard: bodyweight, chair, wall, yoga_mat, dumbbells, adjustable_dumbbells, resistance_band, kettlebell, pullup_bar, foam_roller, step_box, cushion, other'
           },
           name_ro: { type: 'STRING', description: 'Numele în limba română' },
           details: { type: 'STRING', description: 'Detalii vizuale scurte (ex: 2 gantere mici aprox 2kg, o bandă elastică textilă etc.)' },
