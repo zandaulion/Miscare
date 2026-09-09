@@ -55,6 +55,27 @@ export async function renderLogView(container) {
           const emoji = log.feedback === 'easy' ? '😊' : log.feedback === 'hard' ? '🥵' : log.feedback === 'partial' ? '⏱️' : '👍';
           const feedbackText = log.feedback === 'easy' ? 'Ușor' : log.feedback === 'hard' ? 'Cam greu' : log.feedback === 'partial' ? 'Parțial' : 'Tocmai bine';
 
+          let exercisesList = [];
+          if (Array.isArray(log.exercises_done)) {
+            exercisesList = log.exercises_done;
+          } else if (typeof log.exercises_done_json === 'string') {
+            try { exercisesList = JSON.parse(log.exercises_done_json); } catch {}
+          }
+
+          const grouped = {};
+          exercisesList.forEach((ex) => {
+            const name = ex.name || ex.id;
+            if (!name) return;
+            if (!grouped[name]) grouped[name] = [];
+            if (ex.actual_reps !== undefined) {
+              grouped[name].push(`${ex.actual_reps} ${ex.unit || 'rep'}`);
+            } else if (ex.reps) {
+              grouped[name].push(ex.reps);
+            }
+          });
+
+          const groupKeys = Object.keys(grouped);
+
           return `
             <div class="log-item">
               <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -66,6 +87,22 @@ export async function renderLogView(container) {
                 <span class="badge">${emoji} ${feedbackText}</span>
                 ${log.adjustment_note ? `<span class="adjustment-tag">${escapeHtml(log.adjustment_note)}</span>` : ''}
               </div>
+              ${groupKeys.length > 0 ? `
+                <div class="log-exercises-summary">
+                  ${groupKeys.map((name) => {
+                    const setsInfo = grouped[name];
+                    const setsLabel = setsInfo.length > 1
+                      ? `${setsInfo.length} serii (${setsInfo.join(', ')})`
+                      : setsInfo[0] || '1 serie';
+                    return `
+                      <div class="log-exercise-item">
+                        <span class="log-exercise-name">✓ ${escapeHtml(name)}</span>
+                        <span class="log-exercise-reps">${escapeHtml(setsLabel)}</span>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              ` : ''}
             </div>
           `;
         }).join('')}
