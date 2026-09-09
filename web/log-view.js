@@ -1,4 +1,4 @@
-import { getLogs, state, updateProfile } from './server-client.js';
+import { getLogs, state, updateProfile, deleteLog } from './server-client.js';
 
 export async function renderLogView(container) {
   container.innerHTML = `
@@ -77,10 +77,14 @@ export async function renderLogView(container) {
           const groupKeys = Object.keys(grouped);
 
           return `
-            <div class="log-item">
-              <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <div class="log-item" data-log-id="${escapeHtml(log.id)}">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px;">
                 <div class="log-title">${escapeHtml(log.routine_title)}</div>
-                <div class="log-date">${escapeHtml(log.date)}</div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                  <div class="log-date">${escapeHtml(log.date)}</div>
+                  <button class="log-del" type="button" data-del-log="${escapeHtml(log.id)}"
+                          aria-label="Șterge sesiunea din ${escapeHtml(log.date)}">&times;</button>
+                </div>
               </div>
               <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px;">
                 <span class="badge badge-reps">⏱️ ${minutes} min</span>
@@ -172,6 +176,32 @@ export async function renderLogView(container) {
       </button>
     </div>
   `;
+
+  /**
+   * Ștergerea unei sesiuni.
+   *
+   * Confirmare, fiindcă e singurul loc din aplicație unde se pierde ceva ce a
+   * fost făcut cu adevărat. Formularea spune ce dispare și ce nu: minutele și
+   * ziua se recalculează, dar nivelul și treapta de efort rămân unde sunt --
+   * cine corectează o înregistrare greșită nu cere să fie recalibrat.
+   */
+  container.querySelectorAll('[data-del-log]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.delLog;
+      const item = container.querySelector(`.log-item[data-log-id="${CSS.escape(id)}"]`);
+      const when = item?.querySelector('.log-date')?.textContent?.trim() || '';
+      if (!confirm(`Ștergi sesiunea din ${when}?\n\nMinutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.`)) return;
+
+      btn.disabled = true;
+      try {
+        await deleteLog(id);
+        renderLogView(container);
+      } catch (err) {
+        btn.disabled = false;
+        alert(err.message || 'Nu am putut șterge sesiunea.');
+      }
+    });
+  });
 
   // Handle duration selection
   let selectedDuration = profile.daily_time || 10;

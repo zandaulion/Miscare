@@ -111,31 +111,60 @@ export function initDb(dbInstance = null) {
 }
 
 /**
+ * Recalculează din jurnal ce se poate deduce din jurnal.
+ *
+ * Recalcul, nu scădere. O ștergere care doar decrementează greșește exact
+ * cazul interesant -- o zi rămâne activă dacă mai are alte sesiuni în ea -- și
+ * derapează cu fiecare operație ratată. Jurnalul are adevărul, iar recalculul
+ * dă același rezultat oricâte ștergeri s-ar face, în orice ordine.
+ *
+ * Ce NU se atinge: level, rep_step, easy_streak. Acelea nu se deduc din
+ * jurnal, fiindcă includ ce a acceptat omul când a fost întrebat. Ștergerea
+ * unei sesiuni greșit înregistrate corectează evidența; nu are de ce să-i
+ * schimbe cuiva nivelul pe tăcute.
+ */
+export function recomputeTotals(db, deviceId) {
+  const t = db.prepare(`
+    SELECT COUNT(DISTINCT date)          AS days,
+           COUNT(*)                      AS sessions,
+           COALESCE(SUM(duration_seconds), 0) AS seconds,
+           MAX(date)                     AS last_date
+    FROM workout_logs WHERE device_id = ?
+  `).get(deviceId);
+
+  const last = db.prepare(
+    'SELECT feedback FROM workout_logs WHERE device_id = ? ORDER BY date DESC, created_at DESC LIMIT 1'
+  ).get(deviceId);
+
+  db.prepare(`
+    UPDATE user_profile SET
+      total_active_days = ?, total_sessions = ?, total_minutes = ?,
+      last_session_date = ?, last_feedback = ?
+    WHERE device_id = ?
+  `).run(
+    t.days, t.sessions, Math.round(t.seconds / 60),
+    t.last_date, last ? last.feedback : null, deviceId
+  );
+
+  return { days: t.days, sessions: t.sessions, minutes: Math.round(t.seconds / 60) };
+}
+
+/**
  * Repară numărătorile pentru conturile existente.
  *
  * total_active_days a fost incrementat per sesiune de la început, așa că
- * valoarea din baza de date e inflatată. Jurnalul are adevărul: câte date
- * distincte are contul. Rulează o singură dată -- total_sessions e zero doar
- * înainte de a fi populat.
+ * valoarea din baza de date e inflatată. Rulează o singură dată --
+ * total_sessions e zero doar înainte de a fi populat.
  */
 function backfillDayCounts(db) {
-  const rows = db.prepare(`
-    SELECT p.device_id,
-           (SELECT COUNT(DISTINCT date) FROM workout_logs w WHERE w.device_id = p.device_id) AS days,
-           (SELECT COUNT(*)             FROM workout_logs w WHERE w.device_id = p.device_id) AS sessions,
-           (SELECT MAX(date)            FROM workout_logs w WHERE w.device_id = p.device_id) AS last_date
-    FROM user_profile p
-    WHERE p.total_sessions = 0
-  `).all();
-
+  const rows = db.prepare(
+    'SELECT device_id FROM user_profile WHERE total_sessions = 0'
+  ).all();
   for (const r of rows) {
-    if (!r.sessions) continue;
-    db.prepare(`
-      UPDATE user_profile
-      SET total_active_days = ?, total_sessions = ?, last_session_date = ?
-      WHERE device_id = ?
-    `).run(r.days, r.sessions, r.last_date, r.device_id);
-    console.log(`migrated ${r.device_id}: ${r.sessions} sessions across ${r.days} days`);
+    const before = db.prepare('SELECT COUNT(*) c FROM workout_logs WHERE device_id = ?').get(r.device_id).c;
+    if (!before) continue;
+    const t = recomputeTotals(db, r.device_id);
+    console.log(`migrated ${r.device_id}: ${t.sessions} sessions across ${t.days} days`);
   }
 }
 

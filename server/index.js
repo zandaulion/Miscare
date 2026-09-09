@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
 
-import { db, nowIso } from './db.js';
+import { db, nowIso, recomputeTotals } from './db.js';
 import { applyFeedback, proposeChange, LEVELS } from './progression.js';
 import {
   COOKIE_NAME,
@@ -459,6 +459,29 @@ app.post('/api/routine/log', requireDevice, (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+/**
+ * Șterge o sesiune din evidență.
+ *
+ * Totalurile se recalculează din jurnal, nu se scad. O scădere ar greși exact
+ * cazul care contează -- ziua rămâne activă dacă mai are alte sesiuni în ea --
+ * iar recalculul dă același rezultat oricâte ștergeri s-ar face.
+ *
+ * Nivelul, treapta de efort și seria de zile ușoare rămân neatinse: acelea
+ * includ ce a acceptat omul când a fost întrebat și nu se deduc din jurnal.
+ * Cine șterge o sesiune înregistrată din greșeală corectează evidența, nu
+ * cere să i se recalibreze intensitatea.
+ */
+app.delete('/api/logs/:id', requireDevice, (req, res) => {
+  const row = db.prepare('SELECT id, date FROM workout_logs WHERE id = ? AND device_id = ?')
+    .get(req.params.id, req.device.id);
+  if (!row) return res.status(404).json({ error: 'not_found' });
+
+  db.prepare('DELETE FROM workout_logs WHERE id = ?').run(row.id);
+  const totals = recomputeTotals(db, req.device.id);
+
+  res.json({ ok: true, deleted: row.id, totals });
 });
 
 app.get('/api/logs', requireDevice, (req, res) => {
