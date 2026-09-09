@@ -76,3 +76,45 @@ test('rotation', async (t) => {
     assert.ok(seen.size >= 10, `doar ${seen.size} mișcări distincte în 12 sesiuni`);
   });
 });
+
+test('muscle groups rotate, not just exercises', async (t) => {
+  const zero = { level: 'zero', equipment: ['bodyweight', 'chair', 'wall'], daily_time: 10 };
+  const patternsOf = (rotation, profile = zero) =>
+    generateDailyRoutine(profile, { rotation }).exercises.map((e) => e.pattern);
+
+  await t.test('every exercise carries a pattern', () => {
+    // Derivat din `focus` -- proză scrisă pentru om -- ar fi fost fragil: exact
+    // felul în care „mobilitate glezne" făcea genuflexiunile să pară gambe.
+    for (const ex of EXERCISES) {
+      assert.ok(ex.pattern, `${ex.id} nu are pattern`);
+    }
+  });
+
+  await t.test('a session does not work the same pattern twice', () => {
+    // Două împingeri în aceeași sesiune înseamnă aceiași mușchi de două ori,
+    // oricât de diferit s-ar numi exercițiile.
+    for (let r = 0; r < 24; r++) {
+      const pats = patternsOf(r).filter((p) => p !== 'mobility');
+      assert.equal(new Set(pats).size, pats.length, `tipar repetat la rotația ${r}: ${pats}`);
+    }
+  });
+
+  await t.test('no group is loaded in every single session', () => {
+    // Ăsta e miezul: cine împinge zi de zi se trezește cu pieptul înțepenit și
+    // sare o zi, iar ziua sărită e exact ce încearcă aplicația să prevină.
+    const total = 12;
+    const days = {};
+    for (let r = 0; r < total; r++) {
+      for (const p of new Set(patternsOf(r))) days[p] = (days[p] || 0) + 1;
+    }
+    for (const [pattern, n] of Object.entries(days)) {
+      if (pattern === 'mobility') continue;   // încălzirea e ușoară prin definiție
+      assert.ok(n < total, `${pattern} apare în toate cele ${total} sesiuni`);
+    }
+  });
+
+  await t.test('there are days off for the chest', () => {
+    const restDays = [...Array(12).keys()].filter((r) => !patternsOf(r).includes('push'));
+    assert.ok(restDays.length >= 2, `doar ${restDays.length} sesiuni fără împingere din 12`);
+  });
+});
