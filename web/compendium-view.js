@@ -295,8 +295,8 @@ function renderExerciseCard(ex, userEquipment) {
       <!-- Antetul cardului (clickabil pentru extindere) -->
       <div class="compendium-card-summary" role="button" tabindex="0" aria-expanded="${isExpanded}">
         <div class="compendium-card-svg-col">
-          <div class="compendium-svg-frame">
-            ${ex.svg}
+          <div class="compendium-svg-frame ${ex.image ? 'has-photo' : ''}">
+            ${ex.image ? `<img src="${ex.image}" alt="${escapeHtml(ex.name)}" class="ex-img" />` : ex.svg}
           </div>
         </div>
 
@@ -334,6 +334,11 @@ function renderExerciseCard(ex, userEquipment) {
       <!-- Corp detaliat expandabil -->
       ${isExpanded ? `
         <div class="compendium-card-details">
+          ${ex.image ? `
+            <div class="detail-photo-banner">
+              <img src="${ex.image}" alt="${escapeHtml(ex.name)}" class="detail-full-photo" />
+            </div>
+          ` : ''}
           <div class="detail-block">
             <div class="detail-label">📖 Cum se execută corect:</div>
             <p class="detail-text">${escapeHtml(ex.description)}</p>
@@ -547,7 +552,13 @@ function openPracticeModal(exercise, container) {
   modal.classList.remove('hidden');
 
   container.querySelector('#practice-title').textContent = exercise.name;
-  container.querySelector('#practice-svg-wrapper').innerHTML = exercise.svg;
+  const practiceBox = container.querySelector('#practice-svg-wrapper');
+  if (practiceBox) {
+    practiceBox.className = `practice-svg-box ${exercise.image ? 'has-photo' : ''}`;
+    practiceBox.innerHTML = exercise.image
+      ? `<img src="${exercise.image}" alt="${escapeHtml(exercise.name)}" class="practice-photo" />`
+      : exercise.svg;
+  }
   container.querySelector('#practice-cue-text').innerHTML = `
     <strong>${escapeHtml(exercise.focus || '')}</strong><br>
     <span style="font-size: 0.85rem; color: var(--text-muted);">${escapeHtml(exercise.tip || exercise.description)}</span>
