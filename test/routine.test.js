@@ -147,5 +147,28 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
       'Should select intermediate pull-up bar movements'
     );
   });
+
+  await t.test('intermediate level with adjustable_dumbbells utilizes heavy dumbbell movements', () => {
+    const profile = {
+      level: 'intermediate',
+      daily_time: 15,
+      equipment: ['bodyweight', 'chair', 'wall', 'adjustable_dumbbells']
+    };
+
+    const routine = generateDailyRoutine(profile);
+    const usesDumbbells = routine.exercises.some((e) => e.equipment.includes('adjustable_dumbbells'));
+    assert.ok(usesDumbbells, 'Routine should utilize adjustable dumbbells when available');
+    assert.ok(
+      routine.exercises.some((e) => [
+        'dumbbell_goblet_squat',
+        'dumbbell_romanian_deadlift',
+        'dumbbell_floor_press',
+        'dumbbell_single_arm_row',
+        'dumbbell_farmers_carry'
+      ].includes(e.id)),
+      'Should select compound heavy dumbbell exercises'
+    );
+  });
 });
+
 
