@@ -222,8 +222,8 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     const full = getExerciseById(ex.id) || ex;
     html += `
       <div class="exercise-card" data-index="${idx}">
-        <div class="exercise-visual">
-          ${full.svg || '🏃'}
+        <div class="exercise-visual ${full.image ? 'has-photo' : ''}">
+          ${full.image ? `<img src="${full.image}" alt="${escapeHtml(ex.name)}" class="ex-img" />` : (full.svg || '🏃')}
         </div>
         <div class="exercise-content">
           <div class="exercise-name">${idx + 1}. ${escapeHtml(ex.name)}</div>
@@ -485,8 +485,8 @@ function renderGuidedStep() {
     </div>
 
     <div class="guided-body">
-      <div class="guided-visual">
-        ${full.svg || '🏃'}
+      <div class="guided-visual ${full.image ? 'has-photo' : ''}">
+        ${full.image ? `<img src="${full.image}" alt="${escapeHtml(currentEx.name)}" class="guided-photo" />` : (full.svg || '🏃')}
       </div>
 
       <h2 class="guided-name">${escapeHtml(currentEx.name)}</h2>
@@ -687,8 +687,8 @@ function renderRestStep() {
         </div>
 
         <div class="rest-preview-card">
-          <div class="rest-preview-thumb">
-            ${nextFull.svg || '🏃'}
+          <div class="rest-preview-thumb ${nextFull.image ? 'has-photo' : ''}">
+            ${nextFull.image ? `<img src="${nextFull.image}" alt="${escapeHtml(nextEx.name)}" class="ex-img" />` : (nextFull.svg || '🏃')}
           </div>
           <div class="rest-preview-info">
             <div class="rest-preview-sub">Urmează:</div>
