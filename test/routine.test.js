@@ -29,8 +29,48 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
 
     const safe = filterSafeExercises(EXERCISES, profile);
     assert.ok(safe.length > 0);
-    // Chair sit to stand mild or deep lower body moves without knee safety should be filtered out
-    assert.ok(safe.every((e) => e.category !== 'lower' || e.safe_for.includes('knees')));
+    // Promisiunea, nu regula din implementare. Varianta veche verifica doar
+    // category === 'lower' -- exact restricția din cod -- deci trecea în timp
+    // ce knee_pushups, side_plank și mountain_climbers scăpau de filtru.
+    assert.ok(
+      safe.every((e) => e.safe_for.includes('knees')),
+      'nicio mișcare servită nu poate fi nesigură pentru o zonă bifată'
+    );
+  });
+
+  await t.test('a routine never contains a move unsafe for a declared limitation', () => {
+    // Ramura de rezervă relua filtrarea fără `limitations`, așa că profilul cu
+    // cele mai multe restricții -- cel care avea cea mai mare nevoie de ele --
+    // primea exact mișcările excluse. Se testează prin generateDailyRoutine,
+    // nu prin filterSafeExercises: acolo trăia defectul.
+    const sets = [['knees'], ['back'], ['wrists'], ['knees', 'back'], ['knees', 'back', 'wrists']];
+    const equipments = [['bodyweight'], ['bodyweight', 'chair', 'wall']];
+    const levels = ['zero', 'beginner', 'intermediate', 'advanced'];
+
+    for (const limitations of sets) {
+      for (const equipment of equipments) {
+        for (const level of levels) {
+          const routine = generateDailyRoutine({ level, equipment, limitations, daily_time: 10 });
+          for (const ex of routine.exercises) {
+            for (const limit of limitations) {
+              assert.ok(
+                ex.safe_for.includes(limit),
+                `${ex.id} servit unui profil cu limitarea "${limit}" (nivel ${level}, echipament ${equipment.join('+')})`
+              );
+            }
+          }
+        }
+      }
+    }
+  });
+
+  await t.test('a restrictive profile still gets a usable session', () => {
+    // Siguranța nu trebuie să însemne un ecran gol: lărgim echipamentul, care
+    // e o preferință, și abia apoi servim mai puțin.
+    const routine = generateDailyRoutine({
+      level: 'zero', equipment: ['bodyweight'], limitations: ['knees', 'back', 'wrists'], daily_time: 10
+    });
+    assert.ok(routine.exercises.length >= 3, 'trei mișcări sigure există și trebuie găsite');
   });
 
   await t.test('only includes dumbbells when user has them', () => {
