@@ -208,6 +208,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['resistance_band'],
     default_reps: '10-12 repetări',
     duration_s: 45,
+    image: '/images/exercises/band_pull_apart.jpg',
     description: 'Ține banda cu ambele mâini în fața pieptului cu brațele întinse. Depărtează mâinile trăgând banda până atinge pieptul.',
     focus: 'Spate superior, postură și umeri',
     tip: 'Excelent pentru corectarea umerilor aduși în față.',
@@ -265,6 +266,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     default_reps: '8-12 repetări',
     duration_s: 45,
+    image: '/images/exercises/knee_pushups.jpg',
     description: 'Sprijin pe palme și genunchi, cu trunchiul formând o linie dreaptă. Coboară pieptul spre podea îndoind coatele la 45°, apoi împinge ferm.',
     focus: 'Piept, umeri și triceps',
     tip: 'Ține abdomenul activ; nu lăsa zona lombară să se lase în jos.',
@@ -317,6 +319,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['wall'],
     default_reps: '20-30 secunde menținere',
     duration_s: 40,
+    image: '/images/exercises/wall_sit.jpg',
     description: 'Lipește spatele de perete și coboară ca pe un scaun până când genunchii sunt la 90°. Menține poziția nemișcat.',
     focus: 'Cvadricepși (coapse) și anduranță musculară',
     tip: 'Presează călcâiele ferm în podea și respiră constant.',
@@ -334,7 +337,7 @@ export const CLIENT_EXERCISES = [
       <!-- Gambe verticale la podea la 90 grade -->
       <line x1="60" y1="62" x2="60" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
       <!-- Tălpi ferme pe podea -->
-      <line x1="58" y1="88" x2="68" y2="88" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <line x1="58" y1="88" x2="68" y2="88" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
       <!-- Mâini pe coapse sau încrucișate pe piept -->
       <path d="M 34,44 L 46,52 L 54,60" stroke="#2A7B4C" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
       <!-- Arc unghi 90 grade la genunchi -->
@@ -349,6 +352,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     default_reps: '8-10 repetări (menținere 2s)',
     duration_s: 45,
+    image: '/images/exercises/prone_cobra.jpg',
     description: 'Întins pe burtă cu brațele pe lângă corp. Ridică ușor pieptul de pe podea trăgând omoplații spre spate și rotind degetele mari spre tavan.',
     focus: 'Partea superioară a spatelui, romboizi și postură',
     tip: 'Privește spre podea pentru a păstra gâtul relaxat și aliniat.',
@@ -375,6 +379,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     default_reps: '6-8 pe fiecare parte',
     duration_s: 55,
+    image: '/images/exercises/bird_dog_gentle.jpg',
     description: 'În patru labe pe sol. Întinde simultan brațul drept în față și piciorul stâng în spate, menține 2 secunde, apoi schimbă.',
     focus: 'Stabilitate lombară, coordonare și fesieri',
     tip: 'Imaginează-ți că ții un pahar cu apă pe spate și nu vrei să-l verși.',
@@ -400,6 +405,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     default_reps: '8 repetări alternativ',
     duration_s: 45,
+    image: '/images/exercises/deadbug_assisted.jpg',
     description: 'Pe spate cu genunchii la 90 de grade. Coboară un călcâi spre sol păstrând spatele lipit de podea, apoi revino.',
     focus: 'Abdomen profund și protecție lombară',
     tip: 'Dacă simți că spatele se arcuiește de pe podea, nu coborî călcâiul până jos.',
@@ -424,6 +430,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     default_reps: '10-15 repetări',
     duration_s: 45,
+    image: '/images/exercises/crunches_standard.jpg',
     description: 'Întins pe spate cu genunchii îndoiți și tălpile pe podea. Ridică doar omoplații contractând abdomenul, menține o secundă sus și coboară lent.',
     focus: 'Mușchii abdominali (dreptul abdominal)',
     tip: 'Nu trage de ceafă cu mâinile; ține coatele deschise și privirea la 45° spre tavan.',
@@ -454,6 +461,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     default_reps: '15-20 secunde pe fiecare parte',
     duration_s: 50,
+    image: '/images/exercises/side_plank.jpg',
     description: 'Pe o parte, sprijină-te pe antebraț cu cotul sub umăr și genunchii îndoiți la 90°. Ridică bazinul formând o linie dreaptă de la genunchi la umeri.',
     focus: 'Abdomen oblic, talie și stabilitate laterală',
     tip: 'Ține gâtul drept și nu lăsa șoldul să cadă spre sol.',
@@ -483,6 +491,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['dumbbells', 'chair'],
     default_reps: '10-12 repetări',
     duration_s: 50,
+    image: '/images/exercises/dumbbell_seated_bicep_curl.jpg',
     description: 'Așezat pe scaun cu o ganteră în fiecare mână. Îndoaie brațele ridicând greutățile spre umeri, apoi coboară lent.',
     focus: 'Brațe (biceps)',
     tip: 'Păstrează coatele fixe pe lângă corp.',
@@ -508,6 +517,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['dumbbells', 'chair'],
     default_reps: '8-10 repetări',
     duration_s: 50,
+    image: '/images/exercises/dumbbell_seated_shoulder_press.jpg',
     description: 'Din așezat cu spatele drept, împinge ganterele de la nivelul urechilor spre tavan fără să blochezi brusc coatele.',
     focus: 'Umeri și postură',
     tip: 'Nu curba spatele.',
@@ -535,6 +545,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['resistance_band'],
     default_reps: '10-12 repetări',
     duration_s: 50,
+    image: '/images/exercises/band_seated_row.jpg',
     description: 'Cu picioarele întinse, trece banda pe sub tălpi. Trage de capetele benzii spre abdomen strângând omopații la spate.',
     focus: 'Mușchii spatelui și postură',
     tip: 'Păstrează pieptul deschis și umerii coborâți.',
@@ -560,6 +571,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['pullup_bar'],
     default_reps: '20-30 secunde',
     duration_s: 35,
+    image: '/images/exercises/active_hang.jpg',
     description: 'Prinde bara ferm și lasă corpul să atârne, dar trage omopații în jos și depărtează umerii de urechi. Respiră calm.',
     focus: 'Decompresie lombară, stabilitate umeri și forță priză',
     tip: 'Eliberează presiunea din coloană și pregătește umerii pentru tracțiuni.',
