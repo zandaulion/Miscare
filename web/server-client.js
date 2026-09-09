@@ -36,8 +36,7 @@ export async function probe() {
   state.isOffline = !navigator.onLine;
 
   try {
-    const health = await api('/api/health');
-    state.geminiConfigured = Boolean(health.gemini_configured);
+    await api('/api/health');
   } catch {
     state.isOffline = true;
   }
@@ -408,14 +407,3 @@ export async function getLogs() {
   };
 }
 
-export async function detectEquipment(base64Image, mimeType = 'image/jpeg') {
-  if (!state.linked) {
-    throw new Error('Conectează dispozitivul pentru a folosi analiza foto cu Gemini.');
-  }
-
-  return api('/api/equipment/detect', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ image_base64: base64Image, mime_type: mimeType })
-  });
-}

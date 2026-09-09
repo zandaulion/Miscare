@@ -1,6 +1,6 @@
 # Mișcare — PWA
 
-Aplicație web progresivă (PWA) de exerciții concepută să te ia **de la zero**, să îți ofere un program zilnic **fără nicio fricțiune**, să recunoască din **fotografie echipamentul** disponibil (folosind Gemini Vision) și să permită **logarea ultra-ușoară** a ceea ce ai făcut, sub principiul: **fără vinovăție (no shaming), doar ajustare**.
+Aplicație web progresivă (PWA) de exerciții concepută să te ia **de la zero**, să îți ofere un program zilnic **fără nicio fricțiune**, să permită **configurarea simplă a echipamentului** disponibil și **logarea ultra-ușoară** a ceea ce ai făcut, sub principiul: **fără vinovăție (no shaming), doar ajustare**.
 
 Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru actualizări automate instante fără întreruperea utilizatorului și cu **[pwa-invite-console](https://github.com/zandaulion/pwa-invite-console)** pentru administrarea dispozitivelor și generarea de invitații de acces.
 
@@ -11,7 +11,7 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
 1. **Să te ia de la 0**:
    - Creată special pentru începători absoluți sau persoane care nu au mai făcut sport de mult timp.
    - Mișcări de bază sigure: flotări la perete, ridicări de pe scaun, întinderi de umeri, pod fesier blând.
-   - Ghid vizual SVG animat și instrucțiuni clare în limba română (fără termeni tehnici complicați).
+   - Ghid vizual ilustrat / animat și instrucțiuni clare în limba română (fără termeni tehnici complicați).
    - Filtre pentru protecția zonelor sensibile (genunchi, spate, încheieturi).
 
 2. **Program fără fricțiuni**:
@@ -20,9 +20,8 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
    - Opțiuni rapide: *„Fă-o de 5 min”* sau *„Schimbă exercițiul”*.
    - Mod ghidat cu timer discret și sunet blând de finalizare prin Web Audio API.
 
-3. **Foto la echipament (dacă ai)**:
-   - Faci o poză sau încarci o fotografie cu echipamentul disponibil acasă (gantere, saltea, bandă elastică, scaun).
-   - Gemini Vision (`gemini-3.8-flash`) recunoaște automat obiectele și ajustează programul.
+3. **Checklist curat pentru echipament**:
+   - Bifezi rapid ce ai acasă (gantere, saltea, bandă elastică, bară de tracțiuni).
    - Dacă nu ai niciun echipament, ești încurajat — greutatea corpului și un scaun/perete sunt suficiente!
 
 4. **Logare foarte ușoară**:
@@ -39,7 +38,7 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
 ## Arhitectură & Tehnologie
 
 - **Frontend**: Vanilla JS (ES Modules) fără build step, design tokens responsive, suport Dark/Light mode automat, `pwa-kit` update hooks (`installUpdates`), cache offline IndexedDB / LocalStorage.
-- **Backend**: Node.js v24 (`DatabaseSync` nativ din `node:sqlite`), Express, Gemini Vision API.
+- **Backend**: Node.js v24 (`DatabaseSync` nativ din `node:sqlite`), Express.
 - **PWA Kit**:
   - `web/sw.js` (network-first caching cu version stamping `miscare-__BUILD_VERSION__`).
   - `web/pwa-update.js` & `web/sw-update.js` (anunță utilizatorul că aplicația s-a actualizat).

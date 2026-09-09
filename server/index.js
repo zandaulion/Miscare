@@ -21,8 +21,6 @@ import {
 } from './auth.js';
 
 import {
-  isConfigured as isGeminiConfigured,
-  detectEquipmentFromPhoto,
   EQUIPMENT_CATALOG
 } from './equipment.js';
 
@@ -41,8 +39,9 @@ const app = express();
 const PORT = process.env.PORT || 3098;
 
 app.use(cors());
-app.use(express.json({ limit: '15mb' }));
-app.use(express.urlencoded({ extended: true, limit: '15mb' }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 // ---------------------------------------------------------------- Admin Routes (pwa-invite-console contract)
 
@@ -118,7 +117,6 @@ app.get('/api/health', (req, res) => {
   res.json({
     ok: true,
     name: 'miscare',
-    gemini_configured: isGeminiConfigured(),
     timestamp: Date.now()
   });
 });
@@ -253,39 +251,6 @@ app.put('/api/profile', requireDevice, (req, res) => {
   }
 });
 
-app.post('/api/equipment/detect', requireDevice, async (req, res) => {
-  try {
-    const { image_base64, mime_type } = req.body || {};
-    if (!image_base64) {
-      return res.status(400).json({ error: 'Imagine lipsă' });
-    }
-
-    const result = await detectEquipmentFromPhoto(image_base64, mime_type || 'image/jpeg');
-
-    // Salvează scanarea în baza de date
-    const scanId = 'scan_' + crypto.randomBytes(8).toString('hex');
-    db.prepare(`
-      INSERT INTO equipment_scans (id, device_id, detected_items_json, created_at)
-      VALUES (?, ?, ?, ?)
-    `).run(scanId, req.device.id, JSON.stringify(result.detected || []), nowIso());
-
-    // Dacă scanarea a găsit echipamente, facem auto-update în profilul utilizatorului
-    if (result.detected && result.detected.length > 0) {
-      const detectedIds = result.detected.map((d) => d.id);
-      const profile = db.prepare('SELECT equipment_json FROM user_profile WHERE device_id = ?').get(req.device.id);
-      const existing = profile ? JSON.parse(profile.equipment_json || '[]') : ['bodyweight', 'chair', 'wall'];
-      const merged = Array.from(new Set([...existing, ...detectedIds]));
-
-      db.prepare(`
-        UPDATE user_profile SET equipment_json = ?, updated_at = ? WHERE device_id = ?
-      `).run(JSON.stringify(merged), nowIso(), req.device.id);
-    }
-
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
 // ---------------------------------------------------------------- Routine & Workout Logs API
 
