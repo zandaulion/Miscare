@@ -88,13 +88,6 @@ export function initDb(dbInstance = null) {
 
     CREATE INDEX IF NOT EXISTS idx_workout_device_date ON workout_logs(device_id, date);
 
-    CREATE TABLE IF NOT EXISTS equipment_scans (
-      id                  TEXT PRIMARY KEY,
-      device_id           TEXT REFERENCES devices(id) ON DELETE CASCADE,
-      detected_items_json TEXT NOT NULL,
-      created_at          TEXT NOT NULL
-    );
-
     CREATE TABLE IF NOT EXISTS settings (
       key   TEXT PRIMARY KEY,
       value TEXT NOT NULL
