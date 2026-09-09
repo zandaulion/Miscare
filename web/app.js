@@ -89,7 +89,9 @@ export function switchTab(tab, options = {}) {
 
   const navButtons = document.querySelectorAll('.nav-item');
   navButtons.forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.tab === tab);
+    const isActive = btn.dataset.tab === tab;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
 
   window.scrollTo({ top: 0, behavior: 'instant' });
