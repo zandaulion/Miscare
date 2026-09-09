@@ -274,7 +274,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
       <div style="margin-top: 14px; text-align: center;">
         <button id="btn-explore-compendium" class="btn btn-secondary" style="font-size: 0.85rem; width: 100%; border-style: dashed; display: flex; align-items: center; justify-content: center; gap: 6px;">
-          <span>📖</span> Explorează compendiul de exerciții (37 mișcări pe niveluri)
+          <span>📖</span> Explorează compendiul de exerciții (${CLIENT_EXERCISES.length} mișcări pe niveluri)
         </button>
       </div>
     </div>
