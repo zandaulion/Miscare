@@ -271,12 +271,22 @@ export async function renderRoutineView(container, { forceDuration = null, routi
           ✅ Am făcut deja! Bifează rapid
         </button>
       </div>
+
+      <div style="margin-top: 14px; text-align: center;">
+        <button id="btn-explore-compendium" class="btn btn-secondary" style="font-size: 0.85rem; width: 100%; border-style: dashed; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <span>📖</span> Explorează compendiul de exerciții (37 mișcări pe niveluri)
+        </button>
+      </div>
     </div>
   `;
 
   container.innerHTML = html;
 
   // Event handlers
+  container.querySelector('#btn-explore-compendium')?.addEventListener('click', () => {
+    document.querySelector('.nav-item[data-tab="compendium"]')?.click();
+  });
+
   container.querySelectorAll('.btn-set-choice').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       userSelectedSets = parseInt(e.currentTarget.dataset.sets, 10);
