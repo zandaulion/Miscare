@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#2A7B4C" />
+  <meta name="description" content="Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Mișcare" />
+
+  <title>Mișcare — Exerciții de la 0</title>
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <img src="/icons/icon.svg" alt="Mișcare" class="brand-icon" />
+      <div>
+        <div class="brand-name">Mișcare</div>
+        <div class="brand-tagline">De la 0, în ritmul tău</div>
+      </div>
+    </div>
+    <div id="device-badge" class="device-badge">
+      <span>Verificare...</span>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="container" id="main-content">
+    <!-- Rendered dynamically by routine-view, equipment-view, log-view, etc. -->
+  </main>
+
+  <!-- Toast Container for pwa-kit updates & user feedback -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- Bottom Navigation -->
+  <nav class="app-nav" aria-label="Navigare principală">
+    <button class="nav-item active" data-tab="today" aria-label="Sesiunea de azi">
+      <span class="nav-icon">🏃</span>
+      <span>Azi</span>
+    </button>
+    <button class="nav-item" data-tab="equipment" aria-label="Echipament">
+      <span class="nav-icon">🎒</span>
+      <span>Echipament</span>
+    </button>
+    <button class="nav-item" data-tab="progress" aria-label="Jurnal și Progres">
+      <span class="nav-icon">🌿</span>
+      <span>Progres</span>
+    </button>
+    <button class="nav-item" data-tab="settings" aria-label="Setări și Dispozitiv">
+      <span class="nav-icon">⚙️</span>
+      <span>Acces</span>
+    </button>
+  </nav>
+
+  <!-- Main Application Entry Script -->
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
