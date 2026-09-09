@@ -213,7 +213,7 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
 
   await t.test('exercise catalog parity between server and client compendium', () => {
     assert.equal(CLIENT_EXERCISES.length, EXERCISES.length, 'Should have exact same number of exercises');
-    assert.equal(CLIENT_EXERCISES.length, 42, 'Should have 42 total exercises');
+    assert.equal(CLIENT_EXERCISES.length, 45, 'Should have 45 total exercises');
 
     for (const serverEx of EXERCISES) {
       const clientEx = CLIENT_EXERCISES.find((c) => c.id === serverEx.id);

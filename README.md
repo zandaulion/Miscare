@@ -21,6 +21,7 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
    - O categorie cu o singură opțiune se completează din nivelul imediat următor — o singură mișcare nu e o alegere. Filtrele de excludere rămân neatinse.
    - **Se rotesc și grupele, nu doar exercițiile.** Fiecare mișcare e etichetată cu tiparul ei (împinge, trage, genuflexiune, șold, centru, gambe, cărat), iar sesiunea alternează perechile: fiecare grupă apare în două sesiuni din trei, nu în toate. Motivul e practic, nu fiziologic — cine împinge trei zile la rând se trezește cu pieptul înțepenit și sare o zi, iar ziua sărită e exact ce încearcă aplicația să prevină.
    - În aceeași sesiune nu apar două mișcări cu același tipar.
+   - Catalogul are 45 de exerciții, dintre care patru tracțiuni fără echipament (prosop, îngerași la sol, ramat la tocul ușii, cobra) — fără ele, cine n-are bandă sau bară împingea în fiecare sesiune, fiindcă orice mișcare de sus cu greutatea corpului e o împingere.
 
 3. **Program fără fricțiuni**:
    - Pe ecranul principal apare direct: **„Sesiunea de azi”** — gata de pornire cu 1 singur tap.
