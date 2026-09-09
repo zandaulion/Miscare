@@ -1,5 +1,5 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
-import { getTodayRoutine, logWorkout, state } from './server-client.js';
+import { getTodayRoutine, logWorkout, updateProfile, state } from './server-client.js';
 
 let currentRoutine = null;
 let guidedState = {
@@ -39,10 +39,34 @@ export async function renderRoutineView(container, { forceDuration = null } = {}
 
   currentRoutine = await getTodayRoutine(forceDuration);
 
+  const currentLevel = state.profile?.level || currentRoutine.level || 'zero';
   const isReentry = currentRoutine.is_reentry;
   const note = currentRoutine.adjustment_note;
 
   let html = `
+    <!-- Selector rapid de nivel -->
+    <div style="margin-bottom: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+          Nivel de intensitate:
+        </span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+        <button class="btn ${currentLevel === 'zero' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="zero" style="padding: 6px 2px; font-size: 0.75rem;">
+          De la 0
+        </button>
+        <button class="btn ${currentLevel === 'beginner' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="beginner" style="padding: 6px 2px; font-size: 0.75rem;">
+          Începător
+        </button>
+        <button class="btn ${currentLevel === 'intermediate' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="intermediate" style="padding: 6px 2px; font-size: 0.75rem;">
+          Intermediar
+        </button>
+        <button class="btn ${currentLevel === 'advanced' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="advanced" style="padding: 6px 2px; font-size: 0.75rem;">
+          Avansat
+        </button>
+      </div>
+    </div>
+
     <div class="support-banner">
       <div class="support-banner-icon">${isReentry ? '🌱' : '✨'}</div>
       <div>
@@ -105,6 +129,15 @@ export async function renderRoutineView(container, { forceDuration = null } = {}
   container.innerHTML = html;
 
   // Event handlers
+  container.querySelectorAll('.btn-level-pill').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      const newLvl = e.currentTarget.dataset.level;
+      if (newLvl === currentLevel) return;
+      await updateProfile({ level: newLvl });
+      renderRoutineView(container);
+    });
+  });
+
   container.querySelector('#btn-shorten')?.addEventListener('click', () => {
     renderRoutineView(container, { forceDuration: 5 });
   });

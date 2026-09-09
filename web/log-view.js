@@ -88,6 +88,12 @@ export async function renderLogView(container) {
           <option value="beginner" ${profile.level === 'beginner' ? 'selected' : ''}>
             Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)
           </option>
+          <option value="intermediate" ${profile.level === 'intermediate' ? 'selected' : ''}>
+            Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)
+          </option>
+          <option value="advanced" ${profile.level === 'advanced' ? 'selected' : ''}>
+            Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)
+          </option>
         </select>
       </div>
 

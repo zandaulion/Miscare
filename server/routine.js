@@ -145,11 +145,9 @@ export const EXERCISES = [
     focus: 'Abdomen profund și protecție lombară',
     tip: 'Dacă simți că spatele se arcuiește de pe podea, nu coborî călcâiul până jos.'
   },
-
-  // --- Exerciții cu gantere (dacă utilizatorul are gantere)
   {
     id: 'dumbbell_seated_bicep_curl',
-    name: 'Flexii pentru bicepși din așezat (cu gantere)',
+    name: 'Flexii pentru bicepși (cu gantere)',
     category: 'upper',
     level: 1,
     equipment: ['dumbbells', 'chair'],
@@ -171,10 +169,8 @@ export const EXERCISES = [
     duration_s: 50,
     description: 'Din așezat cu spatele drept, împinge ganterele de la nivelul urechilor spre tavan fără să blochezi brusc coatele.',
     focus: 'Umeri și postură',
-    tip: 'Nu curba spatele; dacă e prea greu, folosește o greutate mai mică sau doar brațele libere.'
+    tip: 'Nu curba spatele.'
   },
-
-  // --- Exerciții cu bandă elastică (dacă utilizatorul are bandă)
   {
     id: 'band_pull_apart',
     name: 'Depărtări de bandă pentru spate',
@@ -186,7 +182,7 @@ export const EXERCISES = [
     duration_s: 45,
     description: 'Ține banda cu ambele mâini în fața pieptului cu brațele întinse. Depărtează mâinile trăgând banda până atinge pieptul.',
     focus: 'Spate superior, postură și umeri',
-    tip: 'Excelent pentru corectarea umerilor aduși în față de la telefon sau laptop.'
+    tip: 'Excelent pentru corectarea umerilor aduși în față.'
   },
   {
     id: 'band_seated_row',
@@ -200,6 +196,179 @@ export const EXERCISES = [
     description: 'Cu picioarele întinse, trece banda pe sub tălpi. Trage de capetele benzii spre abdomen strângând omopații la spate.',
     focus: 'Mușchii spatelui și postură',
     tip: 'Păstrează pieptul deschis și umerii coborâți.'
+  },
+
+  // --- Nivel 2 (Intermediar / Activ — forță solidă la sol, tempo susținut)
+  {
+    id: 'standard_pushups',
+    name: 'Flotări clasice la podea',
+    category: 'upper',
+    level: 2,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['knees', 'back'],
+    default_reps: '10-15 repetări',
+    duration_s: 50,
+    description: 'Sprijin în palme și vârfuri de picioare. Coboară pieptul controlat până la 5 cm de sol, menținând corpul drept ca o scândură, apoi împinge ferm.',
+    focus: 'Piept, triceps, umeri și forță trunchi',
+    tip: 'Coatele formează o săgeată la 45 grade față de trunchi, nu deschise complet lateral.'
+  },
+  {
+    id: 'full_squats',
+    name: 'Genuflexiuni libere (adânci)',
+    category: 'lower',
+    level: 2,
+    equipment: ['bodyweight'],
+    safe_for: ['back', 'wrists'],
+    default_reps: '12-16 repetări',
+    duration_s: 50,
+    description: 'Picioarele la lățimea umerilor. Coboară bazinul sub nivelul genunchilor, păstrând călcâiele lipite de sol și pieptul mândru.',
+    focus: 'Coapse, fesieri și mobilitate glezne',
+    tip: 'Respiră adânc la coborâre și împinge în călcâie la urcare.'
+  },
+  {
+    id: 'forearm_plank',
+    name: 'Scândură / Plank pe antebrațe',
+    category: 'core',
+    level: 2,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['knees', 'wrists'],
+    default_reps: '35-50 secunde',
+    duration_s: 45,
+    description: 'Sprijin pe antebrațe și vârfurile picioarelor. Corpul formează o linie rigidă de la călcâie la creștet. Strânge abdomenul și fesierii.',
+    focus: 'Stabilitate trunchi, centură abdominală și umeri',
+    tip: 'Nu lăsa bazinul să cadă și nu îl ridica în formă de cort.'
+  },
+  {
+    id: 'reverse_lunges',
+    name: 'Fandări în spate (alternativ)',
+    category: 'lower',
+    level: 2,
+    equipment: ['bodyweight'],
+    safe_for: ['back', 'wrists'],
+    default_reps: '10-12 repetări / picior',
+    duration_s: 55,
+    description: 'Fă un pas mare în spate și coboară genunchiul spre sol la 90 de grade. Revino împingând în călcâiul piciorului din față.',
+    focus: 'Fesieri, coapse și stabilitate unilaterală',
+    tip: 'Păstrează trunchiul vertical și genunchiul din față aliniat cu glezna.'
+  },
+  {
+    id: 'chair_dips',
+    name: 'Flotări inverse la scaun (Dips)',
+    category: 'upper',
+    level: 2,
+    equipment: ['chair', 'bodyweight'],
+    safe_for: ['knees'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Cu spatele la scaun, sprijină palmele pe marginea șezutului. Coboară bazinul pe lângă scaun îndoind coatele la 90 de grade, apoi împinge înapoi sus.',
+    focus: 'Triceps, piept și deltoizi anteriori',
+    tip: 'Păstrează spatele aproape de marginea scaunului pe toată durata mișcării.'
+  },
+  {
+    id: 'mountain_climbers',
+    name: 'Mountain climbers (tempo dinamic)',
+    category: 'core',
+    level: 2,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['back'],
+    default_reps: '30-40 secunde',
+    duration_s: 40,
+    description: 'Din poziția de flotare, trage genunchii spre piept în mod alternativ într-un ritm rapid și controlat, fără balans al bazinului.',
+    focus: 'Condiționare cardio, abdomen și umeri',
+    tip: 'Menține umerii direct deasupra palmelor.'
+  },
+  {
+    id: 'dumbbell_bent_over_row',
+    name: 'Ramat cu gantere din aplecat',
+    category: 'upper',
+    level: 2,
+    equipment: ['dumbbells'],
+    safe_for: ['knees'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Trunchiul aplecat înainte la 45 de grade, spatele perfect drept. Trage ganterele spre șolduri contractând puternic mușchii spatelui.',
+    focus: 'Spate, bicepși și deltoizi posteriori',
+    tip: 'Nu trage din brațe, inițiază mișcarea din omopați.'
+  },
+  {
+    id: 'single_leg_glute_bridge',
+    name: 'Pod fesier pe un singur picior',
+    category: 'core_glutes',
+    level: 2,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['knees', 'wrists'],
+    default_reps: '8-10 / picior',
+    duration_s: 50,
+    description: 'Pe spate, întinde un picior în aer și împinge în călcâiul celuilalt pentru a ridica bazinul. Menține 1 secundă sus.',
+    focus: 'Fesieri profunzi, biceps femural și stabilitate pelviană',
+    tip: 'Păstrează șoldurile paralele, nu lăsa o parte să cadă.'
+  },
+
+  // --- Nivel 3 (Avansat / Intens — forță explozivă, variații compuse)
+  {
+    id: 'diamond_pushups',
+    name: 'Flotări diamant (palme apropiate)',
+    category: 'upper',
+    level: 3,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['knees', 'back'],
+    default_reps: '10-12 repetări',
+    duration_s: 50,
+    description: 'Așază palmele la sol sub piept, cu degetele mari și arătătoare atingându-se în formă de diamant. Coboară și împinge exploziv.',
+    focus: 'Triceps intens și piept interior',
+    tip: 'Păstrează coatele apropiate de trunchi.'
+  },
+  {
+    id: 'jump_squats',
+    name: 'Genuflexiuni cu săritură explozivă',
+    category: 'lower',
+    level: 3,
+    equipment: ['bodyweight'],
+    safe_for: ['wrists'],
+    default_reps: '10-14 repetări',
+    duration_s: 45,
+    description: 'Coboară într-o genuflexiune adâncă și explodează într-o săritură verticală. Aterizează lin pe vârfuri și continuă în următoarea coborâre.',
+    focus: 'Putere explozivă picioare și anduranță cardiovasculară',
+    tip: 'Aterizarea trebuie să fie silențioasă și elastică pentru a proteja articulațiile.'
+  },
+  {
+    id: 'plank_shoulder_taps',
+    name: 'Plank cu atingeri rapide de umeri',
+    category: 'core',
+    level: 3,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['knees', 'back'],
+    default_reps: '16-20 atingeri',
+    duration_s: 45,
+    description: 'Din poziția de flotare, ridică mâna dreaptă și atinge umărul stâng fără a mișca sau balansa bazinul. Repetă alternativ.',
+    focus: 'Anti-rotație trunchi, stabilitate umeri și abdomen',
+    tip: 'Depărtează picioarele puțin mai mult pentru stabilitate optimă.'
+  },
+  {
+    id: 'burpees_clean',
+    name: 'Burpees curate (fără pauză)',
+    category: 'core',
+    level: 3,
+    equipment: ['bodyweight', 'yoga_mat'],
+    safe_for: ['back'],
+    default_reps: '8-12 repetări',
+    duration_s: 50,
+    description: 'Din picioare, coboară în genuflexiune, aruncă picioarele în spate în poziție de flotare, execută o flotare, revino și sari în sus.',
+    focus: 'Capacitate anaerobă și forță totală a corpului',
+    tip: 'Găsește un tempo ritmic constant.'
+  },
+  {
+    id: 'pullups_standard',
+    name: 'Tracțiuni la bară',
+    category: 'upper',
+    level: 3,
+    equipment: ['pullup_bar'],
+    safe_for: ['knees', 'back', 'wrists'],
+    default_reps: '6-10 repetări',
+    duration_s: 50,
+    description: 'Prinde bara cu palmele orientate în față la o lățime mai mare decât umerii. Trage corpul până când bărbia trece peste bară.',
+    focus: 'Dorsali, bicepși și forță de tragere',
+    tip: 'Inițiază mișcarea trăgând coatele în jos și în spate.'
   }
 ];
 
@@ -207,12 +376,20 @@ export function filterSafeExercises(allExercises, profile) {
   const limitations = Array.isArray(profile.limitations) ? profile.limitations : [];
   const equipment = Array.isArray(profile.equipment) ? profile.equipment : ['bodyweight', 'chair', 'wall'];
 
+  const levelMap = {
+    zero: 0,
+    beginner: 1,
+    intermediate: 2,
+    advanced: 3
+  };
+  const targetLevel = levelMap[profile.level] ?? 0;
+
   return allExercises.filter((ex) => {
-    // Verifică echipamentul: fiecare echipament necesar de exercițiu trebuie să fie disponibil
+    // Verifică echipamentul
     const hasRequiredEquipment = ex.equipment.every((eq) => equipment.includes(eq));
     if (!hasRequiredEquipment) return false;
 
-    // Verifică limitările/durerile
+    // Verifică limitările
     if (limitations.includes('knees') && ex.category === 'lower' && !ex.safe_for.includes('knees')) {
       return false;
     }
@@ -223,9 +400,8 @@ export function filterSafeExercises(allExercises, profile) {
       return false;
     }
 
-    // Nivel compatibil
-    const userLevelNum = profile.level === 'zero' ? 0 : profile.level === 'beginner' ? 1 : 2;
-    if (ex.level > userLevelNum) return false;
+    // Exercițiile nu trebuie să depășească nivelul utilizatorului
+    if (ex.level > targetLevel) return false;
 
     return true;
   });
@@ -242,16 +418,26 @@ export function generateDailyRoutine(profile = {}, options = {}) {
   const isShortSession = targetMinutes <= 6;
   const isReentry = daysSinceLastSession >= 4;
 
+  const levelMap = {
+    zero: 0,
+    beginner: 1,
+    intermediate: 2,
+    advanced: 3
+  };
+  const targetLevel = levelMap[profile.level] ?? 0;
+
   let candidateExercises = filterSafeExercises(EXERCISES, profile);
   if (candidateExercises.length < 3) {
-    // Fallback garantat la mișcările de nivel 0 cu greutatea corpului
-    candidateExercises = EXERCISES.filter((e) => e.level === 0 && e.equipment.includes('bodyweight'));
+    candidateExercises = EXERCISES.filter((e) => e.level <= Math.max(1, targetLevel) && e.equipment.includes('bodyweight'));
   }
 
-  // Număr de exerciții țintă
+  // Pentru nivel intermediar sau avansat, sortăm astfel încât să favorizăm exercițiile de nivel înalt
+  if (targetLevel >= 2) {
+    candidateExercises.sort((a, b) => b.level - a.level);
+  }
+
   const exerciseCount = isShortSession ? 2 : targetMinutes <= 10 ? 3 : 4;
 
-  // Împărțire pe categorii: vrem varietate (upper, lower, mobility/core)
   const mobility = candidateExercises.filter((e) => e.category === 'mobility');
   const upper = candidateExercises.filter((e) => e.category === 'upper');
   const lower = candidateExercises.filter((e) => e.category === 'lower');
@@ -259,34 +445,34 @@ export function generateDailyRoutine(profile = {}, options = {}) {
 
   const chosen = [];
 
-  // Întotdeauna începem cu o mobilizare blândă
-  if (mobility.length) {
+  // 1. Warm-up / prima mișcare: dacă suntem la nivel avansat/intermediar, warm-up e opțional dacă vrea direct forță
+  if (targetLevel < 2 && mobility.length) {
     chosen.push(mobility[0]);
-  } else if (candidateExercises.length) {
-    chosen.push(candidateExercises[0]);
   }
 
-  // Adăugăm upper body
+  // 2. Upper body principal
   const nextUpper = upper.find((e) => !chosen.includes(e));
   if (nextUpper && chosen.length < exerciseCount) chosen.push(nextUpper);
 
-  // Adăugăm lower body
+  // 3. Lower body principal
   const nextLower = lower.find((e) => !chosen.includes(e));
   if (nextLower && chosen.length < exerciseCount) chosen.push(nextLower);
 
-  // Adăugăm core dacă mai e loc
+  // 4. Core / finisher
   const nextCore = core.find((e) => !chosen.includes(e));
   if (nextCore && chosen.length < exerciseCount) chosen.push(nextCore);
 
-  // Dacă încă nu avem destule, completăm din ce a rămas
+  // Dacă încă nu avem suficiente exerciții, adăugăm din cele mai potrivite rămase
   for (const ex of candidateExercises) {
     if (chosen.length >= exerciseCount) break;
     if (!chosen.includes(ex)) chosen.push(ex);
   }
 
-  // Calculăm ajustările adaptive
+  // Calculăm mesaje de suport și ajustare
   let adjustmentNote = null;
-  let supportiveMessage = 'Pregătit pentru câteva minute de mișcare revigorantă?';
+  let supportiveMessage = targetLevel >= 2
+    ? 'Pregătit pentru o sesiune activă și energică?'
+    : 'Pregătit pentru câteva minute de mișcare revigorantă?';
 
   if (isReentry) {
     supportiveMessage = 'Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.';
@@ -295,11 +481,17 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     supportiveMessage = 'Am calibrat mișcările de azi să fie mai blânde și confortabile.';
     adjustmentNote = 'Volum adaptat automat după ultima sesiune.';
   } else if (lastFeedback === 'easy') {
-    supportiveMessage = 'Data trecută a fost ușor și plăcut. Continuăm cu aceeași energie bună!';
+    supportiveMessage = 'Data trecută a fost ușor și plăcut. Menținem ritmul bun!';
   }
 
-  // Estimează durata totală în secunde
-  const estimatedSeconds = chosen.reduce((acc, curr) => acc + (curr.duration_s || 45) * 2 + 30, 0);
+  const estimatedSeconds = chosen.reduce((acc, curr) => acc + (curr.duration_s || 50) * 2 + 30, 0);
+
+  const levelNames = {
+    zero: 'Nivel 0 (De la 0)',
+    beginner: 'Nivel 1 (Începător)',
+    intermediate: 'Nivel 2 (Intermediar)',
+    advanced: 'Nivel 3 (Avansat)'
+  };
 
   return {
     id: 'routine_' + Date.now().toString(36),
@@ -307,7 +499,8 @@ export function generateDailyRoutine(profile = {}, options = {}) {
       ? 'Micro-sesiune de 5 minute'
       : isReentry
       ? 'Sesiune blândă de reacomodare'
-      : 'Mișcarea ta de azi',
+      : `Mișcarea ta de azi — ${levelNames[profile.level] || 'Nivel 0'}`,
+    level: profile.level || 'zero',
     target_minutes: Math.round(estimatedSeconds / 60) || targetMinutes,
     supportive_message: supportiveMessage,
     adjustment_note: adjustmentNote,
@@ -315,7 +508,6 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     exercises: chosen.map((ex) => {
       let reps = ex.default_reps;
       if (lastFeedback === 'hard' || isReentry) {
-        // Reducem ușor repetările dacă ultima dată a fost greu
         reps = reps.replace(/(\d+)-(\d+)/, (_, a, b) => `${Math.max(4, parseInt(a, 10) - 2)}-${Math.max(6, parseInt(b, 10) - 2)}`);
       }
       return {
