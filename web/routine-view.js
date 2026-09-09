@@ -2,33 +2,158 @@ import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state } from './server-client.js';
 
 let currentRoutine = null;
-let guidedState = {
-  active: false,
-  stepIndex: 0,
-  timerSeconds: 45,
-  timerInterval: null,
-  isPaused: false,
-  elapsedSeconds: 0,
-  exercisesDone: []
-};
+let userSelectedSets = 2; // Implicit 2 serii
 
-// Subtle Web Audio chime for timer finish
+let wakeLockSentinel = null;
+async function requestWakeLock() {
+  if (typeof navigator !== 'undefined' && 'wakeLock' in navigator) {
+    try {
+      wakeLockSentinel = await navigator.wakeLock.request('screen');
+      wakeLockSentinel.addEventListener('release', () => {
+        wakeLockSentinel = null;
+      });
+    } catch {}
+  }
+}
+
+function releaseWakeLock() {
+  if (wakeLockSentinel) {
+    try { wakeLockSentinel.release(); } catch {}
+    wakeLockSentinel = null;
+  }
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('visibilitychange', () => {
+    if (guidedState.active && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+}
+
+let soundEnabled = typeof localStorage !== 'undefined'
+  ? localStorage.getItem('miscare_sound_enabled') !== 'false'
+  : true;
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  try {
+    localStorage.setItem('miscare_sound_enabled', soundEnabled ? 'true' : 'false');
+  } catch {}
+  updateSoundButtons();
+  if (soundEnabled) {
+    playBeep(660, 0.1);
+  }
+}
+
+function updateSoundButtons() {
+  document.querySelectorAll('.btn-sound-toggle').forEach((btn) => {
+    btn.innerHTML = soundEnabled ? '🔊' : '🔇';
+    btn.setAttribute('aria-label', soundEnabled ? 'Dezactivează sunetul' : 'Activează sunetul');
+  });
+}
+
+function playBeep(freq = 440, duration = 0.08) {
+  if (!soundEnabled || typeof window === 'undefined') return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+  } catch {}
+}
+
 function playGentleChime() {
+  if (!soundEnabled || typeof window === 'undefined') return;
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.type = 'sine';
     osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.3); // A5
-    gain.gain.setValueAtTime(0.08, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.35); // A5
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
     osc.connect(gain);
     gain.connect(ctx.destination);
     osc.start();
-    osc.stop(ctx.currentTime + 0.6);
+    osc.stop(ctx.currentTime + 0.7);
   } catch {}
 }
+
+function playRestStartSound() {
+  if (!soundEnabled || typeof window === 'undefined') return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(520, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(392, ctx.currentTime + 0.4);
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.5);
+  } catch {}
+}
+
+function speakVoice(text) {
+  if (!soundEnabled || typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+  try {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ro-RO';
+    utterance.rate = 1.05;
+    const voices = window.speechSynthesis.getVoices();
+    const roVoice = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('ro'));
+    if (roVoice) utterance.voice = roVoice;
+    window.speechSynthesis.speak(utterance);
+  } catch {}
+}
+
+function parseDefaultReps(repsStr) {
+  if (!repsStr) return { count: 10, unit: 'repetări' };
+  const str = String(repsStr).toLowerCase();
+  const isSeconds = str.includes('secund') || str.includes('sec');
+  const isPerSide = str.includes('pe parte');
+
+  const match = str.match(/(\d+)\s*-\s*(\d+)/);
+  let count = 10;
+  if (match) {
+    count = parseInt(match[1], 10);
+  } else {
+    const single = str.match(/(\d+)/);
+    if (single) count = parseInt(single[1], 10);
+  }
+
+  const unit = isSeconds ? 'secunde' : isPerSide ? 'pe parte' : 'repetări';
+  return { count: Math.max(1, count), unit };
+}
+
+let guidedState = {
+  active: false,
+  routine: null,
+  totalSets: 2,
+  exerciseIndex: 0,
+  currentSet: 1,
+  isResting: false,
+  timerSeconds: 45,
+  timerInterval: null,
+  isPaused: false,
+  elapsedSeconds: 0,
+  currentActualReps: 10,
+  repUnit: 'repetări',
+  exercisesDone: []
+};
 
 export async function renderRoutineView(container, { forceDuration = null, routine = null, forceRefresh = false } = {}) {
   if (routine) {
@@ -119,9 +244,28 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   html += `
       </div>
 
+      <!-- Selector număr de serii -->
+      <div class="sets-selector-box">
+        <div class="sets-selector-title">Câte serii vrei să faci azi?</div>
+        <div class="sets-selector-group">
+          <button type="button" class="btn-set-choice ${userSelectedSets === 1 ? 'active' : ''}" data-sets="1">
+            1 Serie
+            <span class="set-sub">Rapid (5 min)</span>
+          </button>
+          <button type="button" class="btn-set-choice ${userSelectedSets === 2 ? 'active' : ''}" data-sets="2">
+            2 Serii
+            <span class="set-sub">Optim (10 min)</span>
+          </button>
+          <button type="button" class="btn-set-choice ${userSelectedSets === 3 ? 'active' : ''}" data-sets="3">
+            3 Serii
+            <span class="set-sub">Intens (15 min)</span>
+          </button>
+        </div>
+      </div>
+
       <div class="actions-stack">
         <button id="btn-start-guided" class="btn btn-primary">
-          ▶️ Ghidează-mă pas cu pas
+          ▶️ Ghidează-mă pas cu pas (${userSelectedSets} ${userSelectedSets === 1 ? 'serie' : 'serii'})
         </button>
         <button id="btn-quick-log" class="btn btn-secondary">
           ✅ Am făcut deja! Bifează rapid
@@ -133,6 +277,18 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   container.innerHTML = html;
 
   // Event handlers
+  container.querySelectorAll('.btn-set-choice').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      userSelectedSets = parseInt(e.currentTarget.dataset.sets, 10);
+      container.querySelectorAll('.btn-set-choice').forEach((b) => b.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      const startBtn = container.querySelector('#btn-start-guided');
+      if (startBtn) {
+        startBtn.textContent = `▶️ Ghidează-mă pas cu pas (${userSelectedSets} ${userSelectedSets === 1 ? 'serie' : 'serii'})`;
+      }
+    });
+  });
+
   container.querySelectorAll('.btn-level-pill').forEach((btn) => {
     btn.addEventListener('click', async (e) => {
       const newLvl = e.currentTarget.dataset.level;
@@ -143,11 +299,12 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   });
 
   container.querySelector('#btn-shorten')?.addEventListener('click', () => {
+    userSelectedSets = 1;
     renderRoutineView(container, { forceDuration: 5, forceRefresh: true });
   });
 
   container.querySelector('#btn-start-guided')?.addEventListener('click', () => {
-    startGuidedWorkout(currentRoutine);
+    startGuidedWorkout(currentRoutine, userSelectedSets);
   });
 
   container.querySelector('#btn-quick-log')?.addEventListener('click', () => {
@@ -249,32 +406,50 @@ function swapExercise(index, container) {
 
 // ---------------------------------------------------------------- Guided Workout Runner
 
-function startGuidedWorkout(routine) {
+function startGuidedWorkout(routine, sets = userSelectedSets) {
   guidedState = {
     active: true,
-    stepIndex: 0,
+    routine: routine,
+    totalSets: Math.max(1, sets || 2),
+    exerciseIndex: 0,
+    currentSet: 1,
+    isResting: false,
     timerSeconds: 45,
     timerInterval: null,
     isPaused: false,
     elapsedSeconds: 0,
+    currentActualReps: 10,
+    repUnit: 'repetări',
     exercisesDone: []
   };
+
+  requestWakeLock();
 
   const overlay = document.createElement('div');
   overlay.id = 'guided-overlay';
   overlay.className = 'guided-overlay';
   document.body.appendChild(overlay);
 
-  renderGuidedStep(routine);
+  renderGuidedStep();
 }
 
-function renderGuidedStep(routine) {
+function renderGuidedStep() {
+  guidedState.isResting = false;
   const overlay = document.getElementById('guided-overlay');
-  if (!overlay) return;
+  if (!overlay || !guidedState.routine) return;
 
-  const currentEx = routine.exercises[guidedState.stepIndex];
+  const currentEx = guidedState.routine.exercises[guidedState.exerciseIndex];
   const full = getExerciseById(currentEx.id) || currentEx;
-  const progressPercent = Math.round(((guidedState.stepIndex) / routine.exercises.length) * 100);
+
+  // Reps parsing
+  const repInfo = parseDefaultReps(currentEx.adjusted_reps || currentEx.default_reps);
+  guidedState.currentActualReps = repInfo.count;
+  guidedState.repUnit = repInfo.unit;
+
+  // Step progress
+  const totalSteps = guidedState.routine.exercises.length * guidedState.totalSets;
+  const currentStepNum = guidedState.exerciseIndex * guidedState.totalSets + (guidedState.currentSet - 1);
+  const progressPercent = Math.round((currentStepNum / totalSteps) * 100);
 
   guidedState.timerSeconds = currentEx.duration_s || 45;
   clearInterval(guidedState.timerInterval);
@@ -282,10 +457,17 @@ function renderGuidedStep(routine) {
   overlay.innerHTML = `
     <div class="guided-header">
       <button id="guided-close" class="btn btn-secondary btn-sm">✕ Ieși</button>
-      <div style="font-weight: 700; font-size: 0.9rem;">
-        Exercițiul ${guidedState.stepIndex + 1} din ${routine.exercises.length}
+      <div style="text-align: center;">
+        <div style="font-weight: 700; font-size: 0.92rem; color: var(--text);">
+          Exercițiul ${guidedState.exerciseIndex + 1} din ${guidedState.routine.exercises.length}
+        </div>
+        <div style="font-size: 0.78rem; font-weight: 700; color: var(--primary);">
+          Seria ${guidedState.currentSet} din ${guidedState.totalSets}
+        </div>
       </div>
-      <div style="width: 50px;"></div>
+      <button id="guided-sound-toggle" class="btn-sound-toggle" title="Comută sunetul">
+        ${soundEnabled ? '🔊' : '🔇'}
+      </button>
     </div>
 
     <div class="guided-progress-bar">
@@ -304,7 +486,20 @@ function renderGuidedStep(routine) {
         ${formatSeconds(guidedState.timerSeconds)}
       </div>
 
-      <p class="exercise-desc" style="max-width: 400px; margin: 8px 0;">
+      <!-- Rep Counter Interactive -->
+      <div class="rep-counter-container">
+        <div class="rep-counter-label">Repetări realizate în această serie:</div>
+        <div class="rep-counter-box">
+          <button id="rep-minus-btn" class="rep-btn" aria-label="Scade repetări">−</button>
+          <div class="rep-display">
+            <span id="rep-value" class="rep-value">${guidedState.currentActualReps}</span>
+            <span class="rep-unit">${guidedState.repUnit}</span>
+          </div>
+          <button id="rep-plus-btn" class="rep-btn" aria-label="Crește repetări">+</button>
+        </div>
+      </div>
+
+      <p class="exercise-desc" style="max-width: 400px; margin: 4px 0 8px 0;">
         ${escapeHtml(currentEx.description)}
       </p>
 
@@ -317,37 +512,66 @@ function renderGuidedStep(routine) {
           ⏸️ Pauză
         </button>
         <button id="guided-done-btn" class="btn btn-primary" style="flex: 2;">
-          ${guidedState.stepIndex + 1 === routine.exercises.length ? '🎉 Am terminat!' : '➡️ Următorul'}
+          ${(guidedState.exerciseIndex === guidedState.routine.exercises.length - 1 && guidedState.currentSet === guidedState.totalSets)
+            ? '🎉 Finalizează antrenamentul'
+            : '➡️ Serie terminată'}
         </button>
       </div>
     </div>
   `;
 
-  // Start countdown timer
-  startTimer();
+  // Start voice prompt
+  speakVoice(`${currentEx.name}, seria ${guidedState.currentSet}`);
 
+  // Sound toggle button
+  overlay.querySelector('#guided-sound-toggle')?.addEventListener('click', () => {
+    toggleSound();
+  });
+
+  // Rep counter handlers
+  const repValueEl = overlay.querySelector('#rep-value');
+  overlay.querySelector('#rep-minus-btn')?.addEventListener('click', () => {
+    if (guidedState.currentActualReps > 0) {
+      guidedState.currentActualReps--;
+      if (repValueEl) repValueEl.textContent = guidedState.currentActualReps;
+      playBeep(330, 0.04);
+    }
+  });
+
+  overlay.querySelector('#rep-plus-btn')?.addEventListener('click', () => {
+    guidedState.currentActualReps++;
+    if (repValueEl) repValueEl.textContent = guidedState.currentActualReps;
+    playBeep(520, 0.04);
+  });
+
+  startExerciseTimer();
+
+  // Close handler
   overlay.querySelector('#guided-close')?.addEventListener('click', () => {
     if (confirm('Vrei să oprești sesiunea? Ce ai făcut până acum contează!')) {
       stopTimer();
+      releaseWakeLock();
       overlay.remove();
-      if (guidedState.stepIndex > 0) {
-        openFeedbackModal(routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
+      if (guidedState.exercisesDone.length > 0) {
+        openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
       }
     }
   });
 
+  // Pause handler
   const pauseBtn = overlay.querySelector('#guided-pause-btn');
   pauseBtn?.addEventListener('click', () => {
     guidedState.isPaused = !guidedState.isPaused;
     pauseBtn.innerHTML = guidedState.isPaused ? '▶️ Continuă' : '⏸️ Pauză';
   });
 
+  // Done handler
   overlay.querySelector('#guided-done-btn')?.addEventListener('click', () => {
-    completeCurrentStep(routine);
+    completeExerciseStep();
   });
 }
 
-function startTimer() {
+function startExerciseTimer() {
   const display = document.getElementById('guided-timer-display');
   clearInterval(guidedState.timerInterval);
 
@@ -359,9 +583,14 @@ function startTimer() {
       guidedState.timerSeconds--;
       if (display) display.textContent = formatSeconds(guidedState.timerSeconds);
 
+      // Beeps on 3, 2, 1
+      if (guidedState.timerSeconds === 3 || guidedState.timerSeconds === 2 || guidedState.timerSeconds === 1) {
+        playBeep(440, 0.08);
+      }
+
       if (guidedState.timerSeconds === 0) {
         playGentleChime();
-        if (display) display.textContent = 'Gata!';
+        if (display) display.textContent = 'Gata seria!';
       }
     }
   }, 1000);
@@ -371,24 +600,177 @@ function stopTimer() {
   clearInterval(guidedState.timerInterval);
 }
 
-function completeCurrentStep(routine) {
+function completeExerciseStep() {
   stopTimer();
-  const currentEx = routine.exercises[guidedState.stepIndex];
+  const currentEx = guidedState.routine.exercises[guidedState.exerciseIndex];
+
+  // Record set
   guidedState.exercisesDone.push({
     id: currentEx.id,
     name: currentEx.name,
-    reps: currentEx.adjusted_reps || currentEx.default_reps
+    set: guidedState.currentSet,
+    totalSets: guidedState.totalSets,
+    target_reps: currentEx.adjusted_reps || currentEx.default_reps,
+    actual_reps: guidedState.currentActualReps,
+    unit: guidedState.repUnit
   });
 
-  guidedState.stepIndex++;
-  if (guidedState.stepIndex < routine.exercises.length) {
-    renderGuidedStep(routine);
-  } else {
-    // Finished all!
+  const isLastSetOfLastExercise =
+    guidedState.exerciseIndex === guidedState.routine.exercises.length - 1 &&
+    guidedState.currentSet === guidedState.totalSets;
+
+  if (isLastSetOfLastExercise) {
+    releaseWakeLock();
     const overlay = document.getElementById('guided-overlay');
     if (overlay) overlay.remove();
-    openFeedbackModal(routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
+    playGentleChime();
+    speakVoice('Felicitări! Ai terminat antrenamentul!');
+    openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
+  } else {
+    renderRestStep();
   }
+}
+
+function renderRestStep() {
+  guidedState.isResting = true;
+  const overlay = document.getElementById('guided-overlay');
+  if (!overlay || !guidedState.routine) return;
+
+  const sameExerciseNext = guidedState.currentSet < guidedState.totalSets;
+  const nextEx = sameExerciseNext
+    ? guidedState.routine.exercises[guidedState.exerciseIndex]
+    : guidedState.routine.exercises[guidedState.exerciseIndex + 1];
+  const nextSetNum = sameExerciseNext ? guidedState.currentSet + 1 : 1;
+  const nextFull = getExerciseById(nextEx.id) || nextEx;
+
+  // 30s rest between sets of same exercise, 40s between different exercises
+  guidedState.timerSeconds = sameExerciseNext ? 30 : 40;
+  clearInterval(guidedState.timerInterval);
+
+  const totalSteps = guidedState.routine.exercises.length * guidedState.totalSets;
+  const currentStepNum = guidedState.exerciseIndex * guidedState.totalSets + guidedState.currentSet;
+  const progressPercent = Math.round((currentStepNum / totalSteps) * 100);
+
+  overlay.innerHTML = `
+    <div class="guided-header">
+      <button id="guided-close" class="btn btn-secondary btn-sm">✕ Ieși</button>
+      <div style="font-weight: 700; font-size: 0.92rem; color: var(--text);">
+        Odihnă & Respirație
+      </div>
+      <button id="guided-sound-toggle" class="btn-sound-toggle" title="Comută sunetul">
+        ${soundEnabled ? '🔊' : '🔇'}
+      </button>
+    </div>
+
+    <div class="guided-progress-bar">
+      <div class="guided-progress-fill" style="width: ${progressPercent}%;"></div>
+    </div>
+
+    <div class="guided-body">
+      <div class="guided-rest-card">
+        <div class="rest-badge">
+          🧘 Trage-ți sufletul & bea o gură de apă
+        </div>
+
+        <div class="rest-timer-display" id="guided-rest-timer">
+          ${formatSeconds(guidedState.timerSeconds)}
+        </div>
+
+        <div class="rest-preview-card">
+          <div class="rest-preview-thumb">
+            ${nextFull.svg || '🏃'}
+          </div>
+          <div class="rest-preview-info">
+            <div class="rest-preview-sub">Urmează:</div>
+            <div class="rest-preview-name">${escapeHtml(nextEx.name)}</div>
+            <div class="rest-preview-target">Seria ${nextSetNum} din ${guidedState.totalSets} • ${escapeHtml(nextEx.adjusted_reps || nextEx.default_reps)}</div>
+          </div>
+        </div>
+
+        <div class="rest-actions-row">
+          <button id="rest-add-time-btn" class="btn btn-secondary" style="flex: 1;">
+            +15s Pauză
+          </button>
+          <button id="rest-skip-btn" class="btn btn-primary" style="flex: 1.5;">
+            ▶️ Începe acum
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="guided-footer">
+      <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+        Ecranul va trece automat la seria următoare când timpul expiră.
+      </p>
+    </div>
+  `;
+
+  playRestStartSound();
+  speakVoice('Pauză de odihnă');
+
+  overlay.querySelector('#guided-sound-toggle')?.addEventListener('click', () => {
+    toggleSound();
+  });
+
+  overlay.querySelector('#rest-add-time-btn')?.addEventListener('click', () => {
+    guidedState.timerSeconds += 15;
+    const restTimerEl = document.getElementById('guided-rest-timer');
+    if (restTimerEl) restTimerEl.textContent = formatSeconds(guidedState.timerSeconds);
+    playBeep(440, 0.05);
+  });
+
+  overlay.querySelector('#rest-skip-btn')?.addEventListener('click', () => {
+    advanceToNextSet();
+  });
+
+  overlay.querySelector('#guided-close')?.addEventListener('click', () => {
+    if (confirm('Vrei să oprești sesiunea? Ce ai făcut până acum contează!')) {
+      stopTimer();
+      releaseWakeLock();
+      overlay.remove();
+      if (guidedState.exercisesDone.length > 0) {
+        openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
+      }
+    }
+  });
+
+  startRestTimer();
+}
+
+function startRestTimer() {
+  const display = document.getElementById('guided-rest-timer');
+  clearInterval(guidedState.timerInterval);
+
+  guidedState.timerInterval = setInterval(() => {
+    if (guidedState.isPaused) return;
+
+    guidedState.elapsedSeconds++;
+    if (guidedState.timerSeconds > 0) {
+      guidedState.timerSeconds--;
+      if (display) display.textContent = formatSeconds(guidedState.timerSeconds);
+
+      if (guidedState.timerSeconds === 3 || guidedState.timerSeconds === 2 || guidedState.timerSeconds === 1) {
+        playBeep(520, 0.08);
+      }
+
+      if (guidedState.timerSeconds === 0) {
+        playGentleChime();
+        speakVoice('Pregătește-te!');
+        advanceToNextSet();
+      }
+    }
+  }, 1000);
+}
+
+function advanceToNextSet() {
+  stopTimer();
+  if (guidedState.currentSet < guidedState.totalSets) {
+    guidedState.currentSet++;
+  } else {
+    guidedState.exerciseIndex++;
+    guidedState.currentSet = 1;
+  }
+  renderGuidedStep();
 }
 
 // ---------------------------------------------------------------- Feedback & Celebration Modal
@@ -399,6 +781,10 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
   modal.className = 'guided-overlay';
 
   const minutesDone = Math.max(1, Math.round(durationSeconds / 60));
+  const totalSets = Array.isArray(exercisesDone) ? exercisesDone.length : 0;
+  const totalReps = Array.isArray(exercisesDone)
+    ? exercisesDone.reduce((acc, curr) => acc + (parseInt(curr.actual_reps, 10) || 0), 0)
+    : 0;
 
   modal.innerHTML = `
     <div class="guided-body">
@@ -406,9 +792,16 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
       <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;">
         Bravo! Ai făcut mișcare azi.
       </h2>
-      <p style="color: var(--text-muted); margin-bottom: 20px;">
+      <p style="color: var(--text-muted); margin-bottom: 12px;">
         Aproximativ <strong>${minutesDone} minute</strong> dedicate stării tale de bine.
       </p>
+
+      ${totalSets > 0 ? `
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+          <span class="badge badge-reps">🔁 ${totalSets} ${totalSets === 1 ? 'serie finalizată' : 'serii finalizate'}</span>
+          ${totalReps > 0 ? `<span class="badge">🔢 ${totalReps} repetări totale</span>` : ''}
+        </div>
+      ` : ''}
 
       <div class="card" style="width: 100%; max-width: 440px; text-align: left;">
         <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 10px;">
