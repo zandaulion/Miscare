@@ -14,7 +14,13 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
    - Ghid vizual ilustrat / animat și instrucțiuni clare în limba română (fără termeni tehnici complicați).
    - Filtre pentru protecția zonelor sensibile (genunchi, spate, încheieturi).
 
-2. **Program fără fricțiuni**:
+2. **Sesiuni care nu se repetă**:
+   - Mișcările se rotesc: fiecare sesiune făcută avansează rotația cu o poziție, așa că treci prin tot catalogul potrivit ție și te întorci.
+   - Rotația e legată de sesiunile făcute, nu de calendar — cine se mișcă de două ori pe săptămână vede la fel de multe mișcări, doar mai lent. O zi sărită îți dă înapoi sesiunea nefăcută, nu următoarea.
+   - Forma zilei rămâne aceeași (încălzire → sus → jos → centru); se schimbă cine ocupă fiecare loc.
+   - O categorie cu o singură opțiune se completează din nivelul imediat următor — o singură mișcare nu e o alegere. Filtrele de siguranță rămân neatinse.
+
+3. **Program fără fricțiuni**:
    - Pe ecranul principal apare direct: **„Sesiunea de azi”** — gata de pornire cu 1 singur tap.
    - Fără setări laborioase de seturi, kilograme sau scheme de antrenament.
    - Opțiuni rapide: *„Fă-o de 5 min”* sau *„Schimbă exercițiul”*.
