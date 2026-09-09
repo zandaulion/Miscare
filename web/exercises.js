@@ -201,6 +201,83 @@ export const CLIENT_EXERCISES = [
     </svg>`
   },
   {
+    id: 'towel_pull_apart',
+    name: 'Depărtări cu prosopul',
+    category: 'upper',
+    level: 0,
+    equipment: ['bodyweight'],
+    default_reps: '10-12 repetări (menținere 2s)',
+    description: 'În picioare sau așezat, ține un prosop întins între mâini, la nivelul pieptului. Trage de capete în lateral ca și cum ai vrea să-l rupi, strângând omoplații, apoi relaxează lent.',
+    focus: 'Spate superior, omoplați și postură',
+    tip: 'Ține coatele aproape întinse și umerii jos, departe de urechi.',
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="92" x2="90" y2="92" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Cap și trunchi, în picioare -->
+      <circle cx="50" cy="22" r="6" fill="currentColor" />
+      <line x1="50" y1="28" x2="50" y2="62" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Picioare -->
+      <line x1="50" y1="62" x2="42" y2="92" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <line x1="50" y1="62" x2="58" y2="92" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <!-- Brațe întinse lateral, la nivelul pieptului -->
+      <line x1="50" y1="38" x2="24" y2="38" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="50" y1="38" x2="76" y2="38" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Prosopul întins între mâini -->
+      <path d="M 24,38 Q 50,33 76,38" stroke="#2A7B4C" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      <!-- Săgeți de tragere spre exterior -->
+      <path d="M 20,48 L 12,48 M 15,45 L 12,48 L 15,51" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 80,48 L 88,48 M 85,45 L 88,48 L 85,51" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'reverse_snow_angels',
+    name: 'Îngerași întorși la sol',
+    category: 'upper',
+    level: 0,
+    equipment: ['bodyweight'],
+    default_reps: '8-10 repetări',
+    description: 'Întins pe burtă, cu fruntea sprijinită și brațele pe lângă corp. Ridică ușor brațele de pe podea și plimbă-le încet până deasupra capului, apoi înapoi lângă șolduri.',
+    focus: 'Spate superior, umeri și postură',
+    tip: 'Mișcarea e mică și lentă; important e ca brațele să nu atingă podeaua pe traseu.',
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Corp întins pe burtă, văzut de sus -->
+      <line x1="30" y1="80" x2="76" y2="80" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Cap, cu fruntea spre podea -->
+      <circle cx="24" cy="80" r="5.5" fill="currentColor" />
+      <!-- Brațele ridicate, pe traseu spre cap -->
+      <path d="M 36,78 Q 30,64 40,56" stroke="#2A7B4C" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      <path d="M 36,82 Q 34,94 46,96" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.35" />
+      <!-- Arcul pe care îl parcurg brațele -->
+      <path d="M 46,52 Q 34,60 33,72" stroke="#2A7B4C" stroke-width="2" fill="none" stroke-dasharray="3 3" stroke-linecap="round" />
+      <path d="M 46,52 L 40,54 M 46,52 L 47,58" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
+    id: 'doorway_row',
+    name: 'Ramat la tocul ușii',
+    category: 'upper',
+    level: 1,
+    equipment: ['bodyweight', 'wall'],
+    default_reps: '8-10 repetări',
+    description: 'Stai în fața unui toc de ușă solid, apucă marginea cu ambele mâini și pune vârfurile picioarelor aproape de prag. Lasă-te pe spate cu brațele întinse, apoi trage-te înapoi în picioare strângând omoplații.',
+    focus: 'Spate, bicepși și forță de tragere',
+    tip: 'Cu cât te lași mai pe spate, cu atât e mai greu — reglează dificultatea din unghi, nu din repetări.',
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="92" x2="90" y2="92" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Tocul ușii -->
+      <line x1="78" y1="8" x2="78" y2="92" stroke="#94A3B8" stroke-width="4" stroke-linecap="round" opacity="0.75" />
+      <!-- Corp înclinat pe spate, sprijinit pe călcâie -->
+      <line x1="40" y1="30" x2="62" y2="86" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <circle cx="38" cy="25" r="6" fill="currentColor" />
+      <!-- Picioarele, aproape de prag -->
+      <line x1="62" y1="86" x2="72" y2="92" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <!-- Brațele întinse spre toc -->
+      <line x1="43" y1="38" x2="76" y2="40" stroke="#2A7B4C" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Săgeata de tragere spre ușă -->
+      <path d="M 50,58 L 64,52 M 60,50 L 64,52 L 61,56" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
     id: 'band_pull_apart',
     name: 'Depărtări de bandă pentru spate',
     category: 'upper',
@@ -235,7 +312,7 @@ export const CLIENT_EXERCISES = [
     id: 'incline_pushups',
     name: 'Flotări înclinate (pe birou sau spătar)',
     category: 'upper',
-    level: 1,
+    level: 0,
     equipment: ['chair', 'bodyweight'],
     default_reps: '8-10 repetări',
     duration_s: 50,

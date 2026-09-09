@@ -105,7 +105,7 @@ export const EXERCISES = [
     pattern: 'push',
     name: 'Flotări înclinate (pe birou sau spătar)',
     category: 'upper',
-    level: 1,
+    level: 0,
     equipment: ['chair', 'bodyweight'],
     safe_for: ['knees', 'back'],
     default_reps: '8-10 repetări',
@@ -253,6 +253,48 @@ export const EXERCISES = [
     description: 'Din așezat cu spatele drept, împinge ganterele de la nivelul urechilor spre tavan fără să blochezi brusc coatele.',
     focus: 'Umeri și postură',
     tip: 'Nu curba spatele.'
+  },
+  {
+    id: 'towel_pull_apart',
+    pattern: 'pull',
+    name: 'Depărtări cu prosopul',
+    category: 'upper',
+    level: 0,
+    equipment: ['bodyweight'],
+    safe_for: ['knees', 'back', 'wrists'],
+    default_reps: '10-12 repetări (menținere 2s)',
+    duration_s: 40,
+    description: 'În picioare sau așezat, ține un prosop întins între mâini, la nivelul pieptului. Trage de capete în lateral ca și cum ai vrea să-l rupi, strângând omoplații, apoi relaxează lent.',
+    focus: 'Spate superior, omoplați și postură',
+    tip: 'Ține coatele aproape întinse și umerii jos, departe de urechi.'
+  },
+  {
+    id: 'reverse_snow_angels',
+    pattern: 'pull',
+    name: 'Îngerași întorși la sol',
+    category: 'upper',
+    level: 0,
+    equipment: ['bodyweight'],
+    safe_for: ['knees', 'wrists'],
+    default_reps: '8-10 repetări',
+    duration_s: 45,
+    description: 'Întins pe burtă, cu fruntea sprijinită și brațele pe lângă corp. Ridică ușor brațele de pe podea și plimbă-le încet până deasupra capului, apoi înapoi lângă șolduri.',
+    focus: 'Spate superior, umeri și postură',
+    tip: 'Mișcarea e mică și lentă; important e ca brațele să nu atingă podeaua pe traseu.'
+  },
+  {
+    id: 'doorway_row',
+    pattern: 'pull',
+    name: 'Ramat la tocul ușii',
+    category: 'upper',
+    level: 1,
+    equipment: ['bodyweight', 'wall'],
+    safe_for: ['knees', 'back', 'wrists'],
+    default_reps: '8-10 repetări',
+    duration_s: 45,
+    description: 'Stai în fața unui toc de ușă solid, apucă marginea cu ambele mâini și pune vârfurile picioarelor aproape de prag. Lasă-te pe spate cu brațele întinse, apoi trage-te înapoi în picioare strângând omoplații.',
+    focus: 'Spate, bicepși și forță de tragere',
+    tip: 'Cu cât te lași mai pe spate, cu atât e mai greu — reglează dificultatea din unghi, nu din repetări.'
   },
   {
     id: 'band_pull_apart',
@@ -726,11 +768,26 @@ export function generateDailyRoutine(profile = {}, options = {}) {
    */
   const LEVEL_ORDER = ['zero', 'beginner', 'intermediate', 'advanced'];
   const MIN_PER_CATEGORY = 2;
+  const MIN_PATTERNS = 2;
 
+  /**
+   * Două exerciții de același tip sunt tot o rutină înțepenită.
+   *
+   * Prima versiune număra exercițiile. A ieșit prost imediat ce catalogul a
+   * primit tracțiuni fără echipament: cine are doar greutatea corpului -- fără
+   * perete, fără scaun -- avea la Nivel 0 exact două mișcări de sus, ambele de
+   * tragere, ceea ce trecea de prag și oprea completarea. Rezultatul a fost
+   * invers celui căutat: zero împingeri în douăsprezece sesiuni, în loc de
+   * douăsprezece din douăsprezece.
+   *
+   * Se numără deci tiparele, nu rândurile.
+   */
   const withNextLevel = (name) => {
     const base = inCategory(candidateExercises, name);
     const upKey = LEVEL_ORDER[targetLevel + 1];
-    if (base.length >= MIN_PER_CATEGORY || !upKey) return base;
+    const patterns = new Set(base.map((e) => e.pattern));
+    if (!upKey) return base;
+    if (base.length >= MIN_PER_CATEGORY && patterns.size >= MIN_PATTERNS) return base;
 
     const wider = filterSafeExercises(EXERCISES, { ...profile, level: upKey });
     const extra = inCategory(wider, name).filter((e) => !base.includes(e));
@@ -753,9 +810,9 @@ export function generateDailyRoutine(profile = {}, options = {}) {
    * exercițiu poate ieși trei zile la rând iar altul niciodată, pe când o
    * rotație trece prin tot catalogul și se întoarce.
    */
-  const pickFrom = (list) => {
+  const pickFrom = (list, index = rotation) => {
     if (!list.length) return null;
-    const start = ((rotation % list.length) + list.length) % list.length;
+    const start = ((index % list.length) + list.length) % list.length;
     for (let i = 0; i < list.length; i++) {
       const ex = list[(start + i) % list.length];
       if (!chosen.includes(ex)) return ex;
@@ -788,7 +845,30 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     chosen.push(pickFrom(mobility));
   }
 
-  for (const name of leadToday) take(pickFrom(groups[name]));
+  /**
+   * De câte ori a fost folosită grupa asta până acum.
+   *
+   * Nu `rotation`, și nici `rotation` corectat cu ceva. O grupă e aleasă doar
+   * la anumite poziții din ciclu, așa că indexarea listei după rotația brută
+   * le blochează în fază: „sus" era ales doar când rotation % 3 era 0 sau 1,
+   * ceea ce selecta exact pozițiile 0 și 1 din listă, iar al treilea exercițiu
+   * nu ieșea niciodată. Prima încercare de corecție a mutat blocajul în loc
+   * să-l elimine -- cu patru exerciții în listă rămânea inaccesibil al
+   * patrulea.
+   *
+   * Numărând folosirile, lista avansează cu exact un pas de fiecare dată când
+   * grupa chiar apare, deci le parcurge pe toate, oricâte ar fi.
+   */
+  const timesUsed = (name) => {
+    const perCycle = GROUP_CYCLE.filter((pair) => pair.includes(name)).length;
+    let n = Math.floor(rotation / GROUP_CYCLE.length) * perCycle;
+    for (let i = 0; i < ((rotation % GROUP_CYCLE.length) + GROUP_CYCLE.length) % GROUP_CYCLE.length; i++) {
+      if (GROUP_CYCLE[i].includes(name)) n++;
+    }
+    return n;
+  };
+
+  for (const name of leadToday) take(pickFrom(groups[name], timesUsed(name)));
 
   // Completare, preferând tipare care nu sunt deja în sesiune: două împingeri
   // în aceeași sesiune înseamnă aceiași mușchi de două ori, oricât de diferit

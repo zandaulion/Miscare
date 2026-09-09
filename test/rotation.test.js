@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { generateDailyRoutine, EXERCISES } from '../server/routine.js';
+import { generateDailyRoutine, filterSafeExercises, EXERCISES } from '../server/routine.js';
 
 const zero = { level: 'zero', equipment: ['bodyweight', 'chair', 'wall'], daily_time: 10 };
 const ids = (rotation, profile = zero) =>
@@ -117,4 +117,43 @@ test('muscle groups rotate, not just exercises', async (t) => {
     const restDays = [...Array(12).keys()].filter((r) => !patternsOf(r).includes('push'));
     assert.ok(restDays.length >= 2, `doar ${restDays.length} sesiuni fără împingere din 12`);
   });
+});
+
+test('the group cycle and the exercise index must not lock in phase', async (t) => {
+  // Bug real, găsit prin măsurare, nu prin citit: o grupă e aleasă doar la
+  // anumite poziții din ciclu, iar indexarea listei după rotația brută le
+  // sincroniza. „Sus" era ales doar când rotation % 3 era 0 sau 1, ceea ce
+  // selecta exact pozițiile 0 și 1 -- al treilea exercițiu nu ieșea niciodată.
+  // Prima corecție a mutat blocajul: cu patru în listă rămânea inaccesibil al
+  // patrulea. Testul cere acoperire, nu o anume formulă.
+  const configs = [
+    { level: 'zero', equipment: ['bodyweight', 'chair', 'wall'] },
+    { level: 'beginner', equipment: ['bodyweight', 'chair', 'wall'] },
+    { level: 'intermediate', equipment: ['bodyweight', 'chair', 'wall'] }
+  ];
+
+  for (const profile of configs) {
+    await t.test(`${profile.level}: every eligible exercise is reachable`, () => {
+      const eligible = filterSafeExercises(EXERCISES, profile);
+      const byCategory = {};
+      for (const e of eligible) {
+        const key = e.category.includes('core') ? 'core' : e.category;
+        (byCategory[key] ||= []).push(e.id);
+      }
+
+      const seen = new Set();
+      for (let r = 0; r < 60; r++) {
+        for (const ex of generateDailyRoutine({ ...profile, daily_time: 10 }, { rotation: r }).exercises) {
+          seen.add(ex.id);
+        }
+      }
+
+      for (const [category, list] of Object.entries(byCategory)) {
+        if (category === 'mobility') continue;
+        const unreachable = list.filter((id) => !seen.has(id));
+        assert.equal(unreachable.length, 0,
+          `${category}: nu se ajunge niciodată la ${unreachable.join(', ')} în 60 de sesiuni`);
+      }
+    });
+  }
 });
