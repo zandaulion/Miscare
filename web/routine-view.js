@@ -162,23 +162,45 @@ function swapExercise(index, container) {
   if (!currentRoutine || !currentRoutine.exercises[index]) return;
   const current = currentRoutine.exercises[index];
   const userEquipment = state.profile?.equipment || ['bodyweight', 'chair', 'wall'];
+  const userLevel = state.profile?.level || 'zero';
+  const levelMap = { zero: 0, beginner: 1, intermediate: 2, advanced: 3 };
+  const targetLevel = levelMap[userLevel] ?? 0;
 
-  // Găsește un înlocuitor compatibil
-  const candidates = CLIENT_EXERCISES.filter((e) => {
+  // Găsește toți candidații compatibili cu echipamentul și nivelul
+  const eligible = CLIENT_EXERCISES.filter((e) => {
     if (e.id === current.id) return false;
     if (currentRoutine.exercises.some((ce) => ce.id === e.id)) return false;
-    // Verifică echipamentul
+    if (e.level > targetLevel) return false;
     return e.equipment.every((eq) => userEquipment.includes(eq));
   });
 
-  if (candidates.length > 0) {
-    const next = candidates[Math.floor(Math.random() * candidates.length)];
-    currentRoutine.exercises[index] = {
-      ...next,
-      adjusted_reps: next.default_reps
-    };
-    renderRoutineView(container);
-  }
+  if (eligible.length === 0) return;
+
+  // 1. Prioritate maximă: alternativele declarate explicit în exercițiu (current.swaps)
+  const declaredSwaps = (current.swaps || [])
+    .map((id) => eligible.find((e) => e.id === id))
+    .filter(Boolean);
+
+  // 2. Prioritate secundară: aceeași categorie musculară (upper -> upper, lower -> lower, core -> core)
+  const sameCategory = eligible.filter((e) => e.category === current.category);
+
+  const pool = declaredSwaps.length > 0
+    ? declaredSwaps
+    : sameCategory.length > 0
+    ? sameCategory
+    : eligible;
+
+  // Sortăm candidații astfel încât să favorizăm nivelul cel mai apropiat de cel curent
+  pool.sort((a, b) => Math.abs(b.level - targetLevel) - Math.abs(a.level - targetLevel));
+
+  const next = pool[Math.floor(Math.random() * pool.length)];
+
+  currentRoutine.exercises[index] = {
+    ...next,
+    adjusted_reps: next.default_reps
+  };
+
+  renderRoutineView(container);
 }
 
 // ---------------------------------------------------------------- Guided Workout Runner
