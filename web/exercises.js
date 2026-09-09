@@ -333,6 +333,36 @@ export const CLIENT_EXERCISES = [
     </svg>`
   },
   {
+    id: 'crunches_standard',
+    name: 'Abdomene clasice (Crunches la sol)',
+    category: 'core',
+    level: 1,
+    equipment: ['bodyweight'],
+    default_reps: '10-15 repetări',
+    duration_s: 45,
+    description: 'Întins pe spate cu genunchii îndoiți și tălpile pe podea. Ridică doar omoplații contractând abdomenul, menține o secundă sus și coboară lent.',
+    focus: 'Mușchii abdominali (dreptul abdominal)',
+    tip: 'Nu trage de ceafă cu mâinile; ține coatele deschise și privirea la 45° spre tavan.',
+    swaps: ['deadbug_assisted', 'forearm_plank'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
+      <!-- Bazin pe sol -->
+      <line x1="38" y1="84" x2="52" y2="84" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Spate superior ridicat în flexie abdominală (crunch) -->
+      <line x1="38" y1="84" x2="26" y2="70" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+      <!-- Cap ridicat privind spre tavan -->
+      <circle cx="18" cy="62" r="5.5" fill="currentColor" />
+      <!-- Mâini la tâmple / coate deschise -->
+      <path d="M 26,70 L 16,68 L 22,60" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Picioare îndoite: coapse și gambe cu tălpile pe podea -->
+      <path d="M 52,84 L 66,62 L 76,84" stroke="currentColor" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Evidențiere contractie musculară abdomen -->
+      <circle cx="34" cy="74" r="3.5" fill="#2A7B4C" />
+      <!-- Săgeată curbă de ridicare omoplați -->
+      <path d="M 32,78 C 30,73 28,68 28,63 M 24,67 L 28,63 L 32,67" stroke="#2A7B4C" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>`
+  },
+  {
     id: 'dumbbell_seated_bicep_curl',
     name: 'Flexii pentru bicepși (cu gantere)',
     category: 'upper',

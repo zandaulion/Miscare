@@ -146,6 +146,19 @@ export const EXERCISES = [
     tip: 'Dacă simți că spatele se arcuiește de pe podea, nu coborî călcâiul până jos.'
   },
   {
+    id: 'crunches_standard',
+    name: 'Abdomene clasice (Crunches la sol)',
+    category: 'core',
+    level: 1,
+    equipment: ['bodyweight'],
+    safe_for: ['knees', 'wrists'],
+    default_reps: '10-15 repetări',
+    duration_s: 45,
+    description: 'Întins pe spate cu genunchii îndoiți și tălpile pe sol. Ridică doar omoplații contractând abdomenul, menține 1 secundă și coboară lent.',
+    focus: 'Abdomen (dreptul abdominal)',
+    tip: 'Nu trage de ceafă cu mâinile; ține bărbia depărtată de piept și privește la 45° spre tavan.'
+  },
+  {
     id: 'dumbbell_seated_bicep_curl',
     name: 'Flexii pentru bicepși (cu gantere)',
     category: 'upper',
