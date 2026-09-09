@@ -1668,3 +1668,17 @@ nav.app-nav {
 @media (max-width: 360px) {
   .proposal-actions { grid-template-columns: 1fr; }
 }
+
+/* ------------------------------------------------------------ ziua bifată */
+
+.done-today-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  border-color: var(--primary-border);
+  background: var(--primary-light);
+}
+.done-today-icon { font-size: 1.5rem; flex-shrink: 0; }
+.done-today-title { font-weight: 700; font-size: 0.98rem; }
+.done-today-sub { font-size: 0.83rem; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }

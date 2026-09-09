@@ -301,22 +301,27 @@ export async function getTodayRoutine(duration = null, forceRefresh = false) {
   const currentLevel = state.profile?.level || 'zero';
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  // Verificăm dacă avem deja o rutină salvată/personalizată pentru azi cu același nivel
-  if (!forceRefresh && !duration) {
+  // Cache-ul e pentru offline, nu pentru a scuti o cerere.
+  //
+  // Înainte, o rutină pusă deoparte pentru ziua curentă scurtcircuita apelul
+  // și se întorcea direct. Exercițiile erau corecte -- ele chiar nu se schimbă
+  // în cursul zilei -- dar tot ce se schimbă venea în același răspuns:
+  // întrebarea zilei și ce s-a bifat deja. A doua oară când se deschidea
+  // aplicația, ecranul „azi" arăta aceleași exerciții ca și cum nimeni n-ar fi
+  // făcut nimic, fiindcă starea proaspătă nu mai era cerută niciodată.
+  //
+  // Deci se întreabă serverul cât timp se poate, iar cache-ul rămâne ce a fost
+  // gândit să fie: plasa pentru momentele fără semnal, mai jos.
+  const cachedFor = (why) => {
     const cached = localStorage.getItem(ROUTINE_KEY);
-    if (cached) {
-      try {
-        const parsed = JSON.parse(cached);
-        if (
-          parsed &&
-          parsed.cached_date === todayStr &&
-          (parsed.level === currentLevel || (!parsed.level && currentLevel === 'zero'))
-        ) {
-          return parsed;
-        }
-      } catch {}
-    }
-  }
+    if (!cached) return null;
+    try {
+      const parsed = JSON.parse(cached);
+      const levelOk = parsed.level === currentLevel || (!parsed.level && currentLevel === 'zero');
+      if (parsed && levelOk && (why !== 'today' || parsed.cached_date === todayStr)) return parsed;
+    } catch {}
+    return null;
+  };
 
   if (state.linked) {
     try {
@@ -331,20 +336,18 @@ export async function getTodayRoutine(duration = null, forceRefresh = false) {
       // doua zi din cache, ar întreba despre sesiuni pe care serverul le-a
       // uitat deja -- și ar putea fi acceptată de două ori.
       localStorage.setItem(ROUTINE_KEY, JSON.stringify(routineWithDate));
-      return { ...routineWithDate, __proposal: data.proposal || null, __can_revert: Boolean(data.can_revert) };
+      return {
+        ...routineWithDate,
+        __proposal: data.proposal || null,
+        __can_revert: Boolean(data.can_revert),
+        __done_today: data.done_today || null
+      };
     } catch {}
   }
 
-  // Fallback offline: verificăm dacă avem o rutină cache potrivită nivelului curent
-  const cached = localStorage.getItem(ROUTINE_KEY);
-  if (cached) {
-    try {
-      const parsed = JSON.parse(cached);
-      if (parsed && (parsed.level === currentLevel || (!parsed.level && currentLevel === 'zero'))) {
-        return parsed;
-      }
-    } catch {}
-  }
+  // Fallback offline: rutina de azi dacă există, altfel ultima potrivită.
+  const fallback = cachedFor('today') || cachedFor('any');
+  if (fallback) return fallback;
 
   const tmpl = FALLBACK_ROUTINES[currentLevel] || FALLBACK_ROUTINES.zero;
 

@@ -100,6 +100,43 @@ export function initDb(dbInstance = null) {
   // oricând" e o formulă de politețe: nu ar exista unde să se revină.
   addColumn(db, 'user_profile', 'prev_level', 'TEXT');
   addColumn(db, 'user_profile', 'prev_rep_step', 'INTEGER');
+
+  // Sesiuni și zile sunt lucruri diferite, iar aplicația le confunda: fiecare
+  // sesiune înregistrată creștea „zilele active", deci trei reprize într-o
+  // singură zi arătau ca trei zile. Rotația vrea sesiuni -- cine face trei
+  // reprize vrea trei sesiuni diferite -- iar realizarea permanentă vrea zile.
+  addColumn(db, 'user_profile', 'total_sessions', 'INTEGER NOT NULL DEFAULT 0');
+  addColumn(db, 'user_profile', 'last_session_date', 'TEXT');
+  backfillDayCounts(db);
+}
+
+/**
+ * Repară numărătorile pentru conturile existente.
+ *
+ * total_active_days a fost incrementat per sesiune de la început, așa că
+ * valoarea din baza de date e inflatată. Jurnalul are adevărul: câte date
+ * distincte are contul. Rulează o singură dată -- total_sessions e zero doar
+ * înainte de a fi populat.
+ */
+function backfillDayCounts(db) {
+  const rows = db.prepare(`
+    SELECT p.device_id,
+           (SELECT COUNT(DISTINCT date) FROM workout_logs w WHERE w.device_id = p.device_id) AS days,
+           (SELECT COUNT(*)             FROM workout_logs w WHERE w.device_id = p.device_id) AS sessions,
+           (SELECT MAX(date)            FROM workout_logs w WHERE w.device_id = p.device_id) AS last_date
+    FROM user_profile p
+    WHERE p.total_sessions = 0
+  `).all();
+
+  for (const r of rows) {
+    if (!r.sessions) continue;
+    db.prepare(`
+      UPDATE user_profile
+      SET total_active_days = ?, total_sessions = ?, last_session_date = ?
+      WHERE device_id = ?
+    `).run(r.days, r.sessions, r.last_date, r.device_id);
+    console.log(`migrated ${r.device_id}: ${r.sessions} sessions across ${r.days} days`);
+  }
 }
 
 /** Adaugă o coloană dacă lipsește. SQLite nu are ADD COLUMN IF NOT EXISTS. */
