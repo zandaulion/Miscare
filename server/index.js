@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
 
 import { db, nowIso } from './db.js';
+import { applyFeedback, proposeChange, LEVELS } from './progression.js';
 import {
   COOKIE_NAME,
   listDevices,
@@ -276,19 +277,95 @@ app.get('/api/routine/today', requireDevice, (req, res) => {
       daily_time: profileRow.daily_time || 10,
       limitations: JSON.parse(profileRow.limitations_json || '[]'),
       equipment: JSON.parse(profileRow.equipment_json || '["bodyweight","chair","wall"]'),
-      last_feedback: profileRow.last_feedback || (lastLog ? lastLog.feedback : null)
+      last_feedback: profileRow.last_feedback || (lastLog ? lastLog.feedback : null),
+      rep_step: profileRow.rep_step || 0
     };
 
     const routine = generateDailyRoutine(profile, {
       forceDurationMinutes: forceDuration,
       daysSinceLastSession: daysSinceLast,
-      lastFeedback: profile.last_feedback
+      lastFeedback: profile.last_feedback,
+      repStep: profile.rep_step
     });
 
-    res.json({ routine, profile, days_since_last: daysSinceLast });
+    // Cel mult o întrebare, și niciodată aplicată din oficiu: sesiunea de mai
+    // sus e deja completă fără ea. Dacă răspunsul nu vine, nu se schimbă nimic.
+    const proposal = proposeChange({
+      level: profile.level,
+      repStep: profile.rep_step,
+      easyStreak: profileRow.easy_streak || 0,
+      daysSinceLastSession: daysSinceLast
+    });
+
+    const canRevert = Boolean(profileRow.prev_level || profileRow.prev_rep_step !== null);
+
+    res.json({ routine, profile, proposal, can_revert: canRevert, days_since_last: daysSinceLast });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+/**
+ * Răspunsul la întrebarea zilei.
+ *
+ * Acceptul e singurul loc unde efortul cerut crește, iar starea dinainte se
+ * salvează în același pas -- „poți reveni oricând" trebuie să aibă unde să
+ * revină, altfel e doar o formulare frumoasă.
+ */
+app.post('/api/progression/accept', requireDevice, (req, res) => {
+  const { kind } = req.body || {};
+  const row = db.prepare('SELECT * FROM user_profile WHERE device_id = ?').get(req.device.id);
+  if (!row) return res.status(404).json({ error: 'profil inexistent' });
+
+  const proposal = proposeChange({
+    level: row.level,
+    repStep: row.rep_step || 0,
+    easyStreak: row.easy_streak || 0,
+    daysSinceLastSession: Number(req.body?.days_since_last) || 0
+  });
+  if (!proposal || (kind && kind !== proposal.kind)) {
+    // Propunerea s-a schimbat între afișare și răspuns -- se poate întâmpla cu
+    // două dispozitive. Mai bine nimic decât altceva decât ce a citit omul.
+    return res.status(409).json({ error: 'propunerea nu mai este valabilă' });
+  }
+
+  const nextLevelValue = proposal.to.level ?? row.level;
+  const nextStep = proposal.to.rep_step ?? row.rep_step ?? 0;
+
+  db.prepare(`
+    UPDATE user_profile SET
+      prev_level = ?, prev_rep_step = ?,
+      level = ?, rep_step = ?, easy_streak = 0, updated_at = ?
+    WHERE device_id = ?
+  `).run(row.level, row.rep_step ?? 0, nextLevelValue, nextStep, nowIso(), req.device.id);
+
+  res.json({ ok: true, level: nextLevelValue, rep_step: nextStep, can_revert: true });
+});
+
+/** „Nu, mulțumesc." Se reține doar ca întrebarea să nu revină imediat. */
+app.post('/api/progression/decline', requireDevice, (req, res) => {
+  db.prepare('UPDATE user_profile SET easy_streak = 0, updated_at = ? WHERE device_id = ?')
+    .run(nowIso(), req.device.id);
+  res.json({ ok: true });
+});
+
+/** Înapoi de unde s-a plecat. Nu cere motive și nu comentează. */
+app.post('/api/progression/revert', requireDevice, (req, res) => {
+  const row = db.prepare('SELECT * FROM user_profile WHERE device_id = ?').get(req.device.id);
+  if (!row || (row.prev_level === null && row.prev_rep_step === null)) {
+    return res.status(409).json({ error: 'nu există o schimbare de anulat' });
+  }
+  const level = LEVELS.includes(row.prev_level) ? row.prev_level : row.level;
+  const step = row.prev_rep_step ?? 0;
+
+  db.prepare(`
+    UPDATE user_profile SET
+      level = ?, rep_step = ?, prev_level = NULL, prev_rep_step = NULL,
+      easy_streak = 0, updated_at = ?
+    WHERE device_id = ?
+  `).run(level, step, nowIso(), req.device.id);
+
+  res.json({ ok: true, level, rep_step: step });
 });
 
 app.post('/api/routine/log', requireDevice, (req, res) => {
@@ -324,14 +401,25 @@ app.post('/api/routine/log', requireDevice, (req, res) => {
 
     // Actualizare agregate în user_profile (No Shaming: adunăm minutele și zilele active)
     const minutesAdded = Math.max(1, Math.round(duration_seconds / 60));
+
+    // Partea automată a adaptării: doar coborârea, și seria de zile ușoare.
+    // Urcarea trece prin /api/progression/accept, fiindcă e singura direcție
+    // în care aplicația ar cere ceva ce nimeni nu a acceptat.
+    const current = db.prepare(
+      'SELECT rep_step, easy_streak FROM user_profile WHERE device_id = ?'
+    ).get(req.device.id) || { rep_step: 0, easy_streak: 0 };
+    const adapted = applyFeedback(current, feedback);
+
     db.prepare(`
       UPDATE user_profile SET
         total_active_days = total_active_days + 1,
         total_minutes = total_minutes + ?,
         last_feedback = ?,
+        rep_step = ?,
+        easy_streak = ?,
         updated_at = ?
       WHERE device_id = ?
-    `).run(minutesAdded, feedback, nowStr, req.device.id);
+    `).run(minutesAdded, feedback, adapted.rep_step, adapted.easy_streak, nowStr, req.device.id);
 
     res.json({
       success: true,

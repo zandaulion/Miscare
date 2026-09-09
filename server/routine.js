@@ -556,6 +556,8 @@ export const EXERCISES = [
   }
 ];
 
+import { shiftText } from './load.js';
+
 export function filterSafeExercises(allExercises, profile) {
   const limitations = Array.isArray(profile.limitations) ? profile.limitations : [];
   const equipment = Array.isArray(profile.equipment) ? profile.equipment : ['bodyweight', 'chair', 'wall'];
@@ -600,7 +602,8 @@ export function generateDailyRoutine(profile = {}, options = {}) {
   const {
     forceDurationMinutes = null,
     daysSinceLastSession = 0,
-    lastFeedback = profile.last_feedback || null
+    lastFeedback = profile.last_feedback || null,
+    repStep = profile.rep_step || 0
   } = options;
 
   const targetMinutes = forceDurationMinutes || profile.daily_time || 10;
@@ -741,15 +744,13 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     supportive_message: supportiveMessage,
     adjustment_note: adjustmentNote,
     is_reentry: isReentry,
-    exercises: chosen.map((ex) => {
-      let reps = ex.default_reps;
-      if (lastFeedback === 'hard' || isReentry) {
-        reps = reps.replace(/(\d+)-(\d+)/, (_, a, b) => `${Math.max(4, parseInt(a, 10) - 2)}-${Math.max(6, parseInt(b, 10) - 2)}`);
-      }
-      return {
-        ...ex,
-        adjusted_reps: reps
-      };
-    })
+    // Efortul vine dintr-o singură sursă acum: treapta pe care se află omul.
+    // Înainte se scădea 2 direct din text la fiecare sesiune „grea", ceea ce
+    // nu se aduna -- a doua oară era tot minus 2 -- și rata complet formatele
+    // fără interval, deci „30 secunde" nu se mișca niciodată.
+    exercises: chosen.map((ex) => ({
+      ...ex,
+      adjusted_reps: shiftText(ex.default_reps, repStep)
+    }))
   };
 }
