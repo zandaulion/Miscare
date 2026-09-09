@@ -93,6 +93,20 @@ export function initDb(dbInstance = null) {
       value TEXT NOT NULL
     );
   `);
+
+  addColumn(db, 'user_profile', 'rep_step', 'INTEGER NOT NULL DEFAULT 0');
+  addColumn(db, 'user_profile', 'easy_streak', 'INTEGER NOT NULL DEFAULT 0');
+  // Ce era înainte de ultima schimbare acceptată. Fără asta, „poți reveni
+  // oricând" e o formulă de politețe: nu ar exista unde să se revină.
+  addColumn(db, 'user_profile', 'prev_level', 'TEXT');
+  addColumn(db, 'user_profile', 'prev_rep_step', 'INTEGER');
+}
+
+/** Adaugă o coloană dacă lipsește. SQLite nu are ADD COLUMN IF NOT EXISTS. */
+function addColumn(db, table, column, definition) {
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all();
+  if (cols.some((c) => c.name === column)) return;
+  db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
 }
 
 export const db = getDb();

@@ -1631,3 +1631,40 @@ nav.app-nav {
 }
 
 
+
+/* ------------------------------------------------------- întrebarea zilei */
+
+/* Un card obișnuit, nu o alertă. Nimic aici nu e urgent și nimic nu se pierde
+   dacă e ignorat -- o bandă colorată sau un clopoțel ar spune altceva. */
+.proposal-card {
+  margin-bottom: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.proposal-question {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.proposal-note {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* Cele două răspunsuri ocupă exact aceeași lățime. Un „nu" mai îngust decât
+   un „da" e tot o împingere, doar mai discretă. */
+.proposal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.proposal-actions .btn { width: 100%; }
+.proposal-actions .btn:disabled { opacity: .6; }
+
+@media (max-width: 360px) {
+  .proposal-actions { grid-template-columns: 1fr; }
+}

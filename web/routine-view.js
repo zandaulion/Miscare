@@ -1,5 +1,5 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
-import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state } from './server-client.js';
+import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
 
 let currentRoutine = null;
 let userSelectedSets = 2; // Implicit 2 serii
@@ -155,6 +155,29 @@ let guidedState = {
   exercisesDone: []
 };
 
+/**
+ * Întrebarea zilei, când există una.
+ *
+ * Sesiunea de dedesubt e completă fără ea. Cardul se poate ignora, iar dacă e
+ * ignorat nu se schimbă nimic -- de asta „mai târziu" nu e un buton: e ce se
+ * întâmplă oricum dacă nu atingi nimic.
+ *
+ * Cele două răspunsuri arată la fel de disponibile. Un „nu" scris mai mic
+ * decât un „da" e tot o împingere, doar mai politicoasă.
+ */
+function renderProposal(proposal) {
+  if (!proposal) return '';
+  return `
+    <div class="card proposal-card" id="proposal-card">
+      <div class="proposal-question">${escapeHtml(proposal.question)}</div>
+      <div class="proposal-note">${escapeHtml(proposal.note || '')}</div>
+      <div class="proposal-actions">
+        <button class="btn btn-primary btn-sm" data-proposal="accept">${escapeHtml(proposal.accept_label)}</button>
+        <button class="btn btn-secondary btn-sm" data-proposal="decline">${escapeHtml(proposal.decline_label)}</button>
+      </div>
+    </div>`;
+}
+
 export async function renderRoutineView(container, { forceDuration = null, routine = null, forceRefresh = false } = {}) {
   if (routine) {
     currentRoutine = routine;
@@ -169,6 +192,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   }
 
   const currentLevel = state.profile?.level || currentRoutine.level || 'zero';
+  const currentProposal = currentRoutine.__proposal || null;
   const isReentry = currentRoutine.is_reentry;
   const note = currentRoutine.adjustment_note;
 
@@ -203,6 +227,8 @@ export async function renderRoutineView(container, { forceDuration = null, routi
         ${note ? `<div class="adjustment-tag">${escapeHtml(note)}</div>` : ''}
       </div>
     </div>
+
+    ${renderProposal(currentProposal)}
 
     <div class="card">
       <div class="card-header">
@@ -305,6 +331,26 @@ export async function renderRoutineView(container, { forceDuration = null, routi
       if (newLvl === currentLevel) return;
       await updateProfile({ level: newLvl });
       renderRoutineView(container, { forceRefresh: true });
+    });
+  });
+
+  container.querySelectorAll('[data-proposal]').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      const accepted = e.currentTarget.dataset.proposal === 'accept';
+      const card = container.querySelector('#proposal-card');
+      container.querySelectorAll('[data-proposal]').forEach((b) => { b.disabled = true; });
+      try {
+        await answerProposal(currentProposal.kind, accepted, currentRoutine.days_since_last || 0);
+        if (accepted) {
+          // Sesiunea de azi se reface pe loc, ca schimbarea acceptată să fie
+          // vizibilă imediat -- altfel „da" nu pare să facă nimic.
+          renderRoutineView(container, { forceRefresh: true });
+        } else if (card) {
+          card.remove();
+        }
+      } catch {
+        container.querySelectorAll('[data-proposal]').forEach((b) => { b.disabled = false; });
+      }
     });
   });
 

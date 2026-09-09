@@ -32,6 +32,21 @@ async function api(path, opts = {}) {
   return data;
 }
 
+/** Răspunsul la propunere. Refuzul e la fel de valid ca acceptul. */
+export async function answerProposal(kind, accepted, daysSinceLast = 0) {
+  const path = accepted ? '/api/progression/accept' : '/api/progression/decline';
+  return api(path, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ kind, days_since_last: daysSinceLast })
+  });
+}
+
+/** Înapoi la cum era înainte de ultima schimbare acceptată. */
+export async function revertProgression() {
+  return api('/api/progression/revert', { method: 'POST' });
+}
+
 export async function probe() {
   state.isOffline = !navigator.onLine;
 
@@ -312,8 +327,11 @@ export async function getTodayRoutine(duration = null, forceRefresh = false) {
         level: data.routine.level || currentLevel,
         cached_date: todayStr
       };
+      // Rutina se pune în cache, întrebarea nu. O propunere veche, arătată a
+      // doua zi din cache, ar întreba despre sesiuni pe care serverul le-a
+      // uitat deja -- și ar putea fi acceptată de două ori.
       localStorage.setItem(ROUTINE_KEY, JSON.stringify(routineWithDate));
-      return routineWithDate;
+      return { ...routineWithDate, __proposal: data.proposal || null, __can_revert: Boolean(data.can_revert) };
     } catch {}
   }
 
