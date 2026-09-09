@@ -165,6 +165,28 @@ export const CLIENT_EXERCISES = [
       <line x1="60" y1="50" x2="60" y2="75" stroke="currentColor" stroke-width="4" />
     </svg>`
   },
+  {
+    id: 'active_hang',
+    name: 'Atârnare activă la bară (Active Hang)',
+    category: 'mobility',
+    level: 1,
+    equipment: ['pullup_bar'],
+    default_reps: '20-30 secunde',
+    duration_s: 35,
+    description: 'Prinde bara ferm și lasă corpul să atârne, dar trage omopații în jos și depărtează umerii de urechi. Respiră calm.',
+    focus: 'Decompresie lombară, umeri și forță priză',
+    tip: 'Eliberează tensiunea din coloană și întărește umerii.',
+    swaps: ['shoulder_rolls_and_reach', 'glute_bridge_gentle'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg">
+      <line x1="20" y1="18" x2="80" y2="18" stroke="#888" stroke-width="5" stroke-linecap="round" />
+      <circle cx="50" cy="30" r="7" fill="currentColor" />
+      <line x1="38" y1="18" x2="44" y2="33" stroke="#2A7B4C" stroke-width="4" stroke-linecap="round" />
+      <line x1="62" y1="18" x2="56" y2="33" stroke="#2A7B4C" stroke-width="4" stroke-linecap="round" />
+      <line x1="50" y1="37" x2="50" y2="65" stroke="currentColor" stroke-width="5" />
+      <line x1="50" y1="65" x2="45" y2="88" stroke="currentColor" stroke-width="4" />
+      <line x1="50" y1="65" x2="55" y2="88" stroke="currentColor" stroke-width="4" />
+    </svg>`
+  },
 
   // --- Nivel 2 (Intermediar / Activ)
   {
@@ -285,6 +307,68 @@ export const CLIENT_EXERCISES = [
       <line x1="68" y1="52" x2="68" y2="78" stroke="#2A7B4C" stroke-width="4" />
       <path d="M 35,55 L 50,65 L 48,78" fill="none" stroke="#2A7B4C" stroke-width="4" />
       <line x1="35" y1="55" x2="22" y2="78" stroke="currentColor" stroke-width="4" />
+    </svg>`
+  },
+  {
+    id: 'chin_ups',
+    name: 'Tracțiuni în supinație (Chin-ups)',
+    category: 'upper',
+    level: 2,
+    equipment: ['pullup_bar'],
+    default_reps: '4-8 repetări',
+    duration_s: 50,
+    description: 'Prinde bara cu palmele orientate spre tine la lățimea umerilor. Trage pieptul spre bară până când bărbia trece peste, apoi coboară lent.',
+    focus: 'Bicepși, dorsali și forță de tragere',
+    tip: 'Priza în supinație folosește mai mult forța bicepșilor, fiind mai accesibilă.',
+    swaps: ['standard_pushups', 'negative_pullups', 'chair_dips'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg">
+      <line x1="20" y1="18" x2="80" y2="18" stroke="#888" stroke-width="5" stroke-linecap="round" />
+      <circle cx="50" cy="30" r="7" fill="currentColor" />
+      <path d="M 42,18 L 46,32 M 58,18 L 54,32" stroke="#2A7B4C" stroke-width="4" stroke-linecap="round" />
+      <line x1="50" y1="37" x2="50" y2="65" stroke="currentColor" stroke-width="5" />
+      <path d="M 50,65 L 43,86 M 50,65 L 57,86" stroke="currentColor" stroke-width="4" />
+    </svg>`
+  },
+  {
+    id: 'negative_pullups',
+    name: 'Tracțiuni negative (coborâre controlată)',
+    category: 'upper',
+    level: 2,
+    equipment: ['pullup_bar'],
+    default_reps: '5-6 repetări (3-4 secunde)',
+    duration_s: 50,
+    description: 'Sari ușor sau folosește un scaun pentru a ajunge cu bărbia deasupra barei. Coboară cât mai lent posibil (3-4 secunde) până la întinderea completă a brațelor.',
+    focus: 'Forță excentrică, spate, brațe și priză',
+    tip: 'Coborârea controlată crește cel mai rapid numărul de tracțiuni complete.',
+    swaps: ['chin_ups', 'standard_pushups', 'chair_dips'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg">
+      <line x1="20" y1="18" x2="80" y2="18" stroke="#888" stroke-width="5" stroke-linecap="round" />
+      <circle cx="50" cy="30" r="7" fill="currentColor" />
+      <path d="M 38,18 L 45,30 M 62,18 L 55,30" stroke="#2A7B4C" stroke-width="4" />
+      <line x1="50" y1="37" x2="50" y2="62" stroke="currentColor" stroke-width="5" />
+      <path d="M 50,62 L 43,84 M 50,62 L 57,84" stroke="currentColor" stroke-width="4" />
+      <path d="M 72,36 L 72,56 M 68,50 L 72,56 L 76,50" stroke="#2A7B4C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    </svg>`
+  },
+  {
+    id: 'hanging_knee_raises',
+    name: 'Ridicări de genunchi din atârnat la bară',
+    category: 'core',
+    level: 2,
+    equipment: ['pullup_bar'],
+    default_reps: '8-12 repetări',
+    duration_s: 45,
+    description: 'Din atârnat la bară cu brațele drepte și umerii fermi, ridică genunchii controlat spre piept fără balans, ține o fracțiune de secundă și coboară lent.',
+    focus: 'Abdomen inferior, flexori șold și anduranță priză',
+    tip: 'Nu te balansa; inițiază mișcarea exclusiv din abdomen.',
+    swaps: ['forearm_plank', 'mountain_climbers'],
+    svg: `<svg viewBox="0 0 100 100" class="ex-svg">
+      <line x1="20" y1="18" x2="80" y2="18" stroke="#888" stroke-width="5" stroke-linecap="round" />
+      <circle cx="50" cy="30" r="7" fill="currentColor" />
+      <line x1="38" y1="18" x2="44" y2="34" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <line x1="62" y1="18" x2="56" y2="34" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <line x1="50" y1="37" x2="50" y2="58" stroke="currentColor" stroke-width="5" />
+      <path d="M 50,58 L 38,58 L 38,72" stroke="#2A7B4C" stroke-width="5" stroke-linecap="round" fill="none" />
     </svg>`
   },
 

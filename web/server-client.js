@@ -112,7 +112,7 @@ export async function getProfile() {
 export async function updateProfile(updates) {
   state.profile = { ...state.profile, ...updates };
   localStorage.setItem(PROFILE_KEY, JSON.stringify(state.profile));
-  if (updates.level) {
+  if (updates.level || updates.equipment) {
     localStorage.removeItem(ROUTINE_KEY);
   }
 
