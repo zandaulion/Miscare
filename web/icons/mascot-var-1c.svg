@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg1c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#266D46" />
+      <stop offset="100%" stop-color="#144228" />
+    </linearGradient>
+    <linearGradient id="skin1c" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <linearGradient id="shirt1c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF3C7" />
+      <stop offset="100%" stop-color="#FDE68A" />
+    </linearGradient>
+    <filter id="shadow1c" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.25" flood-color="#052413" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect width="512" height="512" rx="118" fill="url(#bg1c)" />
+
+  <!-- Calming Zen Breathing Ripples -->
+  <circle cx="256" cy="220" r="190" fill="none" stroke="#6EE7B7" stroke-width="4" opacity="0.35" stroke-dasharray="8 12" />
+  <circle cx="256" cy="220" r="150" fill="none" stroke="#A7F3D0" stroke-width="6" opacity="0.45" />
+  <circle cx="256" cy="220" r="110" fill="#6EE7B7" opacity="0.1" />
+
+  <g filter="url(#shadow1c)">
+    <!-- Right Arm on Heart/Chest -->
+    <path d="M 305 285 C 330 295 345 330 335 365 C 325 380 300 375 285 350 C 275 330 260 325 255 335 C 248 345 255 355 265 365" 
+          fill="none" stroke="url(#skin1c)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Left Arm open in peaceful inviting balance -->
+    <path d="M 205 285 C 160 300 120 280 115 240 C 112 220 135 210 148 228 C 162 250 185 270 215 280" 
+          fill="none" stroke="url(#skin1c)" stroke-width="32" stroke-linecap="round" />
+
+    <!-- Cute Chubby Body in warm butter-yellow / cozy shirt -->
+    <path d="M 182 295 C 168 355 172 420 206 438 C 228 448 284 448 306 438 C 340 420 344 355 330 295 C 318 260 194 260 182 295 Z" 
+          fill="url(#shirt1c)" />
+
+    <!-- Cute little green heart on chest -->
+    <path d="M 256 342 C 256 342 244 330 236 330 C 228 330 222 336 222 344 C 222 355 236 364 256 376 C 276 364 290 355 290 344 C 290 336 284 330 276 330 C 268 330 256 342 256 342 Z" 
+          fill="#10B981" />
+
+    <!-- Rounded Peaceful Head -->
+    <circle cx="256" cy="208" r="62" fill="url(#skin1c)" />
+
+    <!-- Soft cute hair tuft with gentle green leaf clip -->
+    <path d="M 224 168 C 234 140 260 143 272 150 C 288 143 300 153 296 170 C 280 160 240 158 224 168 Z" fill="#334155" />
+    <circle cx="295" cy="155" r="7" fill="#10B981" />
+
+    <!-- Calm, blissful closed eyes (serene curved lines) -->
+    <path d="M 230 208 C 236 215 248 215 254 208" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M 258 208 C 264 215 276 215 282 208" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Gentle, content smile -->
+    <path d="M 244 228 Q 256 240 268 228" fill="none" stroke="#1E293B" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Soft blushing cheeks -->
+    <circle cx="226" cy="218" r="8" fill="#F87171" opacity="0.6" />
+    <circle cx="286" cy="218" r="8" fill="#F87171" opacity="0.6" />
+  </g>
+</svg>

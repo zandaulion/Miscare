@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg1d" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E663B" />
+      <stop offset="100%" stop-color="#0E381E" />
+    </linearGradient>
+    <linearGradient id="skin1d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <linearGradient id="shirt1d" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <filter id="shadow1d" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.25" flood-color="#052413" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect width="512" height="512" rx="118" fill="url(#bg1d)" />
+
+  <!-- Radiating Celebration Confetti / Sun Rays -->
+  <path d="M 256 80 L 256 110" stroke="#FDE047" stroke-width="6" stroke-linecap="round" />
+  <path d="M 180 100 L 195 125" stroke="#FDE047" stroke-width="6" stroke-linecap="round" />
+  <path d="M 332 100 L 317 125" stroke="#FDE047" stroke-width="6" stroke-linecap="round" />
+  <circle cx="110" cy="220" r="5" fill="#6EE7B7" />
+  <circle cx="402" cy="220" r="5" fill="#6EE7B7" />
+
+  <g filter="url(#shadow1d)">
+    <!-- Both Arms Wide Open in "Hooray! We did it!" / Welcoming Hug -->
+    <!-- Left Arm wide -->
+    <path d="M 205 285 C 150 270 95 240 85 195 C 80 175 105 165 120 185 C 140 210 175 250 215 280 Z" 
+          fill="url(#skin1d)" />
+    <!-- Right Arm wide -->
+    <path d="M 307 285 C 362 270 417 240 427 195 C 432 175 407 165 392 185 C 372 210 337 250 297 280 Z" 
+          fill="url(#skin1d)" />
+
+    <!-- Cute Chubby Body in crisp white tee with mint side waves -->
+    <path d="M 182 295 C 168 355 172 420 206 438 C 228 448 284 448 306 438 C 340 420 344 355 330 295 C 318 260 194 260 182 295 Z" 
+          fill="url(#shirt1d)" />
+
+    <!-- Sage green cheerful sports stripes on tee -->
+    <path d="M 215 350 C 235 340 277 340 297 350" fill="none" stroke="#10B981" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Cheerful round head tilted up joyfully -->
+    <circle cx="256" cy="205" r="62" fill="url(#skin1d)" />
+
+    <!-- Cute messy wavy hair -->
+    <path d="M 220 165 C 230 138 258 140 270 148 C 286 140 298 150 295 168 C 278 158 238 155 220 165 Z" fill="#334155" />
+
+    <!-- Cheerful curved closed happy eyes (^ _ ^) -->
+    <path d="M 230 202 C 236 190 248 190 254 202" fill="none" stroke="#1E293B" stroke-width="5" stroke-linecap="round" />
+    <path d="M 258 202 C 264 190 276 190 282 202" fill="none" stroke="#1E293B" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Big joyful open smile -->
+    <path d="M 242 224 Q 256 248 270 224 Z" fill="#F43F5E" />
+    <path d="M 242 224 Q 256 248 270 224" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Rosy blush on cheeks -->
+    <circle cx="225" cy="216" r="9" fill="#F87171" opacity="0.75" />
+    <circle cx="287" cy="216" r="9" fill="#F87171" opacity="0.75" />
+  </g>
+</svg>

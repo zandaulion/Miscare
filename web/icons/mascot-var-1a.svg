@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg1a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D8A56" />
+      <stop offset="100%" stop-color="#164E30" />
+    </linearGradient>
+    <linearGradient id="skin1a" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <linearGradient id="shirt1a" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </linearGradient>
+    <filter id="shadow1a" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.25" flood-color="#052413" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect width="512" height="512" rx="118" fill="url(#bg1a)" />
+
+  <!-- Ambient Morning Sun Halo -->
+  <circle cx="256" cy="220" r="175" fill="#A7F3D0" opacity="0.18" />
+  <circle cx="256" cy="220" r="120" fill="#FDE047" opacity="0.12" />
+
+  <g filter="url(#shadow1a)">
+    <!-- Joy Sparkles -->
+    <path d="M 125 150 Q 145 130 170 145" fill="none" stroke="#6EE7B7" stroke-width="7" stroke-linecap="round" />
+    <path d="M 387 150 Q 367 130 342 145" fill="none" stroke="#6EE7B7" stroke-width="7" stroke-linecap="round" />
+    <circle cx="120" cy="190" r="6" fill="#FDE047" />
+    <circle cx="392" cy="190" r="6" fill="#FDE047" />
+
+    <!-- Left Arm stretching up & curved inward -->
+    <path d="M 205 270 C 165 255 125 210 145 155 C 155 125 185 135 190 165 C 195 195 215 245 225 270 Z" 
+          fill="url(#skin1a)" />
+    <!-- Right Arm stretching up & curved inward -->
+    <path d="M 307 270 C 347 255 387 210 367 155 C 357 125 327 135 322 165 C 317 195 297 245 287 270 Z" 
+          fill="url(#skin1a)" />
+
+    <!-- Chubby comfortable body in relaxed white tee -->
+    <path d="M 180 295 C 165 355 170 420 205 438 C 228 448 284 448 307 438 C 342 420 347 355 332 295 C 320 260 192 260 180 295 Z" 
+          fill="url(#shirt1a)" />
+
+    <!-- Sage green accent collar -->
+    <path d="M 225 272 C 238 290 274 290 287 272" fill="none" stroke="#2D8A56" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Gentle Sprout Icon on Shirt chest -->
+    <path d="M 256 365 C 256 345 242 335 235 332 C 248 332 256 340 256 350 C 256 340 264 332 277 332 C 270 335 256 345 256 365 Z" fill="#2D8A56" opacity="0.65" />
+
+    <!-- Cheerful round head -->
+    <circle cx="256" cy="210" r="62" fill="url(#skin1a)" />
+
+    <!-- Cozy wavy hair tuft -->
+    <path d="M 222 170 C 232 142 258 145 270 152 C 286 145 298 155 294 172 C 278 162 238 160 222 170 Z" 
+          fill="#334155" />
+
+    <!-- Happy closed eyes (^ _ ^) -->
+    <path d="M 230 210 C 235 198 247 198 252 210" fill="none" stroke="#1E293B" stroke-width="5" stroke-linecap="round" />
+    <path d="M 260 210 C 265 198 277 198 282 210" fill="none" stroke="#1E293B" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Warm joyful smile -->
+    <path d="M 242 232 Q 256 250 270 232" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Rosy cheeks -->
+    <circle cx="225" cy="223" r="8.5" fill="#F87171" opacity="0.7" />
+    <circle cx="287" cy="223" r="8.5" fill="#F87171" opacity="0.7" />
+  </g>
+</svg>

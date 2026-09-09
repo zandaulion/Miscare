@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Previzualizare Iconițe — Mișcare</title>
+  <link rel="stylesheet" href="/app.css" />
+  <style>
+    body {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      font-family: var(--font-family, system-ui, sans-serif);
+      background: var(--bg-body, #0f172a);
+      color: var(--text-main, #f8fafc);
+    }
+    .preview-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .icon-card {
+      background: var(--bg-card, #1e293b);
+      border: 1px solid var(--border, #334155);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .icon-card:hover {
+      transform: translateY(-4px);
+      border-color: #22c55e;
+    }
+    .icon-frame {
+      width: 140px;
+      height: 140px;
+      border-radius: 32px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: 0 12px 24px -6px rgba(22, 101, 52, 0.4);
+    }
+    .icon-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.4;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+    .links-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .btn-link {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      background: #334155;
+      color: #f8fafc;
+      transition: background 0.15s;
+    }
+    .btn-link:hover {
+      background: #475569;
+    }
+    .btn-primary {
+      background: #15803d;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #16a34a;
+    }
+    .back-bar {
+      margin-bottom: 20px;
+    }
+    .back-bar a {
+      color: #86efac;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="back-bar">
+    <a href="/">← Înapoi la aplicația Mișcare</a>
+  </div>
+
+  <div class="preview-header">
+    <h1 style="font-size: 1.75rem; margin-bottom: 8px;">🎨 Variante de Iconiță — Mascota Mișcare</h1>
+    <p style="color: #94a3b8; font-size: 0.95rem;">
+      Toate variantele sunt fișiere vectoriale SVG native, scalabile perfect pe ecranul telefonului sau desktop.
+    </p>
+  </div>
+
+  <div class="grid-cards">
+    <!-- Card 1A -->
+    <div class="icon-card">
+      <span class="badge">Varianta 1A • Relaxare</span>
+      <div class="icon-frame">
+        <img src="/icons/mascot-var-1a.svg" alt="Mascota Întinderea Matinală" />
+      </div>
+      <div class="title">1A. Întinderea Matinală</div>
+      <div class="desc">
+        Brațe ridicate în sus, ochi închiși de relaxare (^ _ ^) și mic lăstar pe tricou. Simbolizează trezirea blândă și dezmorțirea.
+      </div>
+      <div class="links-row">
+        <a href="/icons/mascot-var-1a.svg" target="_blank" class="btn-link btn-primary">Deschide SVG direct</a>
+      </div>
+    </div>
+
+    <!-- Card 1B -->
+    <div class="icon-card">
+      <span class="badge">Varianta 1B • Prietenie</span>
+      <div class="icon-frame">
+        <img src="/icons/mascot-var-1b.svg" alt="Mascota Salutul Prietenos" />
+      </div>
+      <div class="title">1B. Salutul Prietenos</div>
+      <div class="desc">
+        Mascota face cu mâna cu entuziasm (👋) și zâmbet larg deschis în timp ce face un pas vioi. Senzația de partener de mișcare.
+      </div>
+      <div class="links-row">
+        <a href="/icons/mascot-var-1b.svg" target="_blank" class="btn-link btn-primary">Deschide SVG direct</a>
+      </div>
+    </div>
+
+    <!-- Card 1C -->
+    <div class="icon-card">
+      <span class="badge">Varianta 1C • Mindfulness</span>
+      <div class="icon-frame">
+        <img src="/icons/mascot-var-1c.svg" alt="Mascota Respirația Calmă" />
+      </div>
+      <div class="title">1C. Respirația Calmă</div>
+      <div class="desc">
+        Mâna pe inimă, respirație profundă și cercuri zen de liniște, cu un tricou galben-muștar cald. Fără stres, doar grijă de sine.
+      </div>
+      <div class="links-row">
+        <a href="/icons/mascot-var-1c.svg" target="_blank" class="btn-link btn-primary">Deschide SVG direct</a>
+      </div>
+    </div>
+
+    <!-- Card 1D -->
+    <div class="icon-card">
+      <span class="badge">Varianta 1D • Reușită</span>
+      <div class="icon-frame">
+        <img src="/icons/mascot-var-1d.svg" alt="Mascota Brațele Deschise" />
+      </div>
+      <div class="title">1D. Victoria Micilor Pași</div>
+      <div class="desc">
+        Brațe larg deschise ca o mare îmbrățișare entuziasmată și mici raze aurii de celebrare. Orice pas contează!
+      </div>
+      <div class="links-row">
+        <a href="/icons/mascot-var-1d.svg" target="_blank" class="btn-link btn-primary">Deschide SVG direct</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--bg-card, #1e293b); border: 1px solid var(--border, #334155); border-radius: 16px; padding: 20px; text-align: center; color: #94a3b8; font-size: 0.85rem;">
+    💡 <strong>Locație pe server:</strong> <code>/home/opc/projects/miscare/web/icons/mascot-var-1*.svg</code> și <code>/var/www/miscare/icons/</code>
+  </div>
+</body>
+</html>
