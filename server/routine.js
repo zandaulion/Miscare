@@ -2,6 +2,7 @@ export const EXERCISES = [
   // --- Nivel 0 (Ultra-blând, fără impact, sprijin scaun / perete)
   {
     id: 'wall_pushups',
+    pattern: 'push',
     name: 'Flotări la perete',
     category: 'upper',
     level: 0,
@@ -15,6 +16,7 @@ export const EXERCISES = [
   },
   {
     id: 'chair_sit_to_stand',
+    pattern: 'squat',
     name: 'Ridicări de pe scaun',
     category: 'lower',
     level: 0,
@@ -28,6 +30,7 @@ export const EXERCISES = [
   },
   {
     id: 'standing_calf_raises',
+    pattern: 'calf',
     name: 'Ridicări pe vârfuri (cu sprijin)',
     category: 'lower',
     level: 0,
@@ -41,6 +44,7 @@ export const EXERCISES = [
   },
   {
     id: 'shoulder_rolls_and_reach',
+    pattern: 'mobility',
     name: 'Rotiri de umeri și întinderi ușoare',
     category: 'mobility',
     level: 0,
@@ -54,6 +58,7 @@ export const EXERCISES = [
   },
   {
     id: 'glute_bridge_gentle',
+    pattern: 'hinge',
     name: 'Podul fesier (la podea sau pat tare)',
     category: 'core_glutes',
     level: 0,
@@ -67,6 +72,7 @@ export const EXERCISES = [
   },
   {
     id: 'seated_knee_lifts',
+    pattern: 'core',
     name: 'Ridicări de genunchi din așezat',
     category: 'core',
     level: 0,
@@ -80,6 +86,7 @@ export const EXERCISES = [
   },
   {
     id: 'chest_opener_stretch',
+    pattern: 'mobility',
     name: 'Deschidere de piept la perete sau ușă',
     category: 'mobility',
     level: 0,
@@ -95,6 +102,7 @@ export const EXERCISES = [
   // --- Nivel 1 (Începător de bază, progresie naturală)
   {
     id: 'incline_pushups',
+    pattern: 'push',
     name: 'Flotări înclinate (pe birou sau spătar)',
     category: 'upper',
     level: 1,
@@ -108,6 +116,7 @@ export const EXERCISES = [
   },
   {
     id: 'knee_pushups',
+    pattern: 'push',
     name: 'Flotări pe genunchi',
     category: 'upper',
     level: 1,
@@ -121,6 +130,7 @@ export const EXERCISES = [
   },
   {
     id: 'box_squat_touch',
+    pattern: 'squat',
     name: 'Genuflexiune cu atingerea scaunului',
     category: 'lower',
     level: 1,
@@ -134,6 +144,7 @@ export const EXERCISES = [
   },
   {
     id: 'wall_sit',
+    pattern: 'squat',
     name: 'Scaunul invizibil la perete (Wall Sit)',
     category: 'lower',
     level: 1,
@@ -147,6 +158,7 @@ export const EXERCISES = [
   },
   {
     id: 'prone_cobra',
+    pattern: 'mobility',
     name: 'Cobra blândă (Extensii de spate la sol)',
     category: 'mobility',
     level: 1,
@@ -160,6 +172,7 @@ export const EXERCISES = [
   },
   {
     id: 'bird_dog_gentle',
+    pattern: 'core',
     name: 'Bird-dog (stabilitate pe genunchi și palme)',
     category: 'core_glutes',
     level: 1,
@@ -173,6 +186,7 @@ export const EXERCISES = [
   },
   {
     id: 'deadbug_assisted',
+    pattern: 'core',
     name: 'Deadbug asistat',
     category: 'core',
     level: 1,
@@ -186,6 +200,7 @@ export const EXERCISES = [
   },
   {
     id: 'crunches_standard',
+    pattern: 'core',
     name: 'Abdomene clasice (Crunches la sol)',
     category: 'core',
     level: 1,
@@ -199,6 +214,7 @@ export const EXERCISES = [
   },
   {
     id: 'side_plank',
+    pattern: 'core',
     name: 'Plank lateral pe genunchi (Scândură laterală)',
     category: 'core',
     level: 1,
@@ -212,6 +228,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_seated_bicep_curl',
+    pattern: 'pull',
     name: 'Flexii pentru bicepși (cu gantere)',
     category: 'upper',
     level: 1,
@@ -225,6 +242,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_seated_shoulder_press',
+    pattern: 'push',
     name: 'Împins pentru umeri din așezat (cu gantere)',
     category: 'upper',
     level: 1,
@@ -238,6 +256,7 @@ export const EXERCISES = [
   },
   {
     id: 'band_pull_apart',
+    pattern: 'pull',
     name: 'Depărtări de bandă pentru spate',
     category: 'upper',
     level: 0,
@@ -251,6 +270,7 @@ export const EXERCISES = [
   },
   {
     id: 'band_seated_row',
+    pattern: 'pull',
     name: 'Ramat din așezat cu bandă elastică',
     category: 'upper',
     level: 1,
@@ -264,6 +284,7 @@ export const EXERCISES = [
   },
   {
     id: 'active_hang',
+    pattern: 'mobility',
     name: 'Atârnare activă la bară (Active Hang)',
     category: 'mobility',
     level: 1,
@@ -279,6 +300,7 @@ export const EXERCISES = [
   // --- Nivel 2 (Intermediar / Activ — forță solidă la sol, tempo susținut)
   {
     id: 'standard_pushups',
+    pattern: 'push',
     name: 'Flotări clasice la podea',
     category: 'upper',
     level: 2,
@@ -292,6 +314,7 @@ export const EXERCISES = [
   },
   {
     id: 'full_squats',
+    pattern: 'squat',
     name: 'Genuflexiuni libere (adânci)',
     category: 'lower',
     level: 2,
@@ -305,6 +328,7 @@ export const EXERCISES = [
   },
   {
     id: 'forearm_plank',
+    pattern: 'core',
     name: 'Scândură / Plank pe antebrațe',
     category: 'core',
     level: 2,
@@ -318,6 +342,7 @@ export const EXERCISES = [
   },
   {
     id: 'reverse_lunges',
+    pattern: 'squat',
     name: 'Fandări în spate (alternativ)',
     category: 'lower',
     level: 2,
@@ -331,6 +356,7 @@ export const EXERCISES = [
   },
   {
     id: 'chair_dips',
+    pattern: 'push',
     name: 'Flotări inverse la scaun (Dips)',
     category: 'upper',
     level: 2,
@@ -344,6 +370,7 @@ export const EXERCISES = [
   },
   {
     id: 'mountain_climbers',
+    pattern: 'core',
     name: 'Mountain climbers (tempo dinamic)',
     category: 'core',
     level: 2,
@@ -357,6 +384,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_bent_over_row',
+    pattern: 'pull',
     name: 'Ramat cu gantere din aplecat',
     category: 'upper',
     level: 2,
@@ -370,6 +398,7 @@ export const EXERCISES = [
   },
   {
     id: 'single_leg_glute_bridge',
+    pattern: 'hinge',
     name: 'Pod fesier pe un singur picior',
     category: 'core_glutes',
     level: 2,
@@ -383,6 +412,7 @@ export const EXERCISES = [
   },
   {
     id: 'chin_ups',
+    pattern: 'pull',
     name: 'Tracțiuni în supinație (Chin-ups)',
     category: 'upper',
     level: 2,
@@ -396,6 +426,7 @@ export const EXERCISES = [
   },
   {
     id: 'negative_pullups',
+    pattern: 'pull',
     name: 'Tracțiuni negative (coborâre controlată)',
     category: 'upper',
     level: 2,
@@ -409,6 +440,7 @@ export const EXERCISES = [
   },
   {
     id: 'hanging_knee_raises',
+    pattern: 'core',
     name: 'Ridicări de genunchi din atârnat la bară',
     category: 'core',
     level: 2,
@@ -424,6 +456,7 @@ export const EXERCISES = [
   // --- Gantere reglabile / grele (5-20 kg) - Forță compusă Nivel 2
   {
     id: 'dumbbell_goblet_squat',
+    pattern: 'squat',
     name: 'Genuflexiuni Goblet (cu ganteră la piept)',
     category: 'lower',
     level: 2,
@@ -437,6 +470,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_romanian_deadlift',
+    pattern: 'hinge',
     name: 'Îndreptări românești (RDL cu gantere)',
     category: 'lower',
     level: 2,
@@ -450,6 +484,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_floor_press',
+    pattern: 'push',
     name: 'Împins de la podea cu gantere',
     category: 'upper',
     level: 2,
@@ -463,6 +498,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_single_arm_row',
+    pattern: 'pull',
     name: 'Ramat cu un braț sprijinit pe scaun',
     category: 'upper',
     level: 2,
@@ -476,6 +512,7 @@ export const EXERCISES = [
   },
   {
     id: 'dumbbell_farmers_carry',
+    pattern: 'carry',
     name: 'Mersul fermierului (Farmer\'s Carry)',
     category: 'core',
     level: 2,
@@ -491,6 +528,7 @@ export const EXERCISES = [
   // --- Nivel 3 (Avansat / Intens — forță explozivă, variații compuse)
   {
     id: 'diamond_pushups',
+    pattern: 'push',
     name: 'Flotări diamant (palme apropiate)',
     category: 'upper',
     level: 3,
@@ -504,6 +542,7 @@ export const EXERCISES = [
   },
   {
     id: 'jump_squats',
+    pattern: 'squat',
     name: 'Genuflexiuni cu săritură explozivă',
     category: 'lower',
     level: 3,
@@ -517,6 +556,7 @@ export const EXERCISES = [
   },
   {
     id: 'plank_shoulder_taps',
+    pattern: 'core',
     name: 'Plank cu atingeri rapide de umeri',
     category: 'core',
     level: 3,
@@ -530,6 +570,7 @@ export const EXERCISES = [
   },
   {
     id: 'burpees_clean',
+    pattern: 'core',
     name: 'Burpees curate (fără pauză)',
     category: 'core',
     level: 3,
@@ -543,6 +584,7 @@ export const EXERCISES = [
   },
   {
     id: 'pullups_standard',
+    pattern: 'pull',
     name: 'Tracțiuni la bară',
     category: 'upper',
     level: 3,
@@ -725,21 +767,44 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     if (ex && chosen.length < exerciseCount && !chosen.includes(ex)) chosen.push(ex);
   };
 
+  /**
+   * Ce grupe conduc sesiunea de azi.
+   *
+   * O sesiune de zece minute are trei locuri, dintre care încălzirea ia unul.
+   * Dacă celelalte două ar fi mereu „sus" și „jos", aceiași mușchi ar fi
+   * încărcați în fiecare zi -- iar cine împinge trei zile la rând se trezește
+   * cu pieptul înțepenit și sare o zi. Ziua sărită e exact ce încearcă
+   * aplicația să prevină, deci grupele se rotesc și ele, nu doar exercițiile.
+   *
+   * Trei perechi, la rând: fiecare grupă apare în două sesiuni din trei în loc
+   * de trei din trei.
+   */
+  const GROUP_CYCLE = [['upper', 'lower'], ['upper', 'core'], ['lower', 'core']];
+  const groups = { upper, lower, core };
+  const leadToday = GROUP_CYCLE[((rotation % 3) + 3) % 3];
+
   // 1. Warm-up / prima mișcare: dacă suntem la nivel avansat/intermediar, warm-up e opțional dacă vrea direct forță
   if (targetLevel < 2 && mobility.length) {
     chosen.push(pickFrom(mobility));
   }
 
-  take(pickFrom(upper));   // 2. Sus
-  take(pickFrom(lower));   // 3. Jos
-  take(pickFrom(core));    // 4. Centru / final
+  for (const name of leadToday) take(pickFrom(groups[name]));
 
-  // Dacă încă nu avem suficiente exerciții, completăm din rest -- tot rotit, ca
-  // umplutura să nu fie mereu aceleași două mișcări de la începutul listei.
-  for (let i = 0; i < candidateExercises.length && chosen.length < exerciseCount; i++) {
+  // Completare, preferând tipare care nu sunt deja în sesiune: două împingeri
+  // în aceeași sesiune înseamnă aceiași mușchi de două ori, oricât de diferit
+  // s-ar numi exercițiile.
+  const fill = (allowRepeatPattern) => {
+    if (!candidateExercises.length) return;
     const start = ((rotation % candidateExercises.length) + candidateExercises.length) % candidateExercises.length;
-    take(candidateExercises[(start + i) % candidateExercises.length]);
-  }
+    for (let i = 0; i < candidateExercises.length && chosen.length < exerciseCount; i++) {
+      const ex = candidateExercises[(start + i) % candidateExercises.length];
+      const used = chosen.some((c) => c.pattern === ex.pattern);
+      if (!allowRepeatPattern && used) continue;
+      take(ex);
+    }
+  };
+  fill(false);
+  fill(true);   // dacă nu s-a strâns destul, un tipar repetat bate un loc gol
 
   // Calculăm mesaje de suport și ajustare
   let adjustmentNote = null;

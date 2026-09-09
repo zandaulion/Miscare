@@ -18,7 +18,9 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
    - Mișcările se rotesc: fiecare sesiune făcută avansează rotația cu o poziție, așa că treci prin tot catalogul potrivit ție și te întorci.
    - Rotația e legată de sesiunile făcute, nu de calendar — cine se mișcă de două ori pe săptămână vede la fel de multe mișcări, doar mai lent. O zi sărită îți dă înapoi sesiunea nefăcută, nu următoarea.
    - Forma zilei rămâne aceeași (încălzire → sus → jos → centru); se schimbă cine ocupă fiecare loc.
-   - O categorie cu o singură opțiune se completează din nivelul imediat următor — o singură mișcare nu e o alegere. Filtrele de siguranță rămân neatinse.
+   - O categorie cu o singură opțiune se completează din nivelul imediat următor — o singură mișcare nu e o alegere. Filtrele de excludere rămân neatinse.
+   - **Se rotesc și grupele, nu doar exercițiile.** Fiecare mișcare e etichetată cu tiparul ei (împinge, trage, genuflexiune, șold, centru, gambe, cărat), iar sesiunea alternează perechile: fiecare grupă apare în două sesiuni din trei, nu în toate. Motivul e practic, nu fiziologic — cine împinge trei zile la rând se trezește cu pieptul înțepenit și sare o zi, iar ziua sărită e exact ce încearcă aplicația să prevină.
+   - În aceeași sesiune nu apar două mișcări cu același tipar.
 
 3. **Program fără fricțiuni**:
    - Pe ecranul principal apare direct: **„Sesiunea de azi”** — gata de pornire cu 1 singur tap.
