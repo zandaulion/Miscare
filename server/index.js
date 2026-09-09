@@ -279,7 +279,8 @@ app.get('/api/routine/today', requireDevice, (req, res) => {
       equipment: JSON.parse(profileRow.equipment_json || '["bodyweight","chair","wall"]'),
       last_feedback: profileRow.last_feedback || (lastLog ? lastLog.feedback : null),
       rep_step: profileRow.rep_step || 0,
-      total_active_days: profileRow.total_active_days || 0
+      total_active_days: profileRow.total_active_days || 0,
+      total_sessions: profileRow.total_sessions || 0
     };
 
     const routine = generateDailyRoutine(profile, {
@@ -287,7 +288,7 @@ app.get('/api/routine/today', requireDevice, (req, res) => {
       daysSinceLastSession: daysSinceLast,
       lastFeedback: profile.last_feedback,
       repStep: profile.rep_step,
-      rotation: profile.total_active_days
+      rotation: profile.total_sessions
     });
 
     // Cel mult o întrebare, și niciodată aplicată din oficiu: sesiunea de mai
@@ -301,7 +302,25 @@ app.get('/api/routine/today', requireDevice, (req, res) => {
 
     const canRevert = Boolean(profileRow.prev_level || profileRow.prev_rep_step !== null);
 
-    res.json({ routine, profile, proposal, can_revert: canRevert, days_since_last: daysSinceLast });
+    // Ce s-a bifat deja azi. Fără asta, ecranul „azi" arată aceleași exerciții
+    // după ce au fost făcute, ca și cum nu s-ar fi întâmplat nimic.
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const doneToday = db.prepare(`
+      SELECT COUNT(*) AS sessions, COALESCE(SUM(duration_seconds), 0) AS seconds,
+             MAX(created_at) AS last_at
+      FROM workout_logs WHERE device_id = ? AND date = ?
+    `).get(req.device.id, todayStr);
+
+    res.json({
+      routine, profile, proposal,
+      can_revert: canRevert,
+      days_since_last: daysSinceLast,
+      done_today: {
+        sessions: doneToday.sessions,
+        minutes: Math.round(doneToday.seconds / 60),
+        last_at: doneToday.last_at
+      }
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -408,20 +427,28 @@ app.post('/api/routine/log', requireDevice, (req, res) => {
     // Urcarea trece prin /api/progression/accept, fiindcă e singura direcție
     // în care aplicația ar cere ceva ce nimeni nu a acceptat.
     const current = db.prepare(
-      'SELECT rep_step, easy_streak FROM user_profile WHERE device_id = ?'
-    ).get(req.device.id) || { rep_step: 0, easy_streak: 0 };
+      'SELECT rep_step, easy_streak, last_session_date FROM user_profile WHERE device_id = ?'
+    ).get(req.device.id) || { rep_step: 0, easy_streak: 0, last_session_date: null };
     const adapted = applyFeedback(current, feedback);
+
+    // O zi activă e o zi, oricâte reprize ar avea. Sesiunile se numără separat,
+    // fiindcă rotația vrea sesiuni: cine face trei reprize într-o zi vrea trei
+    // sesiuni diferite, nu aceeași de trei ori.
+    const isNewDay = current.last_session_date !== todayStr;
 
     db.prepare(`
       UPDATE user_profile SET
-        total_active_days = total_active_days + 1,
+        total_active_days = total_active_days + ?,
+        total_sessions = total_sessions + 1,
+        last_session_date = ?,
         total_minutes = total_minutes + ?,
         last_feedback = ?,
         rep_step = ?,
         easy_streak = ?,
         updated_at = ?
       WHERE device_id = ?
-    `).run(minutesAdded, feedback, adapted.rep_step, adapted.easy_streak, nowStr, req.device.id);
+    `).run(isNewDay ? 1 : 0, todayStr, minutesAdded, feedback,
+           adapted.rep_step, adapted.easy_streak, nowStr, req.device.id);
 
     res.json({
       success: true,

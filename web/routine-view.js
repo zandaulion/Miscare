@@ -165,6 +165,33 @@ let guidedState = {
  * Cele două răspunsuri arată la fel de disponibile. Un „nu" scris mai mic
  * decât un „da" e tot o împingere, doar mai politicoasă.
  */
+/**
+ * Ce s-a făcut deja azi.
+ *
+ * Apare deasupra sesiunii, nu în locul ei. Aplicația nu spune niciodată „ajunge
+ * pe ziua de azi" -- cine vrea să mai facă o repriză o face, iar a-i pune un
+ * ecran gol în față ar fi exact genul de restricție pe care aplicația asta n-o
+ * practică. Dar nici nu se poate preface că nu s-a întâmplat nimic: aceleași
+ * exerciții, neschimbate după ce au fost bifate, arată ca și cum bifarea n-ar
+ * fi contat.
+ */
+function renderDoneToday(done) {
+  if (!done || !done.sessions) return '';
+  const n = done.sessions;
+  const cate = n === 1 ? 'O sesiune' : `${n} sesiuni`;
+  const minute = done.minutes >= 1
+    ? ` — aproximativ ${done.minutes} ${done.minutes === 1 ? 'minut' : 'minute'}`
+    : '';
+  return `
+    <div class="card done-today-card">
+      <div class="done-today-icon">✅</div>
+      <div>
+        <div class="done-today-title">Ai făcut mișcare azi.</div>
+        <div class="done-today-sub">${cate} bifat${n === 1 ? 'ă' : 'e'}${minute}. Ziua e câștigată.</div>
+      </div>
+    </div>`;
+}
+
 function renderProposal(proposal) {
   if (!proposal) return '';
   return `
@@ -193,6 +220,8 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
   const currentLevel = state.profile?.level || currentRoutine.level || 'zero';
   const currentProposal = currentRoutine.__proposal || null;
+  const doneToday = currentRoutine.__done_today || null;
+  const alreadyDone = Boolean(doneToday && doneToday.sessions > 0);
   const isReentry = currentRoutine.is_reentry;
   const note = currentRoutine.adjustment_note;
 
@@ -228,13 +257,16 @@ export async function renderRoutineView(container, { forceDuration = null, routi
       </div>
     </div>
 
+    ${renderDoneToday(doneToday)}
     ${renderProposal(currentProposal)}
 
     <div class="card">
       <div class="card-header">
         <div>
-          <h2 class="card-title">${escapeHtml(currentRoutine.title)}</h2>
-          <p class="card-subtitle">Durată estimată: aprox. ${currentRoutine.target_minutes} minute</p>
+          <h2 class="card-title">${alreadyDone ? 'Încă o rundă?' : escapeHtml(currentRoutine.title)}</h2>
+          <p class="card-subtitle">${alreadyDone
+            ? 'Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.'
+            : `Durată estimată: aprox. ${currentRoutine.target_minutes} minute`}</p>
         </div>
         <button id="btn-shorten" class="btn btn-secondary btn-sm">
           ⏱️ Fă-o de 5 min
