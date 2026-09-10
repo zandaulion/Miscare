@@ -17,7 +17,7 @@ const repCount = Object.keys(ro.reps.unit).length + Object.keys(ro.reps.note).le
 let bad = 0;
 
 for (const file of fs.readdirSync(DIR).sort()) {
-  if (!file.endsWith('.json')) continue;
+  if (!file.endsWith('.json') || file === 'index.json') continue;
   const code = path.basename(file, '.json');
   const cat = JSON.parse(fs.readFileSync(new URL(file, DIR), 'utf8'));
 
