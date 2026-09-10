@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "name": "Deutsch",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "Wdh.",
+      "seconds": "Sekunden",
+      "taps": "Antippen"
+    },
+    "note": {
+      "alternating": "im Wechsel",
+      "hold": "halten",
+      "hold2s": "(2 Sek. halten)",
+      "eachSide": "je Seite",
+      "perLeg": "/ Bein",
+      "perArm": "/ Arm",
+      "lower34s": "(3–4 Sek. absenken)"
+    }
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "Wandliegestütze",
+      "description": "Stell dich eine Armlänge von der Wand entfernt hin, die Handflächen auf Brusthöhe. Beuge die Ellbogen kontrolliert und drücke dich wieder zurück.",
+      "focus": "Brust, Arme und Schultern",
+      "tip": "Halte den Körper gerade wie ein Brett; lass die Hüfte nicht nach vorne durchhängen."
+    },
+    "chair_sit_to_stand": {
+      "name": "Aufstehen vom Stuhl",
+      "description": "Setz dich auf die Kante eines stabilen Stuhls. Steh auf, indem du über die Fersen drückst, und setz dich langsam wieder hin.",
+      "focus": "Beine und Stabilität",
+      "tip": "Lass dich nicht in den Stuhl fallen; das langsame Absenken beansprucht die Muskeln am meisten."
+    },
+    "standing_calf_raises": {
+      "name": "Wadenheben (mit Stütze)",
+      "description": "Die Hände liegen leicht an einer Wand oder Stuhllehne. Hebe dich so hoch wie möglich auf die Zehenspitzen, halte kurz und senke ab.",
+      "focus": "Sprunggelenke, Waden und Durchblutung",
+      "tip": "Hervorragend, um nach langem Sitzen den Kreislauf in Schwung zu bringen."
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "Schulterkreisen und sanftes Strecken",
+      "description": "Kreise die Schultern in großen Kreisen nach hinten und atme tief. Strecke dann die Arme sanft zur Decke.",
+      "focus": "Löst Verspannungen in Nacken und Schultern",
+      "tip": "Lass die Schultern von den Ohren wegsinken."
+    },
+    "glute_bridge_gentle": {
+      "name": "Beckenheben (auf dem Boden oder festen Bett)",
+      "description": "Leg dich auf den Rücken, Knie gebeugt, Füße flach. Hebe die Hüfte, bis dein Körper von den Knien bis zu den Schultern eine gerade Linie bildet.",
+      "focus": "Gesäß und unterer Rücken",
+      "tip": "Spanne oben Bauch und Gesäß sanft an, ohne den Rücken zu überstrecken."
+    },
+    "seated_knee_lifts": {
+      "name": "Knieheben im Sitzen",
+      "description": "Sitz aufrecht auf einem Stuhl. Hebe ein Knie zur Brust, halte den Bauch angespannt, senke es ab und wiederhole mit dem anderen.",
+      "focus": "Unterer Bauch und Hüftbeweglichkeit",
+      "tip": "Lehne dich beim Anheben des Knies nicht zurück."
+    },
+    "chest_opener_stretch": {
+      "name": "Brustöffner an Wand oder Türrahmen",
+      "description": "Lege den Unterarm an einen Türrahmen oder eine Wand und drehe den Oberkörper sanft weg, bis du eine angenehme Dehnung über der Brust spürst.",
+      "focus": "Haltung und Beweglichkeit des Brustkorbs",
+      "tip": "Atme ruhig und tief; erzwinge die Dehnung nicht."
+    },
+    "incline_pushups": {
+      "name": "Liegestütze erhöht (an Tisch oder Stuhllehne)",
+      "description": "Stütze die Handflächen auf eine stabile Fläche (fester Tisch oder Sofa). Senke die Brust kontrolliert ab und drücke kräftig hoch.",
+      "focus": "Brust, Trizeps und Rumpfkraft",
+      "tip": "Je höher die Fläche, desto leichter wird es."
+    },
+    "knee_pushups": {
+      "name": "Liegestütze auf den Knien",
+      "description": "Stütze dich auf Handflächen und Knie, Oberkörper in gerader Linie. Senke die Brust zum Boden, Ellbogen im 45°-Winkel, und drücke kräftig hoch.",
+      "focus": "Brust, Schultern und Trizeps",
+      "tip": "Halte den Bauch angespannt; lass den unteren Rücken nicht durchhängen."
+    },
+    "box_squat_touch": {
+      "name": "Kniebeuge bis zur Stuhlberührung",
+      "description": "Geh in die Kniebeuge, bis die Hüfte den Stuhl gerade berührt, und steh wieder auf, ohne dich ganz hinzusetzen.",
+      "focus": "Oberschenkel, Gesäß und Kontrolle",
+      "tip": "Die Knie zeigen in dieselbe Richtung wie die Zehen."
+    },
+    "wall_sit": {
+      "name": "Wandsitz",
+      "description": "Drücke den Rücken gegen die Wand und rutsche wie auf einen Stuhl herunter, bis die Knie 90° erreichen. Halte still.",
+      "focus": "Quadrizeps und Muskelausdauer",
+      "tip": "Drücke die Fersen fest in den Boden und atme gleichmäßig weiter."
+    },
+    "prone_cobra": {
+      "name": "Sanfte Kobra (Rückenstrecken am Boden)",
+      "description": "Leg dich auf den Bauch, Arme neben dem Körper. Hebe die Brust leicht vom Boden, ziehe die Schulterblätter zurück und drehe die Daumen zur Decke.",
+      "focus": "Oberer Rücken, Rautenmuskeln und Haltung",
+      "tip": "Blicke zum Boden, damit der Nacken entspannt und ausgerichtet bleibt."
+    },
+    "bird_dog_gentle": {
+      "name": "Bird-Dog (Stabilität im Vierfüßlerstand)",
+      "description": "Im Vierfüßlerstand auf der Matte. Strecke gleichzeitig den rechten Arm nach vorn und das linke Bein nach hinten, halte zwei Sekunden und wechsle.",
+      "focus": "Stabilität des unteren Rückens, Koordination und Gesäß",
+      "tip": "Stell dir vor, du balancierst ein Glas Wasser auf dem Rücken, das nicht verschütten soll."
+    },
+    "deadbug_assisted": {
+      "name": "Deadbug mit Unterstützung",
+      "description": "Auf dem Rücken, Knie im 90-Grad-Winkel. Senke eine Ferse zum Boden und halte den Rücken fest an die Matte gedrückt, dann zurück.",
+      "focus": "Tiefe Bauchmuskulatur und Schutz des unteren Rückens",
+      "tip": "Wenn sich der Rücken vom Boden abhebt, senke die Ferse nicht ganz ab."
+    },
+    "crunches_standard": {
+      "name": "Klassische Crunches",
+      "description": "Leg dich auf den Rücken, Knie gebeugt, Füße flach. Hebe nur die Schulterblätter durch Anspannen der Bauchmuskeln, halte kurz und senke langsam ab.",
+      "focus": "Bauchmuskeln (gerader Bauchmuskel)",
+      "tip": "Zieh nicht am Nacken; halte Abstand zwischen Kinn und Brust und blicke im 45°-Winkel nach oben."
+    },
+    "side_plank": {
+      "name": "Seitstütz auf den Knien",
+      "description": "Auf der Seite, auf dem Unterarm gestützt, Ellbogen unter der Schulter, Knie 90° gebeugt. Hebe die Hüfte in eine gerade Linie von den Knien bis zu den Schultern.",
+      "focus": "Schräge Bauchmuskeln, Taille und seitliche Stabilität",
+      "tip": "Halte den Nacken gerade und lass die Hüfte nicht zum Boden sinken."
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "Bizepscurls im Sitzen (Kurzhanteln)",
+      "description": "Auf einem Stuhl sitzend, in jeder Hand eine Kurzhantel. Beuge die Arme und hebe die Gewichte zu den Schultern, dann langsam absenken.",
+      "focus": "Arme (Bizeps)",
+      "tip": "Halte die Ellbogen fest am Körper."
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "Schulterdrücken im Sitzen (Kurzhanteln)",
+      "description": "Sitz aufrecht und drücke die Kurzhanteln von Ohrhöhe zur Decke, ohne die Ellbogen durchzustrecken.",
+      "focus": "Schultern und Haltung",
+      "tip": "Mach kein Hohlkreuz."
+    },
+    "towel_pull_apart": {
+      "name": "Handtuch auseinanderziehen",
+      "description": "Im Stehen oder Sitzen ein Handtuch auf Brusthöhe straff zwischen den Händen halten. Zieh die Enden auseinander, als wolltest du es zerreißen, drücke die Schulterblätter zusammen und lass langsam nach.",
+      "focus": "Oberer Rücken, Schulterblätter und Haltung",
+      "tip": "Halte die Ellbogen fast gestreckt und die Schultern unten, weg von den Ohren."
+    },
+    "reverse_snow_angels": {
+      "name": "Umgekehrte Schneeengel",
+      "description": "Leg dich auf den Bauch, Stirn abgelegt, Arme neben dem Körper. Hebe die Arme leicht vom Boden und führe sie langsam über den Kopf und wieder zur Hüfte.",
+      "focus": "Oberer Rücken, Schultern und Haltung",
+      "tip": "Die Bewegung ist klein und langsam; wichtig ist, dass die Arme unterwegs nie den Boden berühren."
+    },
+    "doorway_row": {
+      "name": "Rudern am Türrahmen",
+      "description": "Stell dich vor einen stabilen Türrahmen, greife die Kante mit beiden Händen und setze die Zehen nahe an die Schwelle. Lehne dich mit gestreckten Armen zurück und zieh dich dann aufrecht, während du die Schulterblätter zusammendrückst.",
+      "focus": "Rücken, Bizeps und Zugkraft",
+      "tip": "Je weiter du dich zurücklehnst, desto schwerer wird es – bestimme die Schwierigkeit über den Winkel, nicht über die Wiederholungen."
+    },
+    "band_pull_apart": {
+      "name": "Band auseinanderziehen für den Rücken",
+      "description": "Halte das Band mit beiden Händen vor der Brust, Arme gestreckt. Zieh die Hände auseinander, bis das Band die Brust berührt.",
+      "focus": "Oberer Rücken, Haltung und Schultern",
+      "tip": "Hervorragend, um nach vorn gerundete Schultern zu korrigieren."
+    },
+    "band_seated_row": {
+      "name": "Rudern im Sitzen mit Widerstandsband",
+      "description": "Mit gestreckten Beinen das Band unter den Füßen durchführen. Zieh die Enden zum Bauch und drücke dabei die Schulterblätter zusammen.",
+      "focus": "Rückenmuskulatur und Haltung",
+      "tip": "Halte die Brust offen und die Schultern unten."
+    },
+    "active_hang": {
+      "name": "Aktives Hängen an der Stange",
+      "description": "Greife die Stange fest und lass den Körper hängen, aber zieh die Schulterblätter nach unten und schiebe die Schultern von den Ohren weg. Atme ruhig.",
+      "focus": "Entlastung der Wirbelsäule, Schulterstabilität und Griffkraft",
+      "tip": "Nimmt Druck von der Wirbelsäule und bereitet die Schultern auf Klimmzüge vor."
+    },
+    "standard_pushups": {
+      "name": "Vollständige Liegestütze am Boden",
+      "description": "Stütze auf Handflächen und Zehen. Senke die Brust kontrolliert bis auf 5 cm über den Boden, halte den Körper gerade wie ein Brett und drücke kräftig hoch.",
+      "focus": "Brust, Trizeps, Schultern und Rumpfkraft",
+      "tip": "Die Ellbogen bilden einen Pfeil im 45-Grad-Winkel zum Oberkörper, nicht seitlich abgespreizt."
+    },
+    "full_squats": {
+      "name": "Tiefe Kniebeugen",
+      "description": "Füße schulterbreit. Senke die Hüfte unter Kniehöhe, die Fersen bleiben am Boden und die Brust aufrecht.",
+      "focus": "Oberschenkel, Gesäß und Sprunggelenksbeweglichkeit",
+      "tip": "Atme beim Absenken ein und drücke beim Aufrichten über die Fersen."
+    },
+    "forearm_plank": {
+      "name": "Unterarmstütz",
+      "description": "Stütze auf Unterarmen und Zehen. Der Körper bildet eine feste Linie von den Fersen bis zum Scheitel. Spanne Bauch und Gesäß an.",
+      "focus": "Rumpfstabilität, Core und Schultern",
+      "tip": "Lass die Hüfte nicht absinken und schiebe sie auch nicht wie ein Zelt nach oben."
+    },
+    "reverse_lunges": {
+      "name": "Ausfallschritte rückwärts (im Wechsel)",
+      "description": "Mach einen großen Schritt nach hinten und senke das Knie bis auf 90 Grad zum Boden. Kehr zurück, indem du über die vordere Ferse drückst.",
+      "focus": "Gesäß, Oberschenkel und einbeinige Stabilität",
+      "tip": "Halte den Oberkörper aufrecht und das vordere Knie über dem Sprunggelenk."
+    },
+    "chair_dips": {
+      "name": "Dips am Stuhl",
+      "description": "Mit dem Rücken zum Stuhl die Handflächen auf die Vorderkante der Sitzfläche legen. Senke die Hüfte neben dem Stuhl ab, bis die Ellbogen 90 Grad erreichen, und drücke wieder hoch.",
+      "focus": "Trizeps, Brust und vordere Schultern",
+      "tip": "Bleib während der ganzen Bewegung nah an der Stuhlkante."
+    },
+    "mountain_climbers": {
+      "name": "Mountain Climbers",
+      "description": "Aus der Liegestützposition die Knie abwechselnd in zügigem, kontrolliertem Tempo zur Brust ziehen, ohne die Hüfte zu wippen.",
+      "focus": "Ausdauertraining, Bauch und Schultern",
+      "tip": "Halte die Schultern direkt über den Handflächen."
+    },
+    "dumbbell_bent_over_row": {
+      "name": "Vorgebeugtes Rudern mit Kurzhanteln",
+      "description": "Oberkörper im 45-Grad-Winkel nach vorn geneigt, Rücken vollkommen flach. Zieh die Kurzhanteln zur Hüfte und spanne die Rückenmuskeln kräftig an.",
+      "focus": "Rücken, Bizeps und hintere Schultern",
+      "tip": "Zieh nicht mit den Armen; beginne die Bewegung aus den Schulterblättern."
+    },
+    "single_leg_glute_bridge": {
+      "name": "Einbeiniges Beckenheben",
+      "description": "Auf dem Rücken ein Bein in die Luft strecken und über die andere Ferse drücken, um die Hüfte zu heben. Oben eine Sekunde halten.",
+      "focus": "Tiefe Gesäßmuskeln, Beinbeuger und Beckenstabilität",
+      "tip": "Halte die Hüfte waagerecht; lass keine Seite absinken."
+    },
+    "chin_ups": {
+      "name": "Klimmzüge im Untergriff",
+      "description": "Greife die Stange schulterbreit mit den Handflächen zu dir. Zieh die Brust zur Stange, bis das Kinn darüber ist, und senke langsam ab.",
+      "focus": "Bizeps, Latissimus und Zugkraft",
+      "tip": "Der Untergriff beansprucht den Bizeps stärker und macht die Übung auf mittlerem Niveau natürlich und zugänglich."
+    },
+    "negative_pullups": {
+      "name": "Negative Klimmzüge (kontrolliertes Absenken)",
+      "description": "Spring leicht ab oder nutze einen Stuhl, um das Kinn über die Stange zu bringen. Senke dich so langsam wie möglich (3–4 Sekunden), bis die Arme ganz gestreckt sind.",
+      "focus": "Exzentrische Kraft, Rücken, Arme und Griff",
+      "tip": "Kontrolliertes Absenken ist der schnellste Weg zu vollständigen Klimmzügen."
+    },
+    "hanging_knee_raises": {
+      "name": "Knieheben im Hang",
+      "description": "Im Hang an der Stange mit gestreckten Armen und festen Schultern die Knie kontrolliert zur Brust ziehen, ohne zu schwingen, kurz halten und langsam absenken.",
+      "focus": "Unterer Bauch, Hüftbeuger und Griffausdauer",
+      "tip": "Vermeide das Schwingen des Oberkörpers – die Bewegung muss allein aus dem Bauch kommen."
+    },
+    "dumbbell_goblet_squat": {
+      "name": "Goblet Squat (Kurzhantel an der Brust)",
+      "description": "Halte eine Kurzhantel senkrecht mit beiden Handflächen an der Brust. Geh tief in die Kniebeuge, Brust aufrecht und Ellbogen zwischen den Knien, und drücke kräftig über die Fersen hoch.",
+      "focus": "Quadrizeps, Gesäß, Hüftbeweglichkeit und Rumpfstabilität",
+      "tip": "Das vorn gehaltene Gewicht aktiviert den Bauch und hilft dir, tief zu gehen, ohne den Rücken zu runden."
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "Rumänisches Kreuzheben (mit Kurzhanteln)",
+      "description": "Füße hüftbreit, Kurzhanteln vorn. Schiebe die Hüfte nach hinten, die Knie nur leicht gebeugt, und senke die Kurzhanteln mit vollkommen flachem Rücken unter die Knie, dann beim Aufrichten das Gesäß anspannen.",
+      "focus": "Beinbeuger, Gesäß und hintere Kette",
+      "tip": "Die Bewegung besteht darin, das Gesäß zur Wand hinter dir zu schieben, nicht darin, sich in der Taille zu beugen."
+    },
+    "dumbbell_floor_press": {
+      "name": "Bankdrücken am Boden mit Kurzhanteln",
+      "description": "Leg dich auf den Rücken, Knie gebeugt. Drücke die Kurzhanteln über der Brust hoch, bis die Arme gestreckt sind, und senke langsam ab, bis der Trizeps leicht den Boden berührt.",
+      "focus": "Brust, Trizeps und Stabilität des Schultergelenks",
+      "tip": "Der Boden begrenzt den Weg der Ellbogen und schützt die Schultergelenke auch bei schweren Gewichten."
+    },
+    "dumbbell_single_arm_row": {
+      "name": "Einarmiges Rudern am Stuhl abgestützt",
+      "description": "Stütze ein Knie und eine Hand auf den Stuhl, der Rücken waagerecht. Zieh mit der anderen Hand die schwere Kurzhantel zur Hüfte, spanne das Schulterblatt an, halte kurz und senke kontrolliert ab.",
+      "focus": "Latissimus, Rautenmuskeln, Bizeps und einseitige Rückenkraft",
+      "tip": "Dreh den Oberkörper nicht; halte die Schultern parallel zum Boden."
+    },
+    "dumbbell_farmers_carry": {
+      "name": "Farmer's Walk",
+      "description": "Halte in jeder Hand eine schwere Kurzhantel an der Seite. Halte die Schultern zurückgezogen und die Brust aufrecht und geh langsam und bewusst (oder halte die Haltung einfach im Stand).",
+      "focus": "Griff, Unterarme, Trapezmuskeln, Bauch und Haltungsstabilität",
+      "tip": "Bleib vollkommen aufrecht; lass dich von den Gewichten nicht nach vorn oder zur Seite ziehen."
+    },
+    "diamond_pushups": {
+      "name": "Diamant-Liegestütze",
+      "description": "Setze die Handflächen unter der Brust auf den Boden, Daumen und Zeigefinger berühren sich zu einer Raute. Senke ab und drücke explosiv hoch.",
+      "focus": "Intensiver Trizeps und innere Brust",
+      "tip": "Halte die Ellbogen nah am Oberkörper."
+    },
+    "jump_squats": {
+      "name": "Explosive Sprungkniebeugen",
+      "description": "Geh tief in die Kniebeuge und explodiere in einen senkrechten Sprung. Lande weich auf den Fußballen und geh fließend in die nächste Kniebeuge über.",
+      "focus": "Explosive Beinkraft und Herz-Kreislauf-Ausdauer",
+      "tip": "Die Landung sollte lautlos und federnd sein, um die Gelenke zu schonen."
+    },
+    "plank_shoulder_taps": {
+      "name": "Unterarmstütz mit Schulterberührung",
+      "description": "Aus der Liegestützposition die rechte Hand heben und die linke Schulter antippen, ohne die Hüfte zu bewegen oder zu wippen. Im Wechsel wiederholen.",
+      "focus": "Anti-Rotation, Schulterstabilität und Bauch",
+      "tip": "Stell die Füße etwas breiter für mehr Stabilität."
+    },
+    "burpees_clean": {
+      "name": "Saubere Burpees (ohne Pause)",
+      "description": "Aus dem Stand in die Hocke gehen, die Füße nach hinten in die Liegestützposition werfen, einen Liegestütz machen, zurückkommen und hochspringen.",
+      "focus": "Anaerobe Kapazität und Ganzkörperkraft",
+      "tip": "Finde einen gleichmäßigen Rhythmus und halte ihn."
+    },
+    "pullups_standard": {
+      "name": "Klimmzüge",
+      "description": "Greife die Stange etwas weiter als schulterbreit mit den Handflächen nach vorn. Zieh dich hoch, bis das Kinn über der Stange ist.",
+      "focus": "Latissimus, Bizeps und Zugkraft",
+      "tip": "Beginne die Bewegung, indem du die Ellbogen nach unten und hinten ziehst."
+    }
+  },
+  "ui": {
+    "+15s Pauză": "+15 Sek. Pause",
+    "⏱️ Fă-o de 5 min": "⏱️ Auf 5 Min. setzen",
+    "⏸️ Pauză": "⏸️ Pause",
+    "▶️ Continuă": "▶️ Weiter",
+    "▶️ Exersează mișcarea (45 secunde)": "▶️ Bewegung üben (45 Sekunden)",
+    "▶️ Începe acum": "▶️ Jetzt starten",
+    "✅ Am făcut deja! Bifează rapid": "✅ Schon erledigt! Abhaken",
+    "✅ Preferințe salvate!": "✅ Einstellungen gespeichert!",
+    "✓ Disponibil": "✓ Verfügbar",
+    "✕ Ieși": "✕ Beenden",
+    "✨ Compatibile cu echipamentul tău": "✨ An deine Ausrüstung anpassen",
+    "✨ Doar echipamentul meu": "✨ Nur meine Ausrüstung",
+    "➡️ Serie terminată": "➡️ Satz erledigt",
+    "🎉 Finalizează antrenamentul": "🎉 Training abschließen",
+    "💪 Partea de sus": "💪 Oberkörper",
+    "💾 Salvează preferințele": "💾 Einstellungen speichern",
+    "💾 Salvează selecția": "💾 Auswahl speichern",
+    "📖 Cum se execută corect:": "📖 So machst du es richtig:",
+    "🔄 Mișcări înrudite / Alternative:": "🔄 Verwandte Übungen / Alternativen:",
+    "🔄 Reset": "🔄 Zurücksetzen",
+    "🔄 Schimbă cu altul": "🔄 Gegen eine andere tauschen",
+    "🦵 Picioare": "🦵 Beine",
+    "🧘 Mobilitate": "🧘 Beweglichkeit",
+    "🧘 Trage-ți sufletul & bea o gură de apă": "🧘 Durchatmen und einen Schluck Wasser trinken",
+    "🧹 Curăță memoria cache (/bust)": "🧹 Cache leeren (/bust)",
+    "🛡️ Trunchi / Core": "🛡️ Rumpf / Core",
+    "1 - 5 kg (brațe & mobilitate)": "1–5 kg (Arme & Beweglichkeit)",
+    "1 Serie": "1 Satz",
+    "1) Adaugă pagina pe ecranul principal:": "1) Seite zum Startbildschirm hinzufügen:",
+    "2 Serii": "2 Sätze",
+    "2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:": "2) Öffne die App vom Startbildschirm und tippe erneut auf den Link oder nutze den Code:",
+    "3 Serii": "3 Sätze",
+    "5 - 20 kg (forță & picioare)": "5–20 kg (Kraft & Beine)",
+    "Acces": "Zugang",
+    "Acces & Dispozitiv": "Zugang & Gerät",
+    "Activează acum": "Jetzt aktivieren",
+    "Activează cod": "Mit Code aktivieren",
+    "Activează cu cod de invitație": "Mit Einladungscode aktivieren",
+    "Activează direct în browser": "Direkt im Browser aktivieren",
+    "Activează sunetul": "Ton einschalten",
+    "Adaugă Mișcare pe ecranul principal": "Mișcare zum Startbildschirm hinzufügen",
+    "Add to Home Screen": "Zum Startbildschirm hinzufügen",
+    "Afișez": "Angezeigt",
+    "Ai făcut mișcare azi.": "Du hast dich heute bewegt.",
+    "Ajustat automat mai blând pentru data viitoare.": "Für das nächste Mal automatisch erleichtert.",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "Wir haben die heutigen Bewegungen sanfter und bequemer gemacht.",
+    "Am înțeles, o voi instala": "Verstanden, ich installiere sie",
+    "Android (Chrome):": "Android (Chrome):",
+    "Android:": "Android:",
+    "Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.": "Tippe auf die Teilen-Schaltfläche (Quadrat mit Pfeil nach oben) → „Zum Home-Bildschirm\".",
+    "Aplicație activată cu succes!": "App erfolgreich aktiviert!",
+    "Aproximativ": "Ungefähr",
+    "Avansat": "Fortgeschritten",
+    "Azi": "Heute",
+    "Bandă elastică": "Widerstandsband",
+    "Bară de tracțiuni": "Klimmzugstange",
+    "Bară tracțiuni": "Klimmzugstange",
+    "Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.": "Hake ab, was du zu Hause hast. Die Routine passt sich sofort an.",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "Willkommen zurück! Ohne Eile und ohne schlechtes Gewissen – dein Körper findet seinen Rhythmus nach und nach wieder.",
+    "Bravo! Ai făcut mișcare azi.": "Gut gemacht! Du hast dich heute bewegt.",
+    "Bravo! Mișcare finalizată cu succes.": "Gut gemacht! Einheit abgeschlossen.",
+    "Butonul Share →": "Die Teilen-Schaltfläche →",
+    "Cam greu": "Etwas schwer",
+    "Caută după nume, mușchi sau echipament...": "Nach Name, Muskel oder Ausrüstung suchen…",
+    "Câte serii vrei să faci azi?": "Wie viele Sätze heute?",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "Ein paar Wiederholungen mehr, kein Sprung. Du kannst jederzeit zurück.",
+    "Compendiu de exerciții": "Übungssammlung",
+    "Compendiu de Exerciții": "Übungssammlung",
+    "Comută sunetul": "Ton umschalten",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "Du baust Tag für Tag Kraft und Beweglichkeit auf. Weiter so!",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "Grundfitness aufbauen: Bodenübungen, leichte Kurzhanteln und Widerstandsbänder.",
+    "Continui de unde am rămas": "Weitermachen, wo ich aufgehört habe",
+    "Crește repetări": "Wiederholungen erhöhen",
+    "Cum adaugi pe ecranul principal:": "So fügst du sie zum Startbildschirm hinzu:",
+    "Cum s-a simțit sesiunea?": "Wie hat sich die Einheit angefühlt?",
+    "Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:": "Bei Anzeigeproblemen oder wenn du den Cache leeren willst:",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "Letztes Mal war leicht und angenehm. Halten wir das gute Tempo!",
+    "De la 0": "Bei null",
+    "De la 0, în ritmul tău": "Bei null anfangen, in deinem Tempo",
+    "dedicate stării tale de bine.": "für dein Wohlbefinden investiert.",
+    "Dezactivează sunetul": "Ton ausschalten",
+    "Dispozitiv activat": "Gerät aktiviert",
+    "Doar greutatea corpului": "Nur Körpergewicht",
+    "Doar o parte": "Nur teilweise",
+    "Durată estimată: aprox. {n} minute": "Geschätzt: etwa {n} Minuten",
+    "Durată țintă zilnică:": "Tägliche Zieldauer:",
+    "E bine așa": "So ist es gut",
+    "Echipament": "Ausrüstung",
+    "Echipamentul tău": "Deine Ausrüstung",
+    "Ecranul va trece automat la seria următoare când timpul expiră.": "Der Bildschirm wechselt automatisch zum nächsten Satz, wenn die Zeit abläuft.",
+    "exerciții": "Übungen",
+    "Exerciții": "Übungen",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "Zusammengesetzte Kraft und Power: Diamant-Liegestütze, Sprungkniebeugen, freie Klimmzüge.",
+    "Exersează mișcarea": "Bewegung üben",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "Ohne Gelenkbelastung, geeignet für einen sitzenden Start oder eine sanfte Rückkehr (Stuhl / Wand).",
+    "Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.": "Keine Noten und kein Urteil – du hilfst uns nur, die nächste Intensität festzulegen.",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "Glückwunsch zur heutigen Bewegung! Jeder Schritt zählt.",
+    "Felicitări! Ai terminat antrenamentul!": "Glückwunsch! Du hast das Training beendet!",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "Jeder Schritt zählt. Ohne Eile, ohne Vergleiche.",
+    "Filosofia „No Shaming”": "Der Gedanke „kein schlechtes Gewissen\"",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Nur Übungen zeigen, die du mit deiner aktuellen Ausrüstung machen kannst",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Vollständige Liegestütze am Boden, verstellbare Kurzhanteln (5–20 kg), zusammengesetzte Übungen und eine Klimmzugstange.",
+    "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Empfindliche Knie (keine tiefen Kniebeugen, kein Springen)",
+    "Greutate cu mâner": "Kettlebell",
+    "Hai puțin mai mult": "Legen wir ein wenig zu",
+    "ID:": "ID:",
+    "Instalare & Service Worker": "Installation & Service Worker",
+    "Instalat pe ecranul principal": "Auf dem Startbildschirm installiert",
+    "Instalează": "Installieren",
+    "Intens (15 min)": "Intensiv (15 Min.)",
+    "Intensitate maximă, control total. Dă tot ce ai!": "Maximale Intensität, volle Kontrolle. Gib alles!",
+    "Intermediar": "Mittelstufe",
+    "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "Gib den Code aus der Verwaltungskonsole ein (Format: ABCD-EFGH-JKLM).",
+    "iPhone (Safari):": "iPhone (Safari):",
+    "iPhone:": "iPhone:",
+    "Istoric recent": "Letzte Einheiten",
+    "Încă nu ai înregistrat nicio sesiune.": "Du hast noch keine Einheit aufgezeichnet.",
+    "Încă o rundă?": "Noch eine Runde?",
+    "Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.": "Lockere die Filter oder entferne den Haken bei „Nur meine Ausrüstung\".",
+    "Începător": "Anfänger",
+    "Începe azi cu o sesiune scurtă de 5 sau 10 minute!": "Fang heute mit einer kurzen Einheit von 5 oder 10 Minuten an!",
+    "Începem.": "Fangen wir an.",
+    "Încheieturi sensibile (fără sprijin direct pe palme pe podea)": "Empfindliche Handgelenke (kein Gewicht direkt auf den Handflächen am Boden)",
+    "Închide": "Schließen",
+    "Întotdeauna disponibilă": "Immer verfügbar",
+    "Jurnal și Progres": "Journal und Fortschritt",
+    "Limbă": "Sprache",
+    "Masaj și relaxare": "Massage und Erholung",
+    "Meniul ⋮ →": "Das Menü ⋮ →",
+    "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "Das Menü ⋮ → „App installieren\" oder „Zum Startbildschirm hinzufügen\".",
+    "Menținem același ritm prietenos și data viitoare.": "Wir behalten beim nächsten Mal dasselbe angenehme Tempo bei.",
+    "Minute câștigate": "Gewonnene Minuten",
+    "Mișcare": "Mișcare",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — Bewegung bei null anfangen: eine reibungslose Routine, ohne schlechtes Gewissen, immer anpassend",
+    "Mișcare de zi cu zi": "Alltagsbewegung",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "Heutige Bewegung — Stufe 0 (Bei null)",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "Heutige Bewegung — Stufe 1 (Anfänger)",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "Heutige Bewegung — Stufe 2 (Mittelstufe)",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "Heutige Bewegung — Stufe 3 (Fortgeschritten)",
+    "Montată la ușă/perete": "An Tür oder Wand montiert",
+    "Mușchi principali": "Hauptmuskeln",
+    "Navigare principală": "Hauptnavigation",
+    "Necesită echipament suplimentar": "Benötigt zusätzliche Ausrüstung",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "Kein Problem! Beim nächsten Mal reduzieren wir die Wiederholungen automatisch.",
+    "Niciun exercițiu găsit": "Keine Übung gefunden",
+    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "Stufe 0 — Von absolut null (Stuhl, Wand, sanfte Beweglichkeit)",
+    "Nivel 1 — Începător": "Stufe 1 — Anfänger",
+    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "Stufe 1 — Bequemer Anfänger (Liegestütze erhöht, Bodenübungen, Kurzhanteln)",
+    "Nivel 1 (Începător)": "Stufe 1 (Anfänger)",
+    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "Stufe 2 — Mittelstufe / aktiv (Liegestütze am Boden, tiefe Kniebeugen, Unterarmstütz, Ausfallschritte)",
+    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "Stufe 3 — Fortgeschritten / intensiv (Diamant-Liegestütze, Sprungkniebeugen, Burpees, Klimmzüge)",
+    "Nivel de intensitate:": "Intensitätsstufe:",
+    "Nivelul tău actual:": "Deine aktuelle Stufe:",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "Wir haben keine sichere Bewegung für die von dir markierten Bereiche gefunden.",
+    "Nu am putut șterge sesiunea.": "Wir konnten die Einheit nicht löschen.",
+    "nu există o schimbare de anulat": "es gibt keine Änderung zum Rückgängigmachen",
+    "Nume:": "Name:",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Übungsnamen und Anweisungen ändern sich zusammen mit der Oberfläche.",
+    "Odihnă & Respirație": "Ruhe & Atem",
+    "Optim (10 min)": "Ausgewogen (10 Min.)",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Optional, wenn dir danach ist. Es geht nichts verloren, wenn du hier aufhörst.",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Was du auch wählst, nichts von dem, was du aufgebaut hast, geht verloren.",
+    "Parțial": "Teilweise",
+    "Pauză de odihnă": "Pause",
+    "Păstrează doar corpul, scaunul și peretele": "Nur Körpergewicht, einen Stuhl und eine Wand behalten",
+    "Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.": "Für das beste Erlebnis und zuverlässige Benachrichtigungen installiere die App vor der Aktivierung.",
+    "Pentru flotări și postură": "Für Liegestütze und Haltung",
+    "Pentru sprijin și așezare": "Zum Abstützen und Sitzen",
+    "Pernă": "Kissen",
+    "Pernă moale": "Weiches Kissen",
+    "Pregătește-te pentru": "Mach dich bereit für",
+    "Pregătește-te!": "Mach dich bereit!",
+    "Pregătim mișcarea de azi...": "Die heutige Bewegung wird vorbereitet…",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "Bereit für ein paar erfrischende Minuten Bewegung?",
+    "Pregătit pentru o sesiune activă și energică?": "Bereit für eine aktive, energiegeladene Einheit?",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "Bereit für eine aktive, energiegeladene Einheit? Solide Kraft am Boden!",
+    "Progres": "Fortschritt",
+    "propunerea nu mai este valabilă": "dieser Vorschlag gilt nicht mehr",
+    "Protecție genunchi": "Knieschutz",
+    "Rapid (5 min)": "Kurz (5 Min.)",
+    "Redenumește dispozitivul:": "Dieses Gerät umbenennen:",
+    "Reglaje & Punct de pornire": "Einstellungen & Ausgangspunkt",
+    "Reluăm mai ușor": "Sanft wieder anfangen",
+    "repetări": "Wdh.",
+    "Repetări realizate în această serie:": "In diesem Satz geschaffte Wiederholungen:",
+    "Resetează filtrele": "Filter zurücksetzen",
+    "Rolă de spumă": "Faszienrolle",
+    "Rolă spumă": "Faszienrolle",
+    "Rulare în browser": "Läuft im Browser",
+    "Saltea / Covoraș": "Matte",
+    "Salvează": "Speichern",
+    "Salvează în jurnal": "Ins Journal speichern",
+    "Scade repetări": "Wiederholungen verringern",
+    "Se încarcă jurnalul...": "Journal wird geladen…",
+    "Se salvează...": "Wird gespeichert…",
+    "serie finalizată": "Satz abgeschlossen",
+    "Sesiune blândă de reacomodare": "Sanfte Wiedereinstiegs-Einheit",
+    "Sesiune calibrată pentru reacomodare ușoară.": "Einheit für eine sanfte Rückkehr angepasst.",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "Eine kürzere Einheit: mehr haben wir für die von dir markierten Bereiche nicht sicher gefunden.",
+    "Setări și Dispozitiv": "Einstellungen und Gerät",
+    "Sfatul antrenorului:": "Tipp vom Coach:",
+    "Spate sensibil (exclusiv posturi sigure de protecție lombară)": "Empfindlicher Rücken (nur Positionen, die den unteren Rücken schonen)",
+    "Stare PWA:": "PWA-Status:",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "Super! Wir können beim nächsten Mal in aller Ruhe eine Wiederholung mehr machen.",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "Schon 2–3 Minuten zählen enorm. Du hast einen ausgezeichneten Schritt gemacht!",
+    "Șterge sesiunea": "Einheit löschen",
+    "Textilă sau cauciuc": "Stoff oder Gummi",
+    "Timp per serie": "Zeit pro Satz",
+    "Toate": "Alle",
+    "Tocmai bine": "Genau richtig",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "Deine letzten beiden Einheiten fielen dir leicht. Sollen wir nächstes Mal ein wenig zulegen?",
+    "Urmează:": "Als Nächstes:",
+    "ușor": "leicht",
+    "Ușor": "Leicht",
+    "Ușor & revigorant": "Leicht & erfrischend",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "Markiere sie in den Einstellungen – oder frag eine Fachperson, was für dich sicher ist.",
+    "Volum adaptat automat după ultima sesiune.": "Umfang nach deiner letzten Einheit automatisch angepasst.",
+    "Volum uzual": "Üblicher Umfang",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Einheit beenden? Was du bisher geschafft hast, zählt trotzdem!",
+    "Zile cu mișcare": "Tage mit Bewegung",
+    "Zone sensibile / Protecție:": "Empfindliche Bereiche / Schutz:",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "Die von dir markierten Bereiche schließen jede Bewegung im Katalog aus.",
+    "Conectat": "Verbunden",
+    "Mișcare a fost actualizată la ultima versiune": "Mișcare wurde auf die neueste Version aktualisiert"
+  }
+}

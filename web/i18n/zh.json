@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "name": "中文",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "次",
+      "seconds": "秒",
+      "taps": "次点击"
+    },
+    "note": {
+      "alternating": "交替",
+      "hold": "保持",
+      "hold2s": "（保持2秒）",
+      "eachSide": "每侧",
+      "perLeg": "／腿",
+      "perArm": "／臂",
+      "lower34s": "（用3-4秒下放）"
+    }
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "靠墙俯卧撑",
+      "description": "站在距墙一臂远的地方，手掌与胸同高。有控制地屈肘，然后推回。",
+      "focus": "胸部、手臂和肩部",
+      "tip": "身体像木板一样保持挺直，不要让髋部向前塌陷。"
+    },
+    "chair_sit_to_stand": {
+      "name": "坐立起身",
+      "description": "坐在稳固椅子的边缘。用脚跟发力站起来，再慢慢坐回去。",
+      "focus": "腿部和稳定性",
+      "tip": "不要跌坐进椅子里；缓慢下放才是对肌肉刺激最大的部分。"
+    },
+    "standing_calf_raises": {
+      "name": "提踵（有支撑）",
+      "description": "双手轻扶墙面或椅背，尽量高地踮起脚尖，保持一秒后落下。",
+      "focus": "踝关节、小腿和血液循环",
+      "tip": "久坐之后促进血液循环的极佳动作。"
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "绕肩与轻柔伸展",
+      "description": "深呼吸，用肩部向后画大圈。然后轻轻把手臂伸向天花板。",
+      "focus": "放松颈肩的紧张",
+      "tip": "让肩膀远离耳朵，自然下沉。"
+    },
+    "glute_bridge_gentle": {
+      "name": "臀桥（在地板或硬床上）",
+      "description": "仰卧，屈膝，双脚踩实。抬起髋部，直到身体从膝盖到肩膀成一条直线。",
+      "focus": "臀部和下背部",
+      "tip": "在最高点轻轻收紧腹部和臀部，不要过度反弓腰背。"
+    },
+    "seated_knee_lifts": {
+      "name": "坐姿提膝",
+      "description": "在椅子上坐直。保持腹部收紧，将一侧膝盖抬向胸口，放下后换另一侧。",
+      "focus": "下腹和髋关节活动度",
+      "tip": "抬膝时不要向后仰。"
+    },
+    "chest_opener_stretch": {
+      "name": "靠墙或门框开胸",
+      "description": "把前臂贴在门框或墙上，轻轻向另一侧转动躯干，直到胸前有舒适的拉伸感。",
+      "focus": "体态和胸廓活动度",
+      "tip": "平静地深呼吸；不要强行拉伸。"
+    },
+    "incline_pushups": {
+      "name": "斜面俯卧撑（撑在桌面或椅背上）",
+      "description": "双手撑在稳固的表面上（结实的桌子或沙发）。有控制地降低胸部，然后有力地推起。",
+      "focus": "胸部、肱三头肌和躯干力量",
+      "tip": "支撑面越高，动作越轻松。"
+    },
+    "knee_pushups": {
+      "name": "跪姿俯卧撑",
+      "description": "用手掌和膝盖支撑，躯干成一条直线。肘部呈45°，将胸部降向地面，然后有力地推起。",
+      "focus": "胸部、肩部和肱三头肌",
+      "tip": "保持腹部收紧，不要让下背部塌陷。"
+    },
+    "box_squat_touch": {
+      "name": "触椅深蹲",
+      "description": "下蹲到髋部刚好碰到椅子，然后不完全坐下就直接站起。",
+      "focus": "大腿、臀部和控制力",
+      "tip": "膝盖的方向与脚尖一致。"
+    },
+    "wall_sit": {
+      "name": "靠墙静蹲",
+      "description": "背部贴墙，像坐下一样向下滑，直到膝盖成90°。保持不动。",
+      "focus": "股四头肌和肌肉耐力",
+      "tip": "脚跟用力压向地面，保持均匀呼吸。"
+    },
+    "prone_cobra": {
+      "name": "轻柔眼镜蛇（地面背部伸展）",
+      "description": "俯卧，双臂放在身体两侧。将胸部略微抬离地面，肩胛骨向后收，拇指转向天花板。",
+      "focus": "上背部、菱形肌和体态",
+      "tip": "看向地面，让颈部保持放松并对齐。"
+    },
+    "bird_dog_gentle": {
+      "name": "鸟狗式（四点支撑稳定性）",
+      "description": "在垫子上四点支撑。同时向前伸出右臂、向后伸出左腿，保持两秒后交换。",
+      "focus": "下背部稳定性、协调性和臀部",
+      "tip": "想象背上放着一杯不想洒出来的水。"
+    },
+    "deadbug_assisted": {
+      "name": "辅助死虫式",
+      "description": "仰卧，膝盖呈90度。保持背部压实垫子，将一侧脚跟降向地面，再返回。",
+      "focus": "深层腹肌和下背部保护",
+      "tip": "如果感到背部离开地面，就不要把脚跟放到底。"
+    },
+    "crunches_standard": {
+      "name": "标准卷腹",
+      "description": "仰卧，屈膝，双脚踩实。收缩腹肌，只抬起肩胛骨，保持一秒后慢慢放下。",
+      "focus": "腹肌（腹直肌）",
+      "tip": "不要拉扯脖子；下巴远离胸口，视线朝上45°。"
+    },
+    "side_plank": {
+      "name": "跪姿侧平板",
+      "description": "侧卧，前臂支撑，肘在肩正下方，膝盖屈曲90°。抬起髋部，让膝盖到肩膀成一条直线。",
+      "focus": "腹斜肌、腰线和侧向稳定性",
+      "tip": "颈部保持挺直，不要让髋部掉向地面。"
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "坐姿二头弯举（哑铃）",
+      "description": "坐在椅子上，双手各握一只哑铃。屈臂将重量举向肩膀，然后慢慢放下。",
+      "focus": "手臂（肱二头肌）",
+      "tip": "肘部固定在体侧。"
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "坐姿肩推（哑铃）",
+      "description": "坐直，将哑铃从耳朵高度推向天花板，不要猛然锁死肘关节。",
+      "focus": "肩部和体态",
+      "tip": "不要反弓腰背。"
+    },
+    "towel_pull_apart": {
+      "name": "毛巾外拉",
+      "description": "站姿或坐姿，将毛巾在胸前绷紧握于两手之间。像要撕开一样向两侧拉开，同时夹紧肩胛骨，然后慢慢放松。",
+      "focus": "上背部、肩胛骨和体态",
+      "tip": "肘部近乎伸直，肩膀下沉，远离耳朵。"
+    },
+    "reverse_snow_angels": {
+      "name": "反向雪天使",
+      "description": "俯卧，额头触地，双臂放在身体两侧。将手臂略微抬离地面，慢慢经过头顶，再回到髋部。",
+      "focus": "上背部、肩部和体态",
+      "tip": "动作幅度小而缓慢；关键是手臂全程都不要碰到地面。"
+    },
+    "doorway_row": {
+      "name": "门框划船",
+      "description": "面对结实的门框站立，双手握住框边，脚尖靠近门槛。伸直手臂向后倾，然后夹紧肩胛骨把自己拉回直立。",
+      "focus": "背部、肱二头肌和拉力",
+      "tip": "身体后倾越多越难——用角度而不是次数来调节难度。"
+    },
+    "band_pull_apart": {
+      "name": "背部弹力带外拉",
+      "description": "双手在胸前握住弹力带，手臂伸直。向两侧拉开双手，直到弹力带触到胸口。",
+      "focus": "上背部、体态和肩部",
+      "tip": "矫正含胸圆肩的极佳动作。"
+    },
+    "band_seated_row": {
+      "name": "坐姿弹力带划船",
+      "description": "双腿伸直，将弹力带从脚底绕过。夹紧肩胛骨，把两端拉向腹部。",
+      "focus": "背部肌肉和体态",
+      "tip": "保持挺胸、沉肩。"
+    },
+    "active_hang": {
+      "name": "单杠主动悬垂",
+      "description": "牢牢握住单杠让身体悬垂，但要下沉肩胛骨，让肩膀远离耳朵。平静呼吸。",
+      "focus": "脊柱减压、肩部稳定性和握力",
+      "tip": "减轻脊柱压力，为引体向上做好肩部准备。"
+    },
+    "standard_pushups": {
+      "name": "标准地面俯卧撑",
+      "description": "用手掌和脚尖支撑。保持身体像木板一样挺直，有控制地把胸部降到离地5厘米，然后有力地推起。",
+      "focus": "胸部、肱三头肌、肩部和躯干力量",
+      "tip": "肘部与躯干成45度的箭头形，而不是完全向两侧张开。"
+    },
+    "full_squats": {
+      "name": "全蹲",
+      "description": "双脚与肩同宽。脚跟踩实、挺起胸膛，把髋部降到膝盖以下。",
+      "focus": "大腿、臀部和踝关节活动度",
+      "tip": "下蹲时吸气，起身时用脚跟发力。"
+    },
+    "forearm_plank": {
+      "name": "前臂平板支撑",
+      "description": "用前臂和脚尖支撑。身体从脚跟到头顶成一条紧绷的直线。收紧腹部和臀部。",
+      "focus": "躯干稳定性、核心和肩部",
+      "tip": "不要让髋部下沉，也不要像帐篷一样把它顶高。"
+    },
+    "reverse_lunges": {
+      "name": "后撤箭步蹲（交替）",
+      "description": "向后迈一大步，把膝盖降向地面到90度。用前脚跟发力返回。",
+      "focus": "臀部、大腿和单腿稳定性",
+      "tip": "躯干保持直立，前侧膝盖与脚踝对齐。"
+    },
+    "chair_dips": {
+      "name": "椅上臂屈伸",
+      "description": "背对椅子，双手撑在座面前缘。屈肘到90度，把髋部沿着椅子降下，然后推起。",
+      "focus": "肱三头肌、胸部和三角肌前束",
+      "tip": "整个动作过程中都要靠近椅子边缘。"
+    },
+    "mountain_climbers": {
+      "name": "登山跑",
+      "description": "从俯卧撑姿势开始，以快速而受控的节奏交替把膝盖收向胸口，髋部不要左右摇晃。",
+      "focus": "心肺能力、腹肌和肩部",
+      "tip": "肩膀始终位于手掌正上方。"
+    },
+    "dumbbell_bent_over_row": {
+      "name": "俯身哑铃划船",
+      "description": "躯干前倾45度，背部完全平直。把哑铃拉向髋部，用力收缩背部肌肉。",
+      "focus": "背部、肱二头肌和三角肌后束",
+      "tip": "不要用手臂拉；从肩胛骨启动动作。"
+    },
+    "single_leg_glute_bridge": {
+      "name": "单腿臀桥",
+      "description": "仰卧，一条腿向上伸直，用另一只脚跟发力把髋部抬起。在最高点保持一秒。",
+      "focus": "深层臀肌、腘绳肌和骨盆稳定性",
+      "tip": "保持髋部水平，不要让一侧下沉。"
+    },
+    "chin_ups": {
+      "name": "反手引体向上",
+      "description": "掌心朝向自己，与肩同宽握住单杠。把胸部拉向单杠，直到下巴超过横杠，然后慢慢下放。",
+      "focus": "肱二头肌、背阔肌和拉力",
+      "tip": "反手握法更多地调动肱二头肌，使它成为中级阶段自然且易于上手的动作。"
+    },
+    "negative_pullups": {
+      "name": "离心引体向上（受控下放）",
+      "description": "轻跳或借助椅子把下巴带到单杠上方。尽可能慢地下放（3-4秒），直到手臂完全伸直。",
+      "focus": "离心力量、背部、手臂和握力",
+      "tip": "受控下放是练成完整引体向上最快的途径。"
+    },
+    "hanging_knee_raises": {
+      "name": "悬垂提膝",
+      "description": "手臂伸直、肩部稳固地悬在单杠上，有控制地把膝盖提向胸口，不要借助摆动，短暂保持后慢慢放下。",
+      "focus": "下腹、髋屈肌和握力耐力",
+      "tip": "避免躯干摆动——动作必须完全由腹部发力。"
+    },
+    "dumbbell_goblet_squat": {
+      "name": "高脚杯深蹲（哑铃置于胸前）",
+      "description": "双掌把哑铃竖着抱在胸前。挺起胸膛、肘部位于两膝之间，下蹲到最低，然后用脚跟有力地推起。",
+      "focus": "股四头肌、臀部、髋关节活动度和躯干稳定性",
+      "tip": "身前的重量能调动腹部，帮助你蹲得更深而不弓背。"
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "罗马尼亚硬拉（哑铃）",
+      "description": "双脚与髋同宽，哑铃置于身前。膝盖只微屈，把髋部向后推，背部保持完全平直地将哑铃降到膝盖以下，起身时收紧臀部。",
+      "focus": "腘绳肌、臀部和后侧链",
+      "tip": "这个动作是把臀部推向身后的墙，而不是从腰部弯下去。"
+    },
+    "dumbbell_floor_press": {
+      "name": "哑铃地板卧推",
+      "description": "仰卧屈膝。把哑铃推到胸部上方直到手臂伸直，然后慢慢下放，直到肱三头肌轻触地面。",
+      "focus": "胸部、肱三头肌和肩关节稳定性",
+      "tip": "地面阻止肘部下沉过多，即使用大重量也能保护肩关节。"
+    },
+    "dumbbell_single_arm_row": {
+      "name": "椅撑单臂划船",
+      "description": "一膝一手撑在椅子上，背部保持水平。用另一只手收缩肩胛骨，把大重量哑铃拉向髋部，短暂保持后有控制地放下。",
+      "focus": "背阔肌、菱形肌、肱二头肌和单侧背部力量",
+      "tip": "不要转动躯干；让双肩与地面平行。"
+    },
+    "dumbbell_farmers_carry": {
+      "name": "农夫行走",
+      "description": "两手各握一只重哑铃垂在体侧。保持肩膀后收、挺起胸膛，缓慢而有意识地迈步（或者只在原地保持姿势）。",
+      "focus": "握力、前臂、斜方肌、腹肌和体态稳定性",
+      "tip": "保持完全直立；不要让重量把你拉向前方或侧面。"
+    },
+    "diamond_pushups": {
+      "name": "钻石俯卧撑",
+      "description": "双掌放在胸部下方的地面上，拇指和食指相触成菱形。下放，然后爆发式推起。",
+      "focus": "强烈刺激肱三头肌和胸部内侧",
+      "tip": "肘部保持贴近躯干。"
+    },
+    "jump_squats": {
+      "name": "爆发式跳跃深蹲",
+      "description": "下蹲到最低，然后爆发式垂直起跳。用前脚掌轻柔落地，顺势进入下一次下蹲。",
+      "focus": "腿部爆发力和心肺耐力",
+      "tip": "落地应当无声而有弹性，以保护关节。"
+    },
+    "plank_shoulder_taps": {
+      "name": "平板支撑拍肩",
+      "description": "从俯卧撑姿势开始，抬起右手拍左肩，髋部不要移动或摇晃。左右交替重复。",
+      "focus": "抗旋转、肩部稳定性和腹肌",
+      "tip": "双脚稍微分开一些，稳定性更好。"
+    },
+    "burpees_clean": {
+      "name": "标准波比跳（不停顿）",
+      "description": "从站姿下蹲，双脚向后蹬成俯卧撑姿势，做一个俯卧撑，收回后向上跳起。",
+      "focus": "无氧能力和全身力量",
+      "tip": "找到稳定的节奏并保持住。"
+    },
+    "pullups_standard": {
+      "name": "引体向上",
+      "description": "掌心朝外，比肩略宽握住单杠。把身体拉起，直到下巴超过横杠。",
+      "focus": "背阔肌、肱二头肌和拉力",
+      "tip": "从把肘部向下向后拉开始这个动作。"
+    }
+  },
+  "ui": {
+    "+15s Pauză": "+15秒休息",
+    "⏱️ Fă-o de 5 min": "⏱️ 改成5分钟",
+    "⏸️ Pauză": "⏸️ 暂停",
+    "▶️ Continuă": "▶️ 继续",
+    "▶️ Exersează mișcarea (45 secunde)": "▶️ 练习动作（45秒）",
+    "▶️ Începe acum": "▶️ 现在开始",
+    "✅ Am făcut deja! Bifează rapid": "✅ 已经做完了！打勾",
+    "✅ Preferințe salvate!": "✅ 偏好已保存！",
+    "✓ Disponibil": "✓ 可用",
+    "✕ Ieși": "✕ 退出",
+    "✨ Compatibile cu echipamentul tău": "✨ 匹配你的器材",
+    "✨ Doar echipamentul meu": "✨ 只用我的器材",
+    "➡️ Serie terminată": "➡️ 完成这一组",
+    "🎉 Finalizează antrenamentul": "🎉 结束这次训练",
+    "💪 Partea de sus": "💪 上肢",
+    "💾 Salvează preferințele": "💾 保存偏好",
+    "💾 Salvează selecția": "💾 保存选择",
+    "📖 Cum se execută corect:": "📖 正确做法：",
+    "🔄 Mișcări înrudite / Alternative:": "🔄 相关动作／替代选择：",
+    "🔄 Reset": "🔄 重置",
+    "🔄 Schimbă cu altul": "🔄 换一个动作",
+    "🦵 Picioare": "🦵 腿部",
+    "🧘 Mobilitate": "🧘 活动度",
+    "🧘 Trage-ți sufletul & bea o gură de apă": "🧘 缓口气，喝点水",
+    "🧹 Curăță memoria cache (/bust)": "🧹 清除缓存（/bust）",
+    "🛡️ Trunchi / Core": "🛡️ 躯干／核心",
+    "1 - 5 kg (brațe & mobilitate)": "1-5公斤（手臂和活动度）",
+    "1 Serie": "1组",
+    "1) Adaugă pagina pe ecranul principal:": "1）把页面添加到主屏幕：",
+    "2 Serii": "2组",
+    "2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:": "2）从主屏幕打开应用，再次点击链接，或使用验证码：",
+    "3 Serii": "3组",
+    "5 - 20 kg (forță & picioare)": "5-20公斤（力量和腿部）",
+    "Acces": "访问",
+    "Acces & Dispozitiv": "访问与设备",
+    "Activează acum": "立即激活",
+    "Activează cod": "用验证码激活",
+    "Activează cu cod de invitație": "用邀请码激活",
+    "Activează direct în browser": "直接在浏览器中激活",
+    "Activează sunetul": "打开声音",
+    "Adaugă Mișcare pe ecranul principal": "把 Mișcare 添加到主屏幕",
+    "Add to Home Screen": "添加到主屏幕",
+    "Afișez": "正在显示",
+    "Ai făcut mișcare azi.": "你今天动起来了。",
+    "Ajustat automat mai blând pentru data viitoare.": "已自动为下次减轻。",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "我们把今天的动作调得更柔和、更舒适了。",
+    "Am înțeles, o voi instala": "明白了，我去安装",
+    "Android (Chrome):": "Android（Chrome）：",
+    "Android:": "Android：",
+    "Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.": "点击分享按钮（带向上箭头的方块）→「添加到主屏幕」。",
+    "Aplicație activată cu succes!": "应用激活成功！",
+    "Aproximativ": "大约",
+    "Avansat": "高级",
+    "Azi": "今天",
+    "Bandă elastică": "弹力带",
+    "Bară de tracțiuni": "单杠",
+    "Bară tracțiuni": "单杠",
+    "Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.": "勾选家里现有的东西。训练内容会立刻随之调整。",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "欢迎回来！不用着急，也不必自责——身体会慢慢找回自己的节奏。",
+    "Bravo! Ai făcut mișcare azi.": "做得好！你今天动起来了。",
+    "Bravo! Mișcare finalizată cu succes.": "做得好！本次训练完成。",
+    "Butonul Share →": "分享按钮 →",
+    "Cam greu": "有点吃力",
+    "Caută după nume, mușchi sau echipament...": "按名称、肌肉或器材搜索…",
+    "Câte serii vrei să faci azi?": "今天做几组？",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "只是多做几次，不是跨越式提升。你随时可以调回来。",
+    "Compendiu de exerciții": "动作大全",
+    "Compendiu de Exerciții": "动作大全",
+    "Comută sunetul": "切换声音",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "你的力量和活动度在一天天增长。继续保持！",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "打好体能基础：地面动作、轻哑铃和弹力带。",
+    "Continui de unde am rămas": "从上次中断的地方继续",
+    "Crește repetări": "增加次数",
+    "Cum adaugi pe ecranul principal:": "如何添加到主屏幕：",
+    "Cum s-a simțit sesiunea?": "这次训练感觉如何？",
+    "Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:": "如果遇到显示问题，或者想清除缓存：",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "上一次轻松又舒服。就保持这个好节奏！",
+    "De la 0": "从零开始",
+    "De la 0, în ritmul tău": "从零开始，按你的节奏",
+    "dedicate stării tale de bine.": "用在了让自己感觉更好上。",
+    "Dezactivează sunetul": "关闭声音",
+    "Dispozitiv activat": "设备已激活",
+    "Doar greutatea corpului": "只用自重",
+    "Doar o parte": "只做了一部分",
+    "Durată estimată: aprox. {n} minute": "预计：大约 {n} 分钟",
+    "Durată țintă zilnică:": "每天的目标时长：",
+    "E bine așa": "就这样挺好",
+    "Echipament": "器材",
+    "Echipamentul tău": "你的器材",
+    "Ecranul va trece automat la seria următoare când timpul expiră.": "时间走完后，屏幕会自动进入下一组。",
+    "exerciții": "个动作",
+    "Exerciții": "动作",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "复合力量与爆发：钻石俯卧撑、跳跃深蹲、徒手引体向上。",
+    "Exersează mișcarea": "练习动作",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "对关节没有冲击，适合久坐者起步或温和复出（椅子／墙）。",
+    "Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.": "没有评分，也没有评判——你只是在帮我们定下一次的强度。",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "恭喜你今天动了起来！每一步都会累积。",
+    "Felicitări! Ai terminat antrenamentul!": "恭喜！你完成了这次训练！",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "每一步都算数。不用着急，也不必比较。",
+    "Filosofia „No Shaming”": "「不必自责」的理念",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "只显示用现有器材就能做的动作",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "标准地面俯卧撑、可调哑铃（5-20公斤）、复合动作和一根单杠。",
+    "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "膝盖敏感（不做深蹲和跳跃）",
+    "Greutate cu mâner": "壶铃",
+    "Hai puțin mai mult": "我们加一点点",
+    "ID:": "ID：",
+    "Instalare & Service Worker": "安装与 Service Worker",
+    "Instalat pe ecranul principal": "已安装到主屏幕",
+    "Instalează": "安装",
+    "Intens (15 min)": "高强度（15分钟）",
+    "Intensitate maximă, control total. Dă tot ce ai!": "最大强度，完全掌控。全力以赴！",
+    "Intermediar": "中级",
+    "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "输入管理控制台给出的验证码（格式：ABCD-EFGH-JKLM）。",
+    "iPhone (Safari):": "iPhone（Safari）：",
+    "iPhone:": "iPhone：",
+    "Istoric recent": "最近记录",
+    "Încă nu ai înregistrat nicio sesiune.": "你还没有记录过任何训练。",
+    "Încă o rundă?": "再来一轮？",
+    "Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.": "试试放宽筛选条件，或取消勾选「只用我的器材」。",
+    "Începător": "初级",
+    "Începe azi cu o sesiune scurtă de 5 sau 10 minute!": "今天就从5分钟或10分钟的短训练开始吧！",
+    "Începem.": "我们开始吧。",
+    "Încheieturi sensibile (fără sprijin direct pe palme pe podea)": "手腕敏感（不在地面上直接用手掌承重）",
+    "Închide": "关闭",
+    "Întotdeauna disponibilă": "随时可做",
+    "Jurnal și Progres": "日志与进度",
+    "Limbă": "语言",
+    "Masaj și relaxare": "按摩与恢复",
+    "Meniul ⋮ →": "⋮ 菜单 →",
+    "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "⋮ 菜单 →「安装应用」或「添加到主屏幕」。",
+    "Menținem același ritm prietenos și data viitoare.": "下次我们会保持同样舒服的节奏。",
+    "Minute câștigate": "赚到的分钟",
+    "Mișcare": "Mișcare",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — 从零开始的运动：没有阻力的日常安排，不必自责，始终随你调整",
+    "Mișcare de zi cu zi": "日常运动",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "今天的运动 — 0级（从零开始）",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "今天的运动 — 1级（初级）",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "今天的运动 — 2级（中级）",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "今天的运动 — 3级（高级）",
+    "Montată la ușă/perete": "安装在门上或墙上",
+    "Mușchi principali": "主要肌肉",
+    "Navigare principală": "主导航",
+    "Necesită echipament suplimentar": "需要额外器材",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "没关系！下次我们会自动减少次数。",
+    "Niciun exercițiu găsit": "未找到任何动作",
+    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "0级 — 完全从零开始（椅子、墙面、轻柔活动度）",
+    "Nivel 1 — Începător": "1级 — 初级",
+    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "1级 — 轻松的初级（斜面俯卧撑、地面动作、哑铃）",
+    "Nivel 1 (Începător)": "1级（初级）",
+    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "2级 — 中级／活跃（地面俯卧撑、全蹲、平板支撑、箭步蹲）",
+    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "3级 — 高级／高强度（钻石俯卧撑、跳跃深蹲、波比跳、引体向上）",
+    "Nivel de intensitate:": "强度等级：",
+    "Nivelul tău actual:": "你当前的等级：",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "我们没有为你勾选的部位找到任何安全的动作。",
+    "Nu am putut șterge sesiunea.": "我们无法删除这次训练。",
+    "nu există o schimbare de anulat": "没有可撤销的更改",
+    "Nume:": "名称：",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "动作名称和说明会随界面一起切换。",
+    "Odihnă & Respirație": "休息与呼吸",
+    "Optim (10 min)": "均衡（10分钟）",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "可做可不做，看你想不想。就此停下也不会失去什么。",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "无论你怎么选，你积累下来的一切都不会消失。",
+    "Parțial": "部分完成",
+    "Pauză de odihnă": "休息片刻",
+    "Păstrează doar corpul, scaunul și peretele": "只保留自重、一把椅子和一面墙",
+    "Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.": "为了获得最佳体验和可靠的提醒，请在激活前先安装应用。",
+    "Pentru flotări și postură": "用于俯卧撑和体态",
+    "Pentru sprijin și așezare": "用于支撑和坐下",
+    "Pernă": "垫子",
+    "Pernă moale": "软垫",
+    "Pregătește-te pentru": "准备好迎接",
+    "Pregătește-te!": "准备好！",
+    "Pregătim mișcarea de azi...": "正在准备今天的运动…",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "准备好来几分钟提神的运动了吗？",
+    "Pregătit pentru o sesiune activă și energică?": "准备好来一次充满活力的训练了吗？",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "准备好来一次充满活力的训练了吗？在地面上打下扎实的力量！",
+    "Progres": "进度",
+    "propunerea nu mai este valabilă": "那条建议已经不再适用",
+    "Protecție genunchi": "膝盖保护",
+    "Rapid (5 min)": "快速（5分钟）",
+    "Redenumește dispozitivul:": "重命名这台设备：",
+    "Reglaje & Punct de pornire": "设置与起点",
+    "Reluăm mai ușor": "慢慢重新开始",
+    "repetări": "次",
+    "Repetări realizate în această serie:": "这一组完成的次数：",
+    "Resetează filtrele": "重置筛选条件",
+    "Rolă de spumă": "泡沫轴",
+    "Rolă spumă": "泡沫轴",
+    "Rulare în browser": "正在浏览器中运行",
+    "Saltea / Covoraș": "瑜伽垫",
+    "Salvează": "保存",
+    "Salvează în jurnal": "保存到日志",
+    "Scade repetări": "减少次数",
+    "Se încarcă jurnalul...": "正在加载日志…",
+    "Se salvează...": "正在保存…",
+    "serie finalizată": "完成一组",
+    "Sesiune blândă de reacomodare": "温和复出的训练",
+    "Sesiune calibrată pentru reacomodare ușoară.": "已按温和复出调整本次训练。",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "这是一次较短的训练：针对你勾选的部位，我们只能安全地安排到这些。",
+    "Setări și Dispozitiv": "设置与设备",
+    "Sfatul antrenorului:": "教练提示：",
+    "Spate sensibil (exclusiv posturi sigure de protecție lombară)": "背部敏感（只做保护腰部的姿势）",
+    "Stare PWA:": "PWA 状态：",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "太好了！下次我们可以悄悄多加一次。",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "哪怕2-3分钟也意义重大。你迈出了很棒的一步！",
+    "Șterge sesiunea": "删除这次训练",
+    "Textilă sau cauciuc": "布质或橡胶",
+    "Timp per serie": "每组时间",
+    "Toate": "全部",
+    "Tocmai bine": "刚刚好",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "你最近两次训练都觉得轻松。下次要不要加一点？",
+    "Urmează:": "接下来：",
+    "ușor": "轻松",
+    "Ușor": "轻松",
+    "Ușor & revigorant": "轻松又提神",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "在设置里勾选它们——或者请专业人士判断什么对你是安全的。",
+    "Volum adaptat automat după ultima sesiune.": "已根据你上一次训练自动调整了运动量。",
+    "Volum uzual": "平常的运动量",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "要停止这次训练吗？你到目前为止做的一切依然算数！",
+    "Zile cu mișcare": "有运动的天数",
+    "Zone sensibile / Protecție:": "敏感部位／保护：",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "你勾选的部位排除了目录中的所有动作。",
+    "Conectat": "已连接",
+    "Mișcare a fost actualizată la ultima versiune": "Mișcare 已更新到最新版本"
+  }
+}
