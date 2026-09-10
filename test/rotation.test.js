@@ -157,3 +157,39 @@ test('the group cycle and the exercise index must not lock in phase', async (t) 
     });
   }
 });
+
+test('today should not look like yesterday', async (t) => {
+  // Plângerea care a scos asta la iveală: trei din patru exerciții identice cu
+  // ziua precedentă. Cauza nu era rotația grupelor, ci completarea: la
+  // cincisprezece minute sunt patru locuri și doar două grupe care conduc, iar
+  // completarea alegea după tipar, nu după rotație -- același exercițiu
+  // câștiga „primul tipar nefolosit" în fiecare zi.
+  const CONFIGS = [
+    ['intermediar 15 min, spate sensibil', {
+      level: 'intermediate', daily_time: 15, limitations: ['back'],
+      equipment: ['bodyweight', 'wall', 'yoga_mat', 'adjustable_dumbbells', 'pullup_bar']
+    }],
+    ['început, 10 min', { level: 'zero', daily_time: 10, equipment: ['bodyweight', 'chair', 'wall'] }],
+    ['avansat, 15 min', { level: 'advanced', daily_time: 15, equipment: ['bodyweight', 'chair', 'wall'] }]
+  ];
+
+  for (const [label, profile] of CONFIGS) {
+    await t.test(label, () => {
+      let repeated = 0;
+      let served = 0;
+      for (let r = 0; r < 12; r++) {
+        const a = generateDailyRoutine(profile, { rotation: r }).exercises.map((e) => e.id);
+        const b = generateDailyRoutine(profile, { rotation: r + 1 }).exercises.map((e) => e.id);
+        assert.notDeepEqual(b, a, `sesiunea ${r + 1} e identică cu ${r}`);
+        repeated += b.filter((id) => a.includes(id)).length;
+        served += b.length;
+      }
+      const share = repeated / served;
+      // Pragul e generos pentru cataloagele subțiri -- profilul de mai sus are
+      // un singur exercițiu de cărat, deci acela chiar n-are alternativă --
+      // dar prinde regresia care a pornit de aici: era 38%.
+      assert.ok(share <= 0.25,
+        `${Math.round(share * 100)}% dintr-o sesiune se repetă a doua zi`);
+    });
+  }
+});
