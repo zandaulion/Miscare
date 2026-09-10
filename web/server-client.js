@@ -1,5 +1,7 @@
 // Client API pentru Mișcare — comunicare cu serverul și fallback offline
 
+import { t } from './i18n.js';
+
 const TOKEN_KEY = 'miscare_token';
 const PROFILE_KEY = 'miscare_local_profile';
 const ROUTINE_KEY = 'miscare_cached_routine';
