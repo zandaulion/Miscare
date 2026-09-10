@@ -86,7 +86,7 @@ function updateDeviceBadge() {
     badge.innerHTML = `🟢 ${escapeHtml(state.device?.label || 'Conectat')}`;
   } else {
     badge.className = 'device-badge';
-    badge.innerHTML = `🔒 Activează cod`;
+    badge.innerHTML = `🔒 ${t('Activează cod')}`;
   }
 }
 
@@ -130,72 +130,72 @@ function renderSettingsView(container) {
   container.innerHTML = `
     <div class="card">
       <div class="card-header">
-        <h2 class="card-title">Acces & Dispozitiv</h2>
+        <h2 class="card-title">${t('Acces & Dispozitiv')}</h2>
       </div>
 
       ${state.linked ? `
         <div class="support-banner">
           <div class="support-banner-icon">📱</div>
           <div>
-            <div style="font-weight: 700;">Dispozitiv activat</div>
+            <div style="font-weight: 700;">${t('Dispozitiv activat')}</div>
             <div style="font-size: 0.85rem; color: var(--text-muted);">
-              Nume: <strong>${escapeHtml(state.device?.label || 'Telefonul meu')}</strong><br>
-              ID: <code style="font-size: 0.78rem;">${escapeHtml(state.device?.id)}</code>
+              ${t('Nume:')} <strong>${escapeHtml(state.device?.label || 'Telefonul meu')}</strong><br>
+              ${t('ID:')} <code style="font-size: 0.78rem;">${escapeHtml(state.device?.id)}</code>
             </div>
           </div>
         </div>
 
         <div style="margin-top: 14px;">
           <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">
-            Redenumește dispozitivul:
+            ${t('Redenumește dispozitivul:')}
           </label>
           <div style="display: flex; gap: 8px;">
             <input type="text" id="device-label-input" class="btn btn-secondary" style="flex: 1; text-align: left; padding: 10px 14px;" value="${escapeHtml(state.device?.label || '')}" />
-            <button id="btn-save-label" class="btn btn-primary" style="width: auto;">Salvează</button>
+            <button id="btn-save-label" class="btn btn-primary" style="width: auto;">${t('Salvează')}</button>
           </div>
         </div>
       ` : `
         <div class="support-banner" style="background: var(--surface-subtle); border-color: var(--border);">
           <div class="support-banner-icon">🔑</div>
           <div>
-            <div style="font-weight: 700;">Activează cu cod de invitație</div>
+            <div style="font-weight: 700;">${t('Activează cu cod de invitație')}</div>
             <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
-              Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).
+              ${t('Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).')}
             </p>
           </div>
         </div>
 
         <div style="margin-top: 14px;">
           <input type="text" id="invite-code-input" class="btn btn-secondary" placeholder="ABCD-EFGH-JKLM" style="width: 100%; text-align: center; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;" />
-          <button id="btn-redeem" class="btn btn-primary">Activează acum</button>
+          <button id="btn-redeem" class="btn btn-primary">${t('Activează acum')}</button>
         </div>
       `}
     </div>
 
     <div class="card">
       <div class="card-header">
-        <h2 class="card-title">Instalare & Service Worker</h2>
+        <h2 class="card-title">${t('Instalare & Service Worker')}</h2>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
-        Stare PWA: <strong>${isStandalone() ? 'Instalat pe ecranul principal ✅' : t('Rulare în browser')}</strong>
+        ${t('Stare PWA:')} <strong>${isStandalone() ? 'Instalat pe ecranul principal ✅' : t('Rulare în browser')}</strong>
       </p>
 
       ${!isStandalone() ? `
         <div class="support-banner" style="background: var(--surface); border-color: var(--border); margin-bottom: 14px;">
           <div style="font-size: 0.82rem; line-height: 1.4;">
-            <strong>Cum adaugi pe ecranul principal:</strong><br>
-            • <strong>iPhone (Safari):</strong> Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.<br>
-            • <strong>Android (Chrome):</strong> Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.
+            <strong>${t('Cum adaugi pe ecranul principal:')}</strong><br>
+            • <strong>${t('iPhone (Safari):')}</strong> ${t('Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.')}<br>
+            • <strong>${t('Android (Chrome):')}</strong> ${t('Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.')}
           </div>
         </div>
       ` : ''}
 
       <div style="border-top: 1px solid var(--border); padding-top: 14px;">
         <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">
-          Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:
+          ${t('Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:')}
         </div>
         <a href="/bust" class="btn btn-secondary btn-sm" style="display: inline-block;">
-          🧹 Curăță memoria cache (/bust)
+          ${t('🧹 Curăță memoria cache (/bust)')}
         </a>
       </div>
     </div>
@@ -248,18 +248,18 @@ function showInstallInvitePrompt(code) {
     <div class="guided-body" style="max-width: 440px; margin: 0 auto;">
       <div style="font-size: 3rem; margin-bottom: 10px;">📲</div>
       <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">
-        Adaugă Mișcare pe ecranul principal
+        ${t('Adaugă Mișcare pe ecranul principal')}
       </h2>
       <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.4;">
-        Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.
+        ${t('Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.')}
       </p>
 
       <div class="card" style="text-align: left; margin-bottom: 16px;">
         <div style="font-size: 0.85rem; line-height: 1.5;">
-          1) Adaugă pagina pe ecranul principal:<br>
-          • <strong>iPhone:</strong> Butonul Share → <em>Add to Home Screen</em><br>
-          • <strong>Android:</strong> Meniul ⋮ → <em>Instalează</em><br><br>
-          2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:
+          ${t('1) Adaugă pagina pe ecranul principal:')}<br>
+          • <strong>${t('iPhone:')}</strong> ${t('Butonul Share →')} <em>${t('Add to Home Screen')}</em><br>
+          • <strong>${t('Android:')}</strong> ${t('Meniul ⋮ →')} <em>${t('Instalează')}</em><br><br>
+          ${t('2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:')}
         </div>
         <div style="font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-align: center; padding: 10px; background: var(--surface-subtle); border-radius: 8px; margin: 10px 0;">
           ${escapeHtml(code)}
@@ -268,10 +268,10 @@ function showInstallInvitePrompt(code) {
 
       <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
         <button id="btn-activate-anyway" class="btn btn-primary">
-          Activează direct în browser
+          ${t('Activează direct în browser')}
         </button>
         <button id="btn-dismiss-invite" class="btn btn-secondary">
-          Am înțeles, o voi instala
+          ${t('Am înțeles, o voi instala')}
         </button>
       </div>
     </div>

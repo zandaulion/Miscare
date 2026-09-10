@@ -88,7 +88,7 @@ export function renderCompendiumView(container, options = {}) {
         <div class="card-header" style="margin-bottom: 6px;">
           <div>
             <h1 class="card-title" style="font-size: 1.4rem; display: flex; align-items: center; gap: 8px;">
-              <span>📖</span> Compendiu de Exerciții
+              <span>📖</span> ${t('Compendiu de Exerciții')}
             </h1>
             <p class="card-subtitle">
               Toate cele ${CLIENT_EXERCISES.length} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi
@@ -114,7 +114,7 @@ export function renderCompendiumView(container, options = {}) {
 
         <!-- Filtre Nivel (Chips principale) -->
         <div class="compendium-filters-section" style="margin-top: 14px;">
-          <div class="filter-label">Nivel de intensitate:</div>
+          <div class="filter-label">${t('Nivel de intensitate:')}</div>
           <div class="level-chips-container" role="tablist">
             <button class="level-chip ${currentFilter.level === 'all' ? 'active' : ''}" data-level="all">
               Toate (${CLIENT_EXERCISES.length})
@@ -138,25 +138,25 @@ export function renderCompendiumView(container, options = {}) {
         <div class="compendium-subfilters" style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; align-items: center;">
           <div class="category-chips-container">
             <button class="cat-chip ${currentFilter.category === 'all' ? 'active' : ''}" data-category="all">
-              Toate
+              ${t('Toate')}
             </button>
             <button class="cat-chip ${currentFilter.category === 'upper' ? 'active' : ''}" data-category="upper">
-              💪 Partea de sus
+              ${t('💪 Partea de sus')}
             </button>
             <button class="cat-chip ${currentFilter.category === 'lower' ? 'active' : ''}" data-category="lower">
-              🦵 Picioare
+              ${t('🦵 Picioare')}
             </button>
             <button class="cat-chip ${currentFilter.category === 'core' ? 'active' : ''}" data-category="core">
-              🛡️ Trunchi / Core
+              ${t('🛡️ Trunchi / Core')}
             </button>
             <button class="cat-chip ${currentFilter.category === 'mobility' ? 'active' : ''}" data-category="mobility">
-              🧘 Mobilitate
+              ${t('🧘 Mobilitate')}
             </button>
           </div>
 
           <label class="equipment-toggle-pill ${currentFilter.onlyMyEquipment ? 'active' : ''}" title="${t('Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual')}">
             <input type="checkbox" id="toggle-only-my-equipment" ${currentFilter.onlyMyEquipment ? 'checked' : ''} style="display: none;" />
-            <span>✨ Doar echipamentul meu</span>
+            <span>${t('✨ Doar echipamentul meu')}</span>
           </label>
         </div>
       </div>
@@ -170,7 +170,7 @@ export function renderCompendiumView(container, options = {}) {
       <div id="practice-modal" class="practice-modal-overlay hidden" aria-modal="true" role="dialog">
         <div class="practice-modal-card">
           <div class="practice-modal-header">
-            <div style="font-weight: 700; font-size: 1.1rem;" id="practice-title">Exersează mișcarea</div>
+            <div style="font-weight: 700; font-size: 1.1rem;" id="practice-title">${t('Exersează mișcarea')}</div>
             <button id="btn-close-practice" class="btn-close-circle" aria-label="${t('Închide')}">✕</button>
           </div>
           <div class="practice-modal-body">
@@ -178,8 +178,8 @@ export function renderCompendiumView(container, options = {}) {
             <div id="practice-cue-text" class="practice-cue-box"></div>
             <div class="practice-timer-display" id="practice-timer-display">00:45</div>
             <div class="practice-controls">
-              <button id="btn-toggle-practice" class="btn btn-primary" style="flex: 1;">⏸️ Pauză</button>
-              <button id="btn-reset-practice" class="btn btn-secondary" style="width: auto;">🔄 Reset</button>
+              <button id="btn-toggle-practice" class="btn btn-primary" style="flex: 1;">${t('⏸️ Pauză')}</button>
+              <button id="btn-reset-practice" class="btn btn-secondary" style="width: auto;">${t('🔄 Reset')}</button>
             </div>
           </div>
         </div>
@@ -237,12 +237,12 @@ function renderExerciseSections(userEquipment) {
     return `
       <div class="card" style="text-align: center; padding: 36px 20px;">
         <div style="font-size: 2.2rem; margin-bottom: 10px;">🔍</div>
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">Niciun exercițiu găsit</h3>
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${t('Niciun exercițiu găsit')}</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 320px; margin: 0 auto 16px;">
-          Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.
+          ${t('Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.')}
         </p>
         <button id="btn-reset-filters" class="btn btn-secondary" style="display: inline-block; width: auto;">
-          Resetează filtrele
+          ${t('Resetează filtrele')}
         </button>
       </div>
     `;
@@ -253,8 +253,8 @@ function renderExerciseSections(userEquipment) {
 
   let html = `
     <div class="compendium-stats-bar">
-      <span>Afișez <strong>${filtered.length}</strong> din <strong>${CLIENT_EXERCISES.length}</strong> exerciții</span>
-      ${currentFilter.onlyMyEquipment ? `<span class="badge-accent">✨ Compatibile cu echipamentul tău</span>` : ''}
+      <span>${t('Afișez')} <strong>${filtered.length}</strong> din <strong>${CLIENT_EXERCISES.length}</strong> ${t('exerciții')}</span>
+      ${currentFilter.onlyMyEquipment ? `<span class="badge-accent">${t('✨ Compatibile cu echipamentul tău')}</span>` : ''}
     </div>
   `;
 
@@ -309,7 +309,7 @@ function renderExerciseCard(ex, userEquipment) {
             <span class="badge-level ${levelMeta.badgeClass}">${levelMeta.shortName}</span>
             <span class="badge-category">${cat.icon} ${cat.label}</span>
             ${hasEquipment ? `
-              <span class="badge-available" title="Disponibil cu echipamentul tău actual">✓ Disponibil</span>
+              <span class="badge-available" title="Disponibil cu echipamentul tău actual">${t('✓ Disponibil')}</span>
             ` : `
               <span class="badge-needs-equip" title="${t('Necesită echipament suplimentar')}">⚠️ Necesită ${missingEquipment.map(eq => (EQUIPMENT_ICONS[eq]?.name || eq)).join(', ')}</span>
             `}
@@ -344,7 +344,7 @@ function renderExerciseCard(ex, userEquipment) {
             </div>
           ` : ''}
           <div class="detail-block">
-            <div class="detail-label">📖 Cum se execută corect:</div>
+            <div class="detail-label">${t('📖 Cum se execută corect:')}</div>
             <p class="detail-text">${escapeHtml(exText(ex.id, 'description'))}</p>
           </div>
 
@@ -352,7 +352,7 @@ function renderExerciseCard(ex, userEquipment) {
             <div class="detail-tip-box">
               <span class="tip-bulb">💡</span>
               <div>
-                <strong>Sfatul antrenorului:</strong>
+                <strong>${t('Sfatul antrenorului:')}</strong>
                 <p style="margin-top: 2px;">${escapeHtml(exText(ex.id, 'tip'))}</p>
               </div>
             </div>
@@ -362,14 +362,14 @@ function renderExerciseCard(ex, userEquipment) {
             <div class="metric-chip">
               <span class="metric-chip-icon">🔢</span>
               <div>
-                <div class="metric-chip-label">Volum uzual</div>
+                <div class="metric-chip-label">${t('Volum uzual')}</div>
                 <div class="metric-chip-val">${escapeHtml(formatReps(ex.reps, repWords()))}</div>
               </div>
             </div>
             <div class="metric-chip">
               <span class="metric-chip-icon">⏱️</span>
               <div>
-                <div class="metric-chip-label">Timp per serie</div>
+                <div class="metric-chip-label">${t('Timp per serie')}</div>
                 <div class="metric-chip-val">~${ex.duration_s || 45} secunde</div>
               </div>
             </div>
@@ -378,7 +378,7 @@ function renderExerciseCard(ex, userEquipment) {
           <!-- Alternative / Progresii (Swaps) -->
           ${ex.swaps && ex.swaps.length > 0 ? `
             <div class="detail-block" style="margin-top: 14px;">
-              <div class="detail-label">🔄 Mișcări înrudite / Alternative:</div>
+              <div class="detail-label">${t('🔄 Mișcări înrudite / Alternative:')}</div>
               <div class="swaps-chip-list">
                 ${ex.swaps.map((swapId) => {
                   const swapEx = getExerciseById(swapId);
@@ -396,7 +396,7 @@ function renderExerciseCard(ex, userEquipment) {
           <!-- Buton de practică rapidă -->
           <div class="detail-actions-row">
             <button class="btn btn-primary btn-practice" data-id="${ex.id}">
-              ▶️ Exersează mișcarea (45 secunde)
+              ${t('▶️ Exersează mișcarea (45 secunde)')}
             </button>
           </div>
         </div>

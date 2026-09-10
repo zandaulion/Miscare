@@ -4,7 +4,7 @@ import { t, exText, repWords } from './i18n.js';
 export async function renderLogView(container) {
   container.innerHTML = `
     <div style="text-align: center; padding: 40px 20px;">
-      <div class="brand-tagline">Se încarcă jurnalul...</div>
+      <div class="brand-tagline">${t('Se încarcă jurnalul...')}</div>
     </div>
   `;
 
@@ -19,11 +19,11 @@ export async function renderLogView(container) {
     <div class="stats-row">
       <div class="stat-box">
         <div class="stat-number">${totals.active_days}</div>
-        <div class="stat-label">Zile cu mișcare</div>
+        <div class="stat-label">${t('Zile cu mișcare')}</div>
       </div>
       <div class="stat-box">
         <div class="stat-number">${totals.total_minutes}</div>
-        <div class="stat-label">Minute câștigate</div>
+        <div class="stat-label">${t('Minute câștigate')}</div>
       </div>
     </div>
 
@@ -31,7 +31,7 @@ export async function renderLogView(container) {
       <div class="support-banner-icon">🌿</div>
       <div>
         <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 2px;">
-          Filosofia „No Shaming”
+          ${t('Filosofia „No Shaming”')}
         </div>
         <div style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.4;">
           Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.
@@ -41,15 +41,15 @@ export async function renderLogView(container) {
 
     <div class="card">
       <div class="card-header">
-        <h2 class="card-title">Istoric recent</h2>
+        <h2 class="card-title">${t('Istoric recent')}</h2>
         <span style="font-size: 0.8rem; color: var(--text-muted);">${logs.length} înregistrări</span>
       </div>
 
       <div id="logs-list">
         ${logs.length === 0 ? `
           <div style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 0.9rem;">
-            Încă nu ai înregistrat nicio sesiune.<br>
-            Începe azi cu o sesiune scurtă de 5 sau 10 minute!
+            ${t('Încă nu ai înregistrat nicio sesiune.')}<br>
+            ${t('Începe azi cu o sesiune scurtă de 5 sau 10 minute!')}
           </div>
         ` : logs.map((log) => {
           const minutes = Math.max(1, Math.round((log.duration_seconds || 600) / 60));
@@ -80,7 +80,7 @@ export async function renderLogView(container) {
           return `
             <div class="log-item" data-log-id="${escapeHtml(log.id)}">
               <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px;">
-                <div class="log-title">${escapeHtml(log.routine_title)}</div>
+                <div class="log-title">${escapeHtml(t(log.routine_title))}</div>
                 <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
                   <div class="log-date">${escapeHtml(log.date)}</div>
                   <button class="log-del" type="button" data-del-log="${escapeHtml(log.id)}"
@@ -90,7 +90,7 @@ export async function renderLogView(container) {
               <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px;">
                 <span class="badge badge-reps">⏱️ ${minutes} min</span>
                 <span class="badge">${emoji} ${feedbackText}</span>
-                ${log.adjustment_note ? `<span class="adjustment-tag">${escapeHtml(log.adjustment_note)}</span>` : ''}
+                ${log.adjustment_note ? `<span class="adjustment-tag">${escapeHtml(t(log.adjustment_note))}</span>` : ''}
               </div>
               ${groupKeys.length > 0 ? `
                 <div class="log-exercises-summary">
@@ -116,32 +116,32 @@ export async function renderLogView(container) {
 
     <div class="card">
       <div class="card-header">
-        <h2 class="card-title">Reglaje & Punct de pornire</h2>
+        <h2 class="card-title">${t('Reglaje & Punct de pornire')}</h2>
       </div>
 
       <div style="margin-bottom: 16px;">
         <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">
-          Nivelul tău actual:
+          ${t('Nivelul tău actual:')}
         </label>
         <select id="select-level" class="btn btn-secondary" style="width: 100%; text-align: left; padding: 10px 14px;">
           <option value="zero" ${profile.level === 'zero' ? 'selected' : ''}>
-            Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)
+            ${t('Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)')}
           </option>
           <option value="beginner" ${profile.level === 'beginner' ? 'selected' : ''}>
-            Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)
+            ${t('Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)')}
           </option>
           <option value="intermediate" ${profile.level === 'intermediate' ? 'selected' : ''}>
-            Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)
+            ${t('Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)')}
           </option>
           <option value="advanced" ${profile.level === 'advanced' ? 'selected' : ''}>
-            Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)
+            ${t('Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)')}
           </option>
         </select>
       </div>
 
       <div style="margin-bottom: 16px;">
         <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">
-          Durată țintă zilnică:
+          ${t('Durată țintă zilnică:')}
         </label>
         <div style="display: flex; gap: 10px;">
           ${[5, 10, 15].map((mins) => `
@@ -154,26 +154,26 @@ export async function renderLogView(container) {
 
       <div style="margin-bottom: 16px;">
         <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">
-          Zone sensibile / Protecție:
+          ${t('Zone sensibile / Protecție:')}
         </label>
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <label style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
             <input type="checkbox" id="limit-knees" value="knees" ${limitations.includes('knees') ? 'checked' : ''} />
-            Genunchi sensibili (fără genuflexiuni adânci sau sărituri)
+            ${t('Genunchi sensibili (fără genuflexiuni adânci sau sărituri)')}
           </label>
           <label style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
             <input type="checkbox" id="limit-back" value="back" ${limitations.includes('back') ? 'checked' : ''} />
-            Spate sensibil (exclusiv posturi sigure de protecție lombară)
+            ${t('Spate sensibil (exclusiv posturi sigure de protecție lombară)')}
           </label>
           <label style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
             <input type="checkbox" id="limit-wrists" value="wrists" ${limitations.includes('wrists') ? 'checked' : ''} />
-            Încheieturi sensibile (fără sprijin direct pe palme pe podea)
+            ${t('Încheieturi sensibile (fără sprijin direct pe palme pe podea)')}
           </label>
         </div>
       </div>
 
       <button id="btn-save-profile" class="btn btn-primary">
-        💾 Salvează preferințele
+        ${t('💾 Salvează preferințele')}
       </button>
     </div>
   `;
