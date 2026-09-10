@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { generateDailyRoutine, filterSafeExercises, EXERCISES } from '../server/routine.js';
 import { CLIENT_EXERCISES } from '../web/exercises.js';
 
@@ -211,17 +212,33 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
     );
   });
 
-  await t.test('exercise catalog parity between server and client compendium', () => {
-    assert.equal(CLIENT_EXERCISES.length, EXERCISES.length, 'Should have exact same number of exercises');
-    assert.equal(CLIENT_EXERCISES.length, 45, 'Should have 45 total exercises');
+  await t.test('every exercise has structure on both sides and prose in exactly one place', () => {
+    // Proza -- nume, descriere, accent, sfat -- era scrisă de trei ori: aici,
+    // în catalogul clientului și în rutinele offline. Cele trei chiar au
+    // ajuns să difere, iar de tradus ar fi cerut de trei ori munca. Testul
+    // păzește acum invariantul nou: structura se potrivește, textul e într-un
+    // singur loc, iar acel loc e complet.
+    const ro = JSON.parse(fs.readFileSync(new URL('../web/i18n/ro.json', import.meta.url), 'utf8'));
+    assert.equal(CLIENT_EXERCISES.length, EXERCISES.length);
+    assert.equal(CLIENT_EXERCISES.length, 45);
 
     for (const serverEx of EXERCISES) {
       const clientEx = CLIENT_EXERCISES.find((c) => c.id === serverEx.id);
-      assert.ok(clientEx, `Exercise ${serverEx.id} must exist in client compendium`);
-      assert.equal(clientEx.level, serverEx.level, `Level mismatch for ${serverEx.id}`);
-      assert.equal(clientEx.category, serverEx.category, `Category mismatch for ${serverEx.id}`);
-      assert.ok(clientEx.svg && clientEx.svg.includes('<svg'), `Exercise ${serverEx.id} must have SVG diagram`);
-      assert.ok(clientEx.description && clientEx.description.length > 10, `Exercise ${serverEx.id} must have instructions`);
+      assert.ok(clientEx, `${serverEx.id} lipsește din catalogul clientului`);
+      assert.equal(clientEx.level, serverEx.level, `nivel diferit la ${serverEx.id}`);
+      assert.equal(clientEx.category, serverEx.category, `categorie diferită la ${serverEx.id}`);
+      assert.ok(clientEx.svg || clientEx.image, `${serverEx.id} nu are nicio ilustrație`);
+
+      // Textul, o singură dată, în catalogul limbii.
+      const text = ro.ex[serverEx.id];
+      assert.ok(text, `${serverEx.id} nu are text în ro.json`);
+      assert.ok(text.name && text.name.length > 2, `${serverEx.id} fără nume`);
+      assert.ok(text.description && text.description.length > 10, `${serverEx.id} fără instrucțiuni`);
+      assert.ok(text.focus && text.focus.length > 2, `${serverEx.id} fără accent`);
+
+      // Și nicăieri altundeva.
+      assert.equal(clientEx.name, undefined, `${serverEx.id} încă are nume în catalogul clientului`);
+      assert.equal(serverEx.description, undefined, `${serverEx.id} încă are descriere pe server`);
     }
   });
 });

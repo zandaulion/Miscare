@@ -1,76 +1,55 @@
 /**
- * Cât de mult, exprimat în cuvinte — și cum se mișcă în sus sau în jos.
+ * Cât de mult, ca date — și cum se mișcă în sus sau în jos.
  *
- * Catalogul scrie efortul ca text: "8-10 repetări", "30 secunde",
- * "15-20 secunde pe fiecare parte". Varianta veche umbla direct pe text cu o
- * expresie regulată și scădea 2, ceea ce mergea pentru jumătate din formate și
- * eșua tăcut pentru restul: "30 secunde" nu se schimba niciodată, deci
- * planșele și statul la perete nu deveneau nici mai ușoare, nici mai grele,
- * oricât ar fi raportat cineva.
+ * Efortul era scris ca text: "8-10 repetări", "30 secunde". Funcționa cât timp
+ * aplicația vorbea o singură limbă, fiindcă unitatea se citea din cuvânt --
+ * `/^\s*secunde/` decidea dacă un pas înseamnă cinci secunde sau două
+ * repetări. În clipa în care catalogul s-ar fi tradus, "30 seconds" ar fi fost
+ * luat drept repetări și fiecare exercițiu pe timp ar fi început să crească cu
+ * doi în loc de cinci, tăcut, în toate limbile deodată.
  *
- * Aici textul se citește o dată într-o structură, se mută numeric, apoi se
- * scrie la loc. Partea de după numere rămâne intactă — "(menținere 2s)" și
- * "(coborâre 3-4s)" conțin cifre care nu descriu efortul și nu au ce căuta în
- * calcul.
+ * Aici unitatea e un câmp, nu un cuvânt. Textul se compune la afișare, din
+ * catalogul limbii curente.
  */
 
 // Un pas: câte repetări, respectiv câte secunde. Secundele se mișcă mai
 // mărunt, fiindcă un exercițiu de 20 de secunde sărit direct la 30 e o
 // creștere de 50%, nu un pas.
-const STEP_REPS = 2;
-const STEP_SECONDS = 5;
-
+const STEP = { reps: 2, seconds: 5, taps: 2 };
 // Sub atât nu mai e exercițiu, e gest.
-const FLOOR_REPS = 4;
-const FLOOR_SECONDS = 15;
+const FLOOR = { reps: 4, seconds: 15, taps: 4 };
 
-/** Prima valoare din șir — un număr sau un interval — plus restul, neatins. */
-export function parseLoad(text) {
-  const raw = String(text ?? '').trim();
-  const m = raw.match(/^(\d+)(?:\s*-\s*(\d+))?(.*)$/s);
-  if (!m) return null;
-
-  const lo = parseInt(m[1], 10);
-  const hi = m[2] ? parseInt(m[2], 10) : lo;
-  const suffix = m[3] ?? '';
-
-  // Secunde sau repetări: decide primul cuvânt de după numere, nu ghicitul.
-  const unit = /^\s*secunde/i.test(suffix) ? 'seconds' : 'reps';
-
-  return { lo, hi, unit, suffix, ranged: Boolean(m[2]) };
-}
-
-export function formatLoad(load) {
-  if (!load) return '';
-  return load.ranged && load.hi !== load.lo
-    ? `${load.lo}-${load.hi}${load.suffix}`
-    : `${load.lo}${load.suffix}`;
-}
+export const UNITS = Object.keys(STEP);
 
 /**
  * Mută efortul cu `steps` trepte, în sus sau în jos.
  *
- * Intervalul se mută întreg, păstrându-și lățimea: "8-10" devine "10-12", nu
- * "8-12". Lățimea e spațiul de manevră al zilei — unii oameni au zile de 8 și
- * zile de 10 — și nu are motiv să crească odată cu efortul.
- *
- * Podeaua se aplică pe capătul de jos, iar capătul de sus îl urmează, ca un
- * interval strâns la limită să nu se răstoarne în "6-4".
+ * Intervalul se mută întreg, păstrându-și lățimea: 8-10 devine 10-12, nu 8-12.
+ * Lățimea e spațiul de manevră al zilei -- unii oameni au zile de 8 și zile de
+ * 10 -- și nu are motiv să crească odată cu efortul.
  */
-export function stepLoad(load, steps) {
-  if (!load || !Number.isFinite(steps) || steps === 0) return load;
+export function stepReps(reps, steps = 0) {
+  if (!reps || typeof reps !== 'object') return reps;
+  const size = STEP[reps.unit] ?? STEP.reps;
+  const floor = FLOOR[reps.unit] ?? FLOOR.reps;
+  const width = Math.max(0, (reps.hi ?? reps.lo) - reps.lo);
 
-  const size = load.unit === 'seconds' ? STEP_SECONDS : STEP_REPS;
-  const floor = load.unit === 'seconds' ? FLOOR_SECONDS : FLOOR_REPS;
-  const width = load.hi - load.lo;
-
-  const lo = Math.max(floor, load.lo + steps * size);
-  return { ...load, lo, hi: lo + width };
+  const lo = Math.max(floor, Math.round(reps.lo + steps * size));
+  return { ...reps, lo, hi: lo + width };
 }
 
-/** Textul catalogului, mutat cu câteva trepte și scris la loc. */
-export function shiftText(text, steps) {
-  const load = parseLoad(text);
-  if (!load) return text;          // ceva ce nu începe cu un număr rămâne cum e
-  return formatLoad(stepLoad(load, steps));
+/**
+ * Efortul, scris în limba cerută.
+ *
+ * `strings` vine din catalogul limbii: `reps.unit.<unitate>` dă cuvântul, iar
+ * `reps.note.<calificativ>` dă coada ("pe fiecare parte", "menținere 2s").
+ * Lipsa unei chei nu aruncă -- se pierde calificativul, nu numărul, fiindcă
+ * numărul e partea pe care nimeni nu o poate ghici din context.
+ */
+export function formatReps(reps, strings = {}) {
+  if (!reps || typeof reps !== 'object') return '';
+  const range = reps.hi && reps.hi !== reps.lo ? `${reps.lo}-${reps.hi}` : `${reps.lo}`;
+  const unit = strings?.reps?.unit?.[reps.unit] ?? '';
+  const note = reps.note ? (strings?.reps?.note?.[reps.note] ?? '') : '';
+  return [range, unit, note].filter(Boolean).join(' ');
 }

@@ -11,28 +11,28 @@ const LEVEL_INFO = {
     shortName: 'De la 0',
     icon: '🟢',
     badgeClass: 'level-0',
-    desc: 'Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).'
+    desc: t('Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).')
   },
   1: {
-    name: 'Nivel 1 — Începător',
-    shortName: 'Începător',
+    name: t('Nivel 1 — Începător'),
+    shortName: t('Începător'),
     icon: '🔵',
     badgeClass: 'level-1',
-    desc: 'Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.'
+    desc: t('Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.')
   },
   2: {
     name: 'Nivel 2 — Intermediar',
     shortName: 'Intermediar',
     icon: '🟡',
     badgeClass: 'level-2',
-    desc: 'Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.'
+    desc: t('Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.')
   },
   3: {
     name: 'Nivel 3 — Avansat',
     shortName: 'Avansat',
     icon: '🔴',
     badgeClass: 'level-3',
-    desc: 'Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.'
+    desc: t('Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.')
   }
 };
 
@@ -51,11 +51,11 @@ const EQUIPMENT_ICONS = {
   yoga_mat: { name: 'Saltea', icon: '🟩' },
   dumbbells: { name: 'Gantere mici', icon: '🏋️' },
   adjustable_dumbbells: { name: 'Gantere 5-20kg', icon: '🏋️‍♂️' },
-  resistance_band: { name: 'Bandă elastică', icon: '🎗️' },
-  pullup_bar: { name: 'Bară tracțiuni', icon: '🪜' },
+  resistance_band: { name: t('Bandă elastică'), icon: '🎗️' },
+  pullup_bar: { name: t('Bară tracțiuni'), icon: '🪜' },
   kettlebell: { name: 'Kettlebell', icon: '🔔' },
-  foam_roller: { name: 'Rolă spumă', icon: '🪵' },
-  cushion: { name: 'Pernă', icon: '🛋️' }
+  foam_roller: { name: t('Rolă spumă'), icon: '🪵' },
+  cushion: { name: t('Pernă'), icon: '🛋️' }
 };
 
 // Stare internă pentru compendiu
@@ -101,7 +101,7 @@ export function renderCompendiumView(container, options = {}) {
             type="search"
             id="compendium-search-input"
             class="compendium-search-input"
-            placeholder="Caută după nume, mușchi sau echipament..."
+            placeholder="${t('Caută după nume, mușchi sau echipament...')}"
             value="${escapeHtml(currentFilter.searchQuery)}"
             autocomplete="off"
           />
@@ -152,7 +152,7 @@ export function renderCompendiumView(container, options = {}) {
             </button>
           </div>
 
-          <label class="equipment-toggle-pill ${currentFilter.onlyMyEquipment ? 'active' : ''}" title="Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual">
+          <label class="equipment-toggle-pill ${currentFilter.onlyMyEquipment ? 'active' : ''}" title="${t('Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual')}">
             <input type="checkbox" id="toggle-only-my-equipment" ${currentFilter.onlyMyEquipment ? 'checked' : ''} style="display: none;" />
             <span>✨ Doar echipamentul meu</span>
           </label>
@@ -169,7 +169,7 @@ export function renderCompendiumView(container, options = {}) {
         <div class="practice-modal-card">
           <div class="practice-modal-header">
             <div style="font-weight: 700; font-size: 1.1rem;" id="practice-title">Exersează mișcarea</div>
-            <button id="btn-close-practice" class="btn-close-circle" aria-label="Închide">✕</button>
+            <button id="btn-close-practice" class="btn-close-circle" aria-label="${t('Închide')}">✕</button>
           </div>
           <div class="practice-modal-body">
             <div id="practice-svg-wrapper" class="practice-svg-box"></div>
@@ -205,13 +205,15 @@ function getFilteredExercises(userEquipment) {
     // Căutare query
     if (currentFilter.searchQuery) {
       const q = currentFilter.searchQuery.toLowerCase().trim();
-      const matchName = (ex.name || '').toLowerCase().includes(q);
-      const matchFocus = (ex.focus || '').toLowerCase().includes(q);
-      const matchDesc = (ex.description || '').toLowerCase().includes(q);
-      const matchTip = (ex.tip || '').toLowerCase().includes(q);
+      // Se caută în limba de pe ecran. Altfel cineva care vede „Push-ups"
+      // ar trebui să tasteze „Flotări" ca să-l găsească.
+      const matchName = exText(ex.id, 'name').toLowerCase().includes(q);
+      const matchFocus = exText(ex.id, 'focus').toLowerCase().includes(q);
+      const matchDesc = exText(ex.id, 'description').toLowerCase().includes(q);
+      const matchTip = exText(ex.id, 'tip').toLowerCase().includes(q);
       const matchEq = ex.equipment.some((eq) => {
         const info = EQUIPMENT_ICONS[eq];
-        return info && info.name.toLowerCase().includes(q);
+        return info && exText(info.id, 'name').toLowerCase().includes(q);
       });
       if (!matchName && !matchFocus && !matchDesc && !matchTip && !matchEq) {
         return false;
@@ -265,7 +267,7 @@ function renderExerciseSections(userEquipment) {
         <div class="compendium-level-header ${info.badgeClass}">
           <div class="level-header-title">
             <span class="level-header-icon">${info.icon}</span>
-            <span class="level-header-name">${info.name}</span>
+            <span class="level-header-name">${t(info.name)}</span>
             <span class="level-header-count">(${levelExercises.length})</span>
           </div>
           <p class="level-header-desc">${info.desc}</p>
@@ -296,7 +298,7 @@ function renderExerciseCard(ex, userEquipment) {
       <div class="compendium-card-summary" role="button" tabindex="0" aria-expanded="${isExpanded}">
         <div class="compendium-card-svg-col">
           <div class="compendium-svg-frame ${ex.image ? 'has-photo' : ''}">
-            ${ex.image ? `<img src="${ex.image}" alt="${escapeHtml(ex.name)}" class="ex-img" />` : ex.svg}
+            ${ex.image ? `<img src="${ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="ex-img" />` : ex.svg}
           </div>
         </div>
 
@@ -307,21 +309,21 @@ function renderExerciseCard(ex, userEquipment) {
             ${hasEquipment ? `
               <span class="badge-available" title="Disponibil cu echipamentul tău actual">✓ Disponibil</span>
             ` : `
-              <span class="badge-needs-equip" title="Necesită echipament suplimentar">⚠️ Necesită ${missingEquipment.map(eq => (EQUIPMENT_ICONS[eq]?.name || eq)).join(', ')}</span>
+              <span class="badge-needs-equip" title="${t('Necesită echipament suplimentar')}">⚠️ Necesită ${missingEquipment.map(eq => (EQUIPMENT_ICONS[eq]?.name || eq)).join(', ')}</span>
             `}
           </div>
 
-          <h3 class="compendium-card-name">${escapeHtml(ex.name)}</h3>
+          <h3 class="compendium-card-name">${escapeHtml(exText(ex.id, 'name'))}</h3>
           
           <div class="compendium-card-focus">
-            <span class="focus-icon">🎯</span> ${escapeHtml(ex.focus || 'Mușchi principali')}
+            <span class="focus-icon">🎯</span> ${escapeHtml(ex.focus || t('Mușchi principali'))}
           </div>
 
           <div class="compendium-card-equipment-list">
             ${ex.equipment.map((eq) => {
               const eqInfo = EQUIPMENT_ICONS[eq] || { name: eq, icon: '📦' };
               const userHas = userEquipment.includes(eq);
-              return `<span class="eq-pill ${userHas ? 'has-it' : 'missing'}">${eqInfo.icon} ${eqInfo.name}</span>`;
+              return `<span class="eq-pill ${userHas ? 'has-it' : 'missing'}">${eqInfo.icon} ${t(eqInfo.name)}</span>`;
             }).join('')}
           </div>
         </div>
@@ -336,20 +338,20 @@ function renderExerciseCard(ex, userEquipment) {
         <div class="compendium-card-details">
           ${ex.image ? `
             <div class="detail-photo-banner">
-              <img src="${ex.image}" alt="${escapeHtml(ex.name)}" class="detail-full-photo" />
+              <img src="${ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="detail-full-photo" />
             </div>
           ` : ''}
           <div class="detail-block">
             <div class="detail-label">📖 Cum se execută corect:</div>
-            <p class="detail-text">${escapeHtml(ex.description)}</p>
+            <p class="detail-text">${escapeHtml(exText(ex.id, 'description'))}</p>
           </div>
 
-          ${ex.tip ? `
+          ${exText(ex.id, 'tip') ? `
             <div class="detail-tip-box">
               <span class="tip-bulb">💡</span>
               <div>
                 <strong>Sfatul antrenorului:</strong>
-                <p style="margin-top: 2px;">${escapeHtml(ex.tip)}</p>
+                <p style="margin-top: 2px;">${escapeHtml(exText(ex.id, 'tip'))}</p>
               </div>
             </div>
           ` : ''}
@@ -359,7 +361,7 @@ function renderExerciseCard(ex, userEquipment) {
               <span class="metric-chip-icon">🔢</span>
               <div>
                 <div class="metric-chip-label">Volum uzual</div>
-                <div class="metric-chip-val">${escapeHtml(ex.default_reps || '10-12 repetări')}</div>
+                <div class="metric-chip-val">${escapeHtml(formatReps(ex.reps, repWords()))}</div>
               </div>
             </div>
             <div class="metric-chip">
@@ -381,7 +383,7 @@ function renderExerciseCard(ex, userEquipment) {
                   if (!swapEx) return '';
                   return `
                     <button class="swap-jump-btn" data-target-id="${swapEx.id}">
-                      ${swapEx.name} (${LEVEL_INFO[swapEx.level]?.shortName})
+                      ${exText(swapEx.id, 'name')} (${LEVEL_INFO[swapEx.level]?.shortName})
                     </button>
                   `;
                 }).join('')}
@@ -551,17 +553,17 @@ function openPracticeModal(exercise, container) {
 
   modal.classList.remove('hidden');
 
-  container.querySelector('#practice-title').textContent = exercise.name;
+  container.querySelector('#practice-title').textContent = exText(exercise.id, 'name');
   const practiceBox = container.querySelector('#practice-svg-wrapper');
   if (practiceBox) {
     practiceBox.className = `practice-svg-box ${exercise.image ? 'has-photo' : ''}`;
     practiceBox.innerHTML = exercise.image
-      ? `<img src="${exercise.image}" alt="${escapeHtml(exercise.name)}" class="practice-photo" />`
+      ? `<img src="${exercise.image}" alt="${escapeHtml(exText(exercise.id, 'name'))}" class="practice-photo" />`
       : exercise.svg;
   }
   container.querySelector('#practice-cue-text').innerHTML = `
     <strong>${escapeHtml(exercise.focus || '')}</strong><br>
-    <span style="font-size: 0.85rem; color: var(--text-muted);">${escapeHtml(exercise.tip || exercise.description)}</span>
+    <span style="font-size: 0.85rem; color: var(--text-muted);">${escapeHtml(exText(exercise.id, 'tip') || exText(exercise.id, 'description'))}</span>
   `;
 
   practiceSecondsRemaining = exercise.duration_s || 45;
@@ -571,7 +573,7 @@ function openPracticeModal(exercise, container) {
   startPracticeCountdown(container);
 
   playPracticeBeep(520, 0.12);
-  speakVoicePrompt(`Pregătește-te pentru ${exercise.name}. Începem.`);
+  speakVoicePrompt(`${t('Pregătește-te pentru')} ${exText(exercise.id, 'name')}. ${t('Începem.')}`);
 
   const btnClose = container.querySelector('#btn-close-practice');
   const btnToggle = container.querySelector('#btn-toggle-practice');
@@ -580,12 +582,12 @@ function openPracticeModal(exercise, container) {
   btnClose.onclick = () => closePracticeModal(modal);
   btnToggle.onclick = () => {
     practiceIsRunning = !practiceIsRunning;
-    btnToggle.innerHTML = practiceIsRunning ? '⏸️ Pauză' : '▶️ Continuă';
+    btnToggle.innerHTML = practiceIsRunning ? t('⏸️ Pauză') : t('▶️ Continuă');
   };
   btnReset.onclick = () => {
     practiceSecondsRemaining = exercise.duration_s || 45;
     practiceIsRunning = true;
-    btnToggle.innerHTML = '⏸️ Pauză';
+    btnToggle.innerHTML = t('⏸️ Pauză');
     updatePracticeDisplay(container);
   };
 }

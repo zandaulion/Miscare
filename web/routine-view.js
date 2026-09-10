@@ -1,4 +1,6 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
+import { t, exText, repWords } from './i18n.js';
+import { formatReps } from '/format-reps.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
 
 let currentRoutine = null;
@@ -49,7 +51,7 @@ function toggleSound() {
 function updateSoundButtons() {
   document.querySelectorAll('.btn-sound-toggle').forEach((btn) => {
     btn.innerHTML = soundEnabled ? '🔊' : '🔇';
-    btn.setAttribute('aria-label', soundEnabled ? 'Dezactivează sunetul' : 'Activează sunetul');
+    btn.setAttribute('aria-label', soundEnabled ? t('Dezactivează sunetul') : t('Activează sunetul'));
   });
 }
 
@@ -121,7 +123,7 @@ function speakVoice(text) {
 }
 
 function parseDefaultReps(repsStr) {
-  if (!repsStr) return { count: 10, unit: 'repetări' };
+  if (!repsStr) return { count: 10, unit: t('repetări') };
   const str = String(repsStr).toLowerCase();
   const isSeconds = str.includes('secund') || str.includes('sec');
   const isPerSide = str.includes('pe parte');
@@ -135,7 +137,7 @@ function parseDefaultReps(repsStr) {
     if (single) count = parseInt(single[1], 10);
   }
 
-  const unit = isSeconds ? 'secunde' : isPerSide ? 'pe parte' : 'repetări';
+  const unit = isSeconds ? 'secunde' : isPerSide ? 'pe parte' : t('repetări');
   return { count: Math.max(1, count), unit };
 }
 
@@ -151,7 +153,7 @@ let guidedState = {
   isPaused: false,
   elapsedSeconds: 0,
   currentActualReps: 10,
-  repUnit: 'repetări',
+  repUnit: t('repetări'),
   exercisesDone: []
 };
 
@@ -263,9 +265,9 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     <div class="card">
       <div class="card-header">
         <div>
-          <h2 class="card-title">${alreadyDone ? 'Încă o rundă?' : escapeHtml(currentRoutine.title)}</h2>
+          <h2 class="card-title">${alreadyDone ? t('Încă o rundă?') : escapeHtml(currentRoutine.title)}</h2>
           <p class="card-subtitle">${alreadyDone
-            ? 'Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.'
+            ? t('Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.')
             : `Durată estimată: aprox. ${currentRoutine.target_minutes} minute`}</p>
         </div>
         <button id="btn-shorten" class="btn btn-secondary btn-sm">
@@ -281,16 +283,16 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     html += `
       <div class="exercise-card" data-index="${idx}">
         <div class="exercise-visual ${full.image ? 'has-photo' : ''}">
-          ${full.image ? `<img src="${full.image}" alt="${escapeHtml(ex.name)}" class="ex-img" />` : (full.svg || '🏃')}
+          ${full.image ? `<img src="${full.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="ex-img" />` : (full.svg || '🏃')}
         </div>
         <div class="exercise-content">
-          <div class="exercise-name">${idx + 1}. ${escapeHtml(ex.name)}</div>
+          <div class="exercise-name">${idx + 1}. ${escapeHtml(exText(ex.id, 'name'))}</div>
           <div class="exercise-meta">
-            <span class="badge badge-reps">${escapeHtml(ex.adjusted_reps || ex.default_reps)}</span>
-            <span class="badge">${escapeHtml(ex.focus || 'Tonifiere')}</span>
+            <span class="badge badge-reps">${escapeHtml(formatReps(ex.reps, repWords()))}</span>
+            <span class="badge">${escapeHtml(exText(ex.id, 'focus'))}</span>
           </div>
-          <p class="exercise-desc">${escapeHtml(ex.description)}</p>
-          ${ex.tip ? `<div class="exercise-tip">💡 ${escapeHtml(ex.tip)}</div>` : ''}
+          <p class="exercise-desc">${escapeHtml(exText(ex.id, 'description'))}</p>
+          ${exText(ex.id, 'tip') ? `<div class="exercise-tip">💡 ${escapeHtml(exText(ex.id, 'tip'))}</div>` : ''}
           <button class="btn-swap" data-swap-index="${idx}">
             🔄 Schimbă cu altul
           </button>
@@ -476,7 +478,7 @@ function swapExercise(index, container) {
 
   currentRoutine.exercises[index] = {
     ...next,
-    adjusted_reps: next.default_reps
+    reps: next.reps
   };
 
   saveCachedRoutine(currentRoutine);
@@ -489,7 +491,7 @@ function swapExercise(index, container) {
     updatedCard.classList.add('swapped');
   }
 
-  notifyToast(`🔄 Schimbat cu: ${next.name}`);
+  notifyToast(`🔄 Schimbat cu: ${exText(next.id, 'name')}`);
 }
 
 // ---------------------------------------------------------------- Guided Workout Runner
@@ -507,7 +509,7 @@ function startGuidedWorkout(routine, sets = userSelectedSets) {
     isPaused: false,
     elapsedSeconds: 0,
     currentActualReps: 10,
-    repUnit: 'repetări',
+    repUnit: t('repetări'),
     exercisesDone: []
   };
 
@@ -530,7 +532,7 @@ function renderGuidedStep() {
   const full = getExerciseById(currentEx.id) || currentEx;
 
   // Reps parsing
-  const repInfo = parseDefaultReps(currentEx.adjusted_reps || currentEx.default_reps);
+  const repInfo = parseDefaultReps(formatReps(currentEx.reps, repWords()));
   guidedState.currentActualReps = repInfo.count;
   guidedState.repUnit = repInfo.unit;
 
@@ -553,7 +555,7 @@ function renderGuidedStep() {
           Seria ${guidedState.currentSet} din ${guidedState.totalSets}
         </div>
       </div>
-      <button id="guided-sound-toggle" class="btn-sound-toggle" title="Comută sunetul">
+      <button id="guided-sound-toggle" class="btn-sound-toggle" title="${t('Comută sunetul')}">
         ${soundEnabled ? '🔊' : '🔇'}
       </button>
     </div>
@@ -564,11 +566,11 @@ function renderGuidedStep() {
 
     <div class="guided-body">
       <div class="guided-visual ${full.image ? 'has-photo' : ''}">
-        ${full.image ? `<img src="${full.image}" alt="${escapeHtml(currentEx.name)}" class="guided-photo" />` : (full.svg || '🏃')}
+        ${full.image ? `<img src="${full.image}" alt="${escapeHtml(exText(currentEx.id, 'name'))}" class="guided-photo" />` : (full.svg || '🏃')}
       </div>
 
-      <h2 class="guided-name">${escapeHtml(currentEx.name)}</h2>
-      <div class="guided-target">${escapeHtml(currentEx.adjusted_reps || currentEx.default_reps)}</div>
+      <h2 class="guided-name">${escapeHtml(exText(currentEx.id, 'name'))}</h2>
+      <div class="guided-target">${escapeHtml(formatReps(currentEx.reps, repWords()))}</div>
 
       <div class="guided-timer" id="guided-timer-display">
         ${formatSeconds(guidedState.timerSeconds)}
@@ -578,20 +580,20 @@ function renderGuidedStep() {
       <div class="rep-counter-container">
         <div class="rep-counter-label">Repetări realizate în această serie:</div>
         <div class="rep-counter-box">
-          <button id="rep-minus-btn" class="rep-btn" aria-label="Scade repetări">−</button>
+          <button id="rep-minus-btn" class="rep-btn" aria-label="${t('Scade repetări')}">−</button>
           <div class="rep-display">
             <span id="rep-value" class="rep-value">${guidedState.currentActualReps}</span>
             <span class="rep-unit">${guidedState.repUnit}</span>
           </div>
-          <button id="rep-plus-btn" class="rep-btn" aria-label="Crește repetări">+</button>
+          <button id="rep-plus-btn" class="rep-btn" aria-label="${t('Crește repetări')}">+</button>
         </div>
       </div>
 
       <p class="exercise-desc" style="max-width: 400px; margin: 4px 0 8px 0;">
-        ${escapeHtml(currentEx.description)}
+        ${escapeHtml(exText(currentEx.id, 'description'))}
       </p>
 
-      ${currentEx.tip ? `<div class="exercise-tip" style="max-width: 400px;">💡 ${escapeHtml(currentEx.tip)}</div>` : ''}
+      ${exText(currentEx.id, 'tip') ? `<div class="exercise-tip" style="max-width: 400px;">💡 ${escapeHtml(exText(currentEx.id, 'tip'))}</div>` : ''}
     </div>
 
     <div class="guided-footer">
@@ -601,15 +603,15 @@ function renderGuidedStep() {
         </button>
         <button id="guided-done-btn" class="btn btn-primary" style="flex: 2;">
           ${(guidedState.exerciseIndex === guidedState.routine.exercises.length - 1 && guidedState.currentSet === guidedState.totalSets)
-            ? '🎉 Finalizează antrenamentul'
-            : '➡️ Serie terminată'}
+            ? t('🎉 Finalizează antrenamentul')
+            : t('➡️ Serie terminată')}
         </button>
       </div>
     </div>
   `;
 
   // Start voice prompt
-  speakVoice(`${currentEx.name}, seria ${guidedState.currentSet}`);
+  speakVoice(`${exText(currentEx.id, 'name')}, seria ${guidedState.currentSet}`);
 
   // Sound toggle button
   overlay.querySelector('#guided-sound-toggle')?.addEventListener('click', () => {
@@ -636,7 +638,7 @@ function renderGuidedStep() {
 
   // Close handler
   overlay.querySelector('#guided-close')?.addEventListener('click', () => {
-    if (confirm('Vrei să oprești sesiunea? Ce ai făcut până acum contează!')) {
+    if (confirm(t('Vrei să oprești sesiunea? Ce ai făcut până acum contează!'))) {
       stopTimer();
       releaseWakeLock();
       overlay.remove();
@@ -650,7 +652,7 @@ function renderGuidedStep() {
   const pauseBtn = overlay.querySelector('#guided-pause-btn');
   pauseBtn?.addEventListener('click', () => {
     guidedState.isPaused = !guidedState.isPaused;
-    pauseBtn.innerHTML = guidedState.isPaused ? '▶️ Continuă' : '⏸️ Pauză';
+    pauseBtn.innerHTML = guidedState.isPaused ? t('▶️ Continuă') : t('⏸️ Pauză');
   });
 
   // Done handler
@@ -695,10 +697,10 @@ function completeExerciseStep() {
   // Record set
   guidedState.exercisesDone.push({
     id: currentEx.id,
-    name: currentEx.name,
+    name: exText(currentEx.id, 'name'),
     set: guidedState.currentSet,
     totalSets: guidedState.totalSets,
-    target_reps: currentEx.adjusted_reps || currentEx.default_reps,
+    target_reps: formatReps(currentEx.reps, repWords()),
     actual_reps: guidedState.currentActualReps,
     unit: guidedState.repUnit
   });
@@ -712,7 +714,7 @@ function completeExerciseStep() {
     const overlay = document.getElementById('guided-overlay');
     if (overlay) overlay.remove();
     playGentleChime();
-    speakVoice('Felicitări! Ai terminat antrenamentul!');
+    speakVoice(t('Felicitări! Ai terminat antrenamentul!'));
     openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
   } else {
     renderRestStep();
@@ -745,7 +747,7 @@ function renderRestStep() {
       <div style="font-weight: 700; font-size: 0.92rem; color: var(--text);">
         Odihnă & Respirație
       </div>
-      <button id="guided-sound-toggle" class="btn-sound-toggle" title="Comută sunetul">
+      <button id="guided-sound-toggle" class="btn-sound-toggle" title="${t('Comută sunetul')}">
         ${soundEnabled ? '🔊' : '🔇'}
       </button>
     </div>
@@ -766,12 +768,12 @@ function renderRestStep() {
 
         <div class="rest-preview-card">
           <div class="rest-preview-thumb ${nextFull.image ? 'has-photo' : ''}">
-            ${nextFull.image ? `<img src="${nextFull.image}" alt="${escapeHtml(nextEx.name)}" class="ex-img" />` : (nextFull.svg || '🏃')}
+            ${nextFull.image ? `<img src="${nextFull.image}" alt="${escapeHtml(exText(nextEx.id, 'name'))}" class="ex-img" />` : (nextFull.svg || '🏃')}
           </div>
           <div class="rest-preview-info">
             <div class="rest-preview-sub">Urmează:</div>
-            <div class="rest-preview-name">${escapeHtml(nextEx.name)}</div>
-            <div class="rest-preview-target">Seria ${nextSetNum} din ${guidedState.totalSets} • ${escapeHtml(nextEx.adjusted_reps || nextEx.default_reps)}</div>
+            <div class="rest-preview-name">${escapeHtml(exText(nextEx.id, 'name'))}</div>
+            <div class="rest-preview-target">Seria ${nextSetNum} din ${guidedState.totalSets} • ${escapeHtml(formatReps(nextEx.reps, repWords()))}</div>
           </div>
         </div>
 
@@ -794,7 +796,7 @@ function renderRestStep() {
   `;
 
   playRestStartSound();
-  speakVoice('Pauză de odihnă');
+  speakVoice(t('Pauză de odihnă'));
 
   overlay.querySelector('#guided-sound-toggle')?.addEventListener('click', () => {
     toggleSound();
@@ -812,7 +814,7 @@ function renderRestStep() {
   });
 
   overlay.querySelector('#guided-close')?.addEventListener('click', () => {
-    if (confirm('Vrei să oprești sesiunea? Ce ai făcut până acum contează!')) {
+    if (confirm(t('Vrei să oprești sesiunea? Ce ai făcut până acum contează!'))) {
       stopTimer();
       releaseWakeLock();
       overlay.remove();
@@ -843,7 +845,7 @@ function startRestTimer() {
 
       if (guidedState.timerSeconds === 0) {
         playGentleChime();
-        speakVoice('Pregătește-te!');
+        speakVoice(t('Pregătește-te!'));
         advanceToNextSet();
       }
     }
@@ -886,7 +888,7 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
 
       ${totalSets > 0 ? `
         <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-          <span class="badge badge-reps">🔁 ${totalSets} ${totalSets === 1 ? 'serie finalizată' : 'serii finalizate'}</span>
+          <span class="badge badge-reps">🔁 ${totalSets} ${totalSets === 1 ? t('serie finalizată') : 'serii finalizate'}</span>
           ${totalReps > 0 ? `<span class="badge">🔢 ${totalReps} repetări totale</span>` : ''}
         </div>
       ` : ''}
@@ -935,10 +937,10 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
   const hintEl = modal.querySelector('#feedback-hint');
 
   const hints = {
-    just_right: 'Menținem același ritm prietenos și data viitoare.',
-    easy: 'Super! Putem adăuga subtil o repetare în plus data viitoare.',
-    hard: 'Nicio problemă! Data viitoare reducem automat numărul de repetări.',
-    partial: 'Și 2-3 minute contează enorm. Ai făcut un pas excelent!'
+    just_right: t('Menținem același ritm prietenos și data viitoare.'),
+    easy: t('Super! Putem adăuga subtil o repetare în plus data viitoare.'),
+    hard: t('Nicio problemă! Data viitoare reducem automat numărul de repetări.'),
+    partial: t('Și 2-3 minute contează enorm. Ai făcut un pas excelent!')
   };
 
   modal.querySelectorAll('.feedback-btn').forEach((btn) => {
@@ -953,7 +955,7 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
   modal.querySelector('#btn-save-log')?.addEventListener('click', async () => {
     const btn = modal.querySelector('#btn-save-log');
     btn.disabled = true;
-    btn.textContent = 'Se salvează...';
+    btn.textContent = t('Se salvează...');
 
     await logWorkout({
       routine_title: routine.title,
@@ -962,7 +964,7 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
       exercises_done: exercisesDone || routine.exercises,
       feedback: selectedFeedback,
       adjustment_note: selectedFeedback === 'hard'
-        ? 'Ajustat automat mai blând pentru data viitoare.'
+        ? t('Ajustat automat mai blând pentru data viitoare.')
         : null
     });
 

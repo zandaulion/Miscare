@@ -1,0 +1,408 @@
+{
+  "meta": {
+    "name": "Română",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "repetări",
+      "seconds": "secunde",
+      "taps": "atingeri"
+    },
+    "note": {
+      "alternating": "alternativ",
+      "hold": "menținere",
+      "hold2s": "(menținere 2s)",
+      "eachSide": "pe fiecare parte",
+      "perLeg": "/ picior",
+      "perArm": "/ braț",
+      "lower34s": "(coborâre 3-4s)"
+    }
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "Flotări la perete",
+      "description": "Stai la un braț distanță de perete, cu palmele la nivelul pieptului. Îndoaie coatele controlat, apoi împinge înapoi.",
+      "focus": "Piept, brațe și umeri",
+      "tip": "Păstrează corpul drept ca o scândură, fără să lași bazinul să cadă în față."
+    },
+    "chair_sit_to_stand": {
+      "name": "Ridicări de pe scaun",
+      "description": "Așază-te pe marginea unui scaun stabil. Ridică-te în picioare împingând în călcâie, apoi așază-te la loc lent.",
+      "focus": "Picioare și stabilitate",
+      "tip": "Nu te lăsa să cazi pe scaun; coborârea lentă lucrează mușchii cel mai bine."
+    },
+    "standing_calf_raises": {
+      "name": "Ridicări pe vârfuri (cu sprijin)",
+      "description": "Cu mâinile sprijinite ușor de perete sau spătarul scaunului, ridică-te pe vârfuri cât mai sus, menține 1 secundă și coboară.",
+      "focus": "Glezne, gambe și circulație",
+      "tip": "Excelent pentru activarea circulației după perioade lungi de stat pe scaun."
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "Rotiri de umeri și întinderi ușoare",
+      "description": "Rotește umerii în cercuri mari spre spate, respirând adânc. Apoi întinde brațele ușor spre tavan.",
+      "focus": "Eliberare tensiune gât și umeri",
+      "tip": "Lasă umerii să coboare departe de urechi."
+    },
+    "glute_bridge_gentle": {
+      "name": "Podul fesier (la podea sau pat tare)",
+      "description": "Întins pe spate cu genunchii îndoiți și tălpile pe sol. Ridică bazinul până când corpul formează o linie dreaptă de la genunchi la umeri.",
+      "focus": "Fesieri și zona lombară",
+      "tip": "Strânge ușor abdomenul și fesierii în partea de sus, fără să curbezi exagerat spatele."
+    },
+    "seated_knee_lifts": {
+      "name": "Ridicări de genunchi din așezat",
+      "description": "Stai pe scaun cu spatele drept. Ridică un genunchi spre piept ținând abdomenul activ, coboară și repetă cu celălalt.",
+      "focus": "Abdomen inferior și mobilitate șolduri",
+      "tip": "Nu te lăsa pe spate când ridici genunchiul."
+    },
+    "chest_opener_stretch": {
+      "name": "Deschidere de piept la perete sau ușă",
+      "description": "Așază antebrațul pe tocul unei uși sau pe perete și rotește ușor trunchiul în partea opusă până simți o întindere plăcută în piept.",
+      "focus": "Postură și mobilitate cutie toracică",
+      "tip": "Respiră calm și profund, nu forța întinderea."
+    },
+    "incline_pushups": {
+      "name": "Flotări înclinate (pe birou sau spătar)",
+      "description": "Sprijină palmele pe o suprafață stabilă (masă rezistentă sau canapea). Coboară pieptul controlat și împinge ferm.",
+      "focus": "Piept, triceps și forță trunchi",
+      "tip": "Cu cât suprafața e mai înaltă, cu atât e mai ușor."
+    },
+    "knee_pushups": {
+      "name": "Flotări pe genunchi",
+      "description": "Sprijin pe palme și genunchi, cu trunchiul formând o linie dreaptă. Coboară pieptul spre podea îndoind coatele la 45°, apoi împinge ferm.",
+      "focus": "Piept, umeri și triceps",
+      "tip": "Ține abdomenul activ; nu lăsa zona lombară să se lase în jos."
+    },
+    "box_squat_touch": {
+      "name": "Genuflexiune cu atingerea scaunului",
+      "description": "Coboară într-o genuflexiune până când atingi ușor scaunul cu bazinul, apoi te ridici imediat fără să te așezi complet.",
+      "focus": "Coapse, fesieri și control",
+      "tip": "Genunchii urmăresc direcția degetelor de la picioare."
+    },
+    "wall_sit": {
+      "name": "Scaunul invizibil la perete (Wall Sit)",
+      "description": "Lipește spatele de perete și coboară ca pe un scaun până când genunchii sunt la 90°. Menține poziția nemișcat.",
+      "focus": "Cvadricepși (coapse) și anduranță musculară",
+      "tip": "Presează călcâiele ferm în podea și respiră constant."
+    },
+    "prone_cobra": {
+      "name": "Cobra blândă (Extensii de spate la sol)",
+      "description": "Întins pe burtă cu brațele pe lângă corp. Ridică ușor pieptul de pe podea trăgând omoplații spre spate și rotind degetele mari spre tavan.",
+      "focus": "Partea superioară a spatelui, romboizi și postură",
+      "tip": "Privește spre podea pentru a păstra gâtul relaxat și aliniat."
+    },
+    "bird_dog_gentle": {
+      "name": "Bird-dog (stabilitate pe genunchi și palme)",
+      "description": "În patru labe pe saltea. Întinde simultan brațul drept în față și piciorul stâng în spate, menține 2 secunde, apoi schimbă.",
+      "focus": "Stabilitate lombară, coordonare și fesieri",
+      "tip": "Imaginează-ți că ții un pahar cu apă pe spate și nu vrei să-l verși."
+    },
+    "deadbug_assisted": {
+      "name": "Deadbug asistat",
+      "description": "Pe spate cu genunchii la 90 de grade. Coboară un călcâi spre sol păstrând spatele lipit de saltea, apoi revino.",
+      "focus": "Abdomen profund și protecție lombară",
+      "tip": "Dacă simți că spatele se arcuiește de pe podea, nu coborî călcâiul până jos."
+    },
+    "crunches_standard": {
+      "name": "Abdomene clasice (Crunches la sol)",
+      "description": "Întins pe spate cu genunchii îndoiți și tălpile pe sol. Ridică doar omoplații contractând abdomenul, menține 1 secundă și coboară lent.",
+      "focus": "Abdomen (dreptul abdominal)",
+      "tip": "Nu trage de ceafă cu mâinile; ține bărbia depărtată de piept și privește la 45° spre tavan."
+    },
+    "side_plank": {
+      "name": "Plank lateral pe genunchi (Scândură laterală)",
+      "description": "Pe o parte, sprijină-te pe antebraț cu cotul sub umăr și genunchii îndoiți la 90°. Ridică bazinul formând o linie dreaptă de la genunchi la umeri.",
+      "focus": "Abdomen oblic, talie și stabilitate laterală",
+      "tip": "Ține gâtul drept și nu lăsa șoldul să cadă spre sol."
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "Flexii pentru bicepși (cu gantere)",
+      "description": "Așezat pe scaun cu o ganteră în fiecare mână. Îndoaie brațele ridicând greutățile spre umeri, apoi coboară lent.",
+      "focus": "Brațe (biceps)",
+      "tip": "Păstrează coatele fixe pe lângă corp."
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "Împins pentru umeri din așezat (cu gantere)",
+      "description": "Din așezat cu spatele drept, împinge ganterele de la nivelul urechilor spre tavan fără să blochezi brusc coatele.",
+      "focus": "Umeri și postură",
+      "tip": "Nu curba spatele."
+    },
+    "towel_pull_apart": {
+      "name": "Depărtări cu prosopul",
+      "description": "În picioare sau așezat, ține un prosop întins între mâini, la nivelul pieptului. Trage de capete în lateral ca și cum ai vrea să-l rupi, strângând omoplații, apoi relaxează lent.",
+      "focus": "Spate superior, omoplați și postură",
+      "tip": "Ține coatele aproape întinse și umerii jos, departe de urechi."
+    },
+    "reverse_snow_angels": {
+      "name": "Îngerași întorși la sol",
+      "description": "Întins pe burtă, cu fruntea sprijinită și brațele pe lângă corp. Ridică ușor brațele de pe podea și plimbă-le încet până deasupra capului, apoi înapoi lângă șolduri.",
+      "focus": "Spate superior, umeri și postură",
+      "tip": "Mișcarea e mică și lentă; important e ca brațele să nu atingă podeaua pe traseu."
+    },
+    "doorway_row": {
+      "name": "Ramat la tocul ușii",
+      "description": "Stai în fața unui toc de ușă solid, apucă marginea cu ambele mâini și pune vârfurile picioarelor aproape de prag. Lasă-te pe spate cu brațele întinse, apoi trage-te înapoi în picioare strângând omoplații.",
+      "focus": "Spate, bicepși și forță de tragere",
+      "tip": "Cu cât te lași mai pe spate, cu atât e mai greu — reglează dificultatea din unghi, nu din repetări."
+    },
+    "band_pull_apart": {
+      "name": "Depărtări de bandă pentru spate",
+      "description": "Ține banda cu ambele mâini în fața pieptului cu brațele întinse. Depărtează mâinile trăgând banda până atinge pieptul.",
+      "focus": "Spate superior, postură și umeri",
+      "tip": "Excelent pentru corectarea umerilor aduși în față."
+    },
+    "band_seated_row": {
+      "name": "Ramat din așezat cu bandă elastică",
+      "description": "Cu picioarele întinse, trece banda pe sub tălpi. Trage de capetele benzii spre abdomen strângând omopații la spate.",
+      "focus": "Mușchii spatelui și postură",
+      "tip": "Păstrează pieptul deschis și umerii coborâți."
+    },
+    "active_hang": {
+      "name": "Atârnare activă la bară (Active Hang)",
+      "description": "Prinde bara ferm și lasă corpul să atârne, dar trage omopații în jos și depărtează umerii de urechi. Respiră calm.",
+      "focus": "Decompresie lombară, stabilitate umeri și forță priză",
+      "tip": "Eliberează presiunea din coloană și pregătește umerii pentru tracțiuni."
+    },
+    "standard_pushups": {
+      "name": "Flotări clasice la podea",
+      "description": "Sprijin în palme și vârfuri de picioare. Coboară pieptul controlat până la 5 cm de sol, menținând corpul drept ca o scândură, apoi împinge ferm.",
+      "focus": "Piept, triceps, umeri și forță trunchi",
+      "tip": "Coatele formează o săgeată la 45 grade față de trunchi, nu deschise complet lateral."
+    },
+    "full_squats": {
+      "name": "Genuflexiuni libere (adânci)",
+      "description": "Picioarele la lățimea umerilor. Coboară bazinul sub nivelul genunchilor, păstrând călcâiele lipite de sol și pieptul mândru.",
+      "focus": "Coapse, fesieri și mobilitate glezne",
+      "tip": "Respiră adânc la coborâre și împinge în călcâie la urcare."
+    },
+    "forearm_plank": {
+      "name": "Scândură / Plank pe antebrațe",
+      "description": "Sprijin pe antebrațe și vârfurile picioarelor. Corpul formează o linie rigidă de la călcâie la creștet. Strânge abdomenul și fesierii.",
+      "focus": "Stabilitate trunchi, centură abdominală și umeri",
+      "tip": "Nu lăsa bazinul să cadă și nu îl ridica în formă de cort."
+    },
+    "reverse_lunges": {
+      "name": "Fandări în spate (alternativ)",
+      "description": "Fă un pas mare în spate și coboară genunchiul spre sol la 90 de grade. Revino împingând în călcâiul piciorului din față.",
+      "focus": "Fesieri, coapse și stabilitate unilaterală",
+      "tip": "Păstrează trunchiul vertical și genunchiul din față aliniat cu glezna."
+    },
+    "chair_dips": {
+      "name": "Flotări inverse la scaun (Dips)",
+      "description": "Cu spatele la scaun, sprijină palmele pe marginea șezutului. Coboară bazinul pe lângă scaun îndoind coatele la 90 de grade, apoi împinge înapoi sus.",
+      "focus": "Triceps, piept și deltoizi anteriori",
+      "tip": "Păstrează spatele aproape de marginea scaunului pe toată durata mișcării."
+    },
+    "mountain_climbers": {
+      "name": "Mountain climbers (tempo dinamic)",
+      "description": "Din poziția de flotare, trage genunchii spre piept în mod alternativ într-un ritm rapid și controlat, fără balans al bazinului.",
+      "focus": "Condiționare cardio, abdomen și umeri",
+      "tip": "Menține umerii direct deasupra palmelor."
+    },
+    "dumbbell_bent_over_row": {
+      "name": "Ramat cu gantere din aplecat",
+      "description": "Trunchiul aplecat înainte la 45 de grade, spatele perfect drept. Trage ganterele spre șolduri contractând puternic mușchii spatelui.",
+      "focus": "Spate, bicepși și deltoizi posteriori",
+      "tip": "Nu trage din brațe, inițiază mișcarea din omopați."
+    },
+    "single_leg_glute_bridge": {
+      "name": "Pod fesier pe un singur picior",
+      "description": "Pe spate, întinde un picior în aer și împinge în călcâiul celuilalt pentru a ridica bazinul. Menține 1 secundă sus.",
+      "focus": "Fesieri profunzi, biceps femural și stabilitate pelviană",
+      "tip": "Păstrează șoldurile paralele, nu lăsa o parte să cadă."
+    },
+    "chin_ups": {
+      "name": "Tracțiuni în supinație (Chin-ups)",
+      "description": "Prinde bara cu palmele orientate spre tine la lățimea umerilor. Trage pieptul spre bară până când bărbia trece peste, apoi coboară lent.",
+      "focus": "Bicepși, dorsali și forță de tragere",
+      "tip": "Priza în supinație folosește mai mult bicepșii, fiind o mișcare naturală și accesibilă la nivel intermediar."
+    },
+    "negative_pullups": {
+      "name": "Tracțiuni negative (coborâre controlată)",
+      "description": "Sari ușor sau folosește un scaun pentru a ajunge cu bărbia deasupra barei. Coboară cât mai lent posibil (3-4 secunde) până la întinderea completă a brațelor.",
+      "focus": "Forță excentrică, spate, brațe și priză",
+      "tip": "Coborârea controlată crește cel mai rapid numărul de tracțiuni complete."
+    },
+    "hanging_knee_raises": {
+      "name": "Ridicări de genunchi din atârnat la bară",
+      "description": "Din atârnat la bară cu brațele drepte și umerii fermi, ridică genunchii controlat spre piept fără balans, ține o fracțiune de secundă și coboară lent.",
+      "focus": "Abdomen inferior, flexori șold și anduranță priză",
+      "tip": "Evită balansul trunchiului — mișcarea trebuie să fie strict din contracția abdomenului."
+    },
+    "dumbbell_goblet_squat": {
+      "name": "Genuflexiuni Goblet (cu ganteră la piept)",
+      "description": "Ține o ganteră pe verticală, lipită de piept cu ambele palme. Coboară într-o genuflexiune adâncă menținând pieptul ridicat și coatele între genunchi, apoi împinge ferm în călcâie.",
+      "focus": "Cvadricepși, fesieri, mobilitate șolduri și stabilitate trunchi",
+      "tip": "Greutatea ținută în față activează abdomenul și te ajută să cobori adânc fără a rotunji spatele."
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "Îndreptări românești (RDL cu gantere)",
+      "description": "Picioarele la lățimea șoldurilor, ganterele în față. Împinge bazinul în spate flexând doar ușor genunchii, coborând ganterele până sub genunchi cu spatele perfect drept, apoi strânge fesierii la ridicare.",
+      "focus": "Biceps femural, fesieri și lanț posterior",
+      "tip": "Mișcarea este o împingere a fundului spre peretele din spate, nu o aplecare din talie."
+    },
+    "dumbbell_floor_press": {
+      "name": "Împins de la podea cu gantere",
+      "description": "Întins pe spate cu genunchii îndoiți. Împinge ganterele deasupra pieptului până când brațele sunt întinse, apoi coboară lent până când tricepșii ating ușor podeaua.",
+      "focus": "Piept, triceps și stabilitate articulară umeri",
+      "tip": "Podeaua blochează coborârea exagerată a coatelor, protejând articulațiile umerilor chiar și cu greutăți mari."
+    },
+    "dumbbell_single_arm_row": {
+      "name": "Ramat cu un braț sprijinit pe scaun",
+      "description": "Sprijină un genunchi și o mână pe scaun, cu spatele orizontal. Cu cealaltă mână, trage gantera grea spre șold contractând omoplatul, ține o fracțiune de secundă și coboară controlat.",
+      "focus": "Dorsali, romboizi, bicepși și forță unilaterală spate",
+      "tip": "Nu roti trunchiul; menține umerii paraleli cu podeaua."
+    },
+    "dumbbell_farmers_carry": {
+      "name": "Mersul fermierului (Farmer's Carry)",
+      "description": "Ține o ganteră grea în fiecare mână pe lângă corp. Menține umerii trași în spate, pieptul sus și pășește lent și controlat (sau menține postura fermă pe loc).",
+      "focus": "Priză, antebrațe, trapez, abdomen și stabilitate posturală",
+      "tip": "Menține corpul perfect vertical; nu lăsa greutățile să te tragă în față sau lateral."
+    },
+    "diamond_pushups": {
+      "name": "Flotări diamant (palme apropiate)",
+      "description": "Așază palmele la sol sub piept, cu degetele mari și arătătoare atingându-se în formă de diamant. Coboară și împinge exploziv.",
+      "focus": "Triceps intens și piept interior",
+      "tip": "Păstrează coatele apropiate de trunchi."
+    },
+    "jump_squats": {
+      "name": "Genuflexiuni cu săritură explozivă",
+      "description": "Coboară într-o genuflexiune adâncă și explodează într-o săritură verticală. Aterizează lin pe vârfuri și continuă în următoarea coborâre.",
+      "focus": "Putere explozivă picioare și anduranță cardiovasculară",
+      "tip": "Aterizarea trebuie să fie silențioasă și elastică pentru a proteja articulațiile."
+    },
+    "plank_shoulder_taps": {
+      "name": "Plank cu atingeri rapide de umeri",
+      "description": "Din poziția de flotare, ridică mâna dreaptă și atinge umărul stâng fără a mișca sau balansa bazinul. Repetă alternativ.",
+      "focus": "Anti-rotație trunchi, stabilitate umeri și abdomen",
+      "tip": "Depărtează picioarele puțin mai mult pentru stabilitate optimă."
+    },
+    "burpees_clean": {
+      "name": "Burpees curate (fără pauză)",
+      "description": "Din picioare, coboară în genuflexiune, aruncă picioarele în spate în poziție de flotare, execută o flotare, revino și sari în sus.",
+      "focus": "Capacitate anaerobă și forță totală a corpului",
+      "tip": "Găsește un tempo ritmic constant."
+    },
+    "pullups_standard": {
+      "name": "Tracțiuni la bară",
+      "description": "Prinde bara cu palmele orientate în față la o lățime mai mare decât umerii. Trage corpul până când bărbia trece peste bară.",
+      "focus": "Dorsali, bicepși și forță de tragere",
+      "tip": "Inițiază mișcarea trăgând coatele în jos și în spate."
+    }
+  },
+  "ui": {
+    "⏸️ Pauză": "⏸️ Pauză",
+    "▶️ Continuă": "▶️ Continuă",
+    "✅ Preferințe salvate!": "✅ Preferințe salvate!",
+    "➡️ Serie terminată": "➡️ Serie terminată",
+    "🎉 Finalizează antrenamentul": "🎉 Finalizează antrenamentul",
+    "💾 Salvează preferințele": "💾 Salvează preferințele",
+    "💾 Salvează selecția": "💾 Salvează selecția",
+    "1 - 5 kg (brațe & mobilitate)": "1 - 5 kg (brațe & mobilitate)",
+    "5 - 20 kg (forță & picioare)": "5 - 20 kg (forță & picioare)",
+    "Activează sunetul": "Activează sunetul",
+    "Ajustat automat mai blând pentru data viitoare.": "Ajustat automat mai blând pentru data viitoare.",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "Am calibrat mișcările de azi să fie mai blânde și confortabile.",
+    "Aplicație activată cu succes!": "Aplicație activată cu succes!",
+    "Bandă elastică": "Bandă elastică",
+    "Bară de tracțiuni": "Bară de tracțiuni",
+    "Bară tracțiuni": "Bară tracțiuni",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.",
+    "Bravo! Mișcare finalizată cu succes.": "Bravo! Mișcare finalizată cu succes.",
+    "Caută după nume, mușchi sau echipament...": "Caută după nume, mușchi sau echipament...",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.",
+    "Compendiu de exerciții": "Compendiu de exerciții",
+    "Comută sunetul": "Comută sunetul",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "Construiești forță și mobilitate zi de zi. Menține ritmul!",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.",
+    "Continui de unde am rămas": "Continui de unde am rămas",
+    "Crește repetări": "Crește repetări",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "Data trecută a fost ușor și plăcut. Menținem ritmul bun!",
+    "Dezactivează sunetul": "Dezactivează sunetul",
+    "E bine așa": "E bine așa",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "Felicitări pentru mișcarea de azi! Fiecare pas se adună.",
+    "Felicitări! Ai terminat antrenamentul!": "Felicitări! Ai terminat antrenamentul!",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "Fiecare pas contează. Fără grabă și fără comparații.",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.",
+    "Greutate cu mâner": "Greutate cu mâner",
+    "Hai puțin mai mult": "Hai puțin mai mult",
+    "Intensitate maximă, control total. Dă tot ce ai!": "Intensitate maximă, control total. Dă tot ce ai!",
+    "Încă o rundă?": "Încă o rundă?",
+    "Începător": "Începător",
+    "Închide": "Închide",
+    "Întotdeauna disponibilă": "Întotdeauna disponibilă",
+    "Jurnal și Progres": "Jurnal și Progres",
+    "Masaj și relaxare": "Masaj și relaxare",
+    "Menținem același ritm prietenos și data viitoare.": "Menținem același ritm prietenos și data viitoare.",
+    "Mișcare": "Mișcare",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă",
+    "Mișcare de zi cu zi": "Mișcare de zi cu zi",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "Mișcarea ta de azi — Nivel 0 (De la 0)",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "Mișcarea ta de azi — Nivel 1 (Începător)",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "Mișcarea ta de azi — Nivel 2 (Intermediar)",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "Mișcarea ta de azi — Nivel 3 (Avansat)",
+    "Montată la ușă/perete": "Montată la ușă/perete",
+    "Mușchi principali": "Mușchi principali",
+    "Navigare principală": "Navigare principală",
+    "Necesită echipament suplimentar": "Necesită echipament suplimentar",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "Nicio problemă! Data viitoare reducem automat numărul de repetări.",
+    "Nivel 1 — Începător": "Nivel 1 — Începător",
+    "Nivel 1 (Începător)": "Nivel 1 (Începător)",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "Nu am găsit nicio mișcare sigură pentru zonele bifate.",
+    "Nu am putut șterge sesiunea.": "Nu am putut șterge sesiunea.",
+    "nu există o schimbare de anulat": "nu există o schimbare de anulat",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.",
+    "Parțial": "Parțial",
+    "Pauză de odihnă": "Pauză de odihnă",
+    "Păstrează doar corpul, scaunul și peretele": "Păstrează doar corpul, scaunul și peretele",
+    "Pentru flotări și postură": "Pentru flotări și postură",
+    "Pentru sprijin și așezare": "Pentru sprijin și așezare",
+    "Pernă": "Pernă",
+    "Pernă moale": "Pernă moale",
+    "Pregătește-te!": "Pregătește-te!",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "Pregătit pentru câteva minute de mișcare revigorantă?",
+    "Pregătit pentru o sesiune activă și energică?": "Pregătit pentru o sesiune activă și energică?",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!",
+    "propunerea nu mai este valabilă": "propunerea nu mai este valabilă",
+    "Protecție genunchi": "Protecție genunchi",
+    "Reluăm mai ușor": "Reluăm mai ușor",
+    "repetări": "repetări",
+    "Rolă de spumă": "Rolă de spumă",
+    "Rolă spumă": "Rolă spumă",
+    "Rulare în browser": "Rulare în browser",
+    "Saltea / Covoraș": "Saltea / Covoraș",
+    "Scade repetări": "Scade repetări",
+    "Se salvează...": "Se salvează...",
+    "serie finalizată": "serie finalizată",
+    "Sesiune blândă de reacomodare": "Sesiune blândă de reacomodare",
+    "Sesiune calibrată pentru reacomodare ușoară.": "Sesiune calibrată pentru reacomodare ușoară.",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.",
+    "Setări și Dispozitiv": "Setări și Dispozitiv",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "Super! Putem adăuga subtil o repetare în plus data viitoare.",
+    "și „jos": "și „jos",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "Și 2-3 minute contează enorm. Ai făcut un pas excelent!",
+    "Șterge sesiunea din ${escapeHtml(log.date)}": "Șterge sesiunea din ${escapeHtml(log.date)}",
+    "Textilă sau cauciuc": "Textilă sau cauciuc",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?",
+    "ușor": "ușor",
+    "Ușor": "Ușor",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.",
+    "Volum adaptat automat după ultima sesiune.": "Volum adaptat automat după ultima sesiune.",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Vrei să oprești sesiunea? Ce ai făcut până acum contează!",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "Zonele pe care le-ai bifat exclud toate mișcările din catalog.",
+    "De la 0, în ritmul tău": "De la 0, în ritmul tău",
+    "Azi": "Azi",
+    "Exerciții": "Exerciții",
+    "Echipament": "Echipament",
+    "Progres": "Progres",
+    "Acces": "Acces",
+    "Pregătește-te pentru": "Pregătește-te pentru",
+    "Începem.": "Începem.",
+    "Șterge sesiunea": "Șterge sesiunea"
+  }
+}
