@@ -3,6 +3,8 @@
 // cu filtre avansate, căutare live, verificarea compatibilității cu echipamentul și mod de practică rapidă.
 
 import { CLIENT_EXERCISES, getExerciseById } from './exercises.js';
+import { t, exText, repWords } from './i18n.js';
+import { formatReps } from './format-reps.js';
 import { state } from './server-client.js';
 
 const LEVEL_INFO = {
