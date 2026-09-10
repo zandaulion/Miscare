@@ -12,7 +12,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['wall', 'bodyweight'],
     duration_s: 45,
     image: '/images/exercises/wall_pushups.jpg',
-    animation: '/images/exercises/wall_pushups.gif',
+    animation: '/images/exercises/wall_pushups.webp',
     swaps: ['shoulder_rolls_and_reach', 'chest_opener_stretch', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea și Perete -->
@@ -38,6 +38,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['chair', 'bodyweight'],
     duration_s: 50,
     image: '/images/exercises/chair_sit_to_stand.jpg',
+    animation: '/images/exercises/chair_sit_to_stand.webp',
     swaps: ['standing_calf_raises', 'box_squat_touch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea -->
@@ -60,6 +61,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['wall', 'chair', 'bodyweight'],
     duration_s: 40,
     image: '/images/exercises/standing_calf_raises.jpg',
+    animation: '/images/exercises/standing_calf_raises.webp',
     swaps: ['chair_sit_to_stand'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea -->
@@ -85,6 +87,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 35,
     image: '/images/exercises/shoulder_rolls_and_reach.jpg',
+    animation: '/images/exercises/shoulder_rolls_and_reach.webp',
     swaps: ['chest_opener_stretch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="20" y1="88" x2="80" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -106,6 +109,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/glute_bridge_gentle.jpg',
+    animation: '/images/exercises/glute_bridge_gentle.webp',
     swaps: ['seated_knee_lifts'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea -->
@@ -126,6 +130,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['chair', 'bodyweight'],
     duration_s: 40,
     image: '/images/exercises/seated_knee_lifts.jpg',
+    animation: '/images/exercises/seated_knee_lifts.webp',
     swaps: ['glute_bridge_gentle'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -149,6 +154,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['wall', 'bodyweight'],
     duration_s: 30,
     image: '/images/exercises/chest_opener_stretch.jpg',
+    animation: '/images/exercises/chest_opener_stretch.webp',
     swaps: ['shoulder_rolls_and_reach'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -172,6 +178,7 @@ export const CLIENT_EXERCISES = [
     level: 0,
     equipment: ['bodyweight'],
     image: '/images/exercises/towel_pull_apart.jpg',
+    animation: '/images/exercises/towel_pull_apart.webp',
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="92" x2="90" y2="92" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
       <!-- Cap și trunchi, în picioare -->
@@ -196,6 +203,7 @@ export const CLIENT_EXERCISES = [
     level: 0,
     equipment: ['bodyweight'],
     image: '/images/exercises/reverse_snow_angels.jpg',
+    animation: '/images/exercises/reverse_snow_angels.webp',
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
       <!-- Corp întins pe burtă, văzut de sus -->
