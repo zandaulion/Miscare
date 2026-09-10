@@ -345,11 +345,46 @@ export async function renderRoutineView(container, { forceDuration = null, routi
         </button>
       </div>
     </div>
+
+    <!-- Modal pentru vizualizare mărită (mare = animat / foto completă) -->
+    <div id="exercise-preview-modal" class="practice-modal-overlay hidden" aria-modal="true" role="dialog">
+      <div class="practice-modal-card" style="max-width: 440px;">
+        <div class="practice-modal-header">
+          <h3 id="preview-modal-title" class="practice-modal-title" style="margin: 0; font-size: 1.1rem;"></h3>
+          <button id="btn-close-preview" class="btn-close-circle" aria-label="${t('Închide')}">✕</button>
+        </div>
+        <div id="preview-modal-body"></div>
+      </div>
+    </div>
   `;
 
   container.innerHTML = html;
 
   // Event handlers
+  const previewModal = container.querySelector('#exercise-preview-modal');
+  const btnClosePreview = container.querySelector('#btn-close-preview');
+  if (btnClosePreview && previewModal) {
+    btnClosePreview.addEventListener('click', () => {
+      previewModal.classList.add('hidden');
+    });
+    previewModal.addEventListener('click', (e) => {
+      if (e.target === previewModal) previewModal.classList.add('hidden');
+    });
+  }
+
+  container.querySelectorAll('.exercise-visual').forEach((vis) => {
+    vis.style.cursor = 'pointer';
+    vis.setAttribute('title', t('Apasă pentru a mări'));
+    vis.addEventListener('click', (e) => {
+      const card = e.currentTarget.closest('.exercise-card');
+      const idx = parseInt(card?.dataset.index, 10);
+      const ex = currentRoutine?.exercises?.[idx];
+      if (!ex) return;
+      const full = getExerciseById(ex.id) || ex;
+      openExercisePreview(full, container);
+    });
+  });
+
   container.querySelector('#btn-explore-compendium')?.addEventListener('click', () => {
     document.querySelector('.nav-item[data-tab="compendium"]')?.click();
   });
@@ -501,6 +536,39 @@ function swapExercise(index, container) {
   notifyToast(`🔄 Schimbat cu: ${exText(next.id, 'name')}`);
 }
 
+function openExercisePreview(full, container) {
+  const modal = container.querySelector('#exercise-preview-modal');
+  if (!modal) return;
+  const title = container.querySelector('#preview-modal-title');
+  const body = container.querySelector('#preview-modal-body');
+  if (title) title.textContent = exText(full.id, 'name');
+  if (body) {
+    const largeSrc = full.animation || full.image;
+    body.innerHTML = `
+      ${largeSrc ? `
+        <div class="detail-photo-banner" style="max-height: 280px; margin-bottom: 12px; background: #000; border-radius: 12px; overflow: hidden;">
+          <img src="${largeSrc}" alt="${escapeHtml(exText(full.id, 'name'))}" class="detail-full-photo" style="max-height: 280px; width: 100%; object-fit: contain; display: block;" />
+        </div>
+      ` : `
+        <div style="width: 140px; height: 140px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;">${full.svg || '🏃'}</div>
+      `}
+      <div style="font-size: 0.9rem; margin-bottom: 8px;">
+        <span class="badge badge-reps">${escapeHtml(formatReps(full.reps || full.default_reps, repWords()))}</span>
+        <span class="badge" style="margin-left: 4px;">${escapeHtml(exText(full.id, 'focus'))}</span>
+      </div>
+      <p style="font-size: 0.9rem; line-height: 1.4; color: var(--text); margin-bottom: 8px;">
+        ${escapeHtml(exText(full.id, 'description'))}
+      </p>
+      ${exText(full.id, 'tip') ? `
+        <div class="exercise-tip" style="margin-top: 6px;">
+          💡 ${escapeHtml(exText(full.id, 'tip'))}
+        </div>
+      ` : ''}
+    `;
+  }
+  modal.classList.remove('hidden');
+}
+
 // ---------------------------------------------------------------- Guided Workout Runner
 
 function startGuidedWorkout(routine, sets = userSelectedSets) {
@@ -572,8 +640,8 @@ function renderGuidedStep() {
     </div>
 
     <div class="guided-body">
-      <div class="guided-visual ${full.image ? 'has-photo' : ''}">
-        ${full.image ? `<img src="${full.image}" alt="${escapeHtml(exText(currentEx.id, 'name'))}" class="guided-photo" />` : (full.svg || '🏃')}
+      <div class="guided-visual ${(full.animation || full.image) ? 'has-photo' : ''}">
+        ${(full.animation || full.image) ? `<img src="${full.animation || full.image}" alt="${escapeHtml(exText(currentEx.id, 'name'))}" class="guided-photo" />` : (full.svg || '🏃')}
       </div>
 
       <h2 class="guided-name">${escapeHtml(exText(currentEx.id, 'name'))}</h2>

@@ -11,7 +11,8 @@ export const CLIENT_EXERCISES = [
     level: 0,
     equipment: ['wall', 'bodyweight'],
     duration_s: 45,
-    image: '/images/exercises/wall_pushups.gif',
+    image: '/images/exercises/wall_pushups.jpg',
+    animation: '/images/exercises/wall_pushups.gif',
     swaps: ['shoulder_rolls_and_reach', 'chest_opener_stretch', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea și Perete -->
