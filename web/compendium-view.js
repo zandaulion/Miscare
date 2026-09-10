@@ -7,34 +7,41 @@ import { t, exText, repWords } from './i18n.js';
 import { formatReps } from './format-reps.js';
 import { state } from './server-client.js';
 
+// Tabelele țin chei, nu texte traduse.
+//
+// `t()` chemat direct în literalul unui `const` de modul se evaluează o
+// singură dată, la import -- înaintea încărcării limbii -- și nu se mai
+// recalculează niciodată. De aceea compendiul rămânea în română pe un ecran
+// arab, chiar și pentru textele care păreau deja traduse. Traducerea se face
+// la desenare.
 const LEVEL_INFO = {
   0: {
     name: 'Nivel 0 — De la 0 absolut',
     shortName: 'De la 0',
     icon: '🟢',
     badgeClass: 'level-0',
-    desc: t('Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).')
+    desc: 'Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).'
   },
   1: {
-    name: t('Nivel 1 — Începător'),
-    shortName: t('Începător'),
+    name: 'Nivel 1 — Începător',
+    shortName: 'Începător',
     icon: '🔵',
     badgeClass: 'level-1',
-    desc: t('Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.')
+    desc: 'Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.'
   },
   2: {
     name: 'Nivel 2 — Intermediar',
     shortName: 'Intermediar',
     icon: '🟡',
     badgeClass: 'level-2',
-    desc: t('Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.')
+    desc: 'Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.'
   },
   3: {
     name: 'Nivel 3 — Avansat',
     shortName: 'Avansat',
     icon: '🔴',
     badgeClass: 'level-3',
-    desc: t('Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.')
+    desc: 'Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.'
   }
 };
 
@@ -42,6 +49,7 @@ const CATEGORY_NAMES = {
   upper: { label: 'Partea de sus', icon: '💪' },
   lower: { label: 'Picioare', icon: '🦵' },
   core: { label: 'Trunchi & Core', icon: '🛡️' },
+  core_glutes: { label: 'Trunchi & Fesieri', icon: '🛡️' },
   mobility: { label: 'Mobilitate', icon: '🧘' },
   total: { label: 'Corp complet', icon: '⚡' }
 };
@@ -53,11 +61,11 @@ const EQUIPMENT_ICONS = {
   yoga_mat: { name: 'Saltea', icon: '🟩' },
   dumbbells: { name: 'Gantere mici', icon: '🏋️' },
   adjustable_dumbbells: { name: 'Gantere 5-20kg', icon: '🏋️‍♂️' },
-  resistance_band: { name: t('Bandă elastică'), icon: '🎗️' },
-  pullup_bar: { name: t('Bară tracțiuni'), icon: '🪜' },
+  resistance_band: { name: 'Bandă elastică', icon: '🎗️' },
+  pullup_bar: { name: 'Bară tracțiuni', icon: '🪜' },
   kettlebell: { name: 'Kettlebell', icon: '🔔' },
-  foam_roller: { name: t('Rolă spumă'), icon: '🪵' },
-  cushion: { name: t('Pernă'), icon: '🛋️' }
+  foam_roller: { name: 'Rolă spumă', icon: '🪵' },
+  cushion: { name: 'Pernă', icon: '🛋️' }
 };
 
 // Stare internă pentru compendiu
@@ -91,7 +99,7 @@ export function renderCompendiumView(container, options = {}) {
               <span>📖</span> ${t('Compendiu de Exerciții')}
             </h1>
             <p class="card-subtitle">
-              Toate cele ${CLIENT_EXERCISES.length} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi
+              ${t('Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi', { n: CLIENT_EXERCISES.length })}
             </p>
           </div>
         </div>
@@ -108,7 +116,7 @@ export function renderCompendiumView(container, options = {}) {
             autocomplete="off"
           />
           ${currentFilter.searchQuery ? `
-            <button id="btn-clear-search" class="search-clear-btn" aria-label="Șterge căutarea">✕</button>
+            <button id="btn-clear-search" class="search-clear-btn" aria-label="${t('Șterge căutarea')}">✕</button>
           ` : ''}
         </div>
 
@@ -117,19 +125,19 @@ export function renderCompendiumView(container, options = {}) {
           <div class="filter-label">${t('Nivel de intensitate:')}</div>
           <div class="level-chips-container" role="tablist">
             <button class="level-chip ${currentFilter.level === 'all' ? 'active' : ''}" data-level="all">
-              Toate (${CLIENT_EXERCISES.length})
+              ${t('Toate')} (${CLIENT_EXERCISES.length})
             </button>
             <button class="level-chip level-chip-0 ${currentFilter.level === '0' ? 'active' : ''}" data-level="0">
-              🟢 De la 0 (${countByLevel(0)})
+              🟢 ${t('De la 0')} (${countByLevel(0)})
             </button>
             <button class="level-chip level-chip-1 ${currentFilter.level === '1' ? 'active' : ''}" data-level="1">
-              🔵 Începător (${countByLevel(1)})
+              🔵 ${t('Începător')} (${countByLevel(1)})
             </button>
             <button class="level-chip level-chip-2 ${currentFilter.level === '2' ? 'active' : ''}" data-level="2">
-              🟡 Intermediar (${countByLevel(2)})
+              🟡 ${t('Intermediar')} (${countByLevel(2)})
             </button>
             <button class="level-chip level-chip-3 ${currentFilter.level === '3' ? 'active' : ''}" data-level="3">
-              🔴 Avansat (${countByLevel(3)})
+              🔴 ${t('Avansat')} (${countByLevel(3)})
             </button>
           </div>
         </div>
@@ -215,7 +223,7 @@ function getFilteredExercises(userEquipment) {
       const matchTip = exText(ex.id, 'tip').toLowerCase().includes(q);
       const matchEq = ex.equipment.some((eq) => {
         const info = EQUIPMENT_ICONS[eq];
-        return info && exText(info.id, 'name').toLowerCase().includes(q);
+        return Boolean(info) && t(info.name).toLowerCase().includes(q);
       });
       if (!matchName && !matchFocus && !matchDesc && !matchTip && !matchEq) {
         return false;
@@ -253,7 +261,7 @@ function renderExerciseSections(userEquipment) {
 
   let html = `
     <div class="compendium-stats-bar">
-      <span>${t('Afișez')} <strong>${filtered.length}</strong> din <strong>${CLIENT_EXERCISES.length}</strong> ${t('exerciții')}</span>
+      <span>${t('Afișez {shown} din {total} exerciții', { shown: filtered.length, total: CLIENT_EXERCISES.length })}</span>
       ${currentFilter.onlyMyEquipment ? `<span class="badge-accent">${t('✨ Compatibile cu echipamentul tău')}</span>` : ''}
     </div>
   `;
@@ -272,7 +280,7 @@ function renderExerciseSections(userEquipment) {
             <span class="level-header-name">${t(info.name)}</span>
             <span class="level-header-count">(${levelExercises.length})</span>
           </div>
-          <p class="level-header-desc">${info.desc}</p>
+          <p class="level-header-desc">${t(info.desc)}</p>
         </div>
 
         <div class="compendium-cards-list">
@@ -306,12 +314,12 @@ function renderExerciseCard(ex, userEquipment) {
 
         <div class="compendium-card-main-col">
           <div class="compendium-card-badges">
-            <span class="badge-level ${levelMeta.badgeClass}">${levelMeta.shortName}</span>
-            <span class="badge-category">${cat.icon} ${cat.label}</span>
+            <span class="badge-level ${levelMeta.badgeClass}">${t(levelMeta.shortName)}</span>
+            <span class="badge-category">${cat.icon} ${t(cat.label)}</span>
             ${hasEquipment ? `
-              <span class="badge-available" title="Disponibil cu echipamentul tău actual">${t('✓ Disponibil')}</span>
+              <span class="badge-available" title="${t('Disponibil cu echipamentul tău actual')}">${t('✓ Disponibil')}</span>
             ` : `
-              <span class="badge-needs-equip" title="${t('Necesită echipament suplimentar')}">⚠️ Necesită ${missingEquipment.map(eq => (EQUIPMENT_ICONS[eq]?.name || eq)).join(', ')}</span>
+              <span class="badge-needs-equip" title="${t('Necesită echipament suplimentar')}">⚠️ ${t('Necesită {items}', { items: missingEquipment.map((eq) => t(EQUIPMENT_ICONS[eq]?.name || eq)).join(', ') })}</span>
             `}
           </div>
 
@@ -385,7 +393,7 @@ function renderExerciseCard(ex, userEquipment) {
                   if (!swapEx) return '';
                   return `
                     <button class="swap-jump-btn" data-target-id="${swapEx.id}">
-                      ${exText(swapEx.id, 'name')} (${LEVEL_INFO[swapEx.level]?.shortName})
+                      ${exText(swapEx.id, 'name')} (${t(LEVEL_INFO[swapEx.level]?.shortName || '')})
                     </button>
                   `;
                 }).join('')}

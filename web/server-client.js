@@ -162,8 +162,8 @@ export async function updateProfile(updates) {
  */
 const FALLBACK_ROUTINES = {
   zero: {
-    titleKey: t('Mișcarea ta de azi — Nivel 0 (De la 0)'),
-    messageKey: t('Fiecare pas contează. Fără grabă și fără comparații.'),
+    titleKey: 'Mișcarea ta de azi — Nivel 0 (De la 0)',
+    messageKey: 'Fiecare pas contează. Fără grabă și fără comparații.',
     exercises: [
       { id: 'wall_pushups', reps: { lo: 8, hi: 10, unit: 'reps' } },
       { id: 'chair_sit_to_stand', reps: { lo: 6, hi: 8, unit: 'reps' } },
@@ -171,8 +171,8 @@ const FALLBACK_ROUTINES = {
     ]
   },
   beginner: {
-    titleKey: t('Mișcarea ta de azi — Nivel 1 (Începător)'),
-    messageKey: t('Construiești forță și mobilitate zi de zi. Menține ritmul!'),
+    titleKey: 'Mișcarea ta de azi — Nivel 1 (Începător)',
+    messageKey: 'Construiești forță și mobilitate zi de zi. Menține ritmul!',
     exercises: [
       { id: 'incline_pushups', reps: { lo: 8, hi: 10, unit: 'reps' } },
       { id: 'box_squat_touch', reps: { lo: 10, hi: 12, unit: 'reps' } },
@@ -180,8 +180,8 @@ const FALLBACK_ROUTINES = {
     ]
   },
   intermediate: {
-    titleKey: t('Mișcarea ta de azi — Nivel 2 (Intermediar)'),
-    messageKey: t('Pregătit pentru o sesiune activă și energică? Forță solidă la podea!'),
+    titleKey: 'Mișcarea ta de azi — Nivel 2 (Intermediar)',
+    messageKey: 'Pregătit pentru o sesiune activă și energică? Forță solidă la podea!',
     exercises: [
       { id: 'standard_pushups', reps: { lo: 10, hi: 15, unit: 'reps' } },
       { id: 'full_squats', reps: { lo: 12, hi: 16, unit: 'reps' } },
@@ -189,8 +189,8 @@ const FALLBACK_ROUTINES = {
     ]
   },
   advanced: {
-    titleKey: t('Mișcarea ta de azi — Nivel 3 (Avansat)'),
-    messageKey: t('Intensitate maximă, control total. Dă tot ce ai!'),
+    titleKey: 'Mișcarea ta de azi — Nivel 3 (Avansat)',
+    messageKey: 'Intensitate maximă, control total. Dă tot ce ai!',
     exercises: [
       { id: 'diamond_pushups', reps: { lo: 10, hi: 12, unit: 'reps' } },
       { id: 'jump_squats', reps: { lo: 10, hi: 14, unit: 'reps' } },
@@ -263,10 +263,10 @@ export async function getTodayRoutine(duration = null, forceRefresh = false) {
 
   const fallbackRoutine = {
     id: 'local_today',
-    title: tmpl.title,
+    title: tmpl.titleKey,
     level: currentLevel,
     target_minutes: duration || state.profile?.daily_time || 10,
-    supportive_message: tmpl.supportiveMessage,
+    supportive_message: tmpl.messageKey,
     adjustment_note: null,
     is_reentry: false,
     cached_date: todayStr,
@@ -291,7 +291,7 @@ export async function logWorkout(payload) {
   localLogs.unshift({
     id: 'local_' + Date.now(),
     date: new Date().toISOString().slice(0, 10),
-    routine_title: payload.routine_title || t('Mișcare de zi cu zi'),
+    routine_title: payload.routine_title || 'Mișcare de zi cu zi',
     duration_seconds: payload.duration_seconds || 600,
     completion_status: payload.completion_status || 'completed',
     feedback: payload.feedback || 'just_right',
@@ -312,7 +312,7 @@ export async function logWorkout(payload) {
 
   return {
     success: true,
-    celebration: t('Felicitări pentru mișcarea de azi! Fiecare pas se adună.')
+    celebration: 'Felicitări pentru mișcarea de azi! Fiecare pas se adună.'
   };
 }
 
