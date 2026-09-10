@@ -693,7 +693,11 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     // catalogul la fel de sigur ca cine se mișcă zilnic, doar mai lent. Iar o
     // zi sărită nu consumă o poziție -- primești înapoi sesiunea pe care n-ai
     // făcut-o, nu următoarea.
-    rotation = profile.total_active_days || 0
+    rotation = profile.total_sessions ?? profile.total_active_days ?? 0,
+    // Ce s-a servit ieri, ca să nu se servească iar azi. Se calculează
+    // regenerând sesiunea precedentă -- rotația fiind deterministă, e
+    // reproductibilă oricând. Setul gol oprește recursivitatea la un nivel.
+    avoid = null
   } = options;
 
   const targetMinutes = forceDurationMinutes || profile.daily_time || 10;
@@ -801,6 +805,14 @@ export function generateDailyRoutine(profile = {}, options = {}) {
 
   const chosen = [];
 
+  // Sesiunea de ieri, reconstruită. Rotația fiind deterministă, e suficient să
+  // se ceară aceeași funcție cu o poziție mai puțin; `avoid: new Set()` oprește
+  // lanțul acolo, ca să nu se refacă toată istoria de fiecare dată.
+  const yesterday = avoid ?? (rotation > 0
+    ? new Set(generateDailyRoutine(profile, { ...options, rotation: rotation - 1, avoid: new Set() })
+        .exercises.map((e) => e.id))
+    : new Set());
+
   /**
    * Ia din listă începând de la poziția de rotație, nu de la zero.
    *
@@ -810,12 +822,26 @@ export function generateDailyRoutine(profile = {}, options = {}) {
    * exercițiu poate ieși trei zile la rând iar altul niciodată, pe când o
    * rotație trece prin tot catalogul și se întoarce.
    */
+  /**
+   * Alege din listă, sărind peste ce s-a făcut ieri.
+   *
+   * Două treceri. Prima ocolește sesiunea precedentă, fiindcă „aceleași
+   * exerciții ca ieri" e exact plângerea pe care rotația trebuia s-o rezolve.
+   * A doua acceptă orice, fiindcă la un catalog subțire -- profilul care a
+   * semnalat problema are doar două exerciții de centru și unul de cărat --
+   * unele mișcări chiar n-au alternativă, iar un loc gol e mai rău decât o
+   * repetare.
+   */
   const pickFrom = (list, index = rotation) => {
     if (!list.length) return null;
     const start = ((index % list.length) + list.length) % list.length;
-    for (let i = 0; i < list.length; i++) {
-      const ex = list[(start + i) % list.length];
-      if (!chosen.includes(ex)) return ex;
+    for (const avoidYesterday of [true, false]) {
+      for (let i = 0; i < list.length; i++) {
+        const ex = list[(start + i) % list.length];
+        if (chosen.includes(ex)) continue;
+        if (avoidYesterday && yesterday.has(ex.id)) continue;
+        return ex;
+      }
     }
     return null;
   };
@@ -873,18 +899,59 @@ export function generateDailyRoutine(profile = {}, options = {}) {
   // Completare, preferând tipare care nu sunt deja în sesiune: două împingeri
   // în aceeași sesiune înseamnă aceiași mușchi de două ori, oricât de diferit
   // s-ar numi exercițiile.
-  const fill = (allowRepeatPattern) => {
-    if (!candidateExercises.length) return;
-    const start = ((rotation % candidateExercises.length) + candidateExercises.length) % candidateExercises.length;
-    for (let i = 0; i < candidateExercises.length && chosen.length < exerciseCount; i++) {
-      const ex = candidateExercises[(start + i) % candidateExercises.length];
-      const used = chosen.some((c) => c.pattern === ex.pattern);
-      if (!allowRepeatPattern && used) continue;
-      take(ex);
+  /**
+   * Locurile rămase, după grupele care conduc ziua.
+   *
+   * Contează mai mult decât pare: la cincisprezece minute sunt patru locuri și
+   * doar două grupe care conduc, deci completarea aduce jumătate de sesiune.
+   *
+   * Prima variantă parcurgea lista de candidați și lua primul exercițiu al
+   * cărui tipar nu era deja folosit. Alegerea era făcută de tipar, nu de
+   * rotație: același exercițiu câștiga „primul tipar nefolosit" în fiecare zi,
+   * iar o deplasare cu o poziție într-o listă lungă nu schimba cine câștigă.
+   * Rezultatul, măsurat pe profilul care a semnalat problema: 38% dintr-o
+   * sesiune se repeta a doua zi.
+   *
+   * Acum se rotesc amândouă -- care tipar umple primul, și care exercițiu din
+   * tiparul acela. Numărul de folosiri contorizate aici, nu rotația brută,
+   * pentru același motiv ca la grupe: două lucruri care avansează cu același
+   * pas se pot bloca în fază.
+   */
+  const fillSlots = () => {
+    const patterns = [...new Set(candidateExercises.map((e) => e.pattern))];
+    if (!patterns.length) return;
+
+    // Trei treceri, în ordinea în care merită cedat.
+    //
+    //   1. tipar nefolosit azi, mișcare nefolosită ieri  -- ce se dorește
+    //   2. tipar nefolosit azi, chiar dacă a fost și ieri -- catalog subțire
+    //   3. tipar repetat                                  -- ultima soluție
+    //
+    // Ordinea contează. Cu doar două treceri, evitarea zilei de ieri împingea
+    // completarea direct la un tipar repetat, adică două împingeri în aceeași
+    // sesiune -- exact regula pusă pentru refacere. Varietatea de la o zi la
+    // alta nu merită plătită cu aceiași mușchi de două ori în aceeași zi.
+    const PASSES = [
+      { repeatPattern: false, repeatYesterday: false },
+      { repeatPattern: false, repeatYesterday: true },
+      { repeatPattern: true, repeatYesterday: true }
+    ];
+
+    let taken = 0;
+    for (const pass of PASSES) {
+      for (let i = 0; i < patterns.length && chosen.length < exerciseCount; i++) {
+        const pattern = patterns[(((rotation + i) % patterns.length) + patterns.length) % patterns.length];
+        if (!pass.repeatPattern && chosen.some((c) => c.pattern === pattern)) continue;
+
+        const list = candidateExercises.filter((e) => e.pattern === pattern);
+        if (!pass.repeatYesterday && list.every((e) => yesterday.has(e.id))) continue;
+        const before = chosen.length;
+        take(pickFrom(list, rotation + taken));
+        if (chosen.length > before) taken++;
+      }
     }
   };
-  fill(false);
-  fill(true);   // dacă nu s-a strâns destul, un tipar repetat bate un loc gol
+  fillSlots();
 
   // Calculăm mesaje de suport și ajustare
   let adjustmentNote = null;
