@@ -34,7 +34,7 @@ export async function renderLogView(container) {
           ${t('Filosofia „No Shaming”')}
         </div>
         <div style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.4;">
-          Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.
+          ${t('Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.')}
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@ export async function renderLogView(container) {
     <div class="card">
       <div class="card-header">
         <h2 class="card-title">${t('Istoric recent')}</h2>
-        <span style="font-size: 0.8rem; color: var(--text-muted);">${logs.length} înregistrări</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">${t('{n} înregistrări', { n: logs.length })}</span>
       </div>
 
       <div id="logs-list">
@@ -88,7 +88,7 @@ export async function renderLogView(container) {
                 </div>
               </div>
               <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px;">
-                <span class="badge badge-reps">⏱️ ${minutes} min</span>
+                <span class="badge badge-reps">⏱️ ${t('{n} min', { n: minutes })}</span>
                 <span class="badge">${emoji} ${feedbackText}</span>
                 ${log.adjustment_note ? `<span class="adjustment-tag">${escapeHtml(t(log.adjustment_note))}</span>` : ''}
               </div>
@@ -146,7 +146,7 @@ export async function renderLogView(container) {
         <div style="display: flex; gap: 10px;">
           ${[5, 10, 15].map((mins) => `
             <button class="btn ${profile.daily_time === mins ? 'btn-primary' : 'btn-secondary'} btn-duration" data-mins="${mins}" style="flex: 1;">
-              ${mins} min
+              ${t('{n} min', { n: mins })}
             </button>
           `).join('')}
         </div>

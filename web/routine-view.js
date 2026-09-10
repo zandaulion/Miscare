@@ -37,6 +37,11 @@ let soundEnabled = typeof localStorage !== 'undefined'
   ? localStorage.getItem('miscare_sound_enabled') !== 'false'
   : true;
 
+/** „2 Serii", în limba curentă. Pluralul vine din catalog, nu dintr-un `if`. */
+function setsLabel(n) {
+  return t(`${n} ${n === 1 ? 'Serie' : 'Serii'}`);
+}
+
 function toggleSound() {
   soundEnabled = !soundEnabled;
   try {
@@ -153,7 +158,9 @@ let guidedState = {
   isPaused: false,
   elapsedSeconds: 0,
   currentActualReps: 10,
-  repUnit: t('repetări'),
+  // Cheie, nu traducere: obiectul e un `const` de modul, evaluat înainte de
+  // încărcarea limbii. Se suprascrie oricum la primul exercițiu.
+  repUnit: 'repetări',
   exercisesDone: []
 };
 
@@ -325,7 +332,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
       <div class="actions-stack">
         <button id="btn-start-guided" class="btn btn-primary">
-          ▶️ Ghidează-mă pas cu pas (${userSelectedSets} ${userSelectedSets === 1 ? 'serie' : 'serii'})
+          ${t('▶️ Ghidează-mă pas cu pas ({sets})', { sets: setsLabel(userSelectedSets) })}
         </button>
         <button id="btn-quick-log" class="btn btn-secondary">
           ${t('✅ Am făcut deja! Bifează rapid')}
@@ -334,7 +341,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
       <div style="margin-top: 14px; text-align: center;">
         <button id="btn-explore-compendium" class="btn btn-secondary" style="font-size: 0.85rem; width: 100%; border-style: dashed; display: flex; align-items: center; justify-content: center; gap: 6px;">
-          <span>📖</span> Explorează compendiul de exerciții (${CLIENT_EXERCISES.length} mișcări pe niveluri)
+          <span>📖</span> ${t('Explorează compendiul de exerciții ({n} mișcări pe niveluri)', { n: CLIENT_EXERCISES.length })}
         </button>
       </div>
     </div>
@@ -354,7 +361,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
       e.currentTarget.classList.add('active');
       const startBtn = container.querySelector('#btn-start-guided');
       if (startBtn) {
-        startBtn.textContent = `▶️ Ghidează-mă pas cu pas (${userSelectedSets} ${userSelectedSets === 1 ? 'serie' : 'serii'})`;
+        startBtn.textContent = t('▶️ Ghidează-mă pas cu pas ({sets})', { sets: setsLabel(userSelectedSets) });
       }
     });
   });
@@ -583,7 +590,7 @@ function renderGuidedStep() {
           <button id="rep-minus-btn" class="rep-btn" aria-label="${t('Scade repetări')}">−</button>
           <div class="rep-display">
             <span id="rep-value" class="rep-value">${guidedState.currentActualReps}</span>
-            <span class="rep-unit">${guidedState.repUnit}</span>
+            <span class="rep-unit">${t(guidedState.repUnit)}</span>
           </div>
           <button id="rep-plus-btn" class="rep-btn" aria-label="${t('Crește repetări')}">+</button>
         </div>

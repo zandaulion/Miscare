@@ -1,18 +1,25 @@
 import { state, updateProfile } from './server-client.js';
 import { t, exText, repWords } from './i18n.js';
 
+// Tabelul ține chei, nu texte.
+//
+// Aici se chema `t()` direct în literal, iar literalul e evaluat o singură
+// dată, la importul modulului -- adică înainte ca limba să fie încărcată.
+// Rezultatul: numele rămâneau în română oricare ar fi fost limba, și nu se
+// schimbau nici după ce omul alegea alta, fiindcă nu se mai recalculau
+// niciodată. Traducerea se face acum la desenare, de fiecare dată.
 const ALL_EQUIPMENT = [
-  { id: 'bodyweight', name: 'Greutatea corpului', icon: '🧘', desc: t('Întotdeauna disponibilă') },
-  { id: 'chair', name: 'Scaun stabil', icon: '🪑', desc: t('Pentru sprijin și așezare') },
-  { id: 'wall', name: 'Perete liber', icon: '🧱', desc: t('Pentru flotări și postură') },
-  { id: 'yoga_mat', name: t('Saltea / Covoraș'), icon: '🟩', desc: 'Pentru confort la sol' },
-  { id: 'dumbbells', name: 'Gantere mici', icon: '🏋️', desc: t('1 - 5 kg (brațe & mobilitate)') },
-  { id: 'adjustable_dumbbells', name: 'Gantere reglabile', icon: '🏋️‍♂️', desc: t('5 - 20 kg (forță & picioare)') },
-  { id: 'resistance_band', name: t('Bandă elastică'), icon: '🎗️', desc: t('Textilă sau cauciuc') },
-  { id: 'kettlebell', name: 'Kettlebell', icon: '🔔', desc: t('Greutate cu mâner') },
-  { id: 'pullup_bar', name: t('Bară de tracțiuni'), icon: '🪜', desc: t('Montată la ușă/perete') },
-  { id: 'foam_roller', name: t('Rolă de spumă'), icon: '🪵', desc: t('Masaj și relaxare') },
-  { id: 'cushion', name: t('Pernă moale'), icon: '🛋️', desc: t('Protecție genunchi') }
+  { id: 'bodyweight', name: 'Greutatea corpului', icon: '🧘', desc: 'Întotdeauna disponibilă' },
+  { id: 'chair', name: 'Scaun stabil', icon: '🪑', desc: 'Pentru sprijin și așezare' },
+  { id: 'wall', name: 'Perete liber', icon: '🧱', desc: 'Pentru flotări și postură' },
+  { id: 'yoga_mat', name: 'Saltea / Covoraș', icon: '🟩', desc: 'Pentru confort la sol' },
+  { id: 'dumbbells', name: 'Gantere mici', icon: '🏋️', desc: '1 - 5 kg (brațe & mobilitate)' },
+  { id: 'adjustable_dumbbells', name: 'Gantere reglabile', icon: '🏋️‍♂️', desc: '5 - 20 kg (forță & picioare)' },
+  { id: 'resistance_band', name: 'Bandă elastică', icon: '🎗️', desc: 'Textilă sau cauciuc' },
+  { id: 'kettlebell', name: 'Kettlebell', icon: '🔔', desc: 'Greutate cu mâner' },
+  { id: 'pullup_bar', name: 'Bară de tracțiuni', icon: '🪜', desc: 'Montată la ușă/perete' },
+  { id: 'foam_roller', name: 'Rolă de spumă', icon: '🪵', desc: 'Masaj și relaxare' },
+  { id: 'cushion', name: 'Pernă moale', icon: '🛋️', desc: 'Protecție genunchi' }
 ];
 
 export function renderEquipmentView(container) {
@@ -37,8 +44,8 @@ export function renderEquipmentView(container) {
             <label class="equipment-pill ${isChecked ? 'active' : ''}" data-eq-id="${eq.id}">
               <input type="checkbox" value="${eq.id}" ${isChecked ? 'checked' : ''} />
               <div>
-                <div style="font-size: 0.95rem; font-weight: 600;">${eq.icon} ${escapeHtml(eq.name)}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">${escapeHtml(eq.desc)}</div>
+                <div style="font-size: 0.95rem; font-weight: 600;">${eq.icon} ${escapeHtml(t(eq.name))}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">${escapeHtml(t(eq.desc))}</div>
               </div>
             </label>
           `;
