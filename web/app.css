@@ -365,6 +365,13 @@ header.app-header {
 }
 
 /* Guided Workout Modal / Screen */
+/* Ecranul ghidat: antetul și butoanele stau pe loc, doar mijlocul se derulează.
+ *
+ * Aici se derula tot containerul, deci la un exercițiu cu descriere lungă
+ * „Pauză" și „Serie terminată" ieșeau sub marginea ecranului -- exact în
+ * clipa în care omul termină seria și are nevoie de ele, fără să vrea să
+ * caute cu degetul. La fel dispărea și antetul, adică unde ești în sesiune.
+ */
 .guided-overlay {
   position: fixed;
   inset: 0;
@@ -373,10 +380,11 @@ header.app-header {
   display: flex;
   flex-direction: column;
   padding: var(--safe-top) 20px var(--safe-bottom) 20px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .guided-header {
+  flex: 0 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -399,11 +407,21 @@ header.app-header {
 }
 
 .guided-body {
-  flex: 1;
+  flex: 1 1 auto;
+  /* Fără asta, un element flex nu se micșorează sub conținutul lui, deci
+   * `overflow` de mai jos n-ar avea ce derula: cutia ar crește în schimb și
+   * ar împinge subsolul afară din ecran. */
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* `safe` ține conținutul prins de margine când e mai înalt decât cutia.
+   * Centrarea simplă îl taie la capătul de sus, iar partea tăiată nu se poate
+   * derula înapoi. Browserele care nu cunosc cuvântul ignoră declarația și
+   * aliniază la început -- tot vizibil, tot derulabil. */
+  justify-content: safe center;
   text-align: center;
   padding: 24px 0;
 }
@@ -448,10 +466,14 @@ header.app-header {
 }
 
 .guided-footer {
+  flex: 0 0 auto;
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  /* Se desprinde vizual de conținutul care trece pe sub el. */
+  border-top: 1px solid var(--border);
+  background: var(--bg);
 }
 
 /* Feedback & Celebration Screen */
