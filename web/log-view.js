@@ -1,4 +1,5 @@
 import { getLogs, state, updateProfile, deleteLog } from './server-client.js';
+import { t, exText, repWords } from './i18n.js';
 
 export async function renderLogView(container) {
   container.innerHTML = `
@@ -53,7 +54,7 @@ export async function renderLogView(container) {
         ` : logs.map((log) => {
           const minutes = Math.max(1, Math.round((log.duration_seconds || 600) / 60));
           const emoji = log.feedback === 'easy' ? '😊' : log.feedback === 'hard' ? '🥵' : log.feedback === 'partial' ? '⏱️' : '👍';
-          const feedbackText = log.feedback === 'easy' ? 'Ușor' : log.feedback === 'hard' ? 'Cam greu' : log.feedback === 'partial' ? 'Parțial' : 'Tocmai bine';
+          const feedbackText = log.feedback === 'easy' ? t('Ușor') : log.feedback === 'hard' ? 'Cam greu' : log.feedback === 'partial' ? t('Parțial') : 'Tocmai bine';
 
           let exercisesList = [];
           if (Array.isArray(log.exercises_done)) {
@@ -83,7 +84,7 @@ export async function renderLogView(container) {
                 <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
                   <div class="log-date">${escapeHtml(log.date)}</div>
                   <button class="log-del" type="button" data-del-log="${escapeHtml(log.id)}"
-                          aria-label="Șterge sesiunea din ${escapeHtml(log.date)}">&times;</button>
+                          aria-label="${t('Șterge sesiunea')} ${escapeHtml(log.date)}">&times;</button>
                 </div>
               </div>
               <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px;">
@@ -198,7 +199,7 @@ export async function renderLogView(container) {
         renderLogView(container);
       } catch (err) {
         btn.disabled = false;
-        alert(err.message || 'Nu am putut șterge sesiunea.');
+        alert(err.message || t('Nu am putut șterge sesiunea.'));
       }
     });
   });
@@ -232,8 +233,8 @@ export async function renderLogView(container) {
     });
 
     const btn = container.querySelector('#btn-save-profile');
-    btn.textContent = '✅ Preferințe salvate!';
-    setTimeout(() => { btn.textContent = '💾 Salvează preferințele'; }, 1500);
+    btn.textContent = t('✅ Preferințe salvate!');
+    setTimeout(() => { btn.textContent = t('💾 Salvează preferințele'); }, 1500);
   });
 }
 

@@ -1,4 +1,5 @@
 import { installUpdates } from '/pwa-update.js';
+import { t, load as loadLocale, loadFallback, apply as applyI18n } from './i18n.js';
 import { probe, redeem, state, updateProfile } from './server-client.js';
 import { renderRoutineView } from './routine-view.js';
 import { renderCompendiumView } from './compendium-view.js';
@@ -7,7 +8,7 @@ import { renderLogView } from './log-view.js';
 
 // Setup pwa-kit updates
 installUpdates({
-  appName: 'Mișcare',
+  appName: t('Mișcare'),
   toast: (message) => showToast(message),
   isBusy: () => Boolean(document.getElementById('guided-overlay'))
 });
@@ -29,6 +30,12 @@ export function isStandalone() {
 }
 
 async function init() {
+  // Limba, înaintea primului desen. Încărcată după, primul ecran ar apărea
+  // în română și s-ar schimba sub ochii omului o clipă mai târziu.
+  await loadLocale();
+  await loadFallback();
+  applyI18n();
+
   await probe();
   updateDeviceBadge();
 
@@ -84,6 +91,9 @@ function updateDeviceBadge() {
 }
 
 export function switchTab(tab, options = {}) {
+  // Vederile își rescriu propriul marcaj, deci atributele data-i18n trebuie
+  // reaplicate după fiecare redesenare.
+  queueMicrotask(() => applyI18n());
   const main = document.getElementById('main-content');
   if (!main) return;
 
@@ -167,7 +177,7 @@ function renderSettingsView(container) {
         <h2 class="card-title">Instalare & Service Worker</h2>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
-        Stare PWA: <strong>${isStandalone() ? 'Instalat pe ecranul principal ✅' : 'Rulare în browser'}</strong>
+        Stare PWA: <strong>${isStandalone() ? 'Instalat pe ecranul principal ✅' : t('Rulare în browser')}</strong>
       </p>
 
       ${!isStandalone() ? `

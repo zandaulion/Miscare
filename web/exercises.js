@@ -7,16 +7,11 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'wall_pushups',
-    name: 'Flotări la perete',
     category: 'upper',
     level: 0,
     equipment: ['wall', 'bodyweight'],
-    default_reps: '8-10 repetări',
     duration_s: 45,
     image: '/images/exercises/wall_pushups.jpg',
-    description: 'Stai la o lungime de braț de un perete liber. Așază palmele la nivelul pieptului. Îndoaie coatele controlat, apropie pieptul, apoi împinge înapoi.',
-    focus: 'Piept, brațe și umeri',
-    tip: 'Păstrează corpul drept ca o scândură, fără să lași bazinul să cadă în față.',
     swaps: ['shoulder_rolls_and_reach', 'chest_opener_stretch', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea și Perete -->
@@ -37,16 +32,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chair_sit_to_stand',
-    name: 'Ridicări de pe scaun',
     category: 'lower',
     level: 0,
     equipment: ['chair', 'bodyweight'],
-    default_reps: '6-8 repetări',
     duration_s: 50,
     image: '/images/exercises/chair_sit_to_stand.jpg',
-    description: 'Așază-te pe marginea unui scaun stabil. Ridică-te în picioare împingând ferm în călcâie, apoi așază-te la loc lent și controlat.',
-    focus: 'Picioare, coapse și stabilitate',
-    tip: 'Nu te lăsa să cazi pe scaun; coborârea lentă lucrează mușchii cel mai eficient.',
     swaps: ['standing_calf_raises', 'box_squat_touch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea -->
@@ -64,16 +54,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'standing_calf_raises',
-    name: 'Ridicări pe vârfuri (cu sprijin)',
     category: 'lower',
     level: 0,
     equipment: ['wall', 'chair', 'bodyweight'],
-    default_reps: '10-12 repetări',
     duration_s: 40,
     image: '/images/exercises/standing_calf_raises.jpg',
-    description: 'Cu mâinile sprijinite lejer pe perete sau spătarul scaunului, ridică-te pe vârfuri cât mai sus, menține 1 secundă și coboară lent.',
-    focus: 'Glezne, gambe și circulație',
-    tip: 'Excelent pentru activarea pompei circulatorii după perioade lungi de stat jos.',
     swaps: ['chair_sit_to_stand'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea -->
@@ -94,16 +79,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'shoulder_rolls_and_reach',
-    name: 'Rotiri de umeri și întindere',
     category: 'mobility',
     level: 0,
     equipment: ['bodyweight'],
-    default_reps: '30-40 secunde',
     duration_s: 35,
     image: '/images/exercises/shoulder_rolls_and_reach.jpg',
-    description: 'Rotește umerii în cercuri mari spre spate, respirând adânc. Apoi întinde brațele ușor spre tavan ca la trezire.',
-    focus: 'Eliberare tensiune gât, umeri și postură',
-    tip: 'Lasă umerii să coboare departe de urechi la fiecare expir.',
     swaps: ['chest_opener_stretch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="20" y1="88" x2="80" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -120,16 +100,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'glute_bridge_gentle',
-    name: 'Podul fesier blând',
     category: 'core_glutes',
     level: 0,
     equipment: ['bodyweight'],
-    default_reps: '8-10 repetări',
     duration_s: 50,
     image: '/images/exercises/glute_bridge_gentle.jpg',
-    description: 'Întins pe spate cu genunchii îndoiți și tălpile pe sol. Ridică bazinul până când corpul formează o linie dreaptă de la genunchi la umeri.',
-    focus: 'Fesieri, coapse și protecție lombară',
-    tip: 'Strânge ușor abdomenul și fesierii în partea de sus, fără să curbezi exagerat spatele.',
     swaps: ['seated_knee_lifts'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea -->
@@ -145,16 +120,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'seated_knee_lifts',
-    name: 'Ridicări de genunchi din așezat',
     category: 'core',
     level: 0,
     equipment: ['chair', 'bodyweight'],
-    default_reps: '10 repetări alternativ',
     duration_s: 40,
     image: '/images/exercises/seated_knee_lifts.jpg',
-    description: 'Stai pe scaun cu spatele drept. Ridică un genunchi spre piept ținând abdomenul activ, coboară și repetă cu celălalt.',
-    focus: 'Abdomen inferior și mobilitate șolduri',
-    tip: 'Nu te lăsa pe spate când ridici genunchiul.',
     swaps: ['glute_bridge_gentle'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -173,16 +143,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chest_opener_stretch',
-    name: 'Deschidere de piept la perete sau ușă',
     category: 'mobility',
     level: 0,
     equipment: ['wall', 'bodyweight'],
-    default_reps: '30 secunde',
     duration_s: 30,
     image: '/images/exercises/chest_opener_stretch.jpg',
-    description: 'Așază antebrațul pe tocul unei uși sau pe perete și rotește ușor trunchiul în partea opusă până simți o întindere plăcută în piept.',
-    focus: 'Postură și mobilitate cutie toracică',
-    tip: 'Respiră calm și profund, nu forța întinderea.',
     swaps: ['shoulder_rolls_and_reach'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -202,15 +167,10 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'towel_pull_apart',
-    name: 'Depărtări cu prosopul',
     category: 'upper',
     level: 0,
     equipment: ['bodyweight'],
-    default_reps: '10-12 repetări (menținere 2s)',
     image: '/images/exercises/towel_pull_apart.jpg',
-    description: 'În picioare sau așezat, ține un prosop întins între mâini, la nivelul pieptului. Trage de capete în lateral ca și cum ai vrea să-l rupi, strângând omoplații, apoi relaxează lent.',
-    focus: 'Spate superior, omoplați și postură',
-    tip: 'Ține coatele aproape întinse și umerii jos, departe de urechi.',
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="92" x2="90" y2="92" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
       <!-- Cap și trunchi, în picioare -->
@@ -231,15 +191,10 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'reverse_snow_angels',
-    name: 'Îngerași întorși la sol',
     category: 'upper',
     level: 0,
     equipment: ['bodyweight'],
-    default_reps: '8-10 repetări',
     image: '/images/exercises/reverse_snow_angels.jpg',
-    description: 'Întins pe burtă, cu fruntea sprijinită și brațele pe lângă corp. Ridică ușor brațele de pe podea și plimbă-le încet până deasupra capului, apoi înapoi lângă șolduri.',
-    focus: 'Spate superior, umeri și postură',
-    tip: 'Mișcarea e mică și lentă; important e ca brațele să nu atingă podeaua pe traseu.',
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
       <!-- Corp întins pe burtă, văzut de sus -->
@@ -256,15 +211,10 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'doorway_row',
-    name: 'Ramat la tocul ușii',
     category: 'upper',
     level: 1,
     equipment: ['bodyweight', 'wall'],
-    default_reps: '8-10 repetări',
     image: '/images/exercises/doorway_row.jpg',
-    description: 'Stai în fața unui toc de ușă solid, apucă marginea cu ambele mâini și pune vârfurile picioarelor aproape de prag. Lasă-te pe spate cu brațele întinse, apoi trage-te înapoi în picioare strângând omoplații.',
-    focus: 'Spate, bicepși și forță de tragere',
-    tip: 'Cu cât te lași mai pe spate, cu atât e mai greu — reglează dificultatea din unghi, nu din repetări.',
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="92" x2="90" y2="92" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
       <!-- Tocul ușii -->
@@ -282,16 +232,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'band_pull_apart',
-    name: 'Depărtări de bandă pentru spate',
     category: 'upper',
     level: 0,
     equipment: ['resistance_band'],
-    default_reps: '10-12 repetări',
     duration_s: 45,
     image: '/images/exercises/band_pull_apart.jpg',
-    description: 'Ține banda cu ambele mâini în fața pieptului cu brațele întinse. Depărtează mâinile trăgând banda până atinge pieptul.',
-    focus: 'Spate superior, postură și umeri',
-    tip: 'Excelent pentru corectarea umerilor aduși în față.',
     swaps: ['shoulder_rolls_and_reach', 'wall_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="24" r="5.5" fill="currentColor" />
@@ -313,16 +258,11 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'incline_pushups',
-    name: 'Flotări înclinate (pe birou sau spătar)',
     category: 'upper',
     level: 0,
     equipment: ['chair', 'bodyweight'],
-    default_reps: '8-10 repetări',
     duration_s: 50,
     image: '/images/exercises/incline_pushups.jpg',
-    description: 'Sprijină palmele pe o suprafață stabilă (masă rezistentă sau spătar). Coboară pieptul controlat și împinge ferm.',
-    focus: 'Piept, triceps și forță trunchi',
-    tip: 'Cu cât suprafața e mai înaltă, cu atât e mai ușor.',
     swaps: ['wall_pushups', 'standard_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -340,16 +280,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'knee_pushups',
-    name: 'Flotări pe genunchi',
     category: 'upper',
     level: 1,
     equipment: ['bodyweight'],
-    default_reps: '8-12 repetări',
     duration_s: 45,
     image: '/images/exercises/knee_pushups.jpg',
-    description: 'Sprijin pe palme și genunchi, cu trunchiul formând o linie dreaptă. Coboară pieptul spre podea îndoind coatele la 45°, apoi împinge ferm.',
-    focus: 'Piept, umeri și triceps',
-    tip: 'Ține abdomenul activ; nu lăsa zona lombară să se lase în jos.',
     swaps: ['incline_pushups', 'standard_pushups', 'wall_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -367,16 +302,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'box_squat_touch',
-    name: 'Genuflexiune cu atingerea scaunului',
     category: 'lower',
     level: 1,
     equipment: ['chair', 'bodyweight'],
-    default_reps: '8-10 repetări',
     duration_s: 50,
     image: '/images/exercises/box_squat_touch.jpg',
-    description: 'Coboară într-o genuflexiune până când atingi ușor scaunul cu bazinul, apoi te ridici imediat fără să te așezi complet.',
-    focus: 'Coapse, fesieri și control',
-    tip: 'Genunchii urmăresc direcția degetelor de la picioare.',
     swaps: ['chair_sit_to_stand', 'full_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -393,16 +323,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'wall_sit',
-    name: 'Scaunul invizibil la perete (Wall Sit)',
     category: 'lower',
     level: 1,
     equipment: ['wall'],
-    default_reps: '20-30 secunde menținere',
     duration_s: 40,
     image: '/images/exercises/wall_sit.jpg',
-    description: 'Lipește spatele de perete și coboară ca pe un scaun până când genunchii sunt la 90°. Menține poziția nemișcat.',
-    focus: 'Cvadricepși (coapse) și anduranță musculară',
-    tip: 'Presează călcâiele ferm în podea și respiră constant.',
     swaps: ['chair_sit_to_stand', 'box_squat_touch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea și perete -->
@@ -426,16 +351,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'prone_cobra',
-    name: 'Cobra blândă (Extensii de spate la sol)',
     category: 'mobility',
     level: 1,
     equipment: ['bodyweight'],
-    default_reps: '8-10 repetări (menținere 2s)',
     duration_s: 45,
     image: '/images/exercises/prone_cobra.jpg',
-    description: 'Întins pe burtă cu brațele pe lângă corp. Ridică ușor pieptul de pe podea trăgând omoplații spre spate și rotind degetele mari spre tavan.',
-    focus: 'Partea superioară a spatelui, romboizi și postură',
-    tip: 'Privește spre podea pentru a păstra gâtul relaxat și aliniat.',
     swaps: ['shoulder_rolls_reach', 'chest_opener_stretch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -453,16 +373,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'bird_dog_gentle',
-    name: 'Bird-dog (stabilitate pe genunchi și palme)',
     category: 'core_glutes',
     level: 1,
     equipment: ['bodyweight'],
-    default_reps: '6-8 pe fiecare parte',
     duration_s: 55,
     image: '/images/exercises/bird_dog_gentle.jpg',
-    description: 'În patru labe pe sol. Întinde simultan brațul drept în față și piciorul stâng în spate, menține 2 secunde, apoi schimbă.',
-    focus: 'Stabilitate lombară, coordonare și fesieri',
-    tip: 'Imaginează-ți că ții un pahar cu apă pe spate și nu vrei să-l verși.',
     swaps: ['glute_bridge_gentle'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -479,16 +394,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'deadbug_assisted',
-    name: 'Deadbug asistat',
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
-    default_reps: '8 repetări alternativ',
     duration_s: 45,
     image: '/images/exercises/deadbug_assisted.jpg',
-    description: 'Pe spate cu genunchii la 90 de grade. Coboară un călcâi spre sol păstrând spatele lipit de podea, apoi revino.',
-    focus: 'Abdomen profund și protecție lombară',
-    tip: 'Dacă simți că spatele se arcuiește de pe podea, nu coborî călcâiul până jos.',
     swaps: ['glute_bridge_gentle'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -504,16 +414,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'crunches_standard',
-    name: 'Abdomene clasice (Crunches la sol)',
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
-    default_reps: '10-15 repetări',
     duration_s: 45,
     image: '/images/exercises/crunches_standard.jpg',
-    description: 'Întins pe spate cu genunchii îndoiți și tălpile pe podea. Ridică doar omoplații contractând abdomenul, menține o secundă sus și coboară lent.',
-    focus: 'Mușchii abdominali (dreptul abdominal)',
-    tip: 'Nu trage de ceafă cu mâinile; ține coatele deschise și privirea la 45° spre tavan.',
     swaps: ['deadbug_assisted', 'forearm_plank'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -535,16 +440,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'side_plank',
-    name: 'Plank lateral pe genunchi (Scândură laterală)',
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
-    default_reps: '15-20 secunde pe fiecare parte',
     duration_s: 50,
     image: '/images/exercises/side_plank.jpg',
-    description: 'Pe o parte, sprijină-te pe antebraț cu cotul sub umăr și genunchii îndoiți la 90°. Ridică bazinul formând o linie dreaptă de la genunchi la umeri.',
-    focus: 'Abdomen oblic, talie și stabilitate laterală',
-    tip: 'Ține gâtul drept și nu lăsa șoldul să cadă spre sol.',
     swaps: ['deadbug_assisted', 'forearm_plank'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -565,16 +465,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_seated_bicep_curl',
-    name: 'Flexii pentru bicepși (cu gantere)',
     category: 'upper',
     level: 1,
     equipment: ['dumbbells', 'chair'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/dumbbell_seated_bicep_curl.jpg',
-    description: 'Așezat pe scaun cu o ganteră în fiecare mână. Îndoaie brațele ridicând greutățile spre umeri, apoi coboară lent.',
-    focus: 'Brațe (biceps)',
-    tip: 'Păstrează coatele fixe pe lângă corp.',
     swaps: ['band_pull_apart', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -591,16 +486,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_seated_shoulder_press',
-    name: 'Împins pentru umeri din așezat (cu gantere)',
     category: 'upper',
     level: 1,
     equipment: ['dumbbells', 'chair'],
-    default_reps: '8-10 repetări',
     duration_s: 50,
     image: '/images/exercises/dumbbell_seated_shoulder_press.jpg',
-    description: 'Din așezat cu spatele drept, împinge ganterele de la nivelul urechilor spre tavan fără să blochezi brusc coatele.',
-    focus: 'Umeri și postură',
-    tip: 'Nu curba spatele.',
     swaps: ['incline_pushups', 'shoulder_rolls_and_reach'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="20" y1="88" x2="80" y2="88" stroke="#94A3B8" stroke-width="2.5" opacity="0.4" />
@@ -619,16 +509,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'band_seated_row',
-    name: 'Ramat din așezat cu bandă elastică',
     category: 'upper',
     level: 1,
     equipment: ['resistance_band'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/band_seated_row.jpg',
-    description: 'Cu picioarele întinse, trece banda pe sub tălpi. Trage de capetele benzii spre abdomen strângând omopații la spate.',
-    focus: 'Mușchii spatelui și postură',
-    tip: 'Păstrează pieptul deschis și umerii coborâți.',
     swaps: ['band_pull_apart', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -645,16 +530,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'active_hang',
-    name: 'Atârnare activă la bară (Active Hang)',
     category: 'mobility',
     level: 1,
     equipment: ['pullup_bar'],
-    default_reps: '20-30 secunde',
     duration_s: 35,
     image: '/images/exercises/active_hang.jpg',
-    description: 'Prinde bara ferm și lasă corpul să atârne, dar trage omopații în jos și depărtează umerii de urechi. Respiră calm.',
-    focus: 'Decompresie lombară, stabilitate umeri și forță priză',
-    tip: 'Eliberează presiunea din coloană și pregătește umerii pentru tracțiuni.',
     swaps: ['shoulder_rolls_and_reach', 'chest_opener_stretch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Bara de tracțiuni de sus -->
@@ -678,16 +558,11 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'standard_pushups',
-    name: 'Flotări clasice la podea',
     category: 'upper',
     level: 2,
     equipment: ['bodyweight'],
-    default_reps: '10-15 repetări',
     duration_s: 50,
     image: '/images/exercises/standard_pushups.jpg',
-    description: 'Sprijin în palme și vârfuri de picioare. Coboară pieptul controlat până la 5 cm de sol, menținând corpul drept ca o scândură, apoi împinge ferm.',
-    focus: 'Piept, triceps, umeri și forță trunchi',
-    tip: 'Coatele formează o săgeată la 45 grade față de trunchi, nu deschise complet lateral.',
     swaps: ['incline_pushups', 'chair_dips', 'chin_ups', 'diamond_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -703,16 +578,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'full_squats',
-    name: 'Genuflexiuni libere (adânci)',
     category: 'lower',
     level: 2,
     equipment: ['bodyweight'],
-    default_reps: '12-16 repetări',
     duration_s: 50,
     image: '/images/exercises/full_squats.jpg',
-    description: 'Picioarele la lățimea umerilor. Coboară bazinul sub nivelul genunchilor, păstrând călcâiele lipite de sol și pieptul mândru.',
-    focus: 'Coapse, fesieri și mobilitate glezne',
-    tip: 'Respiră adânc la coborâre și împinge în călcâie la urcare.',
     swaps: ['reverse_lunges', 'box_squat_touch', 'jump_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -727,16 +597,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'forearm_plank',
-    name: 'Scândură / Plank pe antebrațe',
     category: 'core',
     level: 2,
     equipment: ['bodyweight'],
-    default_reps: '35-50 secunde',
     duration_s: 45,
     image: '/images/exercises/forearm_plank.jpg',
-    description: 'Sprijin pe antebrațe și vârfurile picioarelor. Corpul formează o linie rigidă de la călcâie la creștet. Strânge abdomenul și fesierii.',
-    focus: 'Stabilitate trunchi, centură abdominală și umeri',
-    tip: 'Nu lăsa bazinul să cadă și nu îl ridica în formă de cort.',
     swaps: ['mountain_climbers', 'hanging_knee_raises', 'plank_shoulder_taps'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -752,16 +617,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'reverse_lunges',
-    name: 'Fandări în spate (alternativ)',
     category: 'lower',
     level: 2,
     equipment: ['bodyweight'],
-    default_reps: '10-12 repetări / picior',
     duration_s: 55,
     image: '/images/exercises/reverse_lunges.jpg',
-    description: 'Fă un pas mare în spate și coboară genunchiul spre sol la 90 de grade. Revino împingând în călcâiul piciorului din față.',
-    focus: 'Fesieri, coapse și stabilitate unilaterală',
-    tip: 'Păstrează trunchiul vertical și genunchiul din față aliniat cu glezna.',
     swaps: ['full_squats', 'single_leg_glute_bridge'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -778,16 +638,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chair_dips',
-    name: 'Flotări inverse la scaun (Dips)',
     category: 'upper',
     level: 2,
     equipment: ['chair', 'bodyweight'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/chair_dips.jpg',
-    description: 'Cu spatele la scaun, sprijină palmele pe marginea șezutului. Coboară bazinul pe lângă scaun îndoind coatele la 90 de grade, apoi împinge înapoi sus.',
-    focus: 'Triceps, piept și deltoizi anteriori',
-    tip: 'Păstrează spatele aproape de marginea scaunului pe toată durata mișcării.',
     swaps: ['standard_pushups', 'chin_ups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -806,16 +661,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'mountain_climbers',
-    name: 'Mountain climbers (tempo dinamic)',
     category: 'core',
     level: 2,
     equipment: ['bodyweight'],
-    default_reps: '30-40 secunde',
     duration_s: 40,
     image: '/images/exercises/mountain_climbers.jpg',
-    description: 'Din poziția de flotare, trage genunchii spre piept în mod alternativ într-un ritm rapid și controlat, fără balans al bazinului.',
-    focus: 'Condiționare cardio, abdomen și umeri',
-    tip: 'Menține umerii direct deasupra palmelor.',
     swaps: ['forearm_plank', 'hanging_knee_raises', 'burpees_clean'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -833,16 +683,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_bent_over_row',
-    name: 'Ramat cu gantere din aplecat',
     category: 'upper',
     level: 2,
     equipment: ['dumbbells'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/dumbbell_bent_over_row.jpg',
-    description: 'Trunchiul aplecat înainte la 45 de grade, spatele perfect drept. Trage ganterele spre șolduri contractând puternic mușchii spatelui.',
-    focus: 'Spate, bicepși și deltoizi posteriori',
-    tip: 'Nu trage din brațe, inițiază mișcarea din omopați.',
     swaps: ['standard_pushups', 'chin_ups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -858,16 +703,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'single_leg_glute_bridge',
-    name: 'Pod fesier pe un singur picior',
     category: 'core_glutes',
     level: 2,
     equipment: ['bodyweight'],
-    default_reps: '8-10 / picior',
     duration_s: 50,
     image: '/images/exercises/single_leg_glute_bridge.jpg',
-    description: 'Pe spate, întinde un picior în aer și împinge în călcâiul celuilalt pentru a ridica bazinul. Menține 1 secundă sus.',
-    focus: 'Fesieri profunzi, biceps femural și stabilitate pelviană',
-    tip: 'Păstrează șoldurile paralele, nu lăsa o parte să cadă.',
     swaps: ['glute_bridge_gentle', 'full_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -882,16 +722,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chin_ups',
-    name: 'Tracțiuni în supinație (Chin-ups)',
     category: 'upper',
     level: 2,
     equipment: ['pullup_bar'],
-    default_reps: '4-8 repetări',
     duration_s: 50,
     image: '/images/exercises/chin_ups.jpg',
-    description: 'Prinde bara cu palmele orientate spre tine la lățimea umerilor. Trage corpul în sus până când bărbia trece peste nivelul barei, apoi coboară lent.',
-    focus: 'Bicepși, dorsali și forță de tragere',
-    tip: 'Priza în supinație folosește mai mult forța bicepșilor, fiind mai accesibilă la nivel intermediar.',
     swaps: ['standard_pushups', 'negative_pullups', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Bara de tracțiuni -->
@@ -911,16 +746,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'negative_pullups',
-    name: 'Tracțiuni negative (coborâre controlată)',
     category: 'upper',
     level: 2,
     equipment: ['pullup_bar'],
-    default_reps: '5-6 repetări (coborâre 3-4s)',
     duration_s: 50,
     image: '/images/exercises/negative_pullups.jpg',
-    description: 'Sari ușor sau folosește un scaun pentru a ajunge cu bărbia deasupra barei. Coboară cât mai lent posibil (3-4 secunde) până la întinderea completă a brațelor.',
-    focus: 'Forță excentrică, spate, brațe și priză',
-    tip: 'Coborârea controlată crește cel mai rapid numărul de tracțiuni complete.',
     swaps: ['chin_ups', 'standard_pushups', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="16" y1="18" x2="84" y2="18" stroke="#64748B" stroke-width="4.5" stroke-linecap="round" />
@@ -936,16 +766,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'hanging_knee_raises',
-    name: 'Ridicări de genunchi din atârnat la bară',
     category: 'core',
     level: 2,
     equipment: ['pullup_bar'],
-    default_reps: '8-12 repetări',
     duration_s: 45,
     image: '/images/exercises/hanging_knee_raises.jpg',
-    description: 'Din atârnat la bară cu brațele drepte și umerii fermi, ridică genunchii controlat spre piept fără balans, ține o fracțiune de secundă și coboară lent.',
-    focus: 'Abdomen inferior, flexori șold și anduranță priză',
-    tip: 'Evită balansul trunchiului — mișcarea trebuie să fie strict din contracția abdomenului.',
     swaps: ['forearm_plank', 'mountain_climbers'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="16" y1="16" x2="84" y2="16" stroke="#64748B" stroke-width="4.5" stroke-linecap="round" />
@@ -963,16 +788,11 @@ export const CLIENT_EXERCISES = [
   // --- Gantere reglabile / grele (5-20 kg) - Forță compusă Nivel 2
   {
     id: 'dumbbell_goblet_squat',
-    name: 'Genuflexiuni Goblet (cu ganteră la piept)',
     category: 'lower',
     level: 2,
     equipment: ['adjustable_dumbbells'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/dumbbell_goblet_squat.jpg',
-    description: 'Ține o ganteră pe verticală, lipită de piept cu ambele palme. Coboară într-o genuflexiune adâncă menținând pieptul ridicat și coatele între genunchi, apoi împinge ferm în călcâie.',
-    focus: 'Cvadricepși, fesieri, mobilitate șolduri și stabilitate trunchi',
-    tip: 'Greutatea ținută în față activează abdomenul și te ajută să cobori adânc fără a rotunji spatele.',
     swaps: ['full_squats', 'box_squat_touch', 'dumbbell_romanian_deadlift'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -993,16 +813,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_romanian_deadlift',
-    name: 'Îndreptări românești (RDL cu gantere)',
     category: 'lower',
     level: 2,
     equipment: ['adjustable_dumbbells'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/dumbbell_romanian_deadlift.jpg',
-    description: 'Picioarele la lățimea șoldurilor, ganterele în față. Împinge bazinul în spate flexând doar ușor genunchii, coborând ganterele până sub genunchi cu spatele perfect drept, apoi strânge fesierii la ridicare.',
-    focus: 'Biceps femural, fesieri și lanț posterior',
-    tip: 'Mișcarea este o împingere a fundului spre peretele din spate, nu o aplecare din talie.',
     swaps: ['glute_bridge_gentle', 'dumbbell_goblet_squat', 'single_leg_glute_bridge'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1023,16 +838,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_floor_press',
-    name: 'Împins de la podea cu gantere',
     category: 'upper',
     level: 2,
     equipment: ['adjustable_dumbbells'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/dumbbell_floor_press.jpg',
-    description: 'Întins pe spate cu genunchii îndoiți. Împinge ganterele deasupra pieptului până când brațele sunt întinse, apoi coboară lent până când tricepșii ating ușor podeaua.',
-    focus: 'Piept, triceps și stabilitate articulară umeri',
-    tip: 'Podeaua blochează coborârea exagerată a coatelor, protejând articulațiile umerilor chiar și cu greutăți mari.',
     swaps: ['standard_pushups', 'incline_pushups', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="84" x2="88" y2="84" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1053,16 +863,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_single_arm_row',
-    name: 'Ramat cu un braț sprijinit pe scaun',
     category: 'upper',
     level: 2,
     equipment: ['adjustable_dumbbells', 'chair'],
-    default_reps: '8-10 / braț',
     duration_s: 50,
     image: '/images/exercises/dumbbell_single_arm_row.jpg',
-    description: 'Sprijină un genunchi și o mână pe scaun, cu spatele orizontal. Cu cealaltă mână, trage gantera grea spre șold contractând omoplatul, ține o fracțiune de secundă și coboară controlat.',
-    focus: 'Dorsali, romboizi, bicepși și forță unilaterală spate',
-    tip: 'Nu roti trunchiul; menține umerii paraleli cu podeaua.',
     swaps: ['negative_pullups', 'chin_ups', 'standard_pushups', 'dumbbell_bent_over_row'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1088,16 +893,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_farmers_carry',
-    name: 'Mersul fermierului (Farmer\'s Carry)',
     category: 'core',
     level: 2,
     equipment: ['adjustable_dumbbells'],
-    default_reps: '35-45 secunde',
     duration_s: 45,
     image: '/images/exercises/dumbbell_farmers_carry.jpg',
-    description: 'Ține o ganteră grea în fiecare mână pe lângă corp. Menține umerii trași în spate, pieptul sus și pășește lent și controlat (sau menține postura fermă pe loc).',
-    focus: 'Priză, antebrațe, trapez, abdomen și stabilitate posturală',
-    tip: 'Menține corpul perfect vertical; nu lăsa greutățile să te tragă în față sau lateral.',
     swaps: ['forearm_plank', 'plank_shoulder_taps', 'hanging_knee_raises'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1128,16 +928,11 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'diamond_pushups',
-    name: 'Flotări diamant (palme apropiate)',
     category: 'upper',
     level: 3,
     equipment: ['bodyweight'],
-    default_reps: '10-12 repetări',
     duration_s: 50,
     image: '/images/exercises/diamond_pushups.jpg',
-    description: 'Așază palmele la sol sub piept, cu degetele mari și arătătoare atingându-se în formă de diamant. Coboară și împinge exploziv.',
-    focus: 'Triceps intens și piept interior',
-    tip: 'Păstrează coatele apropiate de trunchi.',
     swaps: ['standard_pushups', 'pullups_standard', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1152,16 +947,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'jump_squats',
-    name: 'Genuflexiuni cu săritură explozivă',
     category: 'lower',
     level: 3,
     equipment: ['bodyweight'],
-    default_reps: '10-14 repetări',
     duration_s: 45,
     image: '/images/exercises/jump_squats.jpg',
-    description: 'Coboară într-o genuflexiune adâncă și explodează într-o săritură verticală. Aterizează lin pe vârfuri și continuă în următoarea coborâre.',
-    focus: 'Putere explozivă picioare și anduranță cardiovasculară',
-    tip: 'Aterizarea trebuie să fie silențioasă și elastică pentru a proteja articulațiile.',
     swaps: ['full_squats', 'reverse_lunges', 'burpees_clean'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Sol -->
@@ -1180,16 +970,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'plank_shoulder_taps',
-    name: 'Plank cu atingeri rapide de umeri',
     category: 'core',
     level: 3,
     equipment: ['bodyweight'],
-    default_reps: '16-20 atingeri',
     duration_s: 45,
     image: '/images/exercises/plank_shoulder_taps.jpg',
-    description: 'Din poziția de flotare, ridică mâna dreaptă și atinge umărul stâng fără a mișca sau balansa bazinul. Repetă alternativ.',
-    focus: 'Anti-rotație trunchi, stabilitate umeri și abdomen',
-    tip: 'Depărtează picioarele puțin mai mult pentru stabilitate optimă.',
     swaps: ['forearm_plank', 'mountain_climbers'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1205,16 +990,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'burpees_clean',
-    name: 'Burpees curate (fără pauză)',
     category: 'core',
     level: 3,
     equipment: ['bodyweight'],
-    default_reps: '8-12 repetări',
     duration_s: 50,
     image: '/images/exercises/burpees_clean.jpg',
-    description: 'Din picioare, coboară în genuflexiune, aruncă picioarele în spate în poziție de flotare, execută o flotare, revino și sari în sus.',
-    focus: 'Capacitate anaerobă și forță totală a corpului',
-    tip: 'Găsește un tempo ritmic constant.',
     swaps: ['mountain_climbers', 'jump_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="88" x2="90" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1232,16 +1012,11 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'pullups_standard',
-    name: 'Tracțiuni la bară',
     category: 'upper',
     level: 3,
     equipment: ['pullup_bar'],
-    default_reps: '6-10 repetări',
     duration_s: 50,
     image: '/images/exercises/pullups_standard.jpg',
-    description: 'Prinde bara de tracțiuni cu palmele spre înainte la lățime mai mare decât umerii. Trage corpul până când bărbia trece peste bară.',
-    focus: 'Dorsali, bicepși și forță de tragere',
-    tip: 'Inițiază mișcarea trăgând coatele în jos și în spate.',
     swaps: ['diamond_pushups', 'chin_ups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Bara de tracțiuni -->

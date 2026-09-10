@@ -4,7 +4,7 @@ import {
   applyFeedback, proposeChange, nextLevel, previousLevel,
   MAX_STEP, MIN_STEP, EASY_STREAK_FOR_MORE, REENTRY_DAYS
 } from '../server/progression.js';
-import { generateDailyRoutine } from '../server/routine.js';
+import { generateDailyRoutine, EXERCISES } from '../server/routine.js';
 
 const base = { level: 'zero', daily_time: 10, equipment: ['bodyweight', 'chair', 'wall'] };
 
@@ -82,7 +82,7 @@ test('progression', async (t) => {
   await t.test('the step actually moves what the session asks for', () => {
     // Testul care lipsea: vechile teste verificau doar mesajul, deci volumul
     // putea sta pe loc fără ca nimic să pice.
-    const at = (repStep) => generateDailyRoutine(base, { repStep }).exercises.map((e) => e.adjusted_reps);
+    const at = (repStep) => generateDailyRoutine(base, { repStep }).exercises.map((e) => JSON.stringify(e.reps));
     const flat = at(0);
     const up = at(2);
     const down = at(-2);
@@ -92,11 +92,14 @@ test('progression', async (t) => {
 
   await t.test('duration exercises move too', () => {
     // "30 secunde" era imun la orice ajustare, în ambele direcții.
+    // Unitatea e acum un câmp, deci se cere direct -- nu se mai caută un
+    // cuvânt românesc într-un șir, care era exact fragilitatea eliminată.
     const timed = generateDailyRoutine(base, { repStep: 2 }).exercises
-      .filter((e) => /secunde/.test(e.default_reps));
+      .filter((e) => e.reps.unit === 'seconds');
     assert.ok(timed.length, 'catalogul are exerciții pe timp');
     for (const ex of timed) {
-      assert.notEqual(ex.adjusted_reps, ex.default_reps, `${ex.id} nu s-a mișcat`);
+      const base_ = EXERCISES.find((x) => x.id === ex.id).reps;
+      assert.notEqual(ex.reps.lo, base_.lo, `${ex.id} nu s-a mișcat`);
     }
   });
 });
