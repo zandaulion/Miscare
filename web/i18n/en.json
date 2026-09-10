@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "name": "English",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "reps",
+      "seconds": "seconds",
+      "taps": "taps"
+    },
+    "note": {
+      "alternating": "alternating",
+      "hold": "hold",
+      "hold2s": "(2s hold)",
+      "eachSide": "each side",
+      "perLeg": "/ leg",
+      "perArm": "/ arm",
+      "lower34s": "(3-4s lowering)"
+    }
+  },
+  "ui": {
+    "⏸️ Pauză": "⏸️ Pause",
+    "▶️ Continuă": "▶️ Resume",
+    "✅ Preferințe salvate!": "✅ Preferences saved!",
+    "➡️ Serie terminată": "➡️ Set done",
+    "🎉 Finalizează antrenamentul": "🎉 Finish the workout",
+    "💾 Salvează preferințele": "💾 Save preferences",
+    "💾 Salvează selecția": "💾 Save selection",
+    "1 - 5 kg (brațe & mobilitate)": "1–5 kg (arms & mobility)",
+    "5 - 20 kg (forță & picioare)": "5–20 kg (strength & legs)",
+    "Activează sunetul": "Turn sound on",
+    "Dezactivează sunetul": "Turn sound off",
+    "Comută sunetul": "Toggle sound",
+    "Ajustat automat mai blând pentru data viitoare.": "Automatically eased for next time.",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "We've made today's movements gentler and more comfortable.",
+    "Aplicație activată cu succes!": "App activated successfully!",
+    "Bandă elastică": "Resistance band",
+    "Bară de tracțiuni": "Pull-up bar",
+    "Bară tracțiuni": "Pull-up bar",
+    "Greutate cu mâner": "Kettlebell",
+    "Pernă": "Cushion",
+    "Pernă moale": "Soft cushion",
+    "Protecție genunchi": "Knee protection",
+    "Rolă de spumă": "Foam roller",
+    "Rolă spumă": "Foam roller",
+    "Saltea / Covoraș": "Mat",
+    "Textilă sau cauciuc": "Fabric or rubber",
+    "Montată la ușă/perete": "Mounted on a door or wall",
+    "Întotdeauna disponibilă": "Always available",
+    "Pentru flotări și postură": "For push-ups and posture",
+    "Pentru sprijin și așezare": "For support and sitting",
+    "Masaj și relaxare": "Massage and recovery",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "Welcome back! No rush and no guilt — your body remembers its rhythm gradually.",
+    "Bravo! Mișcare finalizată cu succes.": "Well done! Session completed.",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "Congratulations on today's movement! Every step adds up.",
+    "Felicitări! Ai terminat antrenamentul!": "Congratulations! You finished the workout!",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "Even 2–3 minutes count enormously. You took an excellent step!",
+    "Caută după nume, mușchi sau echipament...": "Search by name, muscle or equipment…",
+    "Compendiu de exerciții": "Exercise compendium",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Show only exercises you can do with your current equipment",
+    "Necesită echipament suplimentar": "Needs extra equipment",
+    "Mușchi principali": "Main muscles",
+    "Închide": "Close",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "A few more reps, not a leap. You can go back any time.",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "Your last two sessions felt easy. Shall we add a little next time?",
+    "Hai puțin mai mult": "Let's add a little",
+    "E bine așa": "It's fine as it is",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "Great! We can quietly add one more rep next time.",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "You're building strength and mobility day by day. Keep it up!",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "Every step counts. No rush, no comparisons.",
+    "Intensitate maximă, control total. Dă tot ce ai!": "Maximum intensity, full control. Give it everything!",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "Ready for a few refreshing minutes of movement?",
+    "Pregătit pentru o sesiune activă și energică?": "Ready for an active, energetic session?",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "Ready for an active, energetic session? Solid strength on the floor!",
+    "Menținem același ritm prietenos și data viitoare.": "We'll keep the same friendly pace next time.",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "Last time was easy and pleasant. Let's keep the good pace!",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "Building base fitness: floor work, light dumbbells and resistance bands.",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "Compound strength and power: diamond push-ups, jump squats, free pull-ups.",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "No joint impact, suited to a sedentary start or a gentle return (chair / wall).",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Full floor push-ups, adjustable dumbbells (5–20 kg), compound lifts and a pull-up bar.",
+    "Continui de unde am rămas": "Continue where I left off",
+    "Reluăm mai ușor": "Start back gently",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Whatever you choose, nothing you've built is lost.",
+    "Sesiune blândă de reacomodare": "Gentle easing-back session",
+    "Sesiune calibrată pentru reacomodare ușoară.": "Session calibrated for a gentle return.",
+    "Volum adaptat automat după ultima sesiune.": "Volume adjusted automatically after your last session.",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "No problem! Next time we'll automatically reduce the reps.",
+    "Crește repetări": "Increase reps",
+    "Scade repetări": "Decrease reps",
+    "repetări": "reps",
+    "ușor": "easy",
+    "Ușor": "Easy",
+    "Parțial": "Partial",
+    "serie finalizată": "set completed",
+    "Pauză de odihnă": "Rest break",
+    "Pregătește-te!": "Get ready!",
+    "Pregătește-te pentru": "Get ready for",
+    "Începem.": "Let's begin.",
+    "Se salvează...": "Saving…",
+    "Încă o rundă?": "Another round?",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Optional, if you feel like it. Nothing is lost if you stop here.",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Stop the session? What you've done so far still counts!",
+    "Începător": "Beginner",
+    "Nivel 1 — Începător": "Level 1 — Beginner",
+    "Nivel 1 (Începător)": "Level 1 (Beginner)",
+    "Mișcare": "Mișcare",
+    "Mișcare de zi cu zi": "Everyday movement",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — Exercise from zero: a frictionless routine, no shaming, always adapting",
+    "De la 0, în ritmul tău": "From zero, at your own pace",
+    "Azi": "Today",
+    "Exerciții": "Exercises",
+    "Echipament": "Equipment",
+    "Progres": "Progress",
+    "Acces": "Access",
+    "Navigare principală": "Main navigation",
+    "Jurnal și Progres": "Journal and progress",
+    "Setări și Dispozitiv": "Settings and device",
+    "Rulare în browser": "Running in the browser",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "Today's movement — Level 0 (From zero)",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "Today's movement — Level 1 (Beginner)",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "Today's movement — Level 2 (Intermediate)",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "Today's movement — Level 3 (Advanced)",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "We found no safe movement for the areas you ticked.",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "A shorter session: this is all we found safely for the areas you ticked.",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "The areas you ticked rule out every movement in the catalogue.",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "Check them in settings — or ask a professional what is safe for you.",
+    "Nu am putut șterge sesiunea.": "We couldn't delete the session.",
+    "Șterge sesiunea": "Delete session",
+    "nu există o schimbare de anulat": "there is no change to undo",
+    "propunerea nu mai este valabilă": "that suggestion is no longer valid",
+    "Păstrează doar corpul, scaunul și peretele": "Keep just bodyweight, a chair and a wall"
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "Wall push-ups",
+      "description": "Stand an arm's length from the wall, palms at chest height. Bend your elbows under control, then push back.",
+      "focus": "Chest, arms and shoulders",
+      "tip": "Keep your body straight as a plank; don't let your hips sag forward."
+    },
+    "chair_sit_to_stand": {
+      "name": "Sit-to-stand from a chair",
+      "description": "Sit on the edge of a stable chair. Stand up by pushing through your heels, then sit back down slowly.",
+      "focus": "Legs and stability",
+      "tip": "Don't drop into the chair; the slow lowering is what works the muscles most."
+    },
+    "standing_calf_raises": {
+      "name": "Calf raises (with support)",
+      "description": "With your hands resting lightly on a wall or chair back, rise onto your toes as high as you can, hold for a second and lower.",
+      "focus": "Ankles, calves and circulation",
+      "tip": "Excellent for getting the blood moving after long periods of sitting."
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "Shoulder rolls and gentle reaches",
+      "description": "Roll your shoulders in large circles backwards, breathing deeply. Then reach your arms gently towards the ceiling.",
+      "focus": "Releasing neck and shoulder tension",
+      "tip": "Let your shoulders drop away from your ears."
+    },
+    "glute_bridge_gentle": {
+      "name": "Glute bridge (on the floor or a firm bed)",
+      "description": "Lie on your back with knees bent and feet flat. Lift your hips until your body forms a straight line from knees to shoulders.",
+      "focus": "Glutes and lower back",
+      "tip": "Gently squeeze your abs and glutes at the top, without over-arching your back."
+    },
+    "seated_knee_lifts": {
+      "name": "Seated knee lifts",
+      "description": "Sit tall on a chair. Lift one knee towards your chest keeping your abs engaged, lower it and repeat with the other.",
+      "focus": "Lower abs and hip mobility",
+      "tip": "Don't lean back as you lift the knee."
+    },
+    "chest_opener_stretch": {
+      "name": "Chest opener at a wall or doorway",
+      "description": "Place your forearm on a door frame or wall and rotate your torso gently away until you feel a pleasant stretch across the chest.",
+      "focus": "Posture and ribcage mobility",
+      "tip": "Breathe calmly and deeply; don't force the stretch."
+    },
+    "incline_pushups": {
+      "name": "Incline push-ups (on a desk or chair back)",
+      "description": "Rest your palms on a stable surface (a sturdy table or sofa). Lower your chest under control and push firmly.",
+      "focus": "Chest, triceps and trunk strength",
+      "tip": "The higher the surface, the easier it is."
+    },
+    "knee_pushups": {
+      "name": "Knee push-ups",
+      "description": "Support yourself on palms and knees, torso in a straight line. Lower your chest towards the floor with elbows at 45°, then push firmly.",
+      "focus": "Chest, shoulders and triceps",
+      "tip": "Keep your abs engaged; don't let your lower back sag."
+    },
+    "box_squat_touch": {
+      "name": "Squat to a chair touch",
+      "description": "Lower into a squat until your hips just touch the chair, then stand straight back up without fully sitting down.",
+      "focus": "Thighs, glutes and control",
+      "tip": "Your knees track in the direction of your toes."
+    },
+    "wall_sit": {
+      "name": "Wall sit",
+      "description": "Press your back against the wall and slide down as if onto a chair until your knees are at 90°. Hold still.",
+      "focus": "Quadriceps and muscular endurance",
+      "tip": "Press your heels firmly into the floor and keep breathing steadily."
+    },
+    "prone_cobra": {
+      "name": "Gentle cobra (floor back extension)",
+      "description": "Lie face down with arms alongside your body. Lift your chest slightly off the floor, drawing your shoulder blades back and turning your thumbs towards the ceiling.",
+      "focus": "Upper back, rhomboids and posture",
+      "tip": "Look towards the floor to keep your neck relaxed and aligned."
+    },
+    "bird_dog_gentle": {
+      "name": "Bird-dog (stability on hands and knees)",
+      "description": "On all fours on a mat. Extend your right arm forward and left leg back at the same time, hold for two seconds, then switch.",
+      "focus": "Lower-back stability, coordination and glutes",
+      "tip": "Imagine balancing a glass of water on your back that you don't want to spill."
+    },
+    "deadbug_assisted": {
+      "name": "Assisted deadbug",
+      "description": "On your back with knees at 90 degrees. Lower one heel towards the floor keeping your back pressed into the mat, then return.",
+      "focus": "Deep abdominals and lower-back protection",
+      "tip": "If you feel your back arching off the floor, don't lower the heel all the way."
+    },
+    "crunches_standard": {
+      "name": "Classic crunches",
+      "description": "Lie on your back with knees bent and feet flat. Lift only your shoulder blades by contracting your abs, hold for a second and lower slowly.",
+      "focus": "Abdominals (rectus abdominis)",
+      "tip": "Don't pull on your neck; keep your chin away from your chest and look up at 45°."
+    },
+    "side_plank": {
+      "name": "Side plank on knees",
+      "description": "On your side, resting on your forearm with elbow under shoulder and knees bent at 90°. Lift your hips into a straight line from knees to shoulders.",
+      "focus": "Obliques, waist and lateral stability",
+      "tip": "Keep your neck straight and don't let your hip drop towards the floor."
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "Seated biceps curls (dumbbells)",
+      "description": "Seated on a chair with a dumbbell in each hand. Bend your arms lifting the weights towards your shoulders, then lower slowly.",
+      "focus": "Arms (biceps)",
+      "tip": "Keep your elbows fixed at your sides."
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "Seated shoulder press (dumbbells)",
+      "description": "Sitting tall, press the dumbbells from ear height towards the ceiling without snapping your elbows straight.",
+      "focus": "Shoulders and posture",
+      "tip": "Don't arch your back."
+    },
+    "towel_pull_apart": {
+      "name": "Towel pull-aparts",
+      "description": "Standing or seated, hold a towel taut between your hands at chest height. Pull the ends apart as if to tear it, squeezing your shoulder blades, then release slowly.",
+      "focus": "Upper back, shoulder blades and posture",
+      "tip": "Keep your elbows nearly straight and your shoulders down, away from your ears."
+    },
+    "reverse_snow_angels": {
+      "name": "Reverse snow angels",
+      "description": "Lie face down, forehead resting, arms alongside your body. Lift your arms slightly off the floor and sweep them slowly overhead, then back to your hips.",
+      "focus": "Upper back, shoulders and posture",
+      "tip": "The movement is small and slow; what matters is that your arms never touch the floor on the way."
+    },
+    "doorway_row": {
+      "name": "Doorway row",
+      "description": "Stand facing a solid door frame, grip the edge with both hands and place your toes near the threshold. Lean back with arms extended, then pull yourself upright squeezing your shoulder blades.",
+      "focus": "Back, biceps and pulling strength",
+      "tip": "The further back you lean, the harder it gets — set the difficulty with the angle, not the reps."
+    },
+    "band_pull_apart": {
+      "name": "Band pull-aparts for the back",
+      "description": "Hold the band with both hands in front of your chest, arms straight. Pull your hands apart until the band touches your chest.",
+      "focus": "Upper back, posture and shoulders",
+      "tip": "Excellent for correcting shoulders that round forward."
+    },
+    "band_seated_row": {
+      "name": "Seated row with a resistance band",
+      "description": "With your legs extended, loop the band under your feet. Pull the ends towards your abdomen, squeezing your shoulder blades together.",
+      "focus": "Back muscles and posture",
+      "tip": "Keep your chest open and your shoulders down."
+    },
+    "active_hang": {
+      "name": "Active hang from the bar",
+      "description": "Grip the bar firmly and let your body hang, but pull your shoulder blades down and push your shoulders away from your ears. Breathe calmly.",
+      "focus": "Spinal decompression, shoulder stability and grip strength",
+      "tip": "Releases pressure from the spine and prepares the shoulders for pull-ups."
+    },
+    "standard_pushups": {
+      "name": "Full floor push-ups",
+      "description": "Support on palms and toes. Lower your chest under control to within 5 cm of the floor, keeping your body straight as a plank, then push firmly.",
+      "focus": "Chest, triceps, shoulders and trunk strength",
+      "tip": "Your elbows form an arrow at 45 degrees to your torso, not flared straight out."
+    },
+    "full_squats": {
+      "name": "Full squats",
+      "description": "Feet shoulder-width apart. Lower your hips below knee level, keeping your heels planted and your chest proud.",
+      "focus": "Thighs, glutes and ankle mobility",
+      "tip": "Breathe in on the way down and drive through your heels on the way up."
+    },
+    "forearm_plank": {
+      "name": "Forearm plank",
+      "description": "Support on forearms and toes. Your body forms a rigid line from heels to crown. Squeeze your abs and glutes.",
+      "focus": "Trunk stability, core and shoulders",
+      "tip": "Don't let your hips drop, and don't pike them up into a tent."
+    },
+    "reverse_lunges": {
+      "name": "Reverse lunges (alternating)",
+      "description": "Take a big step backwards and lower your knee towards the floor to 90 degrees. Return by pushing through the front heel.",
+      "focus": "Glutes, thighs and single-leg stability",
+      "tip": "Keep your torso upright and your front knee in line with your ankle."
+    },
+    "chair_dips": {
+      "name": "Chair dips",
+      "description": "With your back to the chair, place your palms on the front edge of the seat. Lower your hips alongside the chair bending your elbows to 90 degrees, then push back up.",
+      "focus": "Triceps, chest and front deltoids",
+      "tip": "Stay close to the edge of the chair throughout the movement."
+    },
+    "mountain_climbers": {
+      "name": "Mountain climbers",
+      "description": "From a push-up position, drive your knees towards your chest alternately at a quick, controlled tempo, without rocking your hips.",
+      "focus": "Cardio conditioning, abs and shoulders",
+      "tip": "Keep your shoulders directly above your palms."
+    },
+    "dumbbell_bent_over_row": {
+      "name": "Bent-over dumbbell row",
+      "description": "Torso hinged forward at 45 degrees, back perfectly flat. Pull the dumbbells towards your hips, contracting your back muscles hard.",
+      "focus": "Back, biceps and rear deltoids",
+      "tip": "Don't pull with your arms; start the movement from your shoulder blades."
+    },
+    "single_leg_glute_bridge": {
+      "name": "Single-leg glute bridge",
+      "description": "On your back, extend one leg into the air and push through the other heel to lift your hips. Hold for a second at the top.",
+      "focus": "Deep glutes, hamstrings and pelvic stability",
+      "tip": "Keep your hips level; don't let one side drop."
+    },
+    "chin_ups": {
+      "name": "Chin-ups (underhand grip)",
+      "description": "Grip the bar with palms facing you, shoulder-width apart. Pull your chest towards the bar until your chin clears it, then lower slowly.",
+      "focus": "Biceps, lats and pulling strength",
+      "tip": "The underhand grip uses the biceps more, making it a natural and accessible movement at intermediate level."
+    },
+    "negative_pullups": {
+      "name": "Negative pull-ups (controlled lowering)",
+      "description": "Jump lightly or use a chair to get your chin above the bar. Lower yourself as slowly as you can (3–4 seconds) until your arms are fully extended.",
+      "focus": "Eccentric strength, back, arms and grip",
+      "tip": "Controlled lowering is the fastest way to build up to full pull-ups."
+    },
+    "hanging_knee_raises": {
+      "name": "Hanging knee raises",
+      "description": "Hanging from the bar with straight arms and firm shoulders, raise your knees towards your chest under control without swinging, hold briefly and lower slowly.",
+      "focus": "Lower abs, hip flexors and grip endurance",
+      "tip": "Avoid swinging your torso — the movement must come strictly from the abs."
+    },
+    "dumbbell_goblet_squat": {
+      "name": "Goblet squat (dumbbell at the chest)",
+      "description": "Hold a dumbbell vertically against your chest with both palms. Lower into a deep squat keeping your chest lifted and elbows between your knees, then drive firmly through your heels.",
+      "focus": "Quadriceps, glutes, hip mobility and trunk stability",
+      "tip": "The weight held at the front engages your abs and helps you go deep without rounding your back."
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "Romanian deadlift (with dumbbells)",
+      "description": "Feet hip-width apart, dumbbells in front. Push your hips back with only a slight knee bend, lowering the dumbbells below your knees with a perfectly flat back, then squeeze your glutes as you rise.",
+      "focus": "Hamstrings, glutes and posterior chain",
+      "tip": "The movement is pushing your backside towards the wall behind you, not bending at the waist."
+    },
+    "dumbbell_floor_press": {
+      "name": "Dumbbell floor press",
+      "description": "Lie on your back with knees bent. Press the dumbbells above your chest until your arms are straight, then lower slowly until your triceps lightly touch the floor.",
+      "focus": "Chest, triceps and shoulder joint stability",
+      "tip": "The floor stops the elbows travelling too far, protecting the shoulder joints even with heavy weights."
+    },
+    "dumbbell_single_arm_row": {
+      "name": "Single-arm row supported on a chair",
+      "description": "Rest one knee and one hand on the chair, back horizontal. With the other hand, pull the heavy dumbbell towards your hip contracting the shoulder blade, hold briefly and lower under control.",
+      "focus": "Lats, rhomboids, biceps and single-side back strength",
+      "tip": "Don't rotate your torso; keep your shoulders parallel to the floor."
+    },
+    "dumbbell_farmers_carry": {
+      "name": "Farmer's carry",
+      "description": "Hold a heavy dumbbell in each hand at your sides. Keep your shoulders drawn back and chest up, and step slowly and deliberately (or simply hold the posture on the spot).",
+      "focus": "Grip, forearms, traps, abs and postural stability",
+      "tip": "Stay perfectly upright; don't let the weights pull you forwards or sideways."
+    },
+    "diamond_pushups": {
+      "name": "Diamond push-ups",
+      "description": "Place your palms on the floor under your chest, thumbs and index fingers touching in a diamond shape. Lower and push explosively.",
+      "focus": "Intense triceps and inner chest",
+      "tip": "Keep your elbows close to your torso."
+    },
+    "jump_squats": {
+      "name": "Explosive jump squats",
+      "description": "Lower into a deep squat and explode into a vertical jump. Land softly on the balls of your feet and flow into the next descent.",
+      "focus": "Explosive leg power and cardiovascular endurance",
+      "tip": "The landing should be silent and springy to protect your joints."
+    },
+    "plank_shoulder_taps": {
+      "name": "Plank with shoulder taps",
+      "description": "From a push-up position, lift your right hand and tap your left shoulder without moving or rocking your hips. Repeat alternately.",
+      "focus": "Anti-rotation, shoulder stability and abs",
+      "tip": "Widen your feet a little for better stability."
+    },
+    "burpees_clean": {
+      "name": "Clean burpees (no pause)",
+      "description": "From standing, drop into a squat, kick your feet back into a push-up position, do a push-up, come back and jump up.",
+      "focus": "Anaerobic capacity and full-body strength",
+      "tip": "Find a steady rhythm and hold it."
+    },
+    "pullups_standard": {
+      "name": "Pull-ups",
+      "description": "Grip the bar with palms facing away, slightly wider than shoulder-width. Pull your body up until your chin clears the bar.",
+      "focus": "Lats, biceps and pulling strength",
+      "tip": "Start the movement by pulling your elbows down and back."
+    }
+  }
+}
