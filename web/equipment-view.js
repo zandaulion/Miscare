@@ -22,11 +22,11 @@ export function renderEquipmentView(container) {
     <div class="card">
       <div class="card-header">
         <div>
-          <h2 class="card-title">Echipamentul tău</h2>
-          <p class="card-subtitle">Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.</p>
+          <h2 class="card-title">${t('Echipamentul tău')}</h2>
+          <p class="card-subtitle">${t('Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.')}</p>
         </div>
         <button id="btn-no-equipment" class="btn btn-secondary btn-sm" title="${t('Păstrează doar corpul, scaunul și peretele')}">
-          Doar greutatea corpului
+          ${t('Doar greutatea corpului')}
         </button>
       </div>
 
@@ -47,7 +47,7 @@ export function renderEquipmentView(container) {
 
       <div class="actions-stack" style="margin-top: 20px;">
         <button id="btn-save-equipment" class="btn btn-primary">
-          💾 Salvează selecția
+          ${t('💾 Salvează selecția')}
         </button>
       </div>
     </div>

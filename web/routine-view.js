@@ -188,7 +188,7 @@ function renderDoneToday(done) {
     <div class="card done-today-card">
       <div class="done-today-icon">✅</div>
       <div>
-        <div class="done-today-title">Ai făcut mișcare azi.</div>
+        <div class="done-today-title">${t('Ai făcut mișcare azi.')}</div>
         <div class="done-today-sub">${cate} bifat${n === 1 ? 'ă' : 'e'}${minute}. Ziua e câștigată.</div>
       </div>
     </div>`;
@@ -198,11 +198,11 @@ function renderProposal(proposal) {
   if (!proposal) return '';
   return `
     <div class="card proposal-card" id="proposal-card">
-      <div class="proposal-question">${escapeHtml(proposal.question)}</div>
-      <div class="proposal-note">${escapeHtml(proposal.note || '')}</div>
+      <div class="proposal-question">${escapeHtml(t(proposal.question))}</div>
+      <div class="proposal-note">${escapeHtml(proposal.note ? t(proposal.note) : '')}</div>
       <div class="proposal-actions">
-        <button class="btn btn-primary btn-sm" data-proposal="accept">${escapeHtml(proposal.accept_label)}</button>
-        <button class="btn btn-secondary btn-sm" data-proposal="decline">${escapeHtml(proposal.decline_label)}</button>
+        <button class="btn btn-primary btn-sm" data-proposal="accept">${escapeHtml(t(proposal.accept_label))}</button>
+        <button class="btn btn-secondary btn-sm" data-proposal="decline">${escapeHtml(t(proposal.decline_label))}</button>
       </div>
     </div>`;
 }
@@ -213,7 +213,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   } else {
     container.innerHTML = `
       <div style="text-align: center; padding: 40px 20px;">
-        <div class="brand-tagline">Pregătim mișcarea de azi...</div>
+        <div class="brand-tagline">${t('Pregătim mișcarea de azi...')}</div>
       </div>
     `;
 
@@ -232,21 +232,21 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     <div style="margin-bottom: 14px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
         <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
-          Nivel de intensitate:
+          ${t('Nivel de intensitate:')}
         </span>
       </div>
       <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
         <button class="btn ${currentLevel === 'zero' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="zero" style="padding: 6px 2px; font-size: 0.75rem;">
-          De la 0
+          ${t('De la 0')}
         </button>
         <button class="btn ${currentLevel === 'beginner' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="beginner" style="padding: 6px 2px; font-size: 0.75rem;">
-          Începător
+          ${t('Începător')}
         </button>
         <button class="btn ${currentLevel === 'intermediate' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="intermediate" style="padding: 6px 2px; font-size: 0.75rem;">
-          Intermediar
+          ${t('Intermediar')}
         </button>
         <button class="btn ${currentLevel === 'advanced' ? 'btn-primary' : 'btn-secondary'} btn-sm btn-level-pill" data-level="advanced" style="padding: 6px 2px; font-size: 0.75rem;">
-          Avansat
+          ${t('Avansat')}
         </button>
       </div>
     </div>
@@ -254,8 +254,8 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     <div class="support-banner">
       <div class="support-banner-icon">${isReentry ? '🌱' : '✨'}</div>
       <div>
-        <div class="support-banner-text">${escapeHtml(currentRoutine.supportive_message)}</div>
-        ${note ? `<div class="adjustment-tag">${escapeHtml(note)}</div>` : ''}
+        <div class="support-banner-text">${escapeHtml(t(currentRoutine.supportive_message))}</div>
+        ${note ? `<div class="adjustment-tag">${escapeHtml(t(note))}</div>` : ''}
       </div>
     </div>
 
@@ -265,13 +265,13 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     <div class="card">
       <div class="card-header">
         <div>
-          <h2 class="card-title">${alreadyDone ? t('Încă o rundă?') : escapeHtml(currentRoutine.title)}</h2>
+          <h2 class="card-title">${alreadyDone ? t('Încă o rundă?') : escapeHtml(t(currentRoutine.title))}</h2>
           <p class="card-subtitle">${alreadyDone
             ? t('Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.')
-            : `Durată estimată: aprox. ${currentRoutine.target_minutes} minute`}</p>
+            : t('Durată estimată: aprox. {n} minute', { n: currentRoutine.target_minutes })}</p>
         </div>
         <button id="btn-shorten" class="btn btn-secondary btn-sm">
-          ⏱️ Fă-o de 5 min
+          ${t('⏱️ Fă-o de 5 min')}
         </button>
       </div>
 
@@ -294,7 +294,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
           <p class="exercise-desc">${escapeHtml(exText(ex.id, 'description'))}</p>
           ${exText(ex.id, 'tip') ? `<div class="exercise-tip">💡 ${escapeHtml(exText(ex.id, 'tip'))}</div>` : ''}
           <button class="btn-swap" data-swap-index="${idx}">
-            🔄 Schimbă cu altul
+            ${t('🔄 Schimbă cu altul')}
           </button>
         </div>
       </div>
@@ -306,19 +306,19 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
       <!-- Selector număr de serii -->
       <div class="sets-selector-box">
-        <div class="sets-selector-title">Câte serii vrei să faci azi?</div>
+        <div class="sets-selector-title">${t('Câte serii vrei să faci azi?')}</div>
         <div class="sets-selector-group">
           <button type="button" class="btn-set-choice ${userSelectedSets === 1 ? 'active' : ''}" data-sets="1">
-            1 Serie
-            <span class="set-sub">Rapid (5 min)</span>
+            ${t('1 Serie')}
+            <span class="set-sub">${t('Rapid (5 min)')}</span>
           </button>
           <button type="button" class="btn-set-choice ${userSelectedSets === 2 ? 'active' : ''}" data-sets="2">
-            2 Serii
-            <span class="set-sub">Optim (10 min)</span>
+            ${t('2 Serii')}
+            <span class="set-sub">${t('Optim (10 min)')}</span>
           </button>
           <button type="button" class="btn-set-choice ${userSelectedSets === 3 ? 'active' : ''}" data-sets="3">
-            3 Serii
-            <span class="set-sub">Intens (15 min)</span>
+            ${t('3 Serii')}
+            <span class="set-sub">${t('Intens (15 min)')}</span>
           </button>
         </div>
       </div>
@@ -328,7 +328,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
           ▶️ Ghidează-mă pas cu pas (${userSelectedSets} ${userSelectedSets === 1 ? 'serie' : 'serii'})
         </button>
         <button id="btn-quick-log" class="btn btn-secondary">
-          ✅ Am făcut deja! Bifează rapid
+          ${t('✅ Am făcut deja! Bifează rapid')}
         </button>
       </div>
 
@@ -546,7 +546,7 @@ function renderGuidedStep() {
 
   overlay.innerHTML = `
     <div class="guided-header">
-      <button id="guided-close" class="btn btn-secondary btn-sm">✕ Ieși</button>
+      <button id="guided-close" class="btn btn-secondary btn-sm">${t('✕ Ieși')}</button>
       <div style="text-align: center;">
         <div style="font-weight: 700; font-size: 0.92rem; color: var(--text);">
           Exercițiul ${guidedState.exerciseIndex + 1} din ${guidedState.routine.exercises.length}
@@ -578,7 +578,7 @@ function renderGuidedStep() {
 
       <!-- Rep Counter Interactive -->
       <div class="rep-counter-container">
-        <div class="rep-counter-label">Repetări realizate în această serie:</div>
+        <div class="rep-counter-label">${t('Repetări realizate în această serie:')}</div>
         <div class="rep-counter-box">
           <button id="rep-minus-btn" class="rep-btn" aria-label="${t('Scade repetări')}">−</button>
           <div class="rep-display">
@@ -599,7 +599,7 @@ function renderGuidedStep() {
     <div class="guided-footer">
       <div style="display: flex; gap: 10px;">
         <button id="guided-pause-btn" class="btn btn-secondary" style="flex: 1;">
-          ⏸️ Pauză
+          ${t('⏸️ Pauză')}
         </button>
         <button id="guided-done-btn" class="btn btn-primary" style="flex: 2;">
           ${(guidedState.exerciseIndex === guidedState.routine.exercises.length - 1 && guidedState.currentSet === guidedState.totalSets)
@@ -743,9 +743,9 @@ function renderRestStep() {
 
   overlay.innerHTML = `
     <div class="guided-header">
-      <button id="guided-close" class="btn btn-secondary btn-sm">✕ Ieși</button>
+      <button id="guided-close" class="btn btn-secondary btn-sm">${t('✕ Ieși')}</button>
       <div style="font-weight: 700; font-size: 0.92rem; color: var(--text);">
-        Odihnă & Respirație
+        ${t('Odihnă & Respirație')}
       </div>
       <button id="guided-sound-toggle" class="btn-sound-toggle" title="${t('Comută sunetul')}">
         ${soundEnabled ? '🔊' : '🔇'}
@@ -759,7 +759,7 @@ function renderRestStep() {
     <div class="guided-body">
       <div class="guided-rest-card">
         <div class="rest-badge">
-          🧘 Trage-ți sufletul & bea o gură de apă
+          ${t('🧘 Trage-ți sufletul & bea o gură de apă')}
         </div>
 
         <div class="rest-timer-display" id="guided-rest-timer">
@@ -771,7 +771,7 @@ function renderRestStep() {
             ${nextFull.image ? `<img src="${nextFull.image}" alt="${escapeHtml(exText(nextEx.id, 'name'))}" class="ex-img" />` : (nextFull.svg || '🏃')}
           </div>
           <div class="rest-preview-info">
-            <div class="rest-preview-sub">Urmează:</div>
+            <div class="rest-preview-sub">${t('Urmează:')}</div>
             <div class="rest-preview-name">${escapeHtml(exText(nextEx.id, 'name'))}</div>
             <div class="rest-preview-target">Seria ${nextSetNum} din ${guidedState.totalSets} • ${escapeHtml(formatReps(nextEx.reps, repWords()))}</div>
           </div>
@@ -779,10 +779,10 @@ function renderRestStep() {
 
         <div class="rest-actions-row">
           <button id="rest-add-time-btn" class="btn btn-secondary" style="flex: 1;">
-            +15s Pauză
+            ${t('+15s Pauză')}
           </button>
           <button id="rest-skip-btn" class="btn btn-primary" style="flex: 1.5;">
-            ▶️ Începe acum
+            ${t('▶️ Începe acum')}
           </button>
         </div>
       </div>
@@ -790,7 +790,7 @@ function renderRestStep() {
 
     <div class="guided-footer">
       <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin: 0;">
-        Ecranul va trece automat la seria următoare când timpul expiră.
+        ${t('Ecranul va trece automat la seria următoare când timpul expiră.')}
       </p>
     </div>
   `;
@@ -880,10 +880,10 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
     <div class="guided-body">
       <div style="font-size: 3.5rem; margin-bottom: 10px;">🌟</div>
       <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;">
-        Bravo! Ai făcut mișcare azi.
+        ${t('Bravo! Ai făcut mișcare azi.')}
       </h2>
       <p style="color: var(--text-muted); margin-bottom: 12px;">
-        Aproximativ <strong>${minutesDone} minute</strong> dedicate stării tale de bine.
+        ${t('Aproximativ')} <strong>${minutesDone} minute</strong> ${t('dedicate stării tale de bine.')}
       </p>
 
       ${totalSets > 0 ? `
@@ -895,38 +895,38 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
 
       <div class="card" style="width: 100%; max-width: 440px; text-align: left;">
         <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 10px;">
-          Cum s-a simțit sesiunea?
+          ${t('Cum s-a simțit sesiunea?')}
         </h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">
-          Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.
+          ${t('Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.')}
         </p>
 
         <div class="feedback-grid">
           <div class="feedback-btn selected" data-feedback="just_right">
             <span class="feedback-emoji">👍</span>
-            <span class="feedback-label">Tocmai bine</span>
+            <span class="feedback-label">${t('Tocmai bine')}</span>
           </div>
           <div class="feedback-btn" data-feedback="easy">
             <span class="feedback-emoji">😊</span>
-            <span class="feedback-label">Ușor & revigorant</span>
+            <span class="feedback-label">${t('Ușor & revigorant')}</span>
           </div>
           <div class="feedback-btn" data-feedback="hard">
             <span class="feedback-emoji">🥵</span>
-            <span class="feedback-label">Cam greu</span>
+            <span class="feedback-label">${t('Cam greu')}</span>
           </div>
           <div class="feedback-btn" data-feedback="partial">
             <span class="feedback-emoji">⏱️</span>
-            <span class="feedback-label">Doar o parte</span>
+            <span class="feedback-label">${t('Doar o parte')}</span>
           </div>
         </div>
 
         <div id="feedback-hint" style="font-size: 0.82rem; color: var(--primary); font-weight: 500; min-height: 24px;">
-          Menținem același ritm prietenos și data viitoare.
+          ${t('Menținem același ritm prietenos și data viitoare.')}
         </div>
       </div>
 
       <button id="btn-save-log" class="btn btn-primary" style="max-width: 440px; margin-top: 14px;">
-        Salvează în jurnal
+        ${t('Salvează în jurnal')}
       </button>
     </div>
   `;
