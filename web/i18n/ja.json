@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "name": "日本語",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "回",
+      "seconds": "秒",
+      "taps": "タップ"
+    },
+    "note": {
+      "alternating": "左右交互",
+      "hold": "キープ",
+      "hold2s": "（2秒キープ）",
+      "eachSide": "左右それぞれ",
+      "perLeg": "／脚",
+      "perArm": "／腕",
+      "lower34s": "（3〜4秒かけて下ろす）"
+    }
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "壁腕立て伏せ",
+      "description": "壁から腕一本分離れて立ち、手のひらを胸の高さに置きます。ひじをコントロールしながら曲げ、押し戻します。",
+      "focus": "胸、腕、肩",
+      "tip": "体は板のようにまっすぐ保ち、腰が前に落ちないようにします。"
+    },
+    "chair_sit_to_stand": {
+      "name": "椅子からの立ち座り",
+      "description": "安定した椅子の端に座ります。かかとで押して立ち上がり、ゆっくり座り直します。",
+      "focus": "脚と安定性",
+      "tip": "椅子に落ちるように座らないでください。ゆっくり下ろす動きが最も筋肉に効きます。"
+    },
+    "standing_calf_raises": {
+      "name": "かかと上げ（支えあり）",
+      "description": "壁や椅子の背に手を軽く添え、つま先立ちでできるだけ高く上がり、1秒キープして下ろします。",
+      "focus": "足首、ふくらはぎ、血行",
+      "tip": "長時間座ったあとに血流を促すのに最適です。"
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "肩回しとやさしい伸ばし",
+      "description": "深く呼吸しながら、肩で大きな円を後ろ向きに描きます。次に腕を天井に向けてやさしく伸ばします。",
+      "focus": "首と肩の緊張をほぐす",
+      "tip": "肩を耳から離すように下げましょう。"
+    },
+    "glute_bridge_gentle": {
+      "name": "ヒップリフト（床または硬めのベッドで）",
+      "description": "ひざを立てて足の裏を床につけ、あお向けになります。ひざから肩まで一直線になるまで腰を持ち上げます。",
+      "focus": "お尻と腰",
+      "tip": "上でお腹とお尻を軽く締め、背中を反らせすぎないようにします。"
+    },
+    "seated_knee_lifts": {
+      "name": "座ったままのひざ上げ",
+      "description": "椅子に背すじを伸ばして座ります。お腹を締めたまま片ひざを胸に引き上げ、下ろして反対側も行います。",
+      "focus": "下腹部と股関節の可動性",
+      "tip": "ひざを上げるときに上体を後ろに倒さないでください。"
+    },
+    "chest_opener_stretch": {
+      "name": "壁やドア枠での胸開き",
+      "description": "前腕をドア枠か壁に当て、胸に心地よい伸びを感じるところまで上体をゆっくり反対側へ回します。",
+      "focus": "姿勢と胸郭の可動性",
+      "tip": "静かに深く呼吸し、無理に伸ばさないでください。"
+    },
+    "incline_pushups": {
+      "name": "傾斜腕立て伏せ（机や椅子の背で）",
+      "description": "安定した面（頑丈なテーブルやソファ）に手のひらを置きます。胸をコントロールしながら下ろし、しっかり押し上げます。",
+      "focus": "胸、上腕三頭筋、体幹の力",
+      "tip": "面が高いほど楽になります。"
+    },
+    "knee_pushups": {
+      "name": "ひざつき腕立て伏せ",
+      "description": "手のひらとひざで体を支え、上体は一直線に。ひじを45°にして胸を床へ下ろし、しっかり押し上げます。",
+      "focus": "胸、肩、上腕三頭筋",
+      "tip": "お腹を締めたまま、腰が落ちないようにします。"
+    },
+    "box_squat_touch": {
+      "name": "椅子タッチスクワット",
+      "description": "腰が椅子に軽く触れるまでしゃがみ、完全に座らずにまっすぐ立ち上がります。",
+      "focus": "太もも、お尻、コントロール",
+      "tip": "ひざはつま先と同じ方向に向けます。"
+    },
+    "wall_sit": {
+      "name": "壁スクワット",
+      "description": "背中を壁につけ、椅子に座るように、ひざが90°になるまで滑り下ろします。そのまま静止します。",
+      "focus": "大腿四頭筋と筋持久力",
+      "tip": "かかとをしっかり床に押しつけ、呼吸を止めずに続けます。"
+    },
+    "prone_cobra": {
+      "name": "やさしいコブラ（床での背中の伸展）",
+      "description": "腕を体の横に置いてうつ伏せになります。肩甲骨を後ろに寄せ、親指を天井に向けながら、胸を床から少し持ち上げます。",
+      "focus": "背中の上部、菱形筋、姿勢",
+      "tip": "首を楽にまっすぐ保つため、床を見るようにします。"
+    },
+    "bird_dog_gentle": {
+      "name": "バードドッグ（四つんばいでの安定）",
+      "description": "マットの上で四つんばいになります。右腕を前に、左脚を後ろに同時に伸ばし、2秒キープして入れ替えます。",
+      "focus": "腰の安定、協調性、お尻",
+      "tip": "背中の上にこぼしたくない水の入ったコップを乗せていると想像してください。"
+    },
+    "deadbug_assisted": {
+      "name": "補助つきデッドバグ",
+      "description": "あお向けでひざを90度に。背中をマットに押しつけたまま片方のかかとを床へ下ろし、戻します。",
+      "focus": "深層腹筋と腰の保護",
+      "tip": "背中が床から浮くと感じたら、かかとを最後まで下ろさないでください。"
+    },
+    "crunches_standard": {
+      "name": "クラシックなクランチ",
+      "description": "ひざを立てて足の裏を床につけ、あお向けになります。腹筋を縮めて肩甲骨だけを持ち上げ、1秒キープしてゆっくり下ろします。",
+      "focus": "腹筋（腹直筋）",
+      "tip": "首を引っぱらないでください。あごを胸から離し、45°上を見ます。"
+    },
+    "side_plank": {
+      "name": "ひざつきサイドプランク",
+      "description": "横向きになり、ひじを肩の真下にして前腕で支え、ひざを90°に曲げます。ひざから肩まで一直線になるよう腰を持ち上げます。",
+      "focus": "腹斜筋、ウエスト、側方の安定性",
+      "tip": "首をまっすぐ保ち、腰が床へ落ちないようにします。"
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "座位アームカール（ダンベル）",
+      "description": "椅子に座り、両手にダンベルを持ちます。腕を曲げて重りを肩へ持ち上げ、ゆっくり下ろします。",
+      "focus": "腕（上腕二頭筋）",
+      "tip": "ひじは体の横に固定したままにします。"
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "座位ショルダープレス（ダンベル）",
+      "description": "背すじを伸ばして座り、耳の高さから天井に向けてダンベルを押し上げます。ひじを勢いよく伸ばし切らないでください。",
+      "focus": "肩と姿勢",
+      "tip": "背中を反らせないでください。"
+    },
+    "towel_pull_apart": {
+      "name": "タオル引き離し",
+      "description": "立位または座位で、タオルを胸の高さで両手の間にぴんと張ります。肩甲骨を寄せながら、引き裂くように両端を引き離し、ゆっくり戻します。",
+      "focus": "背中の上部、肩甲骨、姿勢",
+      "tip": "ひじはほぼ伸ばしたまま、肩は耳から離して下げておきます。"
+    },
+    "reverse_snow_angels": {
+      "name": "リバース・スノーエンジェル",
+      "description": "うつ伏せになり、額を床につけ、腕は体の横に置きます。腕を床から少し浮かせ、ゆっくり頭上まで動かし、また腰まで戻します。",
+      "focus": "背中の上部、肩、姿勢",
+      "tip": "動きは小さくゆっくりです。大切なのは、途中で腕が一度も床に触れないことです。"
+    },
+    "doorway_row": {
+      "name": "ドア枠ロウ",
+      "description": "頑丈なドア枠に向かって立ち、両手で枠の端をつかみ、つま先を敷居の近くに置きます。腕を伸ばして後ろに倒れ、肩甲骨を寄せながら体を引き起こします。",
+      "focus": "背中、上腕二頭筋、引く力",
+      "tip": "後ろに倒れるほど難しくなります。難易度は回数ではなく角度で調整してください。"
+    },
+    "band_pull_apart": {
+      "name": "背中のためのバンド引き離し",
+      "description": "腕を伸ばし、胸の前でバンドを両手に持ちます。バンドが胸に触れるまで両手を引き離します。",
+      "focus": "背中の上部、姿勢、肩",
+      "tip": "前に丸まった肩を直すのに最適です。"
+    },
+    "band_seated_row": {
+      "name": "座位バンドロウ",
+      "description": "脚を伸ばし、バンドを足裏に通します。肩甲骨を寄せながら、両端をお腹に向けて引きます。",
+      "focus": "背中の筋肉と姿勢",
+      "tip": "胸を開き、肩は下げたままにします。"
+    },
+    "active_hang": {
+      "name": "バーでのアクティブハング",
+      "description": "バーをしっかり握って体をぶら下げますが、肩甲骨を下げ、肩を耳から遠ざけます。静かに呼吸します。",
+      "focus": "背骨の減圧、肩の安定、握力",
+      "tip": "背骨の圧力を逃がし、懸垂に向けて肩を準備します。"
+    },
+    "standard_pushups": {
+      "name": "床での本格的な腕立て伏せ",
+      "description": "手のひらとつま先で支えます。体を板のようにまっすぐ保ったまま、胸を床から5cmのところまでコントロールして下ろし、しっかり押し上げます。",
+      "focus": "胸、上腕三頭筋、肩、体幹の力",
+      "tip": "ひじは体に対して45度の矢印の形になり、真横に開かないようにします。"
+    },
+    "full_squats": {
+      "name": "フルスクワット",
+      "description": "足は肩幅に。かかとを床につけ、胸を張ったまま、腰をひざより低い位置まで下ろします。",
+      "focus": "太もも、お尻、足首の可動性",
+      "tip": "下ろすときに息を吸い、上がるときにかかとで押します。"
+    },
+    "forearm_plank": {
+      "name": "前腕プランク",
+      "description": "前腕とつま先で支えます。体はかかとから頭頂までかたい一直線になります。お腹とお尻を締めます。",
+      "focus": "体幹の安定、コア、肩",
+      "tip": "腰を落とさず、テントのように持ち上げすぎないようにします。"
+    },
+    "reverse_lunges": {
+      "name": "バックランジ（左右交互）",
+      "description": "後ろに大きく一歩踏み出し、ひざを床に向けて90度まで下ろします。前足のかかとで押して戻ります。",
+      "focus": "お尻、太もも、片脚の安定性",
+      "tip": "上体はまっすぐ、前のひざは足首の真上に保ちます。"
+    },
+    "chair_dips": {
+      "name": "椅子ディップス",
+      "description": "椅子に背を向け、座面の前縁に手のひらを置きます。ひじを90度に曲げながら腰を椅子の横に下ろし、押し上げて戻ります。",
+      "focus": "上腕三頭筋、胸、三角筋前部",
+      "tip": "動作の間じゅう椅子の縁の近くにいてください。"
+    },
+    "mountain_climbers": {
+      "name": "マウンテンクライマー",
+      "description": "腕立て伏せの姿勢から、腰を揺らさずに、速くコントロールされたテンポでひざを交互に胸へ引き寄せます。",
+      "focus": "心肺の強化、腹筋、肩",
+      "tip": "肩は手のひらの真上に保ちます。"
+    },
+    "dumbbell_bent_over_row": {
+      "name": "ダンベルベントオーバーロウ",
+      "description": "上体を45度前に倒し、背中は完全にまっすぐ。背中の筋肉を強く収縮させながら、ダンベルを腰へ引きます。",
+      "focus": "背中、上腕二頭筋、三角筋後部",
+      "tip": "腕で引かないでください。動きは肩甲骨から始めます。"
+    },
+    "single_leg_glute_bridge": {
+      "name": "片脚ヒップリフト",
+      "description": "あお向けで片脚を空中に伸ばし、もう一方のかかとで押して腰を持ち上げます。上で1秒キープします。",
+      "focus": "お尻の深層筋、ハムストリング、骨盤の安定",
+      "tip": "腰は水平に保ち、片側が落ちないようにします。"
+    },
+    "chin_ups": {
+      "name": "チンアップ（逆手）",
+      "description": "手のひらを自分に向け、肩幅でバーを握ります。あごがバーを越えるまで胸をバーへ引き上げ、ゆっくり下ろします。",
+      "focus": "上腕二頭筋、広背筋、引く力",
+      "tip": "逆手は上腕二頭筋をより使うため、中級レベルで自然に取り組みやすい動きになります。"
+    },
+    "negative_pullups": {
+      "name": "ネガティブ懸垂（コントロールした下降）",
+      "description": "軽く跳ぶか椅子を使って、あごをバーの上まで持っていきます。腕が完全に伸びるまで、できるだけゆっくり（3〜4秒かけて）下ります。",
+      "focus": "エキセントリックな力、背中、腕、握力",
+      "tip": "コントロールした下降は、完全な懸垂への最短の道です。"
+    },
+    "hanging_knee_raises": {
+      "name": "ぶら下がりひざ上げ",
+      "description": "腕を伸ばし肩を固めてバーにぶら下がり、反動を使わずコントロールしてひざを胸へ引き上げ、短くキープしてゆっくり下ろします。",
+      "focus": "下腹部、腸腰筋、握力の持久力",
+      "tip": "上体を振らないでください。動きは厳密に腹筋から出す必要があります。"
+    },
+    "dumbbell_goblet_squat": {
+      "name": "ゴブレットスクワット（胸の前にダンベル）",
+      "description": "ダンベルを両手のひらで胸に縦に当てて持ちます。胸を張り、ひじをひざの間に置いたまま深くしゃがみ、かかとでしっかり押し上げます。",
+      "focus": "大腿四頭筋、お尻、股関節の可動性、体幹の安定",
+      "tip": "前で持つ重りが腹筋を働かせ、背中を丸めずに深くしゃがむ助けになります。"
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "ルーマニアンデッドリフト（ダンベル）",
+      "description": "足は腰幅、ダンベルは体の前に。ひざをわずかに曲げるだけで腰を後ろへ押し出し、背中を完全にまっすぐ保ったままダンベルをひざより下まで下ろし、上がるときにお尻を締めます。",
+      "focus": "ハムストリング、お尻、後面の連鎖",
+      "tip": "この動きは、腰で折れ曲がるのではなく、お尻を後ろの壁へ押し出す動きです。"
+    },
+    "dumbbell_floor_press": {
+      "name": "ダンベルフロアプレス",
+      "description": "ひざを立ててあお向けになります。腕が伸びるまでダンベルを胸の上へ押し上げ、上腕三頭筋が床に軽く触れるまでゆっくり下ろします。",
+      "focus": "胸、上腕三頭筋、肩関節の安定",
+      "tip": "床がひじの下がりすぎを止めるため、重い重量でも肩関節が守られます。"
+    },
+    "dumbbell_single_arm_row": {
+      "name": "椅子に支えた片手ロウ",
+      "description": "片ひざと片手を椅子につき、背中は水平に。もう一方の手で、肩甲骨を寄せながら重いダンベルを腰へ引き、短くキープしてコントロールして下ろします。",
+      "focus": "広背筋、菱形筋、上腕二頭筋、片側の背中の力",
+      "tip": "上体をひねらないでください。肩は床と平行に保ちます。"
+    },
+    "dumbbell_farmers_carry": {
+      "name": "ファーマーズキャリー",
+      "description": "両手に重いダンベルを持ち、体の横に垂らします。肩を後ろに引き胸を張ったまま、ゆっくり意識して歩きます（その場で姿勢を保つだけでも構いません）。",
+      "focus": "握力、前腕、僧帽筋、腹筋、姿勢の安定",
+      "tip": "完全にまっすぐ立ち、重りに前や横へ引っぱられないようにします。"
+    },
+    "diamond_pushups": {
+      "name": "ダイヤモンド腕立て伏せ",
+      "description": "胸の下の床に手のひらを置き、親指と人差し指を合わせてひし形をつくります。下ろして、爆発的に押し上げます。",
+      "focus": "上腕三頭筋への強い刺激と胸の内側",
+      "tip": "ひじは体の近くに保ちます。"
+    },
+    "jump_squats": {
+      "name": "爆発的ジャンプスクワット",
+      "description": "深くしゃがみ、垂直跳びへ爆発的に跳び上がります。足の前側でやわらかく着地し、そのまま次の下降へ流れます。",
+      "focus": "脚の瞬発力と心肺持久力",
+      "tip": "関節を守るため、着地は音を立てず弾むように。"
+    },
+    "plank_shoulder_taps": {
+      "name": "ショルダータッチ・プランク",
+      "description": "腕立て伏せの姿勢から、腰を動かしたり揺らしたりせずに右手を上げて左肩に触れます。交互に繰り返します。",
+      "focus": "抗回旋、肩の安定、腹筋",
+      "tip": "安定性を高めるため、足を少し広げてください。"
+    },
+    "burpees_clean": {
+      "name": "きれいなバーピー（休みなし）",
+      "description": "立った状態からしゃがみ、足を後ろへ蹴り出して腕立て伏せの姿勢になり、腕立て伏せを1回行い、戻って跳び上がります。",
+      "focus": "無酸素性能力と全身の力",
+      "tip": "一定のリズムを見つけ、それを保ちます。"
+    },
+    "pullups_standard": {
+      "name": "懸垂",
+      "description": "手のひらを前に向け、肩幅より少し広くバーを握ります。あごがバーを越えるまで体を引き上げます。",
+      "focus": "広背筋、上腕二頭筋、引く力",
+      "tip": "ひじを下と後ろに引くことから動きを始めます。"
+    }
+  },
+  "ui": {
+    "+15s Pauză": "+15秒休憩",
+    "⏱️ Fă-o de 5 min": "⏱️ 5分にする",
+    "⏸️ Pauză": "⏸️ 一時停止",
+    "▶️ Continuă": "▶️ 再開",
+    "▶️ Exersează mișcarea (45 secunde)": "▶️ 動きを練習する（45秒）",
+    "▶️ Începe acum": "▶️ 今すぐ始める",
+    "✅ Am făcut deja! Bifează rapid": "✅ もう終わった！チェックする",
+    "✅ Preferințe salvate!": "✅ 設定を保存しました！",
+    "✓ Disponibil": "✓ 利用できます",
+    "✕ Ieși": "✕ 終了",
+    "✨ Compatibile cu echipamentul tău": "✨ 手持ちの道具に合わせる",
+    "✨ Doar echipamentul meu": "✨ 自分の道具だけ",
+    "➡️ Serie terminată": "➡️ セット完了",
+    "🎉 Finalizează antrenamentul": "🎉 トレーニングを終える",
+    "💪 Partea de sus": "💪 上半身",
+    "💾 Salvează preferințele": "💾 設定を保存",
+    "💾 Salvează selecția": "💾 選択を保存",
+    "📖 Cum se execută corect:": "📖 正しいやり方：",
+    "🔄 Mișcări înrudite / Alternative:": "🔄 関連する動き／代わりの種目：",
+    "🔄 Reset": "🔄 リセット",
+    "🔄 Schimbă cu altul": "🔄 別の種目に替える",
+    "🦵 Picioare": "🦵 脚",
+    "🧘 Mobilitate": "🧘 可動性",
+    "🧘 Trage-ți sufletul & bea o gură de apă": "🧘 呼吸を整えて、水をひと口",
+    "🧹 Curăță memoria cache (/bust)": "🧹 キャッシュを消す（/bust）",
+    "🛡️ Trunchi / Core": "🛡️ 体幹／コア",
+    "1 - 5 kg (brațe & mobilitate)": "1〜5kg（腕と可動性）",
+    "1 Serie": "1セット",
+    "1) Adaugă pagina pe ecranul principal:": "1）ページをホーム画面に追加します：",
+    "2 Serii": "2セット",
+    "2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:": "2）ホーム画面からアプリを開き、もう一度リンクをタップするか、コードを使ってください：",
+    "3 Serii": "3セット",
+    "5 - 20 kg (forță & picioare)": "5〜20kg（筋力と脚）",
+    "Acces": "アクセス",
+    "Acces & Dispozitiv": "アクセスと端末",
+    "Activează acum": "今すぐ有効化",
+    "Activează cod": "コードで有効化",
+    "Activează cu cod de invitație": "招待コードで有効化",
+    "Activează direct în browser": "ブラウザーでそのまま有効化",
+    "Activează sunetul": "音を出す",
+    "Adaugă Mișcare pe ecranul principal": "Mișcare をホーム画面に追加",
+    "Add to Home Screen": "ホーム画面に追加",
+    "Afișez": "表示中",
+    "Ai făcut mișcare azi.": "今日は体を動かしました。",
+    "Ajustat automat mai blând pentru data viitoare.": "次回のために自動でやさしくしました。",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "今日の動きを、よりやさしく快適にしました。",
+    "Am înțeles, o voi instala": "わかりました、インストールします",
+    "Android (Chrome):": "Android（Chrome）：",
+    "Android:": "Android：",
+    "Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.": "共有ボタン（上向き矢印の四角）をタップ →「ホーム画面に追加」。",
+    "Aplicație activată cu succes!": "アプリが正常に有効化されました！",
+    "Aproximativ": "およそ",
+    "Avansat": "上級",
+    "Azi": "今日",
+    "Bandă elastică": "レジスタンスバンド",
+    "Bară de tracțiuni": "懸垂バー",
+    "Bară tracțiuni": "懸垂バー",
+    "Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.": "家にあるものにチェックを入れてください。メニューはすぐに合わせて変わります。",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "おかえりなさい！ 急がず、後ろめたさもなく — 体はゆっくりとリズムを思い出します。",
+    "Bravo! Ai făcut mișcare azi.": "よくできました！ 今日は体を動かしました。",
+    "Bravo! Mișcare finalizată cu succes.": "よくできました！ セッション完了です。",
+    "Butonul Share →": "共有ボタン →",
+    "Cam greu": "少しきつい",
+    "Caută după nume, mușchi sau echipament...": "名前、筋肉、道具で検索…",
+    "Câte serii vrei să faci azi?": "今日は何セット？",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "少しだけ回数を増やします。飛躍ではありません。いつでも戻せます。",
+    "Compendiu de exerciții": "種目リスト",
+    "Compendiu de Exerciții": "種目リスト",
+    "Comută sunetul": "音の切り替え",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "日ごとに力と柔らかさが育っています。この調子で！",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "基礎体力づくり：床でのトレーニング、軽いダンベル、レジスタンスバンド。",
+    "Continui de unde am rămas": "続きから始める",
+    "Crește repetări": "回数を増やす",
+    "Cum adaugi pe ecranul principal:": "ホーム画面への追加方法：",
+    "Cum s-a simțit sesiunea?": "セッションはどう感じましたか？",
+    "Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:": "表示の不具合があるとき、またはキャッシュを消したいとき：",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "前回は楽で心地よい内容でした。この良いペースを保ちましょう！",
+    "De la 0": "ゼロから",
+    "De la 0, în ritmul tău": "ゼロから、自分のペースで",
+    "dedicate stării tale de bine.": "を自分の心地よさのために使いました。",
+    "Dezactivează sunetul": "音を消す",
+    "Dispozitiv activat": "端末を有効化しました",
+    "Doar greutatea corpului": "自重のみ",
+    "Doar o parte": "一部だけ",
+    "Durată estimată: aprox. {n} minute": "目安：およそ {n} 分",
+    "Durată țintă zilnică:": "1日の目標時間：",
+    "E bine așa": "このままで大丈夫",
+    "Echipament": "道具",
+    "Echipamentul tău": "あなたの道具",
+    "Ecranul va trece automat la seria următoare când timpul expiră.": "時間になると、画面は自動で次のセットに進みます。",
+    "exerciții": "種目",
+    "Exerciții": "種目",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "複合的な筋力とパワー：ダイヤモンド腕立て伏せ、ジャンプスクワット、自重の懸垂。",
+    "Exersează mișcarea": "動きを練習する",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "関節への衝撃がなく、座りがちな生活からの出発やおだやかな復帰に向いています（椅子／壁）。",
+    "Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.": "点数も評価もありません — 次の強度を決めるための手がかりをいただくだけです。",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "今日の一歩、おめでとうございます！ どの一歩も積み重なります。",
+    "Felicitări! Ai terminat antrenamentul!": "おめでとうございます！ トレーニングを終えました！",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "どの一歩も意味があります。急がず、比べず。",
+    "Filosofia „No Shaming”": "「後ろめたさなし」という考え方",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "いま持っている道具でできる種目だけを表示する",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "床での本格的な腕立て伏せ、可変式ダンベル（5〜20kg）、複合種目、懸垂バー。",
+    "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "ひざが弱い（深いスクワットやジャンプなし）",
+    "Greutate cu mâner": "ケトルベル",
+    "Hai puțin mai mult": "少しだけ増やしましょう",
+    "ID:": "ID：",
+    "Instalare & Service Worker": "インストールとサービスワーカー",
+    "Instalat pe ecranul principal": "ホーム画面にインストール済み",
+    "Instalează": "インストール",
+    "Intens (15 min)": "高強度（15分）",
+    "Intensitate maximă, control total. Dă tot ce ai!": "最大強度、完全なコントロール。すべてを出し切って！",
+    "Intermediar": "中級",
+    "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "管理コンソールで受け取ったコードを入力してください（形式：ABCD-EFGH-JKLM）。",
+    "iPhone (Safari):": "iPhone（Safari）：",
+    "iPhone:": "iPhone：",
+    "Istoric recent": "最近の記録",
+    "Încă nu ai înregistrat nicio sesiune.": "まだセッションの記録がありません。",
+    "Încă o rundă?": "もう一周しますか？",
+    "Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.": "条件をゆるめるか、「自分の道具だけ」のチェックを外してみてください。",
+    "Începător": "初級",
+    "Începe azi cu o sesiune scurtă de 5 sau 10 minute!": "今日、5分か10分の短いセッションから始めましょう！",
+    "Începem.": "はじめましょう。",
+    "Încheieturi sensibile (fără sprijin direct pe palme pe podea)": "手首が弱い（床で手のひらに直接体重をかけない）",
+    "Închide": "閉じる",
+    "Întotdeauna disponibilă": "いつでもできます",
+    "Jurnal și Progres": "記録と進捗",
+    "Limbă": "言語",
+    "Masaj și relaxare": "マッサージと回復",
+    "Meniul ⋮ →": "⋮ メニュー →",
+    "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "⋮ メニュー →「アプリをインストール」または「ホーム画面に追加」。",
+    "Menținem același ritm prietenos și data viitoare.": "次回も同じ心地よいペースを保ちます。",
+    "Minute câștigate": "得られた分数",
+    "Mișcare": "Mișcare",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — ゼロから始める運動：つまずかないメニュー、後ろめたさなし、いつでも調整",
+    "Mișcare de zi cu zi": "毎日の運動",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "今日の運動 — レベル0（ゼロから）",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "今日の運動 — レベル1（初級）",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "今日の運動 — レベル2（中級）",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "今日の運動 — レベル3（上級）",
+    "Montată la ușă/perete": "ドアや壁に取り付け",
+    "Mușchi principali": "主な筋肉",
+    "Navigare principală": "メインナビゲーション",
+    "Necesită echipament suplimentar": "追加の道具が必要",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "問題ありません！ 次回は自動で回数を減らします。",
+    "Niciun exercițiu găsit": "種目が見つかりません",
+    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "レベル0 — 完全なゼロから（椅子、壁、やさしい可動性）",
+    "Nivel 1 — Începător": "レベル1 — 初級",
+    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "レベル1 — 無理のない初級（傾斜腕立て伏せ、床でのトレーニング、ダンベル）",
+    "Nivel 1 (Începător)": "レベル1（初級）",
+    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "レベル2 — 中級／活動的（床での腕立て伏せ、フルスクワット、プランク、ランジ）",
+    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "レベル3 — 上級／高強度（ダイヤモンド腕立て伏せ、ジャンプスクワット、バーピー、懸垂）",
+    "Nivel de intensitate:": "強度レベル：",
+    "Nivelul tău actual:": "現在のレベル：",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "チェックされた部位に対して、安全な動きが見つかりませんでした。",
+    "Nu am putut șterge sesiunea.": "セッションを削除できませんでした。",
+    "nu există o schimbare de anulat": "取り消す変更はありません",
+    "Nume:": "名前：",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "種目名と説明も、画面表示と一緒に切り替わります。",
+    "Odihnă & Respirație": "休息と呼吸",
+    "Optim (10 min)": "バランス（10分）",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "やりたければどうぞ。ここでやめても失うものはありません。",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "どちらを選んでも、積み上げてきたものは失われません。",
+    "Parțial": "一部",
+    "Pauză de odihnă": "休憩",
+    "Păstrează doar corpul, scaunul și peretele": "自重と椅子、壁だけにする",
+    "Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.": "より快適に使い、通知を確実に受け取るため、有効化の前にアプリをインストールしてください。",
+    "Pentru flotări și postură": "腕立て伏せと姿勢のために",
+    "Pentru sprijin și așezare": "支えと座るために",
+    "Pernă": "クッション",
+    "Pernă moale": "やわらかいクッション",
+    "Pregătește-te pentru": "準備してください",
+    "Pregătește-te!": "準備してください！",
+    "Pregătim mișcarea de azi...": "今日の運動を準備しています…",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "気分がすっきりする数分の運動、始めますか？",
+    "Pregătit pentru o sesiune activă și energică?": "活動的でエネルギッシュなセッションの準備はいいですか？",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "活動的でエネルギッシュなセッションの準備はいいですか？ 床でしっかり鍛えます！",
+    "Progres": "進捗",
+    "propunerea nu mai este valabilă": "その提案はもう有効ではありません",
+    "Protecție genunchi": "ひざの保護",
+    "Rapid (5 min)": "短時間（5分）",
+    "Redenumește dispozitivul:": "この端末の名前を変更：",
+    "Reglaje & Punct de pornire": "設定と出発点",
+    "Reluăm mai ușor": "おだやかに再開する",
+    "repetări": "回",
+    "Repetări realizate în această serie:": "このセットでできた回数：",
+    "Resetează filtrele": "条件をリセット",
+    "Rolă de spumă": "フォームローラー",
+    "Rolă spumă": "フォームローラー",
+    "Rulare în browser": "ブラウザーで実行中",
+    "Saltea / Covoraș": "マット",
+    "Salvează": "保存",
+    "Salvează în jurnal": "記録に保存",
+    "Scade repetări": "回数を減らす",
+    "Se încarcă jurnalul...": "記録を読み込んでいます…",
+    "Se salvează...": "保存しています…",
+    "serie finalizată": "セット完了",
+    "Sesiune blândă de reacomodare": "おだやかな再開のセッション",
+    "Sesiune calibrată pentru reacomodare ușoară.": "おだやかな復帰に合わせて調整しました。",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "短めのセッションです：チェックされた部位に対して、安全に用意できたのはここまででした。",
+    "Setări și Dispozitiv": "設定と端末",
+    "Sfatul antrenorului:": "コーチのひとこと：",
+    "Spate sensibil (exclusiv posturi sigure de protecție lombară)": "腰が弱い（腰を守る姿勢のみ）",
+    "Stare PWA:": "PWA の状態：",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "いいですね！ 次回はそっと1回だけ増やせます。",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "2〜3分でも大きな意味があります。すばらしい一歩を踏み出しました！",
+    "Șterge sesiunea": "セッションを削除",
+    "Textilă sau cauciuc": "布またはゴム",
+    "Timp per serie": "1セットの時間",
+    "Toate": "すべて",
+    "Tocmai bine": "ちょうどいい",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "直近2回のセッションが楽に感じられました。次回は少し増やしますか？",
+    "Urmează:": "次：",
+    "ușor": "楽",
+    "Ușor": "楽",
+    "Ușor & revigorant": "楽で気持ちいい",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "設定でチェックしてください — または、あなたにとって安全な範囲を専門家に相談してください。",
+    "Volum adaptat automat după ultima sesiune.": "前回のセッションのあと、量を自動で調整しました。",
+    "Volum uzual": "いつもの量",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "セッションをやめますか？ ここまでやったことは、ちゃんと残ります！",
+    "Zile cu mișcare": "運動した日数",
+    "Zone sensibile / Protecție:": "気をつけたい部位／保護：",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "チェックされた部位が、カタログのすべての動きを除外しています。",
+    "Conectat": "接続済み",
+    "Mișcare a fost actualizată la ultima versiune": "Mișcare を最新バージョンに更新しました"
+  }
+}

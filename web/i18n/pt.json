@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "name": "Português",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "repetições",
+      "seconds": "segundos",
+      "taps": "toques"
+    },
+    "note": {
+      "alternating": "alternando",
+      "hold": "manter",
+      "hold2s": "(manter 2 s)",
+      "eachSide": "de cada lado",
+      "perLeg": "/ perna",
+      "perArm": "/ braço",
+      "lower34s": "(descida de 3-4 s)"
+    }
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "Flexões na parede",
+      "description": "Fique a um braço de distância da parede, com as palmas à altura do peito. Dobre os cotovelos de forma controlada e empurre para voltar.",
+      "focus": "Peito, braços e ombros",
+      "tip": "Mantenha o corpo reto como uma prancha; não deixe o quadril ceder para a frente."
+    },
+    "chair_sit_to_stand": {
+      "name": "Levantar e sentar na cadeira",
+      "description": "Sente-se na beirada de uma cadeira estável. Levante-se empurrando com os calcanhares e sente-se de novo devagar.",
+      "focus": "Pernas e estabilidade",
+      "tip": "Não se deixe cair na cadeira; a descida lenta é o que mais trabalha os músculos."
+    },
+    "standing_calf_raises": {
+      "name": "Elevação de panturrilhas (com apoio)",
+      "description": "Com as mãos apoiadas levemente numa parede ou no encosto de uma cadeira, fique na ponta dos pés o mais alto que conseguir, segure um segundo e desça.",
+      "focus": "Tornozelos, panturrilhas e circulação",
+      "tip": "Excelente para ativar a circulação depois de muito tempo sentado."
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "Rotação de ombros e alongamentos suaves",
+      "description": "Gire os ombros em círculos amplos para trás, respirando fundo. Depois estenda os braços suavemente em direção ao teto.",
+      "focus": "Aliviar a tensão do pescoço e dos ombros",
+      "tip": "Deixe os ombros caírem para longe das orelhas."
+    },
+    "glute_bridge_gentle": {
+      "name": "Ponte de glúteos (no chão ou numa cama firme)",
+      "description": "Deite-se de costas com os joelhos dobrados e os pés apoiados. Levante o quadril até o corpo formar uma linha reta dos joelhos aos ombros.",
+      "focus": "Glúteos e lombar",
+      "tip": "Contraia suavemente o abdômen e os glúteos no topo, sem arquear demais as costas."
+    },
+    "seated_knee_lifts": {
+      "name": "Elevação de joelhos sentado",
+      "description": "Sente-se ereto numa cadeira. Suba um joelho em direção ao peito mantendo o abdômen ativo, desça e repita com o outro.",
+      "focus": "Abdômen inferior e mobilidade do quadril",
+      "tip": "Não se incline para trás ao subir o joelho."
+    },
+    "chest_opener_stretch": {
+      "name": "Abertura de peito na parede ou no batente da porta",
+      "description": "Apoie o antebraço no batente de uma porta ou na parede e gire o tronco suavemente para o lado oposto até sentir um alongamento agradável no peito.",
+      "focus": "Postura e mobilidade da caixa torácica",
+      "tip": "Respire com calma e profundamente; não force o alongamento."
+    },
+    "incline_pushups": {
+      "name": "Flexões inclinadas (numa mesa ou no encosto de uma cadeira)",
+      "description": "Apoie as palmas numa superfície estável (uma mesa firme ou o sofá). Desça o peito de forma controlada e empurre com firmeza.",
+      "focus": "Peito, tríceps e força do tronco",
+      "tip": "Quanto mais alta a superfície, mais fácil fica."
+    },
+    "knee_pushups": {
+      "name": "Flexões com os joelhos apoiados",
+      "description": "Apoie-se nas palmas e nos joelhos, com o tronco em linha reta. Desça o peito em direção ao chão com os cotovelos a 45° e empurre com firmeza.",
+      "focus": "Peito, ombros e tríceps",
+      "tip": "Mantenha o abdômen ativo; não deixe a lombar ceder."
+    },
+    "box_squat_touch": {
+      "name": "Agachamento tocando a cadeira",
+      "description": "Desça em agachamento até o quadril apenas encostar na cadeira e volte a subir sem se sentar por completo.",
+      "focus": "Coxas, glúteos e controle",
+      "tip": "Os joelhos seguem a direção dos dedos dos pés."
+    },
+    "wall_sit": {
+      "name": "Agachamento na parede",
+      "description": "Encoste as costas na parede e deslize para baixo como se fosse sentar, até os joelhos ficarem a 90°. Segure parado.",
+      "focus": "Quadríceps e resistência muscular",
+      "tip": "Pressione os calcanhares firmemente no chão e continue respirando de forma regular."
+    },
+    "prone_cobra": {
+      "name": "Cobra suave (extensão de costas no chão)",
+      "description": "Deite-se de bruços com os braços ao lado do corpo. Levante levemente o peito do chão, puxando as escápulas para trás e girando os polegares em direção ao teto.",
+      "focus": "Costas superiores, romboides e postura",
+      "tip": "Olhe para o chão para manter o pescoço relaxado e alinhado."
+    },
+    "bird_dog_gentle": {
+      "name": "Bird-dog (estabilidade de quatro apoios)",
+      "description": "De quatro apoios sobre um tapete. Estenda ao mesmo tempo o braço direito à frente e a perna esquerda atrás, segure dois segundos e troque.",
+      "focus": "Estabilidade lombar, coordenação e glúteos",
+      "tip": "Imagine que equilibra nas costas um copo de água que não quer derramar."
+    },
+    "deadbug_assisted": {
+      "name": "Dead bug assistido",
+      "description": "De costas, com os joelhos a 90 graus. Desça um calcanhar em direção ao chão mantendo as costas coladas ao tapete e volte.",
+      "focus": "Abdominais profundos e proteção da lombar",
+      "tip": "Se sentir as costas descolarem do chão, não desça o calcanhar até embaixo."
+    },
+    "crunches_standard": {
+      "name": "Abdominais clássicos",
+      "description": "Deite-se de costas com os joelhos dobrados e os pés apoiados. Levante apenas as escápulas contraindo o abdômen, segure um segundo e desça devagar.",
+      "focus": "Abdominais (reto abdominal)",
+      "tip": "Não puxe o pescoço; mantenha o queixo afastado do peito e olhe para cima a 45°."
+    },
+    "side_plank": {
+      "name": "Prancha lateral sobre os joelhos",
+      "description": "De lado, apoiado no antebraço com o cotovelo sob o ombro e os joelhos dobrados a 90°. Levante o quadril até formar uma linha reta dos joelhos aos ombros.",
+      "focus": "Oblíquos, cintura e estabilidade lateral",
+      "tip": "Mantenha o pescoço reto e não deixe o quadril cair em direção ao chão."
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "Rosca bíceps sentado (halteres)",
+      "description": "Sentado numa cadeira com um halter em cada mão. Dobre os braços levando os pesos até os ombros e desça devagar.",
+      "focus": "Braços (bíceps)",
+      "tip": "Mantenha os cotovelos fixos junto ao corpo."
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "Desenvolvimento de ombros sentado (halteres)",
+      "description": "Sentado ereto, empurre os halteres da altura das orelhas em direção ao teto sem travar os cotovelos de repente.",
+      "focus": "Ombros e postura",
+      "tip": "Não arqueie as costas."
+    },
+    "towel_pull_apart": {
+      "name": "Abertura com toalha",
+      "description": "Em pé ou sentado, segure uma toalha esticada entre as mãos à altura do peito. Afaste as pontas como se fosse rasgá-la, juntando as escápulas, e solte devagar.",
+      "focus": "Costas superiores, escápulas e postura",
+      "tip": "Mantenha os cotovelos quase esticados e os ombros baixos, longe das orelhas."
+    },
+    "reverse_snow_angels": {
+      "name": "Anjos de neve invertidos",
+      "description": "Deite-se de bruços, com a testa apoiada e os braços ao lado do corpo. Levante levemente os braços do chão e leve-os devagar acima da cabeça, voltando depois até o quadril.",
+      "focus": "Costas superiores, ombros e postura",
+      "tip": "O movimento é pequeno e lento; o que importa é que os braços nunca toquem o chão no percurso."
+    },
+    "doorway_row": {
+      "name": "Remada no batente da porta",
+      "description": "Fique de frente para um batente firme, segure a borda com as duas mãos e coloque os dedos dos pés perto da soleira. Incline-se para trás com os braços esticados e depois puxe até ficar ereto, juntando as escápulas.",
+      "focus": "Costas, bíceps e força de tração",
+      "tip": "Quanto mais você se inclina para trás, mais difícil fica — ajuste a dificuldade pelo ângulo, não pelas repetições."
+    },
+    "band_pull_apart": {
+      "name": "Abertura com elástico para as costas",
+      "description": "Segure o elástico com as duas mãos à frente do peito, com os braços esticados. Afaste as mãos até o elástico tocar o peito.",
+      "focus": "Costas superiores, postura e ombros",
+      "tip": "Excelente para corrigir os ombros que se enrolam para a frente."
+    },
+    "band_seated_row": {
+      "name": "Remada sentada com elástico",
+      "description": "Com as pernas esticadas, passe o elástico sob os pés. Puxe as pontas em direção ao abdômen, juntando as escápulas.",
+      "focus": "Musculatura das costas e postura",
+      "tip": "Mantenha o peito aberto e os ombros baixos."
+    },
+    "active_hang": {
+      "name": "Suspensão ativa na barra",
+      "description": "Segure a barra com firmeza e deixe o corpo pendurado, mas abaixe as escápulas e afaste os ombros das orelhas. Respire com calma.",
+      "focus": "Descompressão da coluna, estabilidade dos ombros e força de pegada",
+      "tip": "Alivia a pressão na coluna e prepara os ombros para as barras fixas."
+    },
+    "standard_pushups": {
+      "name": "Flexões completas no chão",
+      "description": "Apoio nas palmas e nas pontas dos pés. Desça o peito de forma controlada até 5 cm do chão, com o corpo reto como uma prancha, e empurre com firmeza.",
+      "focus": "Peito, tríceps, ombros e força do tronco",
+      "tip": "Os cotovelos formam uma seta a 45 graus em relação ao tronco, e não abertos totalmente para os lados."
+    },
+    "full_squats": {
+      "name": "Agachamentos completos",
+      "description": "Pés na largura dos ombros. Desça o quadril abaixo da altura dos joelhos, com os calcanhares apoiados e o peito erguido.",
+      "focus": "Coxas, glúteos e mobilidade de tornozelo",
+      "tip": "Inspire na descida e empurre com os calcanhares na subida."
+    },
+    "forearm_plank": {
+      "name": "Prancha nos antebraços",
+      "description": "Apoio nos antebraços e nas pontas dos pés. O corpo forma uma linha rígida dos calcanhares ao topo da cabeça. Contraia o abdômen e os glúteos.",
+      "focus": "Estabilidade do tronco, core e ombros",
+      "tip": "Não deixe o quadril cair, nem o levante como uma barraca."
+    },
+    "reverse_lunges": {
+      "name": "Afundos para trás (alternando)",
+      "description": "Dê um passo largo para trás e desça o joelho em direção ao chão até 90 graus. Volte empurrando com o calcanhar da frente.",
+      "focus": "Glúteos, coxas e estabilidade numa perna",
+      "tip": "Mantenha o tronco ereto e o joelho da frente alinhado com o tornozelo."
+    },
+    "chair_dips": {
+      "name": "Mergulho na cadeira",
+      "description": "De costas para a cadeira, apoie as palmas na borda da frente do assento. Desça o quadril ao lado da cadeira dobrando os cotovelos até 90 graus e empurre para subir.",
+      "focus": "Tríceps, peito e deltoides anteriores",
+      "tip": "Fique perto da borda da cadeira durante todo o movimento."
+    },
+    "mountain_climbers": {
+      "name": "Escaladores",
+      "description": "A partir da posição de flexão, leve os joelhos em direção ao peito alternadamente num ritmo rápido e controlado, sem balançar o quadril.",
+      "focus": "Condicionamento cardiovascular, abdômen e ombros",
+      "tip": "Mantenha os ombros diretamente acima das palmas."
+    },
+    "dumbbell_bent_over_row": {
+      "name": "Remada curvada com halteres",
+      "description": "Tronco inclinado à frente a 45 graus, costas perfeitamente retas. Puxe os halteres em direção ao quadril, contraindo com força a musculatura das costas.",
+      "focus": "Costas, bíceps e deltoides posteriores",
+      "tip": "Não puxe com os braços; inicie o movimento a partir das escápulas."
+    },
+    "single_leg_glute_bridge": {
+      "name": "Ponte de glúteos unilateral",
+      "description": "De costas, estenda uma perna no ar e empurre com o calcanhar da outra para levantar o quadril. Segure um segundo no topo.",
+      "focus": "Glúteos profundos, posteriores de coxa e estabilidade pélvica",
+      "tip": "Mantenha o quadril nivelado; não deixe um lado cair."
+    },
+    "chin_ups": {
+      "name": "Barra fixa com pegada supinada",
+      "description": "Segure a barra com as palmas voltadas para você, na largura dos ombros. Puxe o peito em direção à barra até o queixo passar e desça devagar.",
+      "focus": "Bíceps, dorsais e força de tração",
+      "tip": "A pegada supinada usa mais o bíceps, o que torna o movimento natural e acessível no nível intermediário."
+    },
+    "negative_pullups": {
+      "name": "Barra fixa negativa (descida controlada)",
+      "description": "Salte levemente ou use uma cadeira para levar o queixo acima da barra. Desça o mais devagar que conseguir (3-4 segundos) até esticar totalmente os braços.",
+      "focus": "Força excêntrica, costas, braços e pegada",
+      "tip": "A descida controlada é o caminho mais rápido para chegar à barra fixa completa."
+    },
+    "hanging_knee_raises": {
+      "name": "Elevação de joelhos na barra",
+      "description": "Pendurado na barra com os braços esticados e os ombros firmes, suba os joelhos em direção ao peito de forma controlada e sem balanço, segure um instante e desça devagar.",
+      "focus": "Abdômen inferior, flexores do quadril e resistência de pegada",
+      "tip": "Evite balançar o tronco — o movimento tem que vir estritamente do abdômen."
+    },
+    "dumbbell_goblet_squat": {
+      "name": "Agachamento goblet (halter no peito)",
+      "description": "Segure um halter na vertical contra o peito com as duas palmas. Desça num agachamento profundo com o peito erguido e os cotovelos entre os joelhos, e empurre com firmeza pelos calcanhares.",
+      "focus": "Quadríceps, glúteos, mobilidade do quadril e estabilidade do tronco",
+      "tip": "O peso segurado à frente ativa o abdômen e ajuda a descer fundo sem arredondar as costas."
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "Levantamento terra romeno (com halteres)",
+      "description": "Pés na largura do quadril, halteres à frente. Empurre o quadril para trás com os joelhos apenas levemente dobrados, descendo os halteres abaixo dos joelhos com as costas perfeitamente retas, e contraia os glúteos ao subir.",
+      "focus": "Posteriores de coxa, glúteos e cadeia posterior",
+      "tip": "O movimento é empurrar o traseiro em direção à parede atrás de você, não dobrar na cintura."
+    },
+    "dumbbell_floor_press": {
+      "name": "Supino no chão com halteres",
+      "description": "Deite-se de costas com os joelhos dobrados. Empurre os halteres acima do peito até esticar os braços e desça devagar até os tríceps tocarem levemente o chão.",
+      "focus": "Peito, tríceps e estabilidade da articulação do ombro",
+      "tip": "O chão impede que os cotovelos desçam demais, protegendo as articulações dos ombros mesmo com pesos altos."
+    },
+    "dumbbell_single_arm_row": {
+      "name": "Remada unilateral apoiada na cadeira",
+      "description": "Apoie um joelho e uma mão na cadeira, com as costas na horizontal. Com a outra mão, puxe o halter pesado em direção ao quadril contraindo a escápula, segure um instante e desça de forma controlada.",
+      "focus": "Dorsais, romboides, bíceps e força unilateral de costas",
+      "tip": "Não gire o tronco; mantenha os ombros paralelos ao chão."
+    },
+    "dumbbell_farmers_carry": {
+      "name": "Caminhada do fazendeiro",
+      "description": "Segure um halter pesado em cada mão ao lado do corpo. Mantenha os ombros para trás e o peito erguido, e caminhe devagar e com intenção (ou simplesmente mantenha a postura no lugar).",
+      "focus": "Pegada, antebraços, trapézios, abdômen e estabilidade postural",
+      "tip": "Fique perfeitamente ereto; não deixe os pesos puxarem você para a frente ou para o lado."
+    },
+    "diamond_pushups": {
+      "name": "Flexões diamante",
+      "description": "Apoie as palmas no chão sob o peito, com os polegares e os indicadores se tocando em forma de losango. Desça e empurre de forma explosiva.",
+      "focus": "Tríceps intenso e peito interno",
+      "tip": "Mantenha os cotovelos perto do tronco."
+    },
+    "jump_squats": {
+      "name": "Agachamentos com salto explosivos",
+      "description": "Desça num agachamento profundo e exploda num salto vertical. Aterrisse suavemente na parte da frente do pé e emende na próxima descida.",
+      "focus": "Potência explosiva de pernas e resistência cardiovascular",
+      "tip": "A aterrissagem deve ser silenciosa e elástica para proteger as articulações."
+    },
+    "plank_shoulder_taps": {
+      "name": "Prancha com toque no ombro",
+      "description": "A partir da posição de flexão, levante a mão direita e toque o ombro esquerdo sem mover nem balançar o quadril. Repita alternando.",
+      "focus": "Antirrotação, estabilidade dos ombros e abdômen",
+      "tip": "Afaste um pouco mais os pés para ter melhor estabilidade."
+    },
+    "burpees_clean": {
+      "name": "Burpees limpos (sem pausa)",
+      "description": "Em pé, desça em agachamento, jogue os pés para trás na posição de flexão, faça uma flexão, volte e salte para cima.",
+      "focus": "Capacidade anaeróbica e força de corpo inteiro",
+      "tip": "Encontre um ritmo constante e mantenha-o."
+    },
+    "pullups_standard": {
+      "name": "Barra fixa",
+      "description": "Segure a barra com as palmas voltadas para a frente, um pouco mais aberto que a largura dos ombros. Puxe o corpo para cima até o queixo passar da barra.",
+      "focus": "Dorsais, bíceps e força de tração",
+      "tip": "Inicie o movimento puxando os cotovelos para baixo e para trás."
+    }
+  },
+  "ui": {
+    "+15s Pauză": "+15 s de descanso",
+    "⏱️ Fă-o de 5 min": "⏱️ Passar para 5 min",
+    "⏸️ Pauză": "⏸️ Pausar",
+    "▶️ Continuă": "▶️ Continuar",
+    "▶️ Exersează mișcarea (45 secunde)": "▶️ Praticar o movimento (45 segundos)",
+    "▶️ Începe acum": "▶️ Começar agora",
+    "✅ Am făcut deja! Bifează rapid": "✅ Já fiz! Marcar",
+    "✅ Preferințe salvate!": "✅ Preferências salvas!",
+    "✓ Disponibil": "✓ Disponível",
+    "✕ Ieși": "✕ Sair",
+    "✨ Compatibile cu echipamentul tău": "✨ Ajustar ao seu equipamento",
+    "✨ Doar echipamentul meu": "✨ Só o meu equipamento",
+    "➡️ Serie terminată": "➡️ Série concluída",
+    "🎉 Finalizează antrenamentul": "🎉 Terminar o treino",
+    "💪 Partea de sus": "💪 Parte superior",
+    "💾 Salvează preferințele": "💾 Salvar preferências",
+    "💾 Salvează selecția": "💾 Salvar seleção",
+    "📖 Cum se execută corect:": "📖 Como fazer direito:",
+    "🔄 Mișcări înrudite / Alternative:": "🔄 Movimentos relacionados / alternativas:",
+    "🔄 Reset": "🔄 Redefinir",
+    "🔄 Schimbă cu altul": "🔄 Trocar por outro",
+    "🦵 Picioare": "🦵 Pernas",
+    "🧘 Mobilitate": "🧘 Mobilidade",
+    "🧘 Trage-ți sufletul & bea o gură de apă": "🧘 Recupere o fôlego e beba um gole de água",
+    "🧹 Curăță memoria cache (/bust)": "🧹 Limpar o cache (/bust)",
+    "🛡️ Trunchi / Core": "🛡️ Tronco / core",
+    "1 - 5 kg (brațe & mobilitate)": "1-5 kg (braços e mobilidade)",
+    "1 Serie": "1 série",
+    "1) Adaugă pagina pe ecranul principal:": "1) Adicione a página à tela inicial:",
+    "2 Serii": "2 séries",
+    "2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:": "2) Abra o app pela tela inicial e toque no link de novo, ou use o código:",
+    "3 Serii": "3 séries",
+    "5 - 20 kg (forță & picioare)": "5-20 kg (força e pernas)",
+    "Acces": "Acesso",
+    "Acces & Dispozitiv": "Acesso e dispositivo",
+    "Activează acum": "Ativar agora",
+    "Activează cod": "Ativar com um código",
+    "Activează cu cod de invitație": "Ativar com um código de convite",
+    "Activează direct în browser": "Ativar direto no navegador",
+    "Activează sunetul": "Ligar o som",
+    "Adaugă Mișcare pe ecranul principal": "Adicionar o Mișcare à tela inicial",
+    "Add to Home Screen": "Adicionar à tela inicial",
+    "Afișez": "Exibindo",
+    "Ai făcut mișcare azi.": "Você se movimentou hoje.",
+    "Ajustat automat mai blând pentru data viitoare.": "Suavizado automaticamente para a próxima vez.",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "Deixamos os movimentos de hoje mais suaves e confortáveis.",
+    "Am înțeles, o voi instala": "Entendi, vou instalar",
+    "Android (Chrome):": "Android (Chrome):",
+    "Android:": "Android:",
+    "Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.": "Toque no botão de compartilhar (o quadrado com a seta para cima) → «Adicionar à Tela de Início».",
+    "Aplicație activată cu succes!": "Aplicativo ativado com sucesso!",
+    "Aproximativ": "Aproximadamente",
+    "Avansat": "Avançado",
+    "Azi": "Hoje",
+    "Bandă elastică": "Faixa elástica",
+    "Bară de tracțiuni": "Barra fixa",
+    "Bară tracțiuni": "Barra fixa",
+    "Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.": "Marque o que você tem em casa. A rotina se adapta na hora.",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "Que bom te ver de volta! Sem pressa e sem culpa — seu corpo retoma o ritmo aos poucos.",
+    "Bravo! Ai făcut mișcare azi.": "Muito bem! Você se movimentou hoje.",
+    "Bravo! Mișcare finalizată cu succes.": "Muito bem! Sessão concluída.",
+    "Butonul Share →": "O botão Compartilhar →",
+    "Cam greu": "Um pouco difícil",
+    "Caută după nume, mușchi sau echipament...": "Buscar por nome, músculo ou equipamento…",
+    "Câte serii vrei să faci azi?": "Quantas séries hoje?",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "Mais algumas repetições, não um salto. Você pode voltar quando quiser.",
+    "Compendiu de exerciții": "Compêndio de exercícios",
+    "Compendiu de Exerciții": "Compêndio de exercícios",
+    "Comută sunetul": "Ligar ou desligar o som",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "Você está ganhando força e mobilidade dia após dia. Continue assim!",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "Construir a base física: trabalho no chão, halteres leves e faixas elásticas.",
+    "Continui de unde am rămas": "Continuar de onde parei",
+    "Crește repetări": "Aumentar as repetições",
+    "Cum adaugi pe ecranul principal:": "Como adicionar à tela inicial:",
+    "Cum s-a simțit sesiunea?": "Como foi a sessão para você?",
+    "Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:": "Se tiver problemas de exibição ou quiser limpar o cache:",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "Da última vez foi fácil e agradável. Vamos manter esse bom ritmo!",
+    "De la 0": "Do zero",
+    "De la 0, în ritmul tău": "Do zero, no seu ritmo",
+    "dedicate stării tale de bine.": "dedicados a se sentir bem.",
+    "Dezactivează sunetul": "Desligar o som",
+    "Dispozitiv activat": "Dispositivo ativado",
+    "Doar greutatea corpului": "Só peso do corpo",
+    "Doar o parte": "Só uma parte",
+    "Durată estimată: aprox. {n} minute": "Estimativa: cerca de {n} minutos",
+    "Durată țintă zilnică:": "Duração diária desejada:",
+    "E bine așa": "Está bom assim",
+    "Echipament": "Equipamento",
+    "Echipamentul tău": "Seu equipamento",
+    "Ecranul va trece automat la seria următoare când timpul expiră.": "A tela passa para a próxima série automaticamente quando o tempo acaba.",
+    "exerciții": "exercícios",
+    "Exerciții": "Exercícios",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "Força e potência compostas: flexões diamante, agachamentos com salto, barras livres.",
+    "Exersează mișcarea": "Praticar o movimento",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "Sem impacto nas articulações, adequado para um começo sedentário ou uma volta suave (cadeira / parede).",
+    "Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.": "Sem notas e sem julgamento — você só está nos ajudando a definir a próxima intensidade.",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "Parabéns pelo movimento de hoje! Cada passo soma.",
+    "Felicitări! Ai terminat antrenamentul!": "Parabéns! Você terminou o treino!",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "Cada passo conta. Sem pressa, sem comparações.",
+    "Filosofia „No Shaming”": "A ideia do «sem culpa»",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Mostrar só os exercícios que você consegue fazer com o equipamento atual",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Flexões completas no chão, halteres reguláveis (5-20 kg), levantamentos compostos e uma barra fixa.",
+    "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Joelhos sensíveis (sem agachamentos profundos nem saltos)",
+    "Greutate cu mâner": "Kettlebell",
+    "Hai puțin mai mult": "Vamos aumentar um pouco",
+    "ID:": "ID:",
+    "Instalare & Service Worker": "Instalação e service worker",
+    "Instalat pe ecranul principal": "Instalado na tela inicial",
+    "Instalează": "Instalar",
+    "Intens (15 min)": "Intensa (15 min)",
+    "Intensitate maximă, control total. Dă tot ce ai!": "Intensidade máxima, controle total. Dê tudo de si!",
+    "Intermediar": "Intermediário",
+    "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "Digite o código recebido do console de administração (formato: ABCD-EFGH-JKLM).",
+    "iPhone (Safari):": "iPhone (Safari):",
+    "iPhone:": "iPhone:",
+    "Istoric recent": "Histórico recente",
+    "Încă nu ai înregistrat nicio sesiune.": "Você ainda não registrou nenhuma sessão.",
+    "Încă o rundă?": "Mais uma rodada?",
+    "Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.": "Tente afrouxar os filtros ou desmarcar «Só o meu equipamento».",
+    "Începător": "Iniciante",
+    "Începe azi cu o sesiune scurtă de 5 sau 10 minute!": "Comece hoje com uma sessão curta de 5 ou 10 minutos!",
+    "Începem.": "Vamos começar.",
+    "Încheieturi sensibile (fără sprijin direct pe palme pe podea)": "Punhos sensíveis (sem apoiar o peso direto nas palmas no chão)",
+    "Închide": "Fechar",
+    "Întotdeauna disponibilă": "Sempre disponível",
+    "Jurnal și Progres": "Diário e progresso",
+    "Limbă": "Idioma",
+    "Masaj și relaxare": "Massagem e recuperação",
+    "Meniul ⋮ →": "O menu ⋮ →",
+    "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "O menu ⋮ → «Instalar aplicativo» ou «Adicionar à tela inicial».",
+    "Menținem același ritm prietenos și data viitoare.": "Vamos manter o mesmo ritmo agradável da próxima vez.",
+    "Minute câștigate": "Minutos ganhos",
+    "Mișcare": "Mișcare",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — Exercício do zero: uma rotina sem atrito, sem culpa, sempre adaptável",
+    "Mișcare de zi cu zi": "Movimento do dia a dia",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "Movimento de hoje — Nível 0 (Do zero)",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "Movimento de hoje — Nível 1 (Iniciante)",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "Movimento de hoje — Nível 2 (Intermediário)",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "Movimento de hoje — Nível 3 (Avançado)",
+    "Montată la ușă/perete": "Instalada numa porta ou parede",
+    "Mușchi principali": "Músculos principais",
+    "Navigare principală": "Navegação principal",
+    "Necesită echipament suplimentar": "Precisa de equipamento adicional",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "Sem problema! Da próxima vez vamos reduzir as repetições automaticamente.",
+    "Niciun exercițiu găsit": "Nenhum exercício encontrado",
+    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "Nível 0 — Do zero absoluto (cadeira, parede, mobilidade suave)",
+    "Nivel 1 — Începător": "Nível 1 — Iniciante",
+    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "Nível 1 — Iniciante confortável (flexões inclinadas, trabalho no chão, halteres)",
+    "Nivel 1 (Începător)": "Nível 1 (Iniciante)",
+    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "Nível 2 — Intermediário / ativo (flexões no chão, agachamentos completos, prancha, afundos)",
+    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "Nível 3 — Avançado / intenso (flexões diamante, agachamentos com salto, burpees, barras)",
+    "Nivel de intensitate:": "Nível de intensidade:",
+    "Nivelul tău actual:": "Seu nível atual:",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "Não encontramos nenhum movimento seguro para as áreas que você marcou.",
+    "Nu am putut șterge sesiunea.": "Não conseguimos apagar a sessão.",
+    "nu există o schimbare de anulat": "não há nenhuma alteração para desfazer",
+    "Nume:": "Nome:",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Os nomes dos exercícios e as instruções mudam junto com a interface.",
+    "Odihnă & Respirație": "Descanso e respiração",
+    "Optim (10 min)": "Equilibrada (10 min)",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Opcional, se você estiver a fim. Nada se perde se você parar por aqui.",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Seja qual for a sua escolha, nada do que você construiu se perde.",
+    "Parțial": "Parcial",
+    "Pauză de odihnă": "Pausa de descanso",
+    "Păstrează doar corpul, scaunul și peretele": "Ficar só com o peso do corpo, uma cadeira e uma parede",
+    "Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.": "Para a melhor experiência e avisos confiáveis, instale o app antes de ativar.",
+    "Pentru flotări și postură": "Para flexões e postura",
+    "Pentru sprijin și așezare": "Para se apoiar e sentar",
+    "Pernă": "Almofada",
+    "Pernă moale": "Almofada macia",
+    "Pregătește-te pentru": "Prepare-se para",
+    "Pregătește-te!": "Prepare-se!",
+    "Pregătim mișcarea de azi...": "Preparando o movimento de hoje…",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "Pronto para alguns minutos revigorantes de movimento?",
+    "Pregătit pentru o sesiune activă și energică?": "Pronto para uma sessão ativa e cheia de energia?",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "Pronto para uma sessão ativa e cheia de energia? Força sólida no chão!",
+    "Progres": "Progresso",
+    "propunerea nu mai este valabilă": "essa sugestão não vale mais",
+    "Protecție genunchi": "Proteção dos joelhos",
+    "Rapid (5 min)": "Rápida (5 min)",
+    "Redenumește dispozitivul:": "Renomear este dispositivo:",
+    "Reglaje & Punct de pornire": "Configurações e ponto de partida",
+    "Reluăm mai ușor": "Recomeçar com calma",
+    "repetări": "rep.",
+    "Repetări realizate în această serie:": "Repetições concluídas nesta série:",
+    "Resetează filtrele": "Redefinir os filtros",
+    "Rolă de spumă": "Rolo de espuma",
+    "Rolă spumă": "Rolo de espuma",
+    "Rulare în browser": "Rodando no navegador",
+    "Saltea / Covoraș": "Tapete",
+    "Salvează": "Salvar",
+    "Salvează în jurnal": "Salvar no diário",
+    "Scade repetări": "Reduzir as repetições",
+    "Se încarcă jurnalul...": "Carregando o diário…",
+    "Se salvează...": "Salvando…",
+    "serie finalizată": "série concluída",
+    "Sesiune blândă de reacomodare": "Sessão de volta suave",
+    "Sesiune calibrată pentru reacomodare ușoară.": "Sessão calibrada para uma volta suave.",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "Uma sessão mais curta: foi tudo o que encontramos com segurança para as áreas que você marcou.",
+    "Setări și Dispozitiv": "Configurações e dispositivo",
+    "Sfatul antrenorului:": "Dica do treinador:",
+    "Spate sensibil (exclusiv posturi sigure de protecție lombară)": "Costas sensíveis (só posições que protegem a lombar)",
+    "Stare PWA:": "Estado do PWA:",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "Ótimo! Da próxima vez podemos acrescentar tranquilamente mais uma repetição.",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "Até 2-3 minutos contam muitíssimo. Você deu um passo excelente!",
+    "Șterge sesiunea": "Apagar sessão",
+    "Textilă sau cauciuc": "Tecido ou borracha",
+    "Timp per serie": "Tempo por série",
+    "Toate": "Todos",
+    "Tocmai bine": "Na medida certa",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "Suas duas últimas sessões pareceram fáceis. Vamos aumentar um pouco da próxima vez?",
+    "Urmează:": "A seguir:",
+    "ușor": "fácil",
+    "Ușor": "Fácil",
+    "Ușor & revigorant": "Fácil e revigorante",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "Marque-as nas configurações — ou pergunte a um profissional o que é seguro para você.",
+    "Volum adaptat automat după ultima sesiune.": "Volume ajustado automaticamente depois da sua última sessão.",
+    "Volum uzual": "Volume habitual",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Parar a sessão? O que você fez até agora continua contando!",
+    "Zile cu mișcare": "Dias com movimento",
+    "Zone sensibile / Protecție:": "Áreas sensíveis / proteção:",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "As áreas que você marcou excluem todos os movimentos do catálogo.",
+    "Conectat": "Conectado",
+    "Mișcare a fost actualizată la ultima versiune": "O Mișcare foi atualizado para a versão mais recente"
+  }
+}

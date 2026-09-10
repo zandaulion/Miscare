@@ -7,12 +7,6 @@ import { renderCompendiumView } from './compendium-view.js';
 import { renderEquipmentView } from './equipment-view.js';
 import { renderLogView } from './log-view.js';
 
-// Setup pwa-kit updates
-installUpdates({
-  appName: t('Mișcare'),
-  toast: (message) => showToast(message),
-  isBusy: () => Boolean(document.getElementById('guided-overlay'))
-});
 
 export function showToast(message) {
   const container = document.querySelector('.toast-container') || document.body;
@@ -36,6 +30,17 @@ async function init() {
   await loadLocale();
   await loadFallback();
   applyI18n();
+
+  // Abia acum, nu la încărcarea modulului. Anunțul de actualizare se afișează
+  // sincron, în prima clipă a lui installUpdates; pornit mai devreme, mesajul
+  // se compunea dintr-un catalog încă gol și ieșea în engleză peste un ecran
+  // arab sau japonez -- exact cazul pe care mesajul traductibil îl evită.
+  installUpdates({
+    appName: t('Mișcare'),
+    message: t('Mișcare a fost actualizată la ultima versiune'),
+    toast: (message) => showToast(message),
+    isBusy: () => Boolean(document.getElementById('guided-overlay'))
+  });
 
   await probe();
   updateDeviceBadge();

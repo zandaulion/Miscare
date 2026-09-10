@@ -1712,3 +1712,18 @@ nav.app-nav {
   font-family: inherit;
 }
 .select-input:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+/* Arabă: literele se leagă între ele.
+ *
+ * `letter-spacing` pe o etichetă latină e un detaliu de stil; pe una arabă
+ * rupe ligaturile și cuvântul se vede ca litere separate, ca și cum fontul ar
+ * lipsi. Aceleași etichete, fără spațiere, în scrierile cursive.
+ */
+[dir='rtl'] .sets-selector-title,
+[dir='rtl'] .rep-counter-label,
+[dir='rtl'] .rest-preview-sub,
+[dir='rtl'] .filter-label,
+[dir='rtl'] .detail-label,
+[dir='rtl'] .brand-name {
+  letter-spacing: normal;
+}

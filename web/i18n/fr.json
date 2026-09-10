@@ -1,0 +1,520 @@
+{
+  "meta": {
+    "name": "Français",
+    "dir": "ltr"
+  },
+  "reps": {
+    "unit": {
+      "reps": "répétitions",
+      "seconds": "secondes",
+      "taps": "touches"
+    },
+    "note": {
+      "alternating": "en alternance",
+      "hold": "maintien",
+      "hold2s": "(maintien 2 s)",
+      "eachSide": "de chaque côté",
+      "perLeg": "/ jambe",
+      "perArm": "/ bras",
+      "lower34s": "(descente en 3-4 s)"
+    }
+  },
+  "ex": {
+    "wall_pushups": {
+      "name": "Pompes au mur",
+      "description": "Placez-vous à une longueur de bras du mur, les paumes à hauteur de poitrine. Pliez les coudes de façon contrôlée, puis repoussez.",
+      "focus": "Poitrine, bras et épaules",
+      "tip": "Gardez le corps droit comme une planche ; ne laissez pas le bassin s'affaisser vers l'avant."
+    },
+    "chair_sit_to_stand": {
+      "name": "Se lever et s'asseoir sur une chaise",
+      "description": "Asseyez-vous au bord d'une chaise stable. Levez-vous en poussant sur les talons, puis rasseyez-vous lentement.",
+      "focus": "Jambes et stabilité",
+      "tip": "Ne vous laissez pas tomber sur la chaise ; c'est la descente lente qui fait le plus travailler les muscles."
+    },
+    "standing_calf_raises": {
+      "name": "Élévations sur la pointe des pieds (avec appui)",
+      "description": "Les mains posées légèrement sur un mur ou un dossier de chaise, montez sur la pointe des pieds aussi haut que possible, tenez une seconde et redescendez.",
+      "focus": "Chevilles, mollets et circulation",
+      "tip": "Excellent pour relancer la circulation après une longue période assise."
+    },
+    "shoulder_rolls_and_reach": {
+      "name": "Rotations d'épaules et étirements doux",
+      "description": "Faites de grands cercles vers l'arrière avec les épaules, en respirant profondément. Puis tendez doucement les bras vers le plafond.",
+      "focus": "Relâcher les tensions de la nuque et des épaules",
+      "tip": "Laissez les épaules s'éloigner des oreilles."
+    },
+    "glute_bridge_gentle": {
+      "name": "Pont fessier (au sol ou sur un lit ferme)",
+      "description": "Allongez-vous sur le dos, genoux pliés et pieds à plat. Soulevez le bassin jusqu'à former une ligne droite des genoux aux épaules.",
+      "focus": "Fessiers et bas du dos",
+      "tip": "Serrez doucement les abdominaux et les fessiers en haut, sans creuser le dos."
+    },
+    "seated_knee_lifts": {
+      "name": "Montées de genoux assis",
+      "description": "Asseyez-vous bien droit sur une chaise. Montez un genou vers la poitrine en gardant les abdominaux engagés, redescendez et répétez avec l'autre.",
+      "focus": "Bas des abdominaux et mobilité des hanches",
+      "tip": "Ne vous penchez pas en arrière en montant le genou."
+    },
+    "chest_opener_stretch": {
+      "name": "Ouverture de la poitrine au mur ou dans l'embrasure d'une porte",
+      "description": "Posez l'avant-bras sur un chambranle ou un mur et tournez doucement le buste dans l'autre sens jusqu'à sentir un étirement agréable en travers de la poitrine.",
+      "focus": "Posture et mobilité de la cage thoracique",
+      "tip": "Respirez calmement et profondément ; ne forcez pas l'étirement."
+    },
+    "incline_pushups": {
+      "name": "Pompes inclinées (sur un bureau ou un dossier de chaise)",
+      "description": "Posez les paumes sur une surface stable (une table solide ou un canapé). Descendez la poitrine de façon contrôlée et poussez fermement.",
+      "focus": "Poitrine, triceps et force du tronc",
+      "tip": "Plus la surface est haute, plus c'est facile."
+    },
+    "knee_pushups": {
+      "name": "Pompes sur les genoux",
+      "description": "Appuyez-vous sur les paumes et les genoux, le buste bien aligné. Descendez la poitrine vers le sol, coudes à 45°, puis poussez fermement.",
+      "focus": "Poitrine, épaules et triceps",
+      "tip": "Gardez les abdominaux engagés ; ne laissez pas le bas du dos s'affaisser."
+    },
+    "box_squat_touch": {
+      "name": "Squat avec touche de chaise",
+      "description": "Descendez en squat jusqu'à ce que le bassin effleure la chaise, puis remontez sans vous asseoir complètement.",
+      "focus": "Cuisses, fessiers et contrôle",
+      "tip": "Les genoux suivent la direction des orteils."
+    },
+    "wall_sit": {
+      "name": "Chaise au mur",
+      "description": "Plaquez le dos contre le mur et glissez vers le bas comme pour vous asseoir, jusqu'à ce que les genoux forment un angle de 90°. Tenez la position.",
+      "focus": "Quadriceps et endurance musculaire",
+      "tip": "Appuyez fermement les talons au sol et continuez à respirer régulièrement."
+    },
+    "prone_cobra": {
+      "name": "Cobra doux (extension du dos au sol)",
+      "description": "Allongez-vous sur le ventre, bras le long du corps. Soulevez légèrement la poitrine du sol en ramenant les omoplates en arrière et en tournant les pouces vers le plafond.",
+      "focus": "Haut du dos, rhomboïdes et posture",
+      "tip": "Regardez vers le sol pour garder la nuque détendue et alignée."
+    },
+    "bird_dog_gentle": {
+      "name": "Bird-dog (stabilité à quatre pattes)",
+      "description": "À quatre pattes sur un tapis. Tendez en même temps le bras droit vers l'avant et la jambe gauche vers l'arrière, tenez deux secondes, puis changez.",
+      "focus": "Stabilité du bas du dos, coordination et fessiers",
+      "tip": "Imaginez que vous tenez en équilibre sur le dos un verre d'eau que vous ne voulez pas renverser."
+    },
+    "deadbug_assisted": {
+      "name": "Dead bug assisté",
+      "description": "Sur le dos, genoux à 90 degrés. Descendez un talon vers le sol en gardant le dos plaqué au tapis, puis revenez.",
+      "focus": "Abdominaux profonds et protection du bas du dos",
+      "tip": "Si vous sentez le dos se décoller du sol, ne descendez pas le talon jusqu'en bas."
+    },
+    "crunches_standard": {
+      "name": "Crunchs classiques",
+      "description": "Allongez-vous sur le dos, genoux pliés et pieds à plat. Soulevez uniquement les omoplates en contractant les abdominaux, tenez une seconde et redescendez lentement.",
+      "focus": "Abdominaux (grand droit)",
+      "tip": "Ne tirez pas sur la nuque ; gardez le menton éloigné de la poitrine et regardez vers le haut à 45°."
+    },
+    "side_plank": {
+      "name": "Gainage latéral sur les genoux",
+      "description": "Sur le côté, en appui sur l'avant-bras, coude sous l'épaule et genoux pliés à 90°. Soulevez le bassin pour former une ligne droite des genoux aux épaules.",
+      "focus": "Obliques, taille et stabilité latérale",
+      "tip": "Gardez la nuque droite et ne laissez pas la hanche descendre vers le sol."
+    },
+    "dumbbell_seated_bicep_curl": {
+      "name": "Curls biceps assis (haltères)",
+      "description": "Assis sur une chaise, un haltère dans chaque main. Pliez les bras en montant les poids vers les épaules, puis redescendez lentement.",
+      "focus": "Bras (biceps)",
+      "tip": "Gardez les coudes fixes le long du corps."
+    },
+    "dumbbell_seated_shoulder_press": {
+      "name": "Développé épaules assis (haltères)",
+      "description": "Assis bien droit, poussez les haltères depuis la hauteur des oreilles vers le plafond sans verrouiller brusquement les coudes.",
+      "focus": "Épaules et posture",
+      "tip": "Ne cambrez pas le dos."
+    },
+    "towel_pull_apart": {
+      "name": "Écartés à la serviette",
+      "description": "Debout ou assis, tenez une serviette tendue entre les mains à hauteur de poitrine. Écartez les extrémités comme pour la déchirer, en serrant les omoplates, puis relâchez lentement.",
+      "focus": "Haut du dos, omoplates et posture",
+      "tip": "Gardez les coudes presque tendus et les épaules basses, loin des oreilles."
+    },
+    "reverse_snow_angels": {
+      "name": "Anges dans la neige inversés",
+      "description": "Allongez-vous sur le ventre, front posé, bras le long du corps. Soulevez légèrement les bras du sol et amenez-les lentement au-dessus de la tête, puis revenez vers les hanches.",
+      "focus": "Haut du dos, épaules et posture",
+      "tip": "Le mouvement est petit et lent ; l'essentiel est que les bras ne touchent jamais le sol au passage."
+    },
+    "doorway_row": {
+      "name": "Tirage dans l'embrasure de porte",
+      "description": "Placez-vous face à un chambranle solide, saisissez le bord à deux mains et posez les orteils près du seuil. Penchez-vous en arrière bras tendus, puis tirez pour vous redresser en serrant les omoplates.",
+      "focus": "Dos, biceps et force de traction",
+      "tip": "Plus vous vous penchez en arrière, plus c'est difficile : réglez la difficulté avec l'angle, pas avec les répétitions."
+    },
+    "band_pull_apart": {
+      "name": "Écartés à l'élastique pour le dos",
+      "description": "Tenez l'élastique à deux mains devant la poitrine, bras tendus. Écartez les mains jusqu'à ce que l'élastique touche la poitrine.",
+      "focus": "Haut du dos, posture et épaules",
+      "tip": "Excellent pour corriger les épaules qui s'enroulent vers l'avant."
+    },
+    "band_seated_row": {
+      "name": "Tirage assis à l'élastique",
+      "description": "Jambes tendues, passez l'élastique sous les pieds. Tirez les extrémités vers le ventre en serrant les omoplates.",
+      "focus": "Muscles du dos et posture",
+      "tip": "Gardez la poitrine ouverte et les épaules basses."
+    },
+    "active_hang": {
+      "name": "Suspension active à la barre",
+      "description": "Saisissez fermement la barre et laissez le corps pendre, mais abaissez les omoplates et éloignez les épaules des oreilles. Respirez calmement.",
+      "focus": "Décompression de la colonne, stabilité des épaules et force de préhension",
+      "tip": "Soulage la pression sur la colonne et prépare les épaules aux tractions."
+    },
+    "standard_pushups": {
+      "name": "Pompes complètes au sol",
+      "description": "En appui sur les paumes et la pointe des pieds. Descendez la poitrine de façon contrôlée à 5 cm du sol, le corps droit comme une planche, puis poussez fermement.",
+      "focus": "Poitrine, triceps, épaules et force du tronc",
+      "tip": "Les coudes forment une flèche à 45 degrés par rapport au buste, et non écartés à l'horizontale."
+    },
+    "full_squats": {
+      "name": "Squats complets",
+      "description": "Pieds à largeur d'épaules. Descendez le bassin sous le niveau des genoux, talons ancrés au sol et poitrine fière.",
+      "focus": "Cuisses, fessiers et mobilité des chevilles",
+      "tip": "Inspirez à la descente et poussez sur les talons à la remontée."
+    },
+    "forearm_plank": {
+      "name": "Gainage sur les avant-bras",
+      "description": "En appui sur les avant-bras et la pointe des pieds. Le corps forme une ligne rigide des talons au sommet du crâne. Serrez les abdominaux et les fessiers.",
+      "focus": "Stabilité du tronc, gainage et épaules",
+      "tip": "Ne laissez pas le bassin s'affaisser, et ne le remontez pas non plus en tente."
+    },
+    "reverse_lunges": {
+      "name": "Fentes arrière (en alternance)",
+      "description": "Faites un grand pas en arrière et descendez le genou vers le sol jusqu'à 90 degrés. Revenez en poussant sur le talon avant.",
+      "focus": "Fessiers, cuisses et stabilité sur une jambe",
+      "tip": "Gardez le buste droit et le genou avant aligné avec la cheville."
+    },
+    "chair_dips": {
+      "name": "Dips sur chaise",
+      "description": "Dos à la chaise, posez les paumes sur le bord avant de l'assise. Descendez le bassin le long de la chaise en pliant les coudes à 90 degrés, puis repoussez.",
+      "focus": "Triceps, poitrine et deltoïdes antérieurs",
+      "tip": "Restez près du bord de la chaise pendant tout le mouvement."
+    },
+    "mountain_climbers": {
+      "name": "Grimpeurs",
+      "description": "Depuis la position de pompe, ramenez les genoux vers la poitrine en alternance, à un rythme rapide et contrôlé, sans balancer le bassin.",
+      "focus": "Conditionnement cardio, abdominaux et épaules",
+      "tip": "Gardez les épaules juste au-dessus des paumes."
+    },
+    "dumbbell_bent_over_row": {
+      "name": "Rowing haltères buste penché",
+      "description": "Buste penché en avant à 45 degrés, dos parfaitement plat. Tirez les haltères vers les hanches en contractant fortement les muscles du dos.",
+      "focus": "Dos, biceps et deltoïdes postérieurs",
+      "tip": "Ne tirez pas avec les bras ; initiez le mouvement depuis les omoplates."
+    },
+    "single_leg_glute_bridge": {
+      "name": "Pont fessier sur une jambe",
+      "description": "Sur le dos, tendez une jambe en l'air et poussez sur le talon de l'autre pour soulever le bassin. Tenez une seconde en haut.",
+      "focus": "Fessiers profonds, ischio-jambiers et stabilité du bassin",
+      "tip": "Gardez le bassin de niveau ; ne laissez pas un côté descendre."
+    },
+    "chin_ups": {
+      "name": "Tractions en supination",
+      "description": "Saisissez la barre paumes vers vous, écartement largeur d'épaules. Tirez la poitrine vers la barre jusqu'à passer le menton, puis redescendez lentement.",
+      "focus": "Biceps, grands dorsaux et force de traction",
+      "tip": "La prise en supination sollicite davantage les biceps, ce qui en fait un mouvement naturel et accessible au niveau intermédiaire."
+    },
+    "negative_pullups": {
+      "name": "Tractions négatives (descente contrôlée)",
+      "description": "Sautez légèrement ou utilisez une chaise pour amener le menton au-dessus de la barre. Descendez aussi lentement que possible (3-4 secondes) jusqu'à tendre complètement les bras.",
+      "focus": "Force excentrique, dos, bras et préhension",
+      "tip": "La descente contrôlée est le chemin le plus rapide vers les tractions complètes."
+    },
+    "hanging_knee_raises": {
+      "name": "Relevés de genoux suspendu",
+      "description": "Suspendu à la barre, bras tendus et épaules fermes, montez les genoux vers la poitrine de façon contrôlée sans balancer, tenez brièvement et redescendez lentement.",
+      "focus": "Bas des abdominaux, fléchisseurs de hanche et endurance de préhension",
+      "tip": "Évitez de balancer le buste : le mouvement doit venir strictement des abdominaux."
+    },
+    "dumbbell_goblet_squat": {
+      "name": "Squat goblet (haltère contre la poitrine)",
+      "description": "Tenez un haltère à la verticale contre la poitrine avec les deux paumes. Descendez en squat profond, poitrine haute et coudes entre les genoux, puis poussez fermement sur les talons.",
+      "focus": "Quadriceps, fessiers, mobilité des hanches et stabilité du tronc",
+      "tip": "Le poids tenu devant engage les abdominaux et vous aide à descendre profondément sans arrondir le dos."
+    },
+    "dumbbell_romanian_deadlift": {
+      "name": "Soulevé de terre roumain (avec haltères)",
+      "description": "Pieds à largeur de bassin, haltères devant. Poussez les hanches vers l'arrière avec une légère flexion des genoux, en descendant les haltères sous les genoux avec un dos parfaitement plat, puis serrez les fessiers en remontant.",
+      "focus": "Ischio-jambiers, fessiers et chaîne postérieure",
+      "tip": "Le mouvement consiste à pousser les fesses vers le mur derrière vous, pas à vous plier à la taille."
+    },
+    "dumbbell_floor_press": {
+      "name": "Développé couché au sol avec haltères",
+      "description": "Allongez-vous sur le dos, genoux pliés. Poussez les haltères au-dessus de la poitrine jusqu'à tendre les bras, puis descendez lentement jusqu'à ce que les triceps effleurent le sol.",
+      "focus": "Poitrine, triceps et stabilité de l'articulation de l'épaule",
+      "tip": "Le sol empêche les coudes de descendre trop bas, ce qui protège les articulations des épaules même avec des charges lourdes."
+    },
+    "dumbbell_single_arm_row": {
+      "name": "Rowing à un bras en appui sur une chaise",
+      "description": "Posez un genou et une main sur la chaise, dos à l'horizontale. De l'autre main, tirez l'haltère lourd vers la hanche en contractant l'omoplate, tenez brièvement et redescendez de façon contrôlée.",
+      "focus": "Grands dorsaux, rhomboïdes, biceps et force unilatérale du dos",
+      "tip": "Ne faites pas tourner le buste ; gardez les épaules parallèles au sol."
+    },
+    "dumbbell_farmers_carry": {
+      "name": "Marche du fermier",
+      "description": "Tenez un haltère lourd dans chaque main le long du corps. Gardez les épaules en arrière et la poitrine haute, et marchez lentement et volontairement (ou tenez simplement la posture sur place).",
+      "focus": "Préhension, avant-bras, trapèzes, abdominaux et stabilité posturale",
+      "tip": "Restez parfaitement droit ; ne laissez pas les poids vous tirer vers l'avant ou sur le côté."
+    },
+    "diamond_pushups": {
+      "name": "Pompes diamant",
+      "description": "Posez les paumes au sol sous la poitrine, pouces et index qui se touchent en losange. Descendez et poussez de façon explosive.",
+      "focus": "Triceps intense et intérieur de la poitrine",
+      "tip": "Gardez les coudes près du buste."
+    },
+    "jump_squats": {
+      "name": "Squats sautés explosifs",
+      "description": "Descendez en squat profond et explosez en saut vertical. Atterrissez en souplesse sur l'avant du pied et enchaînez sur la descente suivante.",
+      "focus": "Puissance explosive des jambes et endurance cardiovasculaire",
+      "tip": "L'atterrissage doit être silencieux et souple pour protéger les articulations."
+    },
+    "plank_shoulder_taps": {
+      "name": "Gainage avec touches d'épaule",
+      "description": "Depuis la position de pompe, levez la main droite et touchez l'épaule gauche sans bouger ni balancer le bassin. Répétez en alternance.",
+      "focus": "Anti-rotation, stabilité des épaules et abdominaux",
+      "tip": "Écartez un peu les pieds pour une meilleure stabilité."
+    },
+    "burpees_clean": {
+      "name": "Burpees nets (sans pause)",
+      "description": "Debout, descendez en squat, projetez les pieds en arrière en position de pompe, faites une pompe, revenez et sautez.",
+      "focus": "Capacité anaérobie et force de tout le corps",
+      "tip": "Trouvez un rythme régulier et tenez-le."
+    },
+    "pullups_standard": {
+      "name": "Tractions",
+      "description": "Saisissez la barre paumes vers l'avant, un peu plus large que les épaules. Tirez le corps vers le haut jusqu'à passer le menton au-dessus de la barre.",
+      "focus": "Grands dorsaux, biceps et force de traction",
+      "tip": "Initiez le mouvement en tirant les coudes vers le bas et l'arrière."
+    }
+  },
+  "ui": {
+    "+15s Pauză": "+15 s de repos",
+    "⏱️ Fă-o de 5 min": "⏱️ Passer à 5 min",
+    "⏸️ Pauză": "⏸️ Pause",
+    "▶️ Continuă": "▶️ Reprendre",
+    "▶️ Exersează mișcarea (45 secunde)": "▶️ Répéter le mouvement (45 secondes)",
+    "▶️ Începe acum": "▶️ Commencer maintenant",
+    "✅ Am făcut deja! Bifează rapid": "✅ Déjà fait ! Je coche",
+    "✅ Preferințe salvate!": "✅ Préférences enregistrées !",
+    "✓ Disponibil": "✓ Disponible",
+    "✕ Ieși": "✕ Quitter",
+    "✨ Compatibile cu echipamentul tău": "✨ Adapter à votre matériel",
+    "✨ Doar echipamentul meu": "✨ Uniquement mon matériel",
+    "➡️ Serie terminată": "➡️ Série terminée",
+    "🎉 Finalizează antrenamentul": "🎉 Terminer la séance",
+    "💪 Partea de sus": "💪 Haut du corps",
+    "💾 Salvează preferințele": "💾 Enregistrer les préférences",
+    "💾 Salvează selecția": "💾 Enregistrer la sélection",
+    "📖 Cum se execută corect:": "📖 Comment bien le faire :",
+    "🔄 Mișcări înrudite / Alternative:": "🔄 Mouvements proches / alternatives :",
+    "🔄 Reset": "🔄 Réinitialiser",
+    "🔄 Schimbă cu altul": "🔄 Remplacer par un autre",
+    "🦵 Picioare": "🦵 Jambes",
+    "🧘 Mobilitate": "🧘 Mobilité",
+    "🧘 Trage-ți sufletul & bea o gură de apă": "🧘 Reprenez votre souffle et buvez une gorgée d'eau",
+    "🧹 Curăță memoria cache (/bust)": "🧹 Vider le cache (/bust)",
+    "🛡️ Trunchi / Core": "🛡️ Tronc / gainage",
+    "1 - 5 kg (brațe & mobilitate)": "1-5 kg (bras et mobilité)",
+    "1 Serie": "1 série",
+    "1) Adaugă pagina pe ecranul principal:": "1) Ajoutez la page à votre écran d'accueil :",
+    "2 Serii": "2 séries",
+    "2) Deschide aplicația de pe ecranul principal și apasă linkul din nou, sau folosește codul:": "2) Ouvrez l'app depuis l'écran d'accueil et touchez à nouveau le lien, ou utilisez le code :",
+    "3 Serii": "3 séries",
+    "5 - 20 kg (forță & picioare)": "5-20 kg (force et jambes)",
+    "Acces": "Accès",
+    "Acces & Dispozitiv": "Accès et appareil",
+    "Activează acum": "Activer maintenant",
+    "Activează cod": "Activer avec un code",
+    "Activează cu cod de invitație": "Activer avec un code d'invitation",
+    "Activează direct în browser": "Activer directement dans le navigateur",
+    "Activează sunetul": "Activer le son",
+    "Adaugă Mișcare pe ecranul principal": "Ajouter Mișcare à l'écran d'accueil",
+    "Add to Home Screen": "Ajouter à l'écran d'accueil",
+    "Afișez": "Affichage",
+    "Ai făcut mișcare azi.": "Vous avez bougé aujourd'hui.",
+    "Ajustat automat mai blând pentru data viitoare.": "Allégé automatiquement pour la prochaine fois.",
+    "Am calibrat mișcările de azi să fie mai blânde și confortabile.": "Nous avons rendu les mouvements d'aujourd'hui plus doux et plus confortables.",
+    "Am înțeles, o voi instala": "D'accord, je l'installe",
+    "Android (Chrome):": "Android (Chrome) :",
+    "Android:": "Android :",
+    "Apasă butonul de partajare (pătratul cu săgeată în sus) → „Add to Home Screen”.": "Touchez le bouton de partage (le carré avec une flèche vers le haut) → « Sur l'écran d'accueil ».",
+    "Aplicație activată cu succes!": "Application activée avec succès !",
+    "Aproximativ": "Environ",
+    "Avansat": "Avancé",
+    "Azi": "Aujourd'hui",
+    "Bandă elastică": "Élastique de résistance",
+    "Bară de tracțiuni": "Barre de traction",
+    "Bară tracțiuni": "Barre de traction",
+    "Bifează ce ai la dispoziție acasă. Rutina se adaptează instantaneu.": "Cochez ce que vous avez chez vous. La routine s'adapte aussitôt.",
+    "Bine ai revenit! Fără grabă și fără vinovăție — corpul tău își reamintește ritmul treptat.": "Content de vous revoir ! Sans hâte et sans culpabilité — votre corps retrouve son rythme peu à peu.",
+    "Bravo! Ai făcut mișcare azi.": "Bravo ! Vous avez bougé aujourd'hui.",
+    "Bravo! Mișcare finalizată cu succes.": "Bravo ! Séance terminée.",
+    "Butonul Share →": "Le bouton Partager →",
+    "Cam greu": "Un peu dur",
+    "Caută după nume, mușchi sau echipament...": "Rechercher par nom, muscle ou matériel…",
+    "Câte serii vrei să faci azi?": "Combien de séries aujourd'hui ?",
+    "Câteva repetări în plus, nu o săritură. Poți reveni oricând la cum era.": "Quelques répétitions de plus, pas un bond. Vous pouvez revenir en arrière à tout moment.",
+    "Compendiu de exerciții": "Répertoire des exercices",
+    "Compendiu de Exerciții": "Répertoire des exercices",
+    "Comută sunetul": "Activer ou couper le son",
+    "Construiești forță și mobilitate zi de zi. Menține ritmul!": "Vous gagnez en force et en mobilité jour après jour. Continuez !",
+    "Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.": "Construire la base physique : travail au sol, haltères légers et élastiques.",
+    "Continui de unde am rămas": "Reprendre où je m'étais arrêté",
+    "Crește repetări": "Augmenter les répétitions",
+    "Cum adaugi pe ecranul principal:": "Comment l'ajouter à l'écran d'accueil :",
+    "Cum s-a simțit sesiunea?": "Comment avez-vous ressenti la séance ?",
+    "Dacă întâmpini probleme de afișare sau vrei să golești memoria cache:": "En cas de problème d'affichage ou pour vider le cache :",
+    "Data trecută a fost ușor și plăcut. Menținem ritmul bun!": "La dernière fois était facile et agréable. Gardons ce bon rythme !",
+    "De la 0": "Depuis zéro",
+    "De la 0, în ritmul tău": "Depuis zéro, à votre rythme",
+    "dedicate stării tale de bine.": "consacrées à votre bien-être.",
+    "Dezactivează sunetul": "Couper le son",
+    "Dispozitiv activat": "Appareil activé",
+    "Doar greutatea corpului": "Poids du corps uniquement",
+    "Doar o parte": "Une partie seulement",
+    "Durată estimată: aprox. {n} minute": "Estimation : environ {n} minutes",
+    "Durată țintă zilnică:": "Durée quotidienne visée :",
+    "E bine așa": "C'est très bien comme ça",
+    "Echipament": "Matériel",
+    "Echipamentul tău": "Votre matériel",
+    "Ecranul va trece automat la seria următoare când timpul expiră.": "L'écran passe automatiquement à la série suivante à la fin du temps.",
+    "exerciții": "exercices",
+    "Exerciții": "Exercices",
+    "Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.": "Force et puissance polyarticulaires : pompes diamant, squats sautés, tractions libres.",
+    "Exersează mișcarea": "Répéter le mouvement",
+    "Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).": "Sans impact sur les articulations, adapté à un démarrage sédentaire ou à une reprise en douceur (chaise / mur).",
+    "Fără note sau judecată — doar ne ajuți să calibrăm intensitatea următoare.": "Ni note ni jugement — vous nous aidez simplement à régler la prochaine intensité.",
+    "Felicitări pentru mișcarea de azi! Fiecare pas se adună.": "Bravo pour le mouvement d'aujourd'hui ! Chaque pas compte.",
+    "Felicitări! Ai terminat antrenamentul!": "Félicitations ! Vous avez terminé la séance !",
+    "Fiecare pas contează. Fără grabă și fără comparații.": "Chaque pas compte. Sans hâte, sans comparaisons.",
+    "Filosofia „No Shaming”": "L'idée du « sans culpabilité »",
+    "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "N'afficher que les exercices réalisables avec votre matériel actuel",
+    "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Pompes complètes au sol, haltères réglables (5-20 kg), mouvements polyarticulaires et une barre de traction.",
+    "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Genoux sensibles (pas de squats profonds ni de sauts)",
+    "Greutate cu mâner": "Kettlebell",
+    "Hai puțin mai mult": "Ajoutons un peu",
+    "ID:": "ID :",
+    "Instalare & Service Worker": "Installation et service worker",
+    "Instalat pe ecranul principal": "Installée sur l'écran d'accueil",
+    "Instalează": "Installer",
+    "Intens (15 min)": "Intense (15 min)",
+    "Intensitate maximă, control total. Dă tot ce ai!": "Intensité maximale, contrôle total. Donnez tout !",
+    "Intermediar": "Intermédiaire",
+    "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "Saisissez le code reçu de la console d'administration (format : ABCD-EFGH-JKLM).",
+    "iPhone (Safari):": "iPhone (Safari) :",
+    "iPhone:": "iPhone :",
+    "Istoric recent": "Historique récent",
+    "Încă nu ai înregistrat nicio sesiune.": "Vous n'avez pas encore enregistré de séance.",
+    "Încă o rundă?": "Un autre tour ?",
+    "Încearcă să relaxezi filtrele sau debifează „Doar echipamentul meu”.": "Essayez d'assouplir les filtres ou de décocher « Uniquement mon matériel ».",
+    "Începător": "Débutant",
+    "Începe azi cu o sesiune scurtă de 5 sau 10 minute!": "Commencez aujourd'hui par une courte séance de 5 ou 10 minutes !",
+    "Începem.": "C'est parti.",
+    "Încheieturi sensibile (fără sprijin direct pe palme pe podea)": "Poignets sensibles (pas d'appui direct sur les paumes au sol)",
+    "Închide": "Fermer",
+    "Întotdeauna disponibilă": "Toujours disponible",
+    "Jurnal și Progres": "Journal et progression",
+    "Limbă": "Langue",
+    "Masaj și relaxare": "Massage et récupération",
+    "Meniul ⋮ →": "Le menu ⋮ →",
+    "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "Le menu ⋮ → « Installer l'application » ou « Ajouter à l'écran d'accueil ».",
+    "Menținem același ritm prietenos și data viitoare.": "Nous garderons le même rythme agréable la prochaine fois.",
+    "Minute câștigate": "Minutes gagnées",
+    "Mișcare": "Mișcare",
+    "Mișcare — Exerciții de la 0, program fără fricțiuni, no shaming și adaptare continuă": "Mișcare — L'exercice depuis zéro : une routine sans friction, sans culpabilité, toujours adaptable",
+    "Mișcare de zi cu zi": "Le mouvement au quotidien",
+    "Mișcarea ta de azi — Nivel 0 (De la 0)": "Mouvement du jour — Niveau 0 (Depuis zéro)",
+    "Mișcarea ta de azi — Nivel 1 (Începător)": "Mouvement du jour — Niveau 1 (Débutant)",
+    "Mișcarea ta de azi — Nivel 2 (Intermediar)": "Mouvement du jour — Niveau 2 (Intermédiaire)",
+    "Mișcarea ta de azi — Nivel 3 (Avansat)": "Mouvement du jour — Niveau 3 (Avancé)",
+    "Montată la ușă/perete": "Fixée à une porte ou à un mur",
+    "Mușchi principali": "Muscles principaux",
+    "Navigare principală": "Navigation principale",
+    "Necesită echipament suplimentar": "Nécessite du matériel supplémentaire",
+    "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "Aucun souci ! La prochaine fois, nous réduirons automatiquement les répétitions.",
+    "Niciun exercițiu găsit": "Aucun exercice trouvé",
+    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "Niveau 0 — Depuis le zéro absolu (chaise, mur, mobilité douce)",
+    "Nivel 1 — Începător": "Niveau 1 — Débutant",
+    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "Niveau 1 — Débutant à l'aise (pompes inclinées, travail au sol, haltères)",
+    "Nivel 1 (Începător)": "Niveau 1 (Débutant)",
+    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "Niveau 2 — Intermédiaire / actif (pompes au sol, squats complets, gainage, fentes)",
+    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "Niveau 3 — Avancé / intense (pompes diamant, squats sautés, burpees, tractions)",
+    "Nivel de intensitate:": "Niveau d'intensité :",
+    "Nivelul tău actual:": "Votre niveau actuel :",
+    "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "Nous n'avons trouvé aucun mouvement sûr pour les zones que vous avez cochées.",
+    "Nu am putut șterge sesiunea.": "Nous n'avons pas pu supprimer la séance.",
+    "nu există o schimbare de anulat": "il n'y a aucun changement à annuler",
+    "Nume:": "Nom :",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Les noms des exercices et les consignes changent en même temps que l'interface.",
+    "Odihnă & Respirație": "Repos et respiration",
+    "Optim (10 min)": "Équilibrée (10 min)",
+    "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Facultatif, si vous en avez envie. Rien n'est perdu si vous vous arrêtez ici.",
+    "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Quel que soit votre choix, rien de ce que vous avez construit n'est perdu.",
+    "Parțial": "Partielle",
+    "Pauză de odihnă": "Pause de repos",
+    "Păstrează doar corpul, scaunul și peretele": "Ne garder que le poids du corps, une chaise et un mur",
+    "Pentru cea mai bună experiență și notificări optime, instalează aplicația înainte de activare.": "Pour une expérience optimale et des notifications fiables, installez l'app avant de l'activer.",
+    "Pentru flotări și postură": "Pour les pompes et la posture",
+    "Pentru sprijin și așezare": "Pour s'appuyer et s'asseoir",
+    "Pernă": "Coussin",
+    "Pernă moale": "Coussin moelleux",
+    "Pregătește-te pentru": "Préparez-vous pour",
+    "Pregătește-te!": "Préparez-vous !",
+    "Pregătim mișcarea de azi...": "Préparation du mouvement du jour…",
+    "Pregătit pentru câteva minute de mișcare revigorantă?": "Prêt pour quelques minutes de mouvement revigorantes ?",
+    "Pregătit pentru o sesiune activă și energică?": "Prêt pour une séance active et énergique ?",
+    "Pregătit pentru o sesiune activă și energică? Forță solidă la podea!": "Prêt pour une séance active et énergique ? De la vraie force au sol !",
+    "Progres": "Progression",
+    "propunerea nu mai este valabilă": "cette suggestion n'est plus valable",
+    "Protecție genunchi": "Protection des genoux",
+    "Rapid (5 min)": "Rapide (5 min)",
+    "Redenumește dispozitivul:": "Renommer cet appareil :",
+    "Reglaje & Punct de pornire": "Réglages et point de départ",
+    "Reluăm mai ușor": "Reprendre en douceur",
+    "repetări": "rép.",
+    "Repetări realizate în această serie:": "Répétitions réalisées dans cette série :",
+    "Resetează filtrele": "Réinitialiser les filtres",
+    "Rolă de spumă": "Rouleau de massage",
+    "Rolă spumă": "Rouleau de massage",
+    "Rulare în browser": "Exécution dans le navigateur",
+    "Saltea / Covoraș": "Tapis",
+    "Salvează": "Enregistrer",
+    "Salvează în jurnal": "Enregistrer dans le journal",
+    "Scade repetări": "Réduire les répétitions",
+    "Se încarcă jurnalul...": "Chargement du journal…",
+    "Se salvează...": "Enregistrement…",
+    "serie finalizată": "série terminée",
+    "Sesiune blândă de reacomodare": "Séance de reprise en douceur",
+    "Sesiune calibrată pentru reacomodare ușoară.": "Séance calibrée pour une reprise en douceur.",
+    "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "Une séance plus courte : c'est tout ce que nous avons trouvé en toute sécurité pour les zones que vous avez cochées.",
+    "Setări și Dispozitiv": "Réglages et appareil",
+    "Sfatul antrenorului:": "Le conseil du coach :",
+    "Spate sensibil (exclusiv posturi sigure de protecție lombară)": "Dos sensible (uniquement des positions qui protègent le bas du dos)",
+    "Stare PWA:": "État de la PWA :",
+    "Super! Putem adăuga subtil o repetare în plus data viitoare.": "Super ! Nous pourrons tranquillement ajouter une répétition la prochaine fois.",
+    "Și 2-3 minute contează enorm. Ai făcut un pas excelent!": "Même 2-3 minutes comptent énormément. Vous avez fait un excellent pas !",
+    "Șterge sesiunea": "Supprimer la séance",
+    "Textilă sau cauciuc": "Tissu ou caoutchouc",
+    "Timp per serie": "Temps par série",
+    "Toate": "Tous",
+    "Tocmai bine": "Juste ce qu'il faut",
+    "Ultimele două sesiuni ți s-au părut ușoare. Adăugăm puțin data viitoare?": "Vos deux dernières séances vous ont paru faciles. On ajoute un peu la prochaine fois ?",
+    "Urmează:": "Ensuite :",
+    "ușor": "facile",
+    "Ușor": "Facile",
+    "Ușor & revigorant": "Facile et revigorant",
+    "Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "Cochez-les dans les réglages — ou demandez à un professionnel ce qui est sûr pour vous.",
+    "Volum adaptat automat după ultima sesiune.": "Volume ajusté automatiquement après votre dernière séance.",
+    "Volum uzual": "Volume habituel",
+    "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Arrêter la séance ? Ce que vous avez fait jusqu'ici compte quand même !",
+    "Zile cu mișcare": "Jours avec du mouvement",
+    "Zone sensibile / Protecție:": "Zones sensibles / protection :",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "Les zones que vous avez cochées excluent tous les mouvements du catalogue.",
+    "Conectat": "Connecté",
+    "Mișcare a fost actualizată la ultima versiune": "Mișcare a été mise à jour vers la dernière version"
+  }
+}
