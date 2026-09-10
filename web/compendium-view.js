@@ -346,9 +346,9 @@ function renderExerciseCard(ex, userEquipment) {
       <!-- Corp detaliat expandabil -->
       ${isExpanded ? `
         <div class="compendium-card-details">
-          ${ex.image ? `
+          ${(ex.animation || ex.image) ? `
             <div class="detail-photo-banner">
-              <img src="${ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="detail-full-photo" />
+              <img src="${ex.animation || ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="detail-full-photo" />
             </div>
           ` : ''}
           <div class="detail-block">
@@ -566,9 +566,10 @@ function openPracticeModal(exercise, container) {
   container.querySelector('#practice-title').textContent = exText(exercise.id, 'name');
   const practiceBox = container.querySelector('#practice-svg-wrapper');
   if (practiceBox) {
-    practiceBox.className = `practice-svg-box ${exercise.image ? 'has-photo' : ''}`;
-    practiceBox.innerHTML = exercise.image
-      ? `<img src="${exercise.image}" alt="${escapeHtml(exText(exercise.id, 'name'))}" class="practice-photo" />`
+    const visualSrc = exercise.animation || exercise.image;
+    practiceBox.className = `practice-svg-box ${visualSrc ? 'has-photo' : ''}`;
+    practiceBox.innerHTML = visualSrc
+      ? `<img src="${visualSrc}" alt="${escapeHtml(exText(exercise.id, 'name'))}" class="practice-photo" />`
       : exercise.svg;
   }
   container.querySelector('#practice-cue-text').innerHTML = `
