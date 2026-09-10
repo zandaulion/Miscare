@@ -1699,3 +1699,16 @@ nav.app-nav {
 }
 .log-del:hover { opacity: 1; color: #B4483A; background: rgba(180, 72, 58, .1); }
 .log-del:disabled { opacity: .3; cursor: default; }
+
+/* Selectorul de limbă. Lățime întreagă, ca orice alt control din setări. */
+.select-input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.select-input:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }

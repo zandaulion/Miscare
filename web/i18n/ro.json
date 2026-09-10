@@ -399,6 +399,7 @@
     "Hai puțin mai mult": "Hai puțin mai mult",
     "ID:": "ID:",
     "Instalare & Service Worker": "Instalare & Service Worker",
+    "Instalat pe ecranul principal": "Instalat pe ecranul principal",
     "Instalează": "Instalează",
     "Intens (15 min)": "Intens (15 min)",
     "Intensitate maximă, control total. Dă tot ce ai!": "Intensitate maximă, control total. Dă tot ce ai!",
@@ -417,6 +418,7 @@
     "Închide": "Închide",
     "Întotdeauna disponibilă": "Întotdeauna disponibilă",
     "Jurnal și Progres": "Jurnal și Progres",
+    "Limbă": "Limbă",
     "Masaj și relaxare": "Masaj și relaxare",
     "Meniul ⋮ →": "Meniul ⋮ →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.",
@@ -447,6 +449,7 @@
     "Nu am putut șterge sesiunea.": "Nu am putut șterge sesiunea.",
     "nu există o schimbare de anulat": "nu există o schimbare de anulat",
     "Nume:": "Nume:",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.",
     "Odihnă & Respirație": "Odihnă & Respirație",
     "Optim (10 min)": "Optim (10 min)",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.",
@@ -510,6 +513,7 @@
     "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Vrei să oprești sesiunea? Ce ai făcut până acum contează!",
     "Zile cu mișcare": "Zile cu mișcare",
     "Zone sensibile / Protecție:": "Zone sensibile / Protecție:",
-    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "Zonele pe care le-ai bifat exclud toate mișcările din catalog."
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "Zonele pe care le-ai bifat exclud toate mișcările din catalog.",
+    "Conectat": "Conectat"
   }
 }

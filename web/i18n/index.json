@@ -1,0 +1,12 @@
+[
+  {
+    "code": "en",
+    "name": "English",
+    "dir": "ltr"
+  },
+  {
+    "code": "ro",
+    "name": "Română",
+    "dir": "ltr"
+  }
+]

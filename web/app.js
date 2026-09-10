@@ -1,5 +1,6 @@
 import { installUpdates } from '/pwa-update.js';
-import { t, load as loadLocale, loadFallback, apply as applyI18n } from './i18n.js';
+import { t, load as loadLocale, loadFallback, apply as applyI18n,
+         setLocale, locale, available } from './i18n.js';
 import { probe, redeem, state, updateProfile } from './server-client.js';
 import { renderRoutineView } from './routine-view.js';
 import { renderCompendiumView } from './compendium-view.js';
@@ -83,7 +84,7 @@ function updateDeviceBadge() {
 
   if (state.linked) {
     badge.className = 'device-badge linked';
-    badge.innerHTML = `🟢 ${escapeHtml(state.device?.label || 'Conectat')}`;
+    badge.innerHTML = `🟢 ${escapeHtml(state.device?.label || t('Conectat'))}`;
   } else {
     badge.className = 'device-badge';
     badge.innerHTML = `🔒 ${t('Activează cod')}`;
@@ -172,12 +173,22 @@ function renderSettingsView(container) {
       `}
     </div>
 
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">${t('Limbă')}</h2>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4;">
+          ${t('Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.')}
+        </p>
+        <select id="select-language" class="select-input" aria-label="${t('Limbă')}"></select>
+      </div>
+
     <div class="card">
       <div class="card-header">
         <h2 class="card-title">${t('Instalare & Service Worker')}</h2>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
-        ${t('Stare PWA:')} <strong>${isStandalone() ? 'Instalat pe ecranul principal ✅' : t('Rulare în browser')}</strong>
+        ${t('Stare PWA:')} <strong>${isStandalone() ? t('Instalat pe ecranul principal') + ' ✅' : t('Rulare în browser')}</strong>
       </p>
 
       ${!isStandalone() ? `
@@ -202,6 +213,33 @@ function renderSettingsView(container) {
   `;
 
   // Bind redeem
+  /**
+   * Selectorul de limbă.
+   *
+   * Numele fiecărei limbi e scris în limba ei -- cine caută japoneza caută
+   * 日本語, nu „Japoneză" scris românește. Se populează din index, deci nu poate
+   * oferi o limbă pentru care nu există catalog.
+   *
+   * După alegere se redesenează tot ecranul, nu doar cardul: traducerile intră
+   * prin marcaj rescris, iar o schimbare parțială ar lăsa jumătate din pagină
+   * în limba veche.
+   */
+  const picker = container.querySelector('#select-language');
+  if (picker) {
+    available().then((langs) => {
+      picker.innerHTML = langs.map((l) =>
+        `<option value="${l.code}"${l.code === locale() ? ' selected' : ''}>${l.name}</option>`).join('');
+    });
+    picker.addEventListener('change', async (e) => {
+      await setLocale(e.target.value);
+      applyI18n();
+      // Insigna stă în antet, nu în vedere, deci nicio redesenare de tab n-o
+      // atinge: fără asta rămâne în limba veche pe un ecran deja tradus.
+      updateDeviceBadge();
+      switchTab('settings', { force: true });
+    });
+  }
+
   container.querySelector('#btn-redeem')?.addEventListener('click', async () => {
     const code = container.querySelector('#invite-code-input')?.value.trim();
     if (!code) return;

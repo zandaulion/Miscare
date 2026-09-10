@@ -127,6 +127,7 @@
     "Hai puțin mai mult": "Let's add a little",
     "ID:": "ID:",
     "Instalare & Service Worker": "Install & service worker",
+    "Instalat pe ecranul principal": "Installed on the home screen",
     "Instalează": "Install",
     "Intens (15 min)": "Intense (15 min)",
     "Intensitate maximă, control total. Dă tot ce ai!": "Maximum intensity, full control. Give it everything!",
@@ -145,6 +146,7 @@
     "Închide": "Close",
     "Întotdeauna disponibilă": "Always available",
     "Jurnal și Progres": "Journal and progress",
+    "Limbă": "Language",
     "Masaj și relaxare": "Massage and recovery",
     "Meniul ⋮ →": "The ⋮ menu →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "The ⋮ menu → “Install app” or “Add to home screen”.",
@@ -175,6 +177,7 @@
     "Nu am putut șterge sesiunea.": "We couldn't delete the session.",
     "nu există o schimbare de anulat": "there is no change to undo",
     "Nume:": "Name:",
+    "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Exercise names and instructions change along with the interface.",
     "Odihnă & Respirație": "Rest & breathe",
     "Optim (10 min)": "Balanced (10 min)",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Optional, if you feel like it. Nothing is lost if you stop here.",
@@ -238,7 +241,8 @@
     "Vrei să oprești sesiunea? Ce ai făcut până acum contează!": "Stop the session? What you've done so far still counts!",
     "Zile cu mișcare": "Days with movement",
     "Zone sensibile / Protecție:": "Sensitive areas / protection:",
-    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "The areas you ticked rule out every movement in the catalogue."
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog.": "The areas you ticked rule out every movement in the catalogue.",
+    "Conectat": "Connected"
   },
   "ex": {
     "wall_pushups": {

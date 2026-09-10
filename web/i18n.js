@@ -36,6 +36,25 @@ export function locale() {
   return current;
 }
 
+/**
+ * Limbile care chiar au un catalog.
+ *
+ * Citite dintr-un index generat, nu din lista fixă de mai sus: un selector care
+ * oferă o limbă fără fișier arată aplicația în română după alegere, fără niciun
+ * mesaj, și pare defectă în loc de netradusă.
+ */
+let availableCache = null;
+export async function available() {
+  if (availableCache) return availableCache;
+  try {
+    const res = await fetch('/i18n/index.json');
+    availableCache = res.ok ? await res.json() : [{ code: 'ro', name: 'Română', dir: 'ltr' }];
+  } catch {
+    availableCache = [{ code: 'ro', name: 'Română', dir: 'ltr' }];
+  }
+  return availableCache;
+}
+
 export function catalogue() {
   return strings;
 }
