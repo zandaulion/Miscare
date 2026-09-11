@@ -1619,32 +1619,43 @@ nav.app-nav {
   background: #000000 !important;
 }
 
+/* Mișcarea se vede întreagă, oricât de lat e ecranul.
+ *
+ * Era `object-fit: cover` în cutii cu înălțime fixă și lățime elastică. Cover
+ * umple cutia și taie ce prisosește, deci ce se pierdea din mișcare depindea
+ * de lățimea ecranului: pe laptop banda se făcea lată și joasă, iar capul și
+ * picioarele ieșeau din cadru. Tocmai poziția pe care omul trebuie s-o vadă.
+ *
+ * Toate cele 45 de surse sunt pătrate (1024² fotografia, 512² animația), așa
+ * că o cutie pătrată cu `contain` le încadrează exact: nimic tăiat și nicio
+ * bandă neagră pe margini. `contain` rămâne totuși alegerea corectă chiar dacă
+ * într-o zi apare o sursă de altă formă -- atunci se vede întreagă, cu bandă,
+ * în loc să fie ciuntită în tăcere.
+ */
 .compendium-svg-frame img.ex-img,
 .exercise-visual img.ex-img,
 .rest-preview-thumb img.ex-img,
-.practice-svg-box img.practice-photo {
+.practice-svg-box img.practice-photo,
+.guided-visual img.guided-photo,
+.detail-full-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
 .detail-photo-banner {
   width: 100%;
-  max-height: 220px;
+  /* Pătrat, ca sursa. Înălțimea nu se mai fixează separat de lățime -- acolo
+   * se năștea decupajul. Lățimea se plafonează ca să nu umple tot ecranul pe
+   * laptop, și se centrează. */
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 14px;
   overflow: hidden;
   border-radius: var(--radius-md);
-  margin-bottom: 14px;
   border: 1px solid var(--border);
   background: #000000;
-}
-
-.detail-full-photo {
-  width: 100%;
-  height: 100%;
-  max-height: 220px;
-  object-fit: cover;
-  display: block;
 }
 
 .guided-visual.has-photo {
@@ -1652,15 +1663,8 @@ nav.app-nav {
   border-radius: var(--radius-lg);
   background: #000000;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  max-height: 240px;
-}
-
-.guided-visual img.guided-photo {
-  width: 100%;
-  height: 100%;
-  max-height: 240px;
-  object-fit: cover;
-  display: block;
+  aspect-ratio: 1 / 1;
+  height: auto;
 }
 
 
