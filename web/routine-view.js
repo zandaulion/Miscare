@@ -547,8 +547,8 @@ function openExercisePreview(full, container) {
     const largeSrc = full.animation || full.image;
     body.innerHTML = `
       ${largeSrc ? `
-        <div class="detail-photo-banner" style="max-height: 280px; margin-bottom: 12px; background: #000; border-radius: 12px; overflow: hidden;">
-          <img src="${largeSrc}" alt="${escapeHtml(exText(full.id, 'name'))}" class="detail-full-photo" style="max-height: 280px; width: 100%; object-fit: contain; display: block;" />
+        <div class="detail-photo-banner">
+          <img src="${largeSrc}" alt="${escapeHtml(exText(full.id, 'name'))}" class="detail-full-photo" />
         </div>
       ` : `
         <div style="width: 140px; height: 140px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;">${full.svg || '🏃'}</div>
