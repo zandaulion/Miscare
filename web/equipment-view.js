@@ -36,7 +36,7 @@ export function renderEquipmentView(container) {
         }).join('')}
       </div>
 
-      <div class="actions-stack" style="margin-top: 20px;">
+      <div class="equipment-save-bar">
         <button id="btn-save-equipment" class="btn btn-primary">
           ${t('💾 Salvează selecția')}
         </button>

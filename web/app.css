@@ -1936,3 +1936,28 @@ nav.app-nav {
   opacity: 0.85;
   font-style: italic;
 }
+
+/* Salvarea selecției de echipament, mereu la vedere.
+ *
+ * Stătea la capătul listei, deci după unsprezece rânduri trebuia derulat ca să
+ * afli că există -- iar cine bifa ceva și schimba tabul pierdea modificarea
+ * fără să afle vreodată de ce.
+ *
+ * `sticky`, nu `fixed`: rămâne în lățimea cardului și nu acoperă nimic când
+ * pagina e destul de scurtă cât să încapă. Se oprește deasupra barei de
+ * navigare, care e fixată jos -- altfel s-ar ascunde sub ea.
+ */
+.equipment-save-bar {
+  position: sticky;
+  bottom: calc(64px + var(--safe-bottom));
+  z-index: 5;
+  margin: 16px -20px -20px;
+  padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.equipment-save-bar .btn {
+  width: 100%;
+}
