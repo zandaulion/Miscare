@@ -2082,3 +2082,94 @@ nav.app-nav {
     bottom: 0;
   }
 }
+
+/* ---------- Compendiul pe ecran lat: listă și detaliu, alături ----------
+ *
+ * Foaia e același nod în DOM la orice lățime. Sub 1000px e strat peste listă,
+ * cu fundal și gest de închidere; peste, se așază în coloana din dreapta. Doar
+ * prezentarea se schimbă, deci un pliabil care se deschide în timpul sesiunii
+ * trece dintr-una în alta fără să afle nimeni.
+ *
+ * Coloana de detaliu primește măsura de citit, nu lista: descrierea și sfatul
+ * sunt text, iar textul are nevoie de lățime potrivită. Lista e un index --
+ * nume scurte și insigne -- și se descurcă mai îngustă.
+ */
+/* Pe telefon coloana n-are ce arăta, dar nu poate fi `display: none`: foaia
+ * trăiește înăuntrul ei, iar un părinte ascuns nu desenează copii, oricât de
+ * `fixed` ar fi ei. Rămâne deci o cutie goală, fără înălțime, iar îndemnul
+ * apare abia acolo unde există o coloană în care să stea. */
+.compendium-detail-empty {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  /* Singurul tab care cere mai mult decât o coloană. `:has` ține decizia în
+     CSS: nicio clasă de pus din cod, nimic de recalculat la redimensionare. */
+  .container:has(.compendium-view) {
+    max-width: 1080px;
+  }
+
+  .compendium-view {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+    grid-template-areas:
+      'filtre filtre'
+      'lista  detaliu';
+    gap: 0 22px;
+    align-items: start;
+  }
+
+  .compendium-view > .compendium-hero { grid-area: filtre; }
+  #compendium-results-container { grid-area: lista; }
+
+  .compendium-detail {
+    grid-area: detaliu;
+    position: sticky;
+    top: 88px;
+  }
+
+  /* Îndemnul dispare când panoul e ocupat: altfel rămânea deasupra foii,
+     invitând la o alegere deja făcută. */
+  .compendium-detail:has(.ex-sheet-overlay) .compendium-detail-empty {
+    display: none;
+  }
+
+  .compendium-detail-empty {
+    display: block;
+    margin: 0;
+    padding: 28px 20px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Foaia, ca panou: fără fundal întunecat, fără centrare pe ecran, fără
+     animația de ridicare -- nu se mai ridică peste nimic. */
+  .compendium-detail .ex-sheet-overlay {
+    position: static;
+    display: block;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .compendium-detail .ex-sheet {
+    max-width: none;
+    max-height: calc(100vh - 120px);
+    animation: none;
+  }
+
+  /* Bara de prindere spune „mă poți trage în jos". În panou nu se trage. */
+  .compendium-detail .ex-sheet-grabber {
+    display: none;
+  }
+
+  /* Lista rămâne la vedere, deci trebuie să se vadă la ce te uiți. */
+  .compendium-card.selected {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-border);
+  }
+}
