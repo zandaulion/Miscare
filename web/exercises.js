@@ -224,6 +224,7 @@ export const CLIENT_EXERCISES = [
     level: 1,
     equipment: ['bodyweight', 'wall'],
     image: '/images/exercises/doorway_row.jpg',
+    animation: '/images/exercises/doorway_row.webp',
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="92" x2="90" y2="92" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
       <!-- Tocul ușii -->
@@ -246,6 +247,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['resistance_band'],
     duration_s: 45,
     image: '/images/exercises/band_pull_apart.jpg',
+    animation: '/images/exercises/band_pull_apart.webp',
     swaps: ['shoulder_rolls_and_reach', 'wall_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="24" r="5.5" fill="currentColor" />
@@ -272,6 +274,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['chair', 'bodyweight'],
     duration_s: 50,
     image: '/images/exercises/incline_pushups.jpg',
+    animation: '/images/exercises/incline_pushups.webp',
     swaps: ['wall_pushups', 'standard_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -294,6 +297,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/knee_pushups.jpg',
+    animation: '/images/exercises/knee_pushups.webp',
     swaps: ['incline_pushups', 'standard_pushups', 'wall_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -316,6 +320,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['chair', 'bodyweight'],
     duration_s: 50,
     image: '/images/exercises/box_squat_touch.jpg',
+    animation: '/images/exercises/box_squat_touch.webp',
     swaps: ['chair_sit_to_stand', 'full_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -337,6 +342,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['wall'],
     duration_s: 40,
     image: '/images/exercises/wall_sit.jpg',
+    animation: '/images/exercises/wall_sit.webp',
     swaps: ['chair_sit_to_stand', 'box_squat_touch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Podea și perete -->
@@ -365,6 +371,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/prone_cobra.jpg',
+    animation: '/images/exercises/prone_cobra.webp',
     swaps: ['shoulder_rolls_reach', 'chest_opener_stretch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -387,6 +394,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 55,
     image: '/images/exercises/bird_dog_gentle.jpg',
+    animation: '/images/exercises/bird_dog_gentle.webp',
     swaps: ['glute_bridge_gentle'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -408,6 +416,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/deadbug_assisted.jpg',
+    animation: '/images/exercises/deadbug_assisted.webp',
     swaps: ['glute_bridge_gentle'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -428,6 +437,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/crunches_standard.jpg',
+    animation: '/images/exercises/crunches_standard.webp',
     swaps: ['deadbug_assisted', 'forearm_plank'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="85" x2="90" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -454,6 +464,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/side_plank.jpg',
+    animation: '/images/exercises/side_plank.webp',
     swaps: ['deadbug_assisted', 'forearm_plank'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -479,6 +490,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['dumbbells', 'chair'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_seated_bicep_curl.jpg',
+    animation: '/images/exercises/dumbbell_seated_bicep_curl.webp',
     swaps: ['band_pull_apart', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -500,6 +512,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['dumbbells', 'chair'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_seated_shoulder_press.jpg',
+    animation: '/images/exercises/dumbbell_seated_shoulder_press.webp',
     swaps: ['incline_pushups', 'shoulder_rolls_and_reach'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="20" y1="88" x2="80" y2="88" stroke="#94A3B8" stroke-width="2.5" opacity="0.4" />
@@ -523,6 +536,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['resistance_band'],
     duration_s: 50,
     image: '/images/exercises/band_seated_row.jpg',
+    animation: '/images/exercises/band_seated_row.webp',
     swaps: ['band_pull_apart', 'incline_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -544,6 +558,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['pullup_bar'],
     duration_s: 35,
     image: '/images/exercises/active_hang.jpg',
+    animation: '/images/exercises/active_hang.webp',
     swaps: ['shoulder_rolls_and_reach', 'chest_opener_stretch'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Bara de tracțiuni de sus -->
@@ -572,6 +587,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/standard_pushups.jpg',
+    animation: '/images/exercises/standard_pushups.webp',
     swaps: ['incline_pushups', 'chair_dips', 'chin_ups', 'diamond_pushups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -592,6 +608,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/full_squats.jpg',
+    animation: '/images/exercises/full_squats.webp',
     swaps: ['reverse_lunges', 'box_squat_touch', 'jump_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -611,6 +628,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/forearm_plank.jpg',
+    animation: '/images/exercises/forearm_plank.webp',
     swaps: ['mountain_climbers', 'hanging_knee_raises', 'plank_shoulder_taps'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -631,6 +649,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 55,
     image: '/images/exercises/reverse_lunges.jpg',
+    animation: '/images/exercises/reverse_lunges.webp',
     swaps: ['full_squats', 'single_leg_glute_bridge'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -652,6 +671,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['chair', 'bodyweight'],
     duration_s: 50,
     image: '/images/exercises/chair_dips.jpg',
+    animation: '/images/exercises/chair_dips.webp',
     swaps: ['standard_pushups', 'chin_ups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -675,6 +695,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 40,
     image: '/images/exercises/mountain_climbers.jpg',
+    animation: '/images/exercises/mountain_climbers.webp',
     swaps: ['forearm_plank', 'hanging_knee_raises', 'burpees_clean'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -697,6 +718,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['dumbbells'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_bent_over_row.jpg',
+    animation: '/images/exercises/dumbbell_bent_over_row.webp',
     swaps: ['standard_pushups', 'chin_ups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -717,6 +739,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/single_leg_glute_bridge.jpg',
+    animation: '/images/exercises/single_leg_glute_bridge.webp',
     swaps: ['glute_bridge_gentle', 'full_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -736,6 +759,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['pullup_bar'],
     duration_s: 50,
     image: '/images/exercises/chin_ups.jpg',
+    animation: '/images/exercises/chin_ups.webp',
     swaps: ['standard_pushups', 'negative_pullups', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Bara de tracțiuni -->
@@ -760,6 +784,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['pullup_bar'],
     duration_s: 50,
     image: '/images/exercises/negative_pullups.jpg',
+    animation: '/images/exercises/negative_pullups.webp',
     swaps: ['chin_ups', 'standard_pushups', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="16" y1="18" x2="84" y2="18" stroke="#64748B" stroke-width="4.5" stroke-linecap="round" />
@@ -780,6 +805,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['pullup_bar'],
     duration_s: 45,
     image: '/images/exercises/hanging_knee_raises.jpg',
+    animation: '/images/exercises/hanging_knee_raises.webp',
     swaps: ['forearm_plank', 'mountain_climbers'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="16" y1="16" x2="84" y2="16" stroke="#64748B" stroke-width="4.5" stroke-linecap="round" />
@@ -802,6 +828,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['adjustable_dumbbells'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_goblet_squat.jpg',
+    animation: '/images/exercises/dumbbell_goblet_squat.webp',
     swaps: ['full_squats', 'box_squat_touch', 'dumbbell_romanian_deadlift'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -827,6 +854,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['adjustable_dumbbells'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_romanian_deadlift.jpg',
+    animation: '/images/exercises/dumbbell_romanian_deadlift.webp',
     swaps: ['glute_bridge_gentle', 'dumbbell_goblet_squat', 'single_leg_glute_bridge'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -852,6 +880,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['adjustable_dumbbells'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_floor_press.jpg',
+    animation: '/images/exercises/dumbbell_floor_press.webp',
     swaps: ['standard_pushups', 'incline_pushups', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="84" x2="88" y2="84" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -877,6 +906,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['adjustable_dumbbells', 'chair'],
     duration_s: 50,
     image: '/images/exercises/dumbbell_single_arm_row.jpg',
+    animation: '/images/exercises/dumbbell_single_arm_row.webp',
     swaps: ['negative_pullups', 'chin_ups', 'standard_pushups', 'dumbbell_bent_over_row'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -907,6 +937,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['adjustable_dumbbells'],
     duration_s: 45,
     image: '/images/exercises/dumbbell_farmers_carry.jpg',
+    animation: '/images/exercises/dumbbell_farmers_carry.webp',
     swaps: ['forearm_plank', 'plank_shoulder_taps', 'hanging_knee_raises'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="15" y1="88" x2="85" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -942,6 +973,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/diamond_pushups.jpg',
+    animation: '/images/exercises/diamond_pushups.webp',
     swaps: ['standard_pushups', 'pullups_standard', 'chair_dips'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="85" x2="88" y2="85" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -961,6 +993,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/jump_squats.jpg',
+    animation: '/images/exercises/jump_squats.webp',
     swaps: ['full_squats', 'reverse_lunges', 'burpees_clean'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Sol -->
@@ -984,6 +1017,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 45,
     image: '/images/exercises/plank_shoulder_taps.jpg',
+    animation: '/images/exercises/plank_shoulder_taps.webp',
     swaps: ['forearm_plank', 'mountain_climbers'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="88" x2="88" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1004,6 +1038,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['bodyweight'],
     duration_s: 50,
     image: '/images/exercises/burpees_clean.jpg',
+    animation: '/images/exercises/burpees_clean.webp',
     swaps: ['mountain_climbers', 'jump_squats'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <line x1="10" y1="88" x2="90" y2="88" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" opacity="0.4" />
@@ -1026,6 +1061,7 @@ export const CLIENT_EXERCISES = [
     equipment: ['pullup_bar'],
     duration_s: 50,
     image: '/images/exercises/pullups_standard.jpg',
+    animation: '/images/exercises/pullups_standard.webp',
     swaps: ['diamond_pushups', 'chin_ups'],
     svg: `<svg viewBox="0 0 100 100" class="ex-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Bara de tracțiuni -->
