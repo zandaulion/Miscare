@@ -230,3 +230,29 @@ test('what yesterday means', async (t) => {
     }
   });
 });
+
+test('level is a ceiling and a floor', async (t) => {
+  await t.test('nothing is served more than one level below the declared one', () => {
+    // Cu un nivel mai jos e încălzire. Cu două, cineva la Nivel 2 primea
+    // flotări la perete drept mișcare principală de împins, având în bazin și
+    // flotări clasice, și împins cu gantere.
+    const LEVELS = { zero: 0, beginner: 1, intermediate: 2, advanced: 3 };
+    const equipSets = [
+      ['bodyweight', 'chair', 'wall'],
+      ['bodyweight', 'wall', 'yoga_mat', 'adjustable_dumbbells', 'pullup_bar'],
+      ['bodyweight', 'chair', 'wall', 'dumbbells', 'resistance_band']
+    ];
+    for (const [name, level] of Object.entries(LEVELS)) {
+      for (const equipment of equipSets) {
+        for (let r = 0; r < 12; r++) {
+          const routine = generateDailyRoutine({ level: name, daily_time: 15, equipment }, { rotation: r });
+          for (const served of routine.exercises) {
+            const full = EXERCISES.find((e) => e.id === served.id);
+            assert.ok(full.level >= level - 1,
+              `${name}: ${served.id} e nivel ${full.level}, adică ${level - full.level} sub nivelul declarat`);
+          }
+        }
+      }
+    }
+  });
+});
