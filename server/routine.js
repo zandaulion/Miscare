@@ -678,7 +678,33 @@ export function generateDailyRoutine(profile = {}, options = {}) {
    * unele mișcări chiar n-au alternativă, iar un loc gol e mai rău decât o
    * repetare.
    */
-  const pickFrom = (list, index = rotation) => {
+  /**
+   * Cel mult o mișcare sub nivel pe sesiune.
+   *
+   * Una joacă rolul de încălzire. Două înseamnă jumătate de sesiune sub
+   * nivelul declarat, ceea ce nu mai e încălzire, e altă sesiune.
+   *
+   * Plafonul se aplică doar la completare, nu și la sloturile grupelor care
+   * conduc ziua. Prima încercare îl punea peste tot, cu „preferă întâi ce e la
+   * nivel", și făcea unele mișcări de negăsit în șaizeci de sesiuni: slotul de
+   * centru găsea mereu ceva la Nivel 2, deci side_plank nu ieșea niciodată.
+   * Lăsate pe seama rotației, sloturile de grup trec prin tot catalogul; doar
+   * locurile rămase se uită la câte s-au strâns deja.
+   */
+  /*
+   * ...dar numai dacă există din ce roti la nivel.
+   *
+   * Un avansat care are doar scaun și perete are patru mișcări de Nivel 3 și
+   * patru locuri de umplut. Plafonul l-ar obliga la exact aceleași patru în
+   * fiecare zi, adică ar repara uniformitatea intensității stricând tocmai
+   * varietatea de la o zi la alta -- care e plângerea mai veche. Cerem deci o
+   * marjă: cel puțin două mișcări la nivel peste câte încap în sesiune.
+   */
+  const atLevelCount = candidateExercises.filter((e) => e.level === targetLevel).length;
+  const BELOW_BUDGET = atLevelCount >= exerciseCount + 2 ? 1 : Infinity;
+  const belowUsed = () => chosen.filter((e) => e.level < targetLevel).length;
+
+  const pickFrom = (list, index = rotation, capBelow = false) => {
     if (!list.length) return null;
     const start = ((index % list.length) + list.length) % list.length;
     for (const avoidYesterday of [true, false]) {
@@ -686,6 +712,7 @@ export function generateDailyRoutine(profile = {}, options = {}) {
         const ex = list[(start + i) % list.length];
         if (chosen.includes(ex)) continue;
         if (avoidYesterday && yesterday.has(ex.id)) continue;
+        if (capBelow && ex.level < targetLevel && belowUsed() >= BELOW_BUDGET) continue;
         return ex;
       }
     }
@@ -778,11 +805,18 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     // completarea direct la un tipar repetat, adică două împingeri în aceeași
     // sesiune -- exact regula pusă pentru refacere. Varietatea de la o zi la
     // alta nu merită plătită cu aceiași mușchi de două ori în aceeași zi.
-    const PASSES = [
+    // Fiecare trecere se încearcă întâi cu plafonul, apoi fără: plafonul e ce
+    // merită cedat primul, fiindcă „aceleași exerciții ca ieri" e plângerea
+    // concretă, iar o a doua mișcare de încălzire e doar o zi mai ușoară.
+    const BASE = [
       { repeatPattern: false, repeatYesterday: false },
       { repeatPattern: false, repeatYesterday: true },
       { repeatPattern: true, repeatYesterday: true }
     ];
+    const PASSES = BASE.flatMap((base) => [
+      { ...base, capBelow: true },
+      { ...base, capBelow: false }
+    ]);
 
     let taken = 0;
     for (const pass of PASSES) {
@@ -793,7 +827,7 @@ export function generateDailyRoutine(profile = {}, options = {}) {
         const list = candidateExercises.filter((e) => e.pattern === pattern);
         if (!pass.repeatYesterday && list.every((e) => yesterday.has(e.id))) continue;
         const before = chosen.length;
-        take(pickFrom(list, rotation + taken));
+        take(pickFrom(list, rotation + taken, pass.capBelow));
         if (chosen.length > before) taken++;
       }
     }
