@@ -74,8 +74,7 @@ let currentFilter = {
   level: 'all', // 'all', '0', '1', '2', '3'
   category: 'all', // 'all', 'upper', 'lower', 'core', 'mobility'
   searchQuery: '',
-  onlyMyEquipment: false,
-  expandedIds: new Set()
+  onlyMyEquipment: false
 };
 
 let practiceTimerInterval = null;
@@ -295,7 +294,6 @@ function renderExerciseSections(userEquipment) {
 }
 
 function renderExerciseCard(ex, userEquipment) {
-  const isExpanded = currentFilter.expandedIds.has(ex.id);
   const cat = CATEGORY_NAMES[ex.category] || { label: ex.category, icon: '⚡' };
 
   // Verificare compatibilitate echipament
@@ -303,9 +301,9 @@ function renderExerciseCard(ex, userEquipment) {
   const missingEquipment = ex.equipment.filter((eq) => !userEquipment.includes(eq));
 
   return `
-    <div class="compendium-card ${isExpanded ? 'expanded' : ''}" id="card-ex-${ex.id}" data-id="${ex.id}">
+    <div class="compendium-card" id="card-ex-${ex.id}" data-id="${ex.id}">
       <!-- Antetul cardului (clickabil pentru extindere) -->
-      <div class="compendium-card-summary" role="button" tabindex="0" aria-expanded="${isExpanded}">
+      <div class="compendium-card-summary" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="compendium-card-svg-col">
           <div class="compendium-svg-frame ${ex.image ? 'has-photo' : ''}">
             ${ex.image ? `<img src="${ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="ex-img" />` : ex.svg}
@@ -326,7 +324,7 @@ function renderExerciseCard(ex, userEquipment) {
           <h3 class="compendium-card-name">${escapeHtml(exText(ex.id, 'name'))}</h3>
           
           <div class="compendium-card-focus">
-            <span class="focus-icon">🎯</span> ${escapeHtml(ex.focus || t('Mușchi principali'))}
+            <span class="focus-icon">🎯</span> ${escapeHtml(exText(ex.id, 'focus') || t('Mușchi principali'))}
           </div>
 
           <div class="compendium-card-equipment-list">
@@ -339,78 +337,160 @@ function renderExerciseCard(ex, userEquipment) {
         </div>
 
         <div class="compendium-card-arrow-col">
-          <span class="expand-chevron ${isExpanded ? 'rotated' : ''}">▼</span>
+          <span class="expand-chevron">›</span>
         </div>
       </div>
 
-      <!-- Corp detaliat expandabil -->
-      ${isExpanded ? `
-        <div class="compendium-card-details">
-          ${(ex.animation || ex.image) ? `
-            <div class="detail-photo-banner">
-              <img src="${ex.animation || ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="detail-full-photo" />
-            </div>
-          ` : ''}
-          <div class="detail-block">
-            <div class="detail-label">${t('📖 Cum se execută corect:')}</div>
-            <p class="detail-text">${escapeHtml(exText(ex.id, 'description'))}</p>
-          </div>
-
-          ${exText(ex.id, 'tip') ? `
-            <div class="detail-tip-box">
-              <span class="tip-bulb">💡</span>
-              <div>
-                <strong>${t('Sfatul antrenorului:')}</strong>
-                <p style="margin-top: 2px;">${escapeHtml(exText(ex.id, 'tip'))}</p>
-              </div>
-            </div>
-          ` : ''}
-
-          <div class="detail-metrics-row">
-            <div class="metric-chip">
-              <span class="metric-chip-icon">🔢</span>
-              <div>
-                <div class="metric-chip-label">${t('Volum uzual')}</div>
-                <div class="metric-chip-val">${escapeHtml(formatReps(ex.reps, repWords()))}</div>
-              </div>
-            </div>
-            <div class="metric-chip">
-              <span class="metric-chip-icon">⏱️</span>
-              <div>
-                <div class="metric-chip-label">${t('Timp per serie')}</div>
-                <div class="metric-chip-val">~${ex.duration_s || 45} secunde</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Alternative / Progresii (Swaps) -->
-          ${ex.swaps && ex.swaps.length > 0 ? `
-            <div class="detail-block" style="margin-top: 14px;">
-              <div class="detail-label">${t('🔄 Mișcări înrudite / Alternative:')}</div>
-              <div class="swaps-chip-list">
-                ${ex.swaps.map((swapId) => {
-                  const swapEx = getExerciseById(swapId);
-                  if (!swapEx) return '';
-                  return `
-                    <button class="swap-jump-btn" data-target-id="${swapEx.id}">
-                      ${exText(swapEx.id, 'name')} (${t(LEVEL_INFO[swapEx.level]?.shortName || '')})
-                    </button>
-                  `;
-                }).join('')}
-              </div>
-            </div>
-          ` : ''}
-
-          <!-- Buton de practică rapidă -->
-          <div class="detail-actions-row">
-            <button class="btn btn-primary btn-practice" data-id="${ex.id}">
-              ${t('▶️ Exersează mișcarea (45 secunde)')}
-            </button>
-          </div>
-        </div>
-      ` : ''}
     </div>
   `;
+}
+
+/**
+ * Conținutul foii unui exercițiu: animația, execuția, sfatul, volumul.
+ *
+ * Stătea în card, deschis pe loc. Într-o listă de patruzeci și cinci asta
+ * însemna că apeși pe ceva din capul ecranului și textul apare sub linia de
+ * jos: trebuia derulat ca să vezi ce tocmai ai deschis, iar cardul pe care
+ * apăsaseși își pierdea locul. Acum se ridică o foaie peste listă.
+ */
+function renderSheetBody(ex, userEquipment) {
+  const cat = CATEGORY_NAMES[ex.category] || { label: ex.category, icon: '⚡' };
+  const missingEquipment = ex.equipment.filter((eq) => !userEquipment.includes(eq));
+  const hasEquipment = missingEquipment.length === 0;
+
+  return `
+    <div class="compendium-card-badges">
+      ${levelBadge(ex.level)}
+      <span class="badge-category">${cat.icon} ${t(cat.label)}</span>
+      ${hasEquipment ? `
+        <span class="badge-available">${t('✓ Disponibil')}</span>
+      ` : `
+        <span class="badge-needs-equip">⚠️ ${t('Necesită {items}', { items: missingEquipment.map((eq) => t(EQUIPMENT_ICONS[eq]?.name || eq)).join(', ') })}</span>
+      `}
+    </div>
+
+    <div class="ex-sheet-focus"><span class="focus-icon">🎯</span> ${escapeHtml(exText(ex.id, 'focus') || t('Mușchi principali'))}</div>
+
+        ${(ex.animation || ex.image) ? `
+          <div class="detail-photo-banner">
+            <img src="${ex.animation || ex.image}" alt="${escapeHtml(exText(ex.id, 'name'))}" class="detail-full-photo" />
+          </div>
+        ` : ''}
+        <div class="detail-block">
+          <div class="detail-label">${t('📖 Cum se execută corect:')}</div>
+          <p class="detail-text">${escapeHtml(exText(ex.id, 'description'))}</p>
+        </div>
+
+        ${exText(ex.id, 'tip') ? `
+          <div class="detail-tip-box">
+            <span class="tip-bulb">💡</span>
+            <div>
+              <strong>${t('Sfatul antrenorului:')}</strong>
+              <p style="margin-top: 2px;">${escapeHtml(exText(ex.id, 'tip'))}</p>
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="detail-metrics-row">
+          <div class="metric-chip">
+            <span class="metric-chip-icon">🔢</span>
+            <div>
+              <div class="metric-chip-label">${t('Volum uzual')}</div>
+              <div class="metric-chip-val">${escapeHtml(formatReps(ex.reps, repWords()))}</div>
+            </div>
+          </div>
+          <div class="metric-chip">
+            <span class="metric-chip-icon">⏱️</span>
+            <div>
+              <div class="metric-chip-label">${t('Timp per serie')}</div>
+              <div class="metric-chip-val">~${ex.duration_s || 45} secunde</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alternative / Progresii (Swaps) -->
+        ${ex.swaps && ex.swaps.length > 0 ? `
+          <div class="detail-block" style="margin-top: 14px;">
+            <div class="detail-label">${t('🔄 Mișcări înrudite / Alternative:')}</div>
+            <div class="swaps-chip-list">
+              ${ex.swaps.map((swapId) => {
+                const swapEx = getExerciseById(swapId);
+                if (!swapEx) return '';
+                return `
+                  <button class="swap-jump-btn" data-target-id="${swapEx.id}">
+                    ${exText(swapEx.id, 'name')} (${t(LEVEL_INFO[swapEx.level]?.shortName || '')})
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Buton de practică rapidă -->
+        <div class="detail-actions-row">
+          <button class="btn btn-primary btn-practice" data-id="${ex.id}">
+            ${t('▶️ Exersează mișcarea (45 secunde)')}
+          </button>
+        </div>
+  `;
+}
+
+
+/**
+ * Foaia unui exercițiu, peste listă.
+ *
+ * Deschisă ca dialog, nu extinsă în listă: antetul cu numele stă pe loc, doar
+ * corpul se derulează -- aceeași formă ca ecranul ghidat, și din același
+ * motiv. Se închide cu ✕, cu Escape, sau apăsând în afara ei.
+ */
+function openExerciseSheet(id, container) {
+  const ex = getExerciseById(id);
+  if (!ex) return;
+
+  document.getElementById('ex-sheet')?.remove();
+  const userEquipment = state.profile?.equipment || ['bodyweight', 'chair', 'wall'];
+
+  const overlay = document.createElement('div');
+  overlay.id = 'ex-sheet';
+  overlay.className = 'ex-sheet-overlay';
+  overlay.innerHTML = `
+    <div class="ex-sheet" role="dialog" aria-modal="true" aria-label="${escapeHtml(exText(ex.id, 'name'))}">
+      <div class="ex-sheet-header">
+        <h2 class="ex-sheet-title">${escapeHtml(exText(ex.id, 'name'))}</h2>
+        <button class="btn-close-circle" id="ex-sheet-close" aria-label="${t('Închide')}">✕</button>
+      </div>
+      <div class="ex-sheet-body">${renderSheetBody(ex, userEquipment)}</div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const close = () => {
+    overlay.remove();
+    document.removeEventListener('keydown', onKey);
+  };
+  function onKey(e) {
+    if (e.key === 'Escape') close();
+  }
+  document.addEventListener('keydown', onKey);
+  overlay.querySelector('#ex-sheet-close').addEventListener('click', close);
+  // Doar fundalul închide; un clic în interiorul foii nu trebuie s-o piardă.
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+
+  // Mișcările înrudite deschid foaia lor, în locul acesteia.
+  overlay.querySelectorAll('.swap-jump-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.targetId;
+      close();
+      if (target) openExerciseSheet(target, container);
+    });
+  });
+
+  overlay.querySelector('.btn-practice')?.addEventListener('click', () => {
+    close();
+    openPracticeModal(ex, container);
+  });
+
+  overlay.querySelector('#ex-sheet-close').focus();
 }
 
 function bindCompendiumEvents(container) {
@@ -485,17 +565,10 @@ function bindCompendiumEvents(container) {
 }
 
 function bindCardInteractions(container) {
-  // Click pe card summary -> expand / collapse
+  // Click pe card -> se ridică foaia exercițiului
   container.querySelectorAll('.compendium-card-summary').forEach((summary) => {
     summary.addEventListener('click', () => {
-      const card = summary.closest('.compendium-card');
-      const id = card.dataset.id;
-      if (currentFilter.expandedIds.has(id)) {
-        currentFilter.expandedIds.delete(id);
-      } else {
-        currentFilter.expandedIds.add(id);
-      }
-      updateResults(container);
+      openExerciseSheet(summary.closest('.compendium-card').dataset.id, container);
     });
 
     summary.addEventListener('keydown', (e) => {
@@ -513,35 +586,10 @@ function bindCardInteractions(container) {
       const targetId = btn.dataset.targetId;
       if (!targetId) return;
 
-      currentFilter.level = 'all';
-      currentFilter.category = 'all';
-      currentFilter.searchQuery = '';
-      currentFilter.expandedIds.add(targetId);
-
-      renderCompendiumView(container);
-
-      setTimeout(() => {
-        const targetEl = document.getElementById(`card-ex-${targetId}`);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          targetEl.classList.add('highlight-pulse');
-          setTimeout(() => targetEl.classList.remove('highlight-pulse'), 1800);
-        }
-      }, 100);
+      openExerciseSheet(targetId, container);
     });
   });
 
-  // Click pe butonul de practică (45s)
-  container.querySelectorAll('.btn-practice').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const exId = btn.dataset.id;
-      const ex = getExerciseById(exId);
-      if (ex) {
-        openPracticeModal(ex, container);
-      }
-    });
-  });
 }
 
 function updateResults(container) {

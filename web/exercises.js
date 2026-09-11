@@ -7,6 +7,7 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'wall_pushups',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'upper',
     level: 0,
     equipment: ['wall', 'bodyweight'],
@@ -33,6 +34,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chair_sit_to_stand',
+    reps: {"lo":6,"hi":8,"unit":"reps"},
     category: 'lower',
     level: 0,
     equipment: ['chair', 'bodyweight'],
@@ -56,6 +58,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'standing_calf_raises',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'lower',
     level: 0,
     equipment: ['wall', 'chair', 'bodyweight'],
@@ -82,6 +85,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'shoulder_rolls_and_reach',
+    reps: {"lo":30,"hi":30,"unit":"seconds"},
     category: 'mobility',
     level: 0,
     equipment: ['bodyweight'],
@@ -104,6 +108,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'glute_bridge_gentle',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'core_glutes',
     level: 0,
     equipment: ['bodyweight'],
@@ -125,6 +130,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'seated_knee_lifts',
+    reps: {"lo":10,"hi":10,"unit":"reps","note":"alternating"},
     category: 'core',
     level: 0,
     equipment: ['chair', 'bodyweight'],
@@ -149,6 +155,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chest_opener_stretch',
+    reps: {"lo":30,"hi":30,"unit":"seconds"},
     category: 'mobility',
     level: 0,
     equipment: ['wall', 'bodyweight'],
@@ -174,6 +181,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'towel_pull_apart',
+    reps: {"lo":10,"hi":12,"unit":"reps","note":"hold2s"},
     category: 'upper',
     level: 0,
     equipment: ['bodyweight'],
@@ -199,6 +207,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'reverse_snow_angels',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'upper',
     level: 0,
     equipment: ['bodyweight'],
@@ -220,6 +229,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'doorway_row',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'upper',
     level: 1,
     equipment: ['bodyweight', 'wall'],
@@ -242,6 +252,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'band_pull_apart',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 0,
     equipment: ['resistance_band'],
@@ -269,6 +280,7 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'incline_pushups',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'upper',
     level: 0,
     equipment: ['chair', 'bodyweight'],
@@ -292,6 +304,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'knee_pushups',
+    reps: {"lo":8,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 1,
     equipment: ['bodyweight'],
@@ -315,6 +328,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'box_squat_touch',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'lower',
     level: 1,
     equipment: ['chair', 'bodyweight'],
@@ -337,6 +351,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'wall_sit',
+    reps: {"lo":20,"hi":30,"unit":"seconds","note":"hold"},
     category: 'lower',
     level: 1,
     equipment: ['wall'],
@@ -366,6 +381,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'prone_cobra',
+    reps: {"lo":8,"hi":10,"unit":"reps","note":"hold2s"},
     category: 'mobility',
     level: 1,
     equipment: ['bodyweight'],
@@ -389,6 +405,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'bird_dog_gentle',
+    reps: {"lo":6,"hi":8,"unit":"reps","note":"eachSide"},
     category: 'core_glutes',
     level: 1,
     equipment: ['bodyweight'],
@@ -411,6 +428,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'deadbug_assisted',
+    reps: {"lo":8,"hi":8,"unit":"reps","note":"alternating"},
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
@@ -432,6 +450,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'crunches_standard',
+    reps: {"lo":10,"hi":15,"unit":"reps"},
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
@@ -459,6 +478,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'side_plank',
+    reps: {"lo":15,"hi":20,"unit":"seconds","note":"eachSide"},
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
@@ -485,6 +505,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_seated_bicep_curl',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 1,
     equipment: ['dumbbells', 'chair'],
@@ -507,6 +528,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_seated_shoulder_press',
+    reps: {"lo":8,"hi":10,"unit":"reps"},
     category: 'upper',
     level: 1,
     equipment: ['dumbbells', 'chair'],
@@ -531,6 +553,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'band_seated_row',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 1,
     equipment: ['resistance_band'],
@@ -553,6 +576,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'active_hang',
+    reps: {"lo":20,"hi":30,"unit":"seconds"},
     category: 'mobility',
     level: 1,
     equipment: ['pullup_bar'],
@@ -582,6 +606,7 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'standard_pushups',
+    reps: {"lo":10,"hi":15,"unit":"reps"},
     category: 'upper',
     level: 2,
     equipment: ['bodyweight'],
@@ -603,6 +628,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'full_squats',
+    reps: {"lo":12,"hi":16,"unit":"reps"},
     category: 'lower',
     level: 2,
     equipment: ['bodyweight'],
@@ -623,6 +649,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'forearm_plank',
+    reps: {"lo":35,"hi":50,"unit":"seconds"},
     category: 'core',
     level: 2,
     equipment: ['bodyweight'],
@@ -644,6 +671,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'reverse_lunges',
+    reps: {"lo":10,"hi":12,"unit":"reps","note":"perLeg"},
     category: 'lower',
     level: 2,
     equipment: ['bodyweight'],
@@ -666,6 +694,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chair_dips',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 2,
     equipment: ['chair', 'bodyweight'],
@@ -690,6 +719,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'mountain_climbers',
+    reps: {"lo":30,"hi":40,"unit":"seconds"},
     category: 'core',
     level: 2,
     equipment: ['bodyweight'],
@@ -713,6 +743,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_bent_over_row',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 2,
     equipment: ['dumbbells'],
@@ -734,6 +765,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'single_leg_glute_bridge',
+    reps: {"lo":8,"hi":10,"unit":"reps","note":"perLeg"},
     category: 'core_glutes',
     level: 2,
     equipment: ['bodyweight'],
@@ -754,6 +786,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'chin_ups',
+    reps: {"lo":4,"hi":8,"unit":"reps"},
     category: 'upper',
     level: 2,
     equipment: ['pullup_bar'],
@@ -779,6 +812,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'negative_pullups',
+    reps: {"lo":5,"hi":6,"unit":"reps","note":"lower34s"},
     category: 'upper',
     level: 2,
     equipment: ['pullup_bar'],
@@ -800,6 +834,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'hanging_knee_raises',
+    reps: {"lo":8,"hi":12,"unit":"reps"},
     category: 'core',
     level: 2,
     equipment: ['pullup_bar'],
@@ -823,6 +858,7 @@ export const CLIENT_EXERCISES = [
   // --- Gantere reglabile / grele (5-20 kg) - Forță compusă Nivel 2
   {
     id: 'dumbbell_goblet_squat',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'lower',
     level: 2,
     equipment: ['adjustable_dumbbells'],
@@ -849,6 +885,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_romanian_deadlift',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'lower',
     level: 2,
     equipment: ['adjustable_dumbbells'],
@@ -875,6 +912,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_floor_press',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 2,
     equipment: ['adjustable_dumbbells'],
@@ -901,6 +939,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_single_arm_row',
+    reps: {"lo":8,"hi":10,"unit":"reps","note":"perArm"},
     category: 'upper',
     level: 2,
     equipment: ['adjustable_dumbbells', 'chair'],
@@ -932,6 +971,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'dumbbell_farmers_carry',
+    reps: {"lo":35,"hi":45,"unit":"seconds"},
     category: 'core',
     level: 2,
     equipment: ['adjustable_dumbbells'],
@@ -968,6 +1008,7 @@ export const CLIENT_EXERCISES = [
   // =========================================================================
   {
     id: 'diamond_pushups',
+    reps: {"lo":10,"hi":12,"unit":"reps"},
     category: 'upper',
     level: 3,
     equipment: ['bodyweight'],
@@ -988,6 +1029,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'jump_squats',
+    reps: {"lo":10,"hi":14,"unit":"reps"},
     category: 'lower',
     level: 3,
     equipment: ['bodyweight'],
@@ -1012,6 +1054,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'plank_shoulder_taps',
+    reps: {"lo":16,"hi":20,"unit":"taps"},
     category: 'core',
     level: 3,
     equipment: ['bodyweight'],
@@ -1033,6 +1076,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'burpees_clean',
+    reps: {"lo":8,"hi":12,"unit":"reps"},
     category: 'core',
     level: 3,
     equipment: ['bodyweight'],
@@ -1056,6 +1100,7 @@ export const CLIENT_EXERCISES = [
   },
   {
     id: 'pullups_standard',
+    reps: {"lo":6,"hi":10,"unit":"reps"},
     category: 'upper',
     level: 3,
     equipment: ['pullup_bar'],
