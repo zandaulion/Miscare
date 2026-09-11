@@ -1537,9 +1537,27 @@ nav.app-nav {
   border-radius: var(--radius-lg);
   max-width: 400px;
   width: 100%;
+  /* Cardul nu mai depășește ecranul pe telefoanele scunde: antetul stă pe loc
+   * și conținutul se derulează, în loc ca partea de jos să iasă afară și să
+   * rămână de neatins. Aceeași formă ca foaia din compendiu. */
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.practice-modal-card > .practice-modal-header {
+  flex: 0 0 auto;
+}
+
+#preview-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 @keyframes modalPop {
@@ -1851,7 +1869,8 @@ nav.app-nav {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ex-sheet {
+  .ex-sheet,
+  .practice-modal-card {
     transition: none;
     animation: none;
   }
