@@ -167,6 +167,13 @@ export function renderCompendiumView(container, options = {}) {
         ${renderExerciseSections(userEquipment)}
       </div>
 
+      <!-- Coloana de detaliu. Goală pe telefon, unde foaia se ridică peste
+           listă; pe ecran lat, locul în care se așază foaia. Stă mereu în
+           marcaj, ca lista să nu-și schimbe lățimea când alegi ceva. -->
+      <aside class="compendium-detail" id="compendium-detail">
+        <p class="compendium-detail-empty">${t('Alege o mișcare din listă ca să-i vezi detaliile.')}</p>
+      </aside>
+
       <!-- Modal de practică rapidă -->
       <div id="practice-modal" class="practice-modal-overlay hidden" aria-modal="true" role="dialog">
         <div class="practice-modal-card">
@@ -467,6 +474,7 @@ function openExerciseSheet(id, container, { replace = false } = {}) {
   dismissOpenSheet?.();
   const userEquipment = state.profile?.equipment || ['bodyweight', 'chair', 'wall'];
 
+  const host = container.querySelector('#compendium-detail') || document.body;
   const overlay = document.createElement('div');
   overlay.id = 'ex-sheet';
   overlay.className = 'ex-sheet-overlay';
@@ -480,7 +488,7 @@ function openExerciseSheet(id, container, { replace = false } = {}) {
       <div class="ex-sheet-body">${renderSheetBody(ex, userEquipment)}</div>
     </div>
   `;
-  document.body.appendChild(overlay);
+  host.appendChild(overlay);
 
   const sheet = overlay.querySelector('.ex-sheet');
 
@@ -494,6 +502,7 @@ function openExerciseSheet(id, container, { replace = false } = {}) {
     scroller: overlay.querySelector('.ex-sheet-body'),
     onDismiss: () => {
       overlay.remove();
+      container.querySelectorAll('.compendium-card.selected').forEach((c) => c.classList.remove('selected'));
       if (dismissOpenSheet === dismiss) dismissOpenSheet = null;
     },
     replace
@@ -501,6 +510,11 @@ function openExerciseSheet(id, container, { replace = false } = {}) {
   dismissOpenSheet = dismiss;
 
   overlay.querySelector('#ex-sheet-close').addEventListener('click', close);
+
+  // În două coloane, lista rămâne la vedere -- deci trebuie să se vadă care
+  // rând e deschis, altfel panoul din dreapta pare să apară de nicăieri.
+  container.querySelectorAll('.compendium-card.selected').forEach((c) => c.classList.remove('selected'));
+  container.querySelector(`.compendium-card[data-id="${id}"]`)?.classList.add('selected');
 
   // Mișcările înrudite iau locul acesteia, nu se adaugă peste ea.
   overlay.querySelectorAll('.swap-jump-btn').forEach((btn) => {
