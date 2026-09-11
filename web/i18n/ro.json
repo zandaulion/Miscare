@@ -520,9 +520,6 @@
     "Greutatea corpului": "Greutatea corpului",
     "Scaun stabil": "Scaun stabil",
     "Perete liber": "Perete liber",
-    "Gantere mici": "Gantere mici",
-    "Gantere reglabile": "Gantere reglabile",
-    "Gantere 5-20kg": "Gantere 5-20kg",
     "Corp liber": "Corp liber",
     "Scaun": "Scaun",
     "Perete": "Perete",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.",
     "De pregătit pentru azi": "De pregătit pentru azi",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Nimic de adus — azi lucrezi doar cu greutatea corpului."
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Nimic de adus — azi lucrezi doar cu greutatea corpului.",
+    "Gantere ușoare": "Gantere ușoare",
+    "Gantere grele": "Gantere grele"
   }
 }

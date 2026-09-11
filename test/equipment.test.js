@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { equipmentForExercises, equipmentInfo, EQUIPMENT, EQUIPMENT_ORDER } from '../web/equipment.js';
+import { equipmentForExercises, equipmentInfo, expandEquipment, EQUIPMENT, EQUIPMENT_ORDER } from '../web/equipment.js';
+import { filterSafeExercises } from '../server/routine.js';
 import { EXERCISES } from '../server/routine.js';
 
 test('what to gather before starting', async (t) => {
@@ -52,6 +53,49 @@ test('what to gather before starting', async (t) => {
       assert.ok(EQUIPMENT[id].name, `${id} fără nume lung`);
       assert.ok(EQUIPMENT[id].short, `${id} fără nume scurt`);
       assert.ok(EQUIPMENT[id].icon, `${id} fără pictogramă`);
+    }
+  });
+});
+
+test('heavy dumbbells stand in for light ones', async (t) => {
+  await t.test('the rule runs one way only', () => {
+    // Ganterele grele se pun pe trei kilograme; cele uşoare nu se fac grele.
+    assert.ok(expandEquipment(['adjustable_dumbbells']).has('dumbbells'),
+      'grele ar trebui să acopere uşoarele');
+    assert.ok(!expandEquipment(['dumbbells']).has('adjustable_dumbbells'),
+      'uşoarele nu au voie să acopere grelele');
+  });
+
+  await t.test('owning one adjustable pair is enough', () => {
+    // Înainte, cine avea o singură pereche reglabilă era exclus de la curl,
+    // presa de umeri şi ramatul aplecat, şi trebuia să bifeze şi „uşoare" --
+    // adică să declare un echipament pe care nu-l are.
+    const p = { level: 'intermediate', daily_time: 15, equipment: ['bodyweight', 'chair', 'wall', 'adjustable_dumbbells'] };
+    const ids = filterSafeExercises(EXERCISES, p).map((e) => e.id);
+    for (const id of ['dumbbell_seated_bicep_curl', 'dumbbell_seated_shoulder_press', 'dumbbell_bent_over_row']) {
+      assert.ok(ids.includes(id), `${id} ar trebui să fie disponibil cu gantere grele`);
+    }
+  });
+
+  await t.test('light dumbbells do not unlock the heavy compounds', () => {
+    // Cealaltă direcţie ar fi mutat greşeala, nu ar fi reparat-o: cu două
+    // kilograme, mersul fermierului şi îndreptările nu sunt o sesiune.
+    const p = { level: 'intermediate', daily_time: 15, equipment: ['bodyweight', 'chair', 'wall', 'dumbbells'] };
+    const ids = filterSafeExercises(EXERCISES, p).map((e) => e.id);
+    for (const id of ['dumbbell_goblet_squat', 'dumbbell_romanian_deadlift', 'dumbbell_farmers_carry']) {
+      assert.ok(!ids.includes(id), `${id} nu ar trebui deblocat de ganterele uşoare`);
+    }
+  });
+});
+
+test('the equipment offered is equipment the app can use', async (t) => {
+  await t.test('the API catalogue matches the one table', async () => {
+    // Serverul îşi ţinea propria listă, cu alte nume şi cu un `step_box` care
+    // nu exista nici în interfaţă, nici în vreun exerciţiu.
+    const { EQUIPMENT_CATALOG } = await import('../server/equipment.js');
+    assert.deepEqual(EQUIPMENT_CATALOG.map((e) => e.id), EQUIPMENT_ORDER);
+    for (const row of EQUIPMENT_CATALOG) {
+      assert.equal(row.name_ro, EQUIPMENT[row.id].name, `${row.id}: nume diferit faţă de tabel`);
     }
   });
 });

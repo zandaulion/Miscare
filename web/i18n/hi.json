@@ -520,9 +520,6 @@
     "Greutatea corpului": "शरीर का भार",
     "Scaun stabil": "मज़बूत कुर्सी",
     "Perete liber": "खाली दीवार",
-    "Gantere mici": "हल्के डंबल",
-    "Gantere reglabile": "समायोज्य डंबल",
-    "Gantere 5-20kg": "डंबल 5-20 किग्रा",
     "Corp liber": "शरीर का भार",
     "Scaun": "कुर्सी",
     "Perete": "दीवार",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "यहाँ कोई «स्ट्रीक» नहीं टूटती। आप 3 दिन का ब्रेक लें या 30 दिन का — जो कुछ आपने बनाया है वह आपका ही रहता है। हम कभी भी एक नरम सत्र के साथ आपका स्वागत करेंगे।",
     "De pregătit pentru azi": "आज के लिए तैयार रखें",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "इन्हें अभी इकट्ठा कर लें, ताकि बीच सत्र में ढूँढ़ना न पड़े।",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "कुछ लाने की ज़रूरत नहीं — आज सिर्फ़ शरीर का भार।"
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "कुछ लाने की ज़रूरत नहीं — आज सिर्फ़ शरीर का भार।",
+    "Gantere ușoare": "हल्के डंबल",
+    "Gantere grele": "भारी डंबल"
   }
 }

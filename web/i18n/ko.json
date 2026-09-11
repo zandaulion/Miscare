@@ -520,9 +520,6 @@
     "Greutatea corpului": "맨몸",
     "Scaun stabil": "안정된 의자",
     "Perete liber": "빈 벽",
-    "Gantere mici": "가벼운 덤벨",
-    "Gantere reglabile": "조절식 덤벨",
-    "Gantere 5-20kg": "덤벨 5~20kg",
     "Corp liber": "맨몸",
     "Scaun": "의자",
     "Perete": "벽",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "여기서는 「연속 기록」을 잃지 않습니다. 3일을 쉬든 30일을 쉬든, 쌓아 온 것은 그대로 남습니다. 언제든 부드러운 세션으로 맞이할게요.",
     "De pregătit pentru azi": "오늘 준비물",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "미리 챙겨 두면 중간에 찾느라 끊기지 않습니다.",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "가져올 것 없습니다 — 오늘은 맨몸만."
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "가져올 것 없습니다 — 오늘은 맨몸만.",
+    "Gantere ușoare": "가벼운 덤벨",
+    "Gantere grele": "무거운 덤벨"
   }
 }

@@ -520,9 +520,6 @@
     "Greutatea corpului": "自重",
     "Scaun stabil": "稳固的椅子",
     "Perete liber": "空墙面",
-    "Gantere mici": "轻哑铃",
-    "Gantere reglabile": "可调哑铃",
-    "Gantere 5-20kg": "哑铃5-20公斤",
     "Corp liber": "自重",
     "Scaun": "椅子",
     "Perete": "墙面",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "在这里不会丢失任何「连续天数」。休息 3 天还是 30 天，你积累的一切都还在。我们随时用一次温和的训练迎接你。",
     "De pregătit pentru azi": "今天需要准备",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "先准备好，免得中途去找而打断训练。",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "不用准备什么 — 今天只用自重。"
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "不用准备什么 — 今天只用自重。",
+    "Gantere ușoare": "轻哑铃",
+    "Gantere grele": "重哑铃"
   }
 }

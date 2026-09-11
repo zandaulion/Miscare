@@ -520,9 +520,6 @@
     "Greutatea corpului": "Poids du corps",
     "Scaun stabil": "Chaise stable",
     "Perete liber": "Mur dégagé",
-    "Gantere mici": "Haltères légers",
-    "Gantere reglabile": "Haltères réglables",
-    "Gantere 5-20kg": "Haltères 5-20 kg",
     "Corp liber": "Poids du corps",
     "Scaun": "Chaise",
     "Perete": "Mur",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "Ici, aucune « série » ne se perd. Que vous fassiez une pause de 3 jours ou de 30, tout ce que vous avez construit vous reste. Nous vous accueillons quand vous voulez avec une séance douce.",
     "De pregătit pentru azi": "À préparer pour aujourd’hui",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "Rassemblez-les maintenant, pour ne pas interrompre la séance à les chercher.",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Rien à aller chercher — aujourd’hui, au poids du corps."
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Rien à aller chercher — aujourd’hui, au poids du corps.",
+    "Gantere ușoare": "Haltères légers",
+    "Gantere grele": "Haltères lourds"
   }
 }

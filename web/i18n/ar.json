@@ -520,9 +520,6 @@
     "Greutatea corpului": "وزن الجسم",
     "Scaun stabil": "كرسي ثابت",
     "Perete liber": "حائط خالٍ",
-    "Gantere mici": "دمبلات خفيفة",
-    "Gantere reglabile": "دمبلات قابلة للتعديل",
-    "Gantere 5-20kg": "دمبلات 5-20 كجم",
     "Corp liber": "وزن الجسم",
     "Scaun": "كرسي",
     "Perete": "حائط",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "لا تفقد هنا أي «سلسلة». سواء توقفت 3 أيام أو 30، يبقى كل ما بنيته لك. نستقبلك في أي وقت بجلسة لطيفة.",
     "De pregătit pentru azi": "جهّز لليوم",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "اجمعها الآن حتى لا تقطع الجلسة بحثًا عنها.",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "لا شيء لإحضاره — اليوم بوزن الجسم فقط."
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "لا شيء لإحضاره — اليوم بوزن الجسم فقط.",
+    "Gantere ușoare": "دمبلات خفيفة",
+    "Gantere grele": "دمبلات ثقيلة"
   }
 }
