@@ -256,3 +256,39 @@ test('level is a ceiling and a floor', async (t) => {
     }
   });
 });
+
+test('one movement below level is a warm-up, two is another session', async (t) => {
+  const rich = {
+    level: 'intermediate',
+    daily_time: 15,
+    limitations: ['back'],
+    equipment: ['bodyweight', 'wall', 'yoga_mat', 'adjustable_dumbbells', 'pullup_bar']
+  };
+
+  await t.test('rarely more than one, never more than two', () => {
+    let twoPlus = 0;
+    for (let r = 0; r < 48; r++) {
+      const served = generateDailyRoutine(rich, { rotation: r }).exercises
+        .map((e) => EXERCISES.find((x) => x.id === e.id));
+      const below = served.filter((e) => e.level < 2).length;
+      assert.ok(below <= 2, `rotația ${r} servește ${below} mișcări sub nivel`);
+      if (below >= 2) twoPlus++;
+    }
+    // Nu zero: sloturile grupelor care conduc ziua rămân nelimitate, ca
+    // rotația să ajungă la tot catalogul. Când amândouă nimeresc pe o mișcare
+    // sub nivel, ies două -- s-a măsurat o dată în 48 de sesiuni.
+    assert.ok(twoPlus <= 2, `${twoPlus} sesiuni din 48 au două mișcări sub nivel`);
+  });
+
+  await t.test('the catalogue stays reachable', () => {
+    // Prima încercare de plafon prefera mereu ce era la nivel și făcea unele
+    // mișcări de negăsit. Plafonul nu are voie să coste acoperirea.
+    const seen = new Set();
+    for (let r = 0; r < 48; r++) {
+      for (const e of generateDailyRoutine(rich, { rotation: r }).exercises) seen.add(e.id);
+    }
+    const eligible = filterSafeExercises(EXERCISES, rich).map((e) => e.id);
+    const missing = eligible.filter((id) => !seen.has(id));
+    assert.deepEqual(missing, [], `nu se ajunge la ${missing.join(', ')}`);
+  });
+});
