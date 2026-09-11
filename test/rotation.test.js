@@ -193,3 +193,40 @@ test('today should not look like yesterday', async (t) => {
     });
   }
 });
+
+test('what yesterday means', async (t) => {
+  // Profilul pe care s-a văzut: nivel intermediar, spate sensibil, bară și
+  // gantere reglabile. Catalogul lui are 18 mișcări, deci are din ce alege --
+  // o repetare aici nu e lipsă de opțiuni.
+  const rich = {
+    level: 'intermediate',
+    daily_time: 15,
+    limitations: ['back'],
+    equipment: ['bodyweight', 'wall', 'yoga_mat', 'adjustable_dumbbells', 'pullup_bar']
+  };
+
+  await t.test('the avoided session is the one actually served', () => {
+    // Invariantul care lipsea. Generatorul își reconstituia ziua precedentă
+    // rulându-se cu `avoid` gol -- adică fără regula pe care tocmai o aplica --
+    // deci reconstituia altă sesiune decât cea servită. Ocolea o zi care nu
+    // existase și repeta pe cea care existase.
+    for (let r = 1; r <= 8; r++) {
+      const served = generateDailyRoutine(rich, { rotation: r - 1 }).exercises.map((e) => e.id);
+      const told = generateDailyRoutine(rich, { rotation: r, avoid: new Set(served) })
+        .exercises.map((e) => e.id);
+      const reconstructed = generateDailyRoutine(rich, { rotation: r }).exercises.map((e) => e.id);
+      assert.deepEqual(reconstructed, told,
+        `la rotația ${r}, ce se reconstituie diferă de ce s-a servit`);
+    }
+  });
+
+  await t.test('nothing carries over from one day to the next', () => {
+    for (let r = 1; r <= 12; r++) {
+      const prev = generateDailyRoutine(rich, { rotation: r - 1 }).exercises.map((e) => e.id);
+      const cur = generateDailyRoutine(rich, { rotation: r }).exercises.map((e) => e.id);
+      const same = cur.filter((id) => prev.includes(id));
+      assert.deepEqual(same, [],
+        `rotația ${r} repetă ${same.join(', ')} din ziua dinainte`);
+    }
+  });
+});

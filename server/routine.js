@@ -509,9 +509,11 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     // zi sărită nu consumă o poziție -- primești înapoi sesiunea pe care n-ai
     // făcut-o, nu următoarea.
     rotation = profile.total_sessions ?? profile.total_active_days ?? 0,
-    // Ce s-a servit ieri, ca să nu se servească iar azi. Se calculează
-    // regenerând sesiunea precedentă -- rotația fiind deterministă, e
-    // reproductibilă oricând. Setul gol oprește recursivitatea la un nivel.
+    // Ce s-a servit ieri, ca să nu se servească iar azi.
+    //
+    // Serverul îl dă din jurnal, fiindcă acolo scrie ce s-a servit cu
+    // adevărat. Când lipsește -- offline, sau prima sesiune -- se reconstituie
+    // mai jos.
     avoid = null
   } = options;
 
@@ -620,13 +622,31 @@ export function generateDailyRoutine(profile = {}, options = {}) {
 
   const chosen = [];
 
-  // Sesiunea de ieri, reconstruită. Rotația fiind deterministă, e suficient să
-  // se ceară aceeași funcție cu o poziție mai puțin; `avoid: new Set()` oprește
-  // lanțul acolo, ca să nu se refacă toată istoria de fiecare dată.
-  const yesterday = avoid ?? (rotation > 0
-    ? new Set(generateDailyRoutine(profile, { ...options, rotation: rotation - 1, avoid: new Set() })
-        .exercises.map((e) => e.id))
-    : new Set());
+  /**
+   * Sesiunea de ieri, reconstruită pas cu pas.
+   *
+   * Varianta dinainte cerea aceeași funcție cu o rotație mai puțin, dar cu
+   * `avoid` gol -- pus acolo doar ca să oprească recursivitatea. Asta schimba
+   * răspunsul: ieșea o sesiune generată fără regula de evitare, adică alta
+   * decât cea servită în ziua aceea. Se ocolea o zi care nu existase și se
+   * repeta cea care existase. Comentariul spunea „reproductibilă oricând", și
+   * rotația chiar e determinsită -- doar că reproducerea folosea alt argument.
+   *
+   * Se merge acum înainte, fiecare pas primind rezultatul pasului dinainte,
+   * deci fiecare apel intern are deja `avoid` și nu mai recurge. Fereastra
+   * ține costul mărginit: după atâtea sesiuni, ce s-a făcut la început nu mai
+   * schimbă ce se alege azi.
+   */
+  const CHAIN_WINDOW = 16;
+  let yesterday = avoid;
+  if (!yesterday) {
+    yesterday = new Set();
+    for (let r = Math.max(0, rotation - CHAIN_WINDOW); r < rotation; r++) {
+      yesterday = new Set(
+        generateDailyRoutine(profile, { ...options, rotation: r, avoid: yesterday })
+          .exercises.map((e) => e.id));
+    }
+  }
 
   /**
    * Ia din listă începând de la poziția de rotație, nu de la zero.
