@@ -2,6 +2,7 @@ import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
 import { t, exText, repWords } from './i18n.js';
 import { levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
+import { equipmentForExercises, equipmentInfo } from './equipment.js';
 import { formatReps } from '/format-reps.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
 
@@ -284,6 +285,8 @@ export async function renderRoutineView(container, { forceDuration = null, routi
         </button>
       </div>
 
+      ${renderGearCard(currentRoutine.exercises)}
+
       <div id="exercise-list">
   `;
 
@@ -529,6 +532,40 @@ function swapExercise(index, container) {
 
 /** Închide previzualizarea de pe „Azi", cât timp e deschisă. */
 let closePreview = null;
+
+/**
+ * Ce trebuie strâns înainte de a începe.
+ *
+ * Echipamentul era scris pe fiecare exercițiu în parte, deci se afla pe rând,
+ * în timpul sesiunii: ajungeai la a treia mișcare și abia atunci vedeai că-ți
+ * trebuie o ganteră, te ridicai după ea și se rupea ritmul. Ce se cere se
+ * adună o dată, la început.
+ *
+ * Greutatea corpului nu apare în listă -- nu se strânge de nicăieri. Când e
+ * singura, lista iese goală, iar cardul spune exact asta în loc să rămână un
+ * dreptunghi gol.
+ */
+function renderGearCard(exercises) {
+  const needed = equipmentForExercises(
+    exercises.map((ex) => getExerciseById(ex.id) || ex));
+
+  return `
+    <div class="gear-card">
+      <div class="gear-card-title">🎒 ${t('De pregătit pentru azi')}</div>
+      ${needed.length ? `
+        <div class="gear-list">
+          ${needed.map((id) => {
+            const info = equipmentInfo(id);
+            return `<span class="gear-pill">${info.icon} ${escapeHtml(t(info.name))}</span>`;
+          }).join('')}
+        </div>
+        <p class="gear-note">${t('Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.')}</p>
+      ` : `
+        <p class="gear-note">${t('Nimic de adus — azi lucrezi doar cu greutatea corpului.')}</p>
+      `}
+    </div>
+  `;
+}
 
 function openExercisePreview(full, container) {
   const modal = container.querySelector('#exercise-preview-modal');

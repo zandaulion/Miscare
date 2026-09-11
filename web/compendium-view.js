@@ -8,6 +8,7 @@ import { formatReps } from './format-reps.js';
 import { state } from './server-client.js';
 import { LEVEL_LABEL, levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
+import { EQUIPMENT_ORDER, equipmentInfo } from './equipment.js';
 
 // Tabelele țin chei, nu texte traduse.
 //
@@ -56,19 +57,10 @@ const CATEGORY_NAMES = {
   total: { label: 'Corp complet', icon: '⚡' }
 };
 
-const EQUIPMENT_ICONS = {
-  bodyweight: { name: 'Corp liber', icon: '🧘' },
-  chair: { name: 'Scaun', icon: '🪑' },
-  wall: { name: 'Perete', icon: '🧱' },
-  yoga_mat: { name: 'Saltea', icon: '🟩' },
-  dumbbells: { name: 'Gantere mici', icon: '🏋️' },
-  adjustable_dumbbells: { name: 'Gantere 5-20kg', icon: '🏋️‍♂️' },
-  resistance_band: { name: 'Bandă elastică', icon: '🎗️' },
-  pullup_bar: { name: 'Bară tracțiuni', icon: '🪜' },
-  kettlebell: { name: 'Kettlebell', icon: '🔔' },
-  foam_roller: { name: 'Rolă spumă', icon: '🪵' },
-  cushion: { name: 'Pernă', icon: '🛋️' }
-};
+// Pastilele folosesc forma scurtă din tabelul comun.
+const EQUIPMENT_ICONS = Object.fromEntries(
+  EQUIPMENT_ORDER.map((id) => [id, { icon: equipmentInfo(id).icon, name: equipmentInfo(id).short }]));
+
 
 // Stare internă pentru compendiu
 let currentFilter = {

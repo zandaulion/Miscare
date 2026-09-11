@@ -1875,3 +1875,56 @@ nav.app-nav {
     animation: none;
   }
 }
+
+/* Ce trebuie strâns înainte de a începe.
+ *
+ * Stă înaintea listei, deci trebuie să se citească dintr-o privire și să nu
+ * concureze cu exercițiile. Fundal discret, nu o alertă: nu e nimic în
+ * neregulă, e doar o listă de adunat.
+ */
+.gear-card {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.gear-card-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.gear-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gear-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gear-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+[dir='rtl'] .gear-card-title {
+  letter-spacing: normal;
+}
