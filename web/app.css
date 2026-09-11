@@ -1760,3 +1760,75 @@ nav.app-nav {
 [dir='rtl'] .brand-name {
   letter-spacing: normal;
 }
+
+/* Foaia unui exercițiu, în compendiu.
+ *
+ * Aceeași formă ca ecranul ghidat: antetul stă pe loc, doar corpul se
+ * derulează. `min-height: 0` e din nou piesa care contează -- fără ea corpul
+ * n-ar da înapoi sub conținut, ci ar crește și ar împinge antetul afară.
+ */
+.ex-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--safe-top) + 12px) 12px calc(var(--safe-bottom) + 12px);
+}
+
+.ex-sheet {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 440px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ex-sheet-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ex-sheet-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+.ex-sheet-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 14px 16px 18px;
+}
+
+.ex-sheet-focus {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 10px 0 4px;
+}
+
+/* Chevronul nu mai rotește nimic -- arată că se deschide ceva. */
+.compendium-card-summary .expand-chevron {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  line-height: 1;
+}
