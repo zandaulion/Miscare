@@ -79,8 +79,15 @@ async function init() {
     openSettingsModal();
   });
 
-  // Default view
-  switchTab('today');
+  /*
+   * O reîncărcare poate prinde o foaie deschisă, iar poziția ei din istoric
+   * supraviețuiește reîncărcării chiar dacă foaia nu. Marca se șterge, ca
+   * închiderile de mai târziu să nu creadă că poziția e a lor.
+   */
+  if (history.state && history.state.overlay) history.replaceState({}, '');
+
+  // Acolo unde rămăsese, nu neapărat acasă.
+  switchTab(rememberedTab());
 }
 
 function updateDeviceBadge() {
@@ -94,6 +101,29 @@ function updateDeviceBadge() {
     badge.className = 'device-badge';
     badge.innerHTML = `🔒 ${t('Activează cod')}`;
   }
+}
+
+const TAB_KEY = 'miscare-tab';
+
+/**
+ * Taburile care chiar există, citite din bară.
+ *
+ * Nu dintr-o listă scrisă alături: `switchTab` n-are ramură implicită, deci un
+ * nume necunoscut nu desenează nimic și lasă ecranul gol. Cum valoarea vine
+ * din memorie, ar fi de ajuns ca un tab să fie redenumit cândva pentru ca
+ * cineva să deschidă aplicația într-un ecran alb, fără să înțeleagă de ce.
+ */
+function knownTabs() {
+  return [...document.querySelectorAll('.nav-item')].map((b) => b.dataset.tab).filter(Boolean);
+}
+
+/** Unde rămăsese omul, dacă locul acela mai există. */
+function rememberedTab() {
+  try {
+    const saved = localStorage.getItem(TAB_KEY);
+    if (saved && knownTabs().includes(saved)) return saved;
+  } catch { /* fără memorie locală, se pornește de acasă */ }
+  return 'today';
 }
 
 export function switchTab(tab, options = {}) {
@@ -111,6 +141,12 @@ export function switchTab(tab, options = {}) {
   });
 
   window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Ținut minte pentru reîncărcare. Doar taburile reale: altfel s-ar salva un
+  // nume care mâine nu mai desenează nimic.
+  if (knownTabs().includes(tab)) {
+    try { localStorage.setItem(TAB_KEY, tab); } catch { /* memoria plină sau oprită */ }
+  }
 
   switch (tab) {
     case 'today':
