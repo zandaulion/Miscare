@@ -1785,6 +1785,9 @@ nav.app-nav {
 }
 
 .ex-sheet {
+  /* Revenirea la loc, când tragerea n-a trecut de prag. În timpul gestului
+   * tranziția e oprită din JS, ca foaia să urmeze degetul fără întârziere. */
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -1796,6 +1799,16 @@ nav.app-nav {
   flex-direction: column;
   overflow: hidden;
   animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Bara de prindere: singurul semn că foaia se poate trage în jos. */
+.ex-sheet-grabber {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+  margin: 8px auto 0;
 }
 
 .ex-sheet-header {
@@ -1835,4 +1848,11 @@ nav.app-nav {
   font-size: 1.4rem;
   color: var(--text-muted);
   line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-sheet {
+    transition: none;
+    animation: none;
+  }
 }
