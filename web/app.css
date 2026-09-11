@@ -75,10 +75,20 @@ header.app-header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: 12px 20px;
+  z-index: 50;
+}
+
+/* Banda ţine toată lăţimea -- altfel s-ar rupe fundalul de sub bara de stare --
+ * dar conţinutul se aliniază cu coloana. La 1440px logoul stătea lipit de
+ * marginea stângă şi butonul de cealaltă, cu 840px de gol între ele: nu arăta
+ * spaţios, arăta defect. */
+.header-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 50;
+  gap: 16px;
 }
 
 .brand {
@@ -1960,4 +1970,115 @@ nav.app-nav {
 
 .equipment-save-bar .btn {
   width: 100%;
+}
+
+/* =========================================================================
+   Ecrane mari: tabletă, pliabil deschis, laptop
+   =========================================================================
+
+   Totul de aici e CSS, nimic din JavaScript. Un pliabil se deschide în timpul
+   sesiunii, de la patru sute la opt sute de pixeli, fără reîncărcare -- iar
+   aplicația nu ascultă `resize` și își desenează vederile o singură dată, la
+   schimbarea tabului. O decizie de aranjament luată în cod ar rămâne
+   înțepenită pe forma de telefon până când omul schimbă tabul. Grid-ul și
+   media queries se reașază singure.
+
+   Coloana rămâne îngustă dinadins. La 600px descrierile au măsura potrivită
+   pentru citit; lățite la 1200 ar deveni greu de urmărit. Spațiul câștigat nu
+   se dă textului, ci se ia din cadrul care înainte se întindea aiurea. */
+
+:root {
+  /* Un singur loc pentru lățimea conținutului, ca antetul, coloana și bara să
+     nu se poată despărți. */
+  --content-max: 600px;
+  --rail-w: 208px;
+}
+
+.container {
+  max-width: var(--content-max);
+}
+
+/* Banda antetului rămâne pe toată lățimea -- altfel s-ar rupe fundalul de sub
+   bara de stare -- dar conținutul ei se centrează pe lățimea coloanei. Fără
+   asta, la 1440px logoul stătea lipit de marginea stângă și butonul de cealaltă,
+   cu un gol de un metru între ele: nu arăta spațios, arăta defect. */
+/* ---------- Tabletă și pliabil deschis ---------- */
+@media (min-width: 700px) {
+  /* Filtrele nu se mai derulează pe orizontală: încap, deci se așază. La 1440px
+     rândul de niveluri se tăia la „Avansat" -- pe un ecran lat, un filtru
+     ascuns după o derulare orizontală e un filtru pierdut. */
+  .level-chips-container {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+/* ---------- Laptop: navigarea trece pe lateral ---------- */
+@media (min-width: 1000px) {
+  /* O bară de file jos e un tipar de telefon, unde degetul stă jos. Pe laptop
+     cursorul stă sus sau pe lateral, iar josul ecranului e cel mai greu de
+     atins. Aceleași cinci destinații, mutate unde se caută. */
+  nav.app-nav {
+    top: 0;
+    bottom: 0;
+    right: auto;
+    width: var(--rail-w);
+    height: auto;
+    padding: 18px 12px calc(18px + var(--safe-bottom));
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 4px;
+    border-top: none;
+    border-right: 1px solid var(--border);
+  }
+
+  .nav-item {
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    height: 46px;
+    padding: 0 12px;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  /* Indicatorul activ era o dungă sus, potrivită unei bare orizontale. Pe
+     verticală devine o dungă la stânga, în lungul rândului. */
+  .nav-item::before {
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+    height: auto;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    transform: scaleY(0);
+  }
+
+  .nav-item.active::before {
+    transform: scaleY(1);
+  }
+
+  .nav-item.active {
+    background: var(--primary-light);
+  }
+
+  .nav-icon {
+    width: 28px;
+  }
+
+  /* Josul se eliberează, iar conținutul se dă la o parte din dreptul railului. */
+  body {
+    padding-bottom: 0;
+    padding-left: var(--rail-w);
+  }
+
+
+
+  /* Bara de salvare a echipamentului se oprea deasupra barei de jos. Bara nu
+     mai e jos, deci se lipește de marginea ecranului. */
+  .equipment-save-bar {
+    bottom: 0;
+  }
 }
