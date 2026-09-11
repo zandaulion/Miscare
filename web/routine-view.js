@@ -374,12 +374,11 @@ export async function renderRoutineView(container, { forceDuration = null, routi
     });
   }
 
-  container.querySelectorAll('.exercise-visual').forEach((vis) => {
-    vis.style.cursor = 'pointer';
-    vis.setAttribute('title', t('Apasă pentru a mări'));
-    vis.addEventListener('click', (e) => {
-      const card = e.currentTarget.closest('.exercise-card');
-      const idx = parseInt(card?.dataset.index, 10);
+  container.querySelectorAll('.exercise-card').forEach((card) => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.btn-swap-exercise')) return;
+      const idx = parseInt(card.dataset.index, 10);
       const ex = currentRoutine?.exercises?.[idx];
       if (!ex) return;
       const full = getExerciseById(ex.id) || ex;
