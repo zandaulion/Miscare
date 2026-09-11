@@ -1,5 +1,6 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
 import { t, exText, repWords } from './i18n.js';
+import { levelBadge } from './levels.js';
 import { formatReps } from '/format-reps.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
 
@@ -295,6 +296,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
         <div class="exercise-content">
           <div class="exercise-name">${idx + 1}. ${escapeHtml(exText(ex.id, 'name'))}</div>
           <div class="exercise-meta">
+            ${levelBadge(full.level)}
             <span class="badge badge-reps">${escapeHtml(formatReps(ex.reps, repWords()))}</span>
             <span class="badge">${escapeHtml(exText(ex.id, 'focus'))}</span>
           </div>

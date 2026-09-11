@@ -6,6 +6,7 @@ import { CLIENT_EXERCISES, getExerciseById } from './exercises.js';
 import { t, exText, repWords } from './i18n.js';
 import { formatReps } from './format-reps.js';
 import { state } from './server-client.js';
+import { LEVEL_LABEL, levelBadge } from './levels.js';
 
 // Tabelele țin chei, nu texte traduse.
 //
@@ -17,28 +18,28 @@ import { state } from './server-client.js';
 const LEVEL_INFO = {
   0: {
     name: 'Nivel 0 — De la 0 absolut',
-    shortName: 'De la 0',
+    shortName: LEVEL_LABEL[0],
     icon: '🟢',
     badgeClass: 'level-0',
     desc: 'Fără impact articular, adaptat pentru sedentarism sau reacomodare blândă (scaun / perete).'
   },
   1: {
     name: 'Nivel 1 — Începător',
-    shortName: 'Începător',
+    shortName: LEVEL_LABEL[1],
     icon: '🔵',
     badgeClass: 'level-1',
     desc: 'Construirea formei de bază, mișcări la sol, gantere ușoare și benzi elastice.'
   },
   2: {
     name: 'Nivel 2 — Intermediar',
-    shortName: 'Intermediar',
+    shortName: LEVEL_LABEL[2],
     icon: '🟡',
     badgeClass: 'level-2',
     desc: 'Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.'
   },
   3: {
     name: 'Nivel 3 — Avansat',
-    shortName: 'Avansat',
+    shortName: LEVEL_LABEL[3],
     icon: '🔴',
     badgeClass: 'level-3',
     desc: 'Exerciții compuse de forță și explozie: flotări diamant, jump squats, tracțiuni libere.'
@@ -296,7 +297,6 @@ function renderExerciseSections(userEquipment) {
 function renderExerciseCard(ex, userEquipment) {
   const isExpanded = currentFilter.expandedIds.has(ex.id);
   const cat = CATEGORY_NAMES[ex.category] || { label: ex.category, icon: '⚡' };
-  const levelMeta = LEVEL_INFO[ex.level];
 
   // Verificare compatibilitate echipament
   const hasEquipment = ex.equipment.every((eq) => userEquipment.includes(eq));
@@ -314,7 +314,7 @@ function renderExerciseCard(ex, userEquipment) {
 
         <div class="compendium-card-main-col">
           <div class="compendium-card-badges">
-            <span class="badge-level ${levelMeta.badgeClass}">${t(levelMeta.shortName)}</span>
+            ${levelBadge(ex.level)}
             <span class="badge-category">${cat.icon} ${t(cat.label)}</span>
             ${hasEquipment ? `
               <span class="badge-available" title="${t('Disponibil cu echipamentul tău actual')}">${t('✓ Disponibil')}</span>
