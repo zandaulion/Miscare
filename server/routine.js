@@ -1,3 +1,5 @@
+import { expandEquipment } from '../web/equipment.js';
+
 export const EXERCISES = [
   // Structura exercițiilor. Textul -- nume, descriere, accent, sfat --
   // trăiește în web/i18n/<limbă>.json, sub cheia exercițiului: era scris de
@@ -459,7 +461,9 @@ import { stepReps } from './load.js';
 
 export function filterSafeExercises(allExercises, profile) {
   const limitations = Array.isArray(profile.limitations) ? profile.limitations : [];
-  const equipment = Array.isArray(profile.equipment) ? profile.equipment : ['bodyweight', 'chair', 'wall'];
+  const declared = Array.isArray(profile.equipment) ? profile.equipment : ['bodyweight', 'chair', 'wall'];
+  // Ganterele grele se pun pe trei kilograme; invers nu merge. Vezi IMPLIES.
+  const equipment = expandEquipment(declared);
 
   const levelMap = {
     zero: 0,
@@ -471,7 +475,7 @@ export function filterSafeExercises(allExercises, profile) {
 
   return allExercises.filter((ex) => {
     // Verifică echipamentul
-    const hasRequiredEquipment = ex.equipment.every((eq) => equipment.includes(eq));
+    const hasRequiredEquipment = ex.equipment.every((eq) => equipment.has(eq));
     if (!hasRequiredEquipment) return false;
 
     // Verifică limitările.

@@ -520,9 +520,6 @@
     "Greutatea corpului": "自重",
     "Scaun stabil": "安定した椅子",
     "Perete liber": "何もない壁",
-    "Gantere mici": "軽いダンベル",
-    "Gantere reglabile": "可変式ダンベル",
-    "Gantere 5-20kg": "ダンベル5〜20kg",
     "Corp liber": "自重",
     "Scaun": "椅子",
     "Perete": "壁",
@@ -550,6 +547,8 @@
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "ここでは「連続記録」を失うことはありません。3日休んでも30日休んでも、積み上げたものはそのまま残ります。いつでもやさしいセッションでお迎えします。",
     "De pregătit pentru azi": "今日の準備",
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "先に用意しておくと、探すために中断せずにすみます。",
-    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "用意するものはありません — 今日は自重だけです。"
+    "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "用意するものはありません — 今日は自重だけです。",
+    "Gantere ușoare": "軽いダンベル",
+    "Gantere grele": "重いダンベル"
   }
 }

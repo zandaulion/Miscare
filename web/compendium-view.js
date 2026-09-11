@@ -8,7 +8,7 @@ import { formatReps } from './format-reps.js';
 import { state } from './server-client.js';
 import { LEVEL_LABEL, levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
-import { EQUIPMENT_ORDER, equipmentInfo } from './equipment.js';
+import { EQUIPMENT_ORDER, equipmentInfo, expandEquipment } from './equipment.js';
 
 // Tabelele țin chei, nu texte traduse.
 //
@@ -224,7 +224,7 @@ function getFilteredExercises(userEquipment) {
     }
     // Doar echipamentul meu
     if (currentFilter.onlyMyEquipment) {
-      const hasAll = ex.equipment.every((eq) => userEquipment.includes(eq));
+      const hasAll = ex.equipment.every((eq) => owned(userEquipment).has(eq));
       if (!hasAll) return false;
     }
     return true;
@@ -290,8 +290,9 @@ function renderExerciseCard(ex, userEquipment) {
   const cat = CATEGORY_NAMES[ex.category] || { label: ex.category, icon: '⚡' };
 
   // Verificare compatibilitate echipament
-  const hasEquipment = ex.equipment.every((eq) => userEquipment.includes(eq));
-  const missingEquipment = ex.equipment.filter((eq) => !userEquipment.includes(eq));
+  const have = owned(userEquipment);
+  const hasEquipment = ex.equipment.every((eq) => have.has(eq));
+  const missingEquipment = ex.equipment.filter((eq) => !have.has(eq));
 
   return `
     <div class="compendium-card" id="card-ex-${ex.id}" data-id="${ex.id}">
@@ -323,7 +324,7 @@ function renderExerciseCard(ex, userEquipment) {
           <div class="compendium-card-equipment-list">
             ${ex.equipment.map((eq) => {
               const eqInfo = EQUIPMENT_ICONS[eq] || { name: eq, icon: '📦' };
-              const userHas = userEquipment.includes(eq);
+              const userHas = owned(userEquipment).has(eq);
               return `<span class="eq-pill ${userHas ? 'has-it' : 'missing'}">${eqInfo.icon} ${t(eqInfo.name)}</span>`;
             }).join('')}
           </div>
@@ -346,9 +347,27 @@ function renderExerciseCard(ex, userEquipment) {
  * jos: trebuia derulat ca să vezi ce tocmai ai deschis, iar cardul pe care
  * apăsaseși își pierdea locul. Acum se ridică o foaie peste listă.
  */
+/**
+ * Ce are omul, plus ce decurge din asta.
+ *
+ * Aceeaşi regulă ca la server: ganterele grele ţin loc de cele uşoare. Fără
+ * ea, compendiul marca „necesită gantere uşoare" cuiva care are o pereche
+ * reglabilă -- adică exact exerciţiile pe care le poate face.
+ */
+let _ownedFor = null;
+let _ownedSet = null;
+function owned(list) {
+  const key = (list || []).join(',');
+  if (key !== _ownedFor) {
+    _ownedFor = key;
+    _ownedSet = expandEquipment(list || []);
+  }
+  return _ownedSet;
+}
+
 function renderSheetBody(ex, userEquipment) {
   const cat = CATEGORY_NAMES[ex.category] || { label: ex.category, icon: '⚡' };
-  const missingEquipment = ex.equipment.filter((eq) => !userEquipment.includes(eq));
+  const missingEquipment = ex.equipment.filter((eq) => !owned(userEquipment).has(eq));
   const hasEquipment = missingEquipment.length === 0;
 
   return `
