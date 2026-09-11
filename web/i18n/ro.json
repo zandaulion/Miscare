@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)",
-    "Greutate cu mâner": "Greutate cu mâner",
     "Hai puțin mai mult": "Hai puțin mai mult",
     "ID:": "ID:",
     "Instalare & Service Worker": "Instalare & Service Worker",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "Întotdeauna disponibilă",
     "Jurnal și Progres": "Jurnal și Progres",
     "Limbă": "Limbă",
-    "Masaj și relaxare": "Masaj și relaxare",
     "Meniul ⋮ →": "Meniul ⋮ →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.",
     "Menținem același ritm prietenos și data viitoare.": "Menținem același ritm prietenos și data viitoare.",
@@ -478,8 +476,6 @@
     "repetări": "repetări",
     "Repetări realizate în această serie:": "Repetări realizate în această serie:",
     "Resetează filtrele": "Resetează filtrele",
-    "Rolă de spumă": "Rolă de spumă",
-    "Rolă spumă": "Rolă spumă",
     "Rulare în browser": "Rulare în browser",
     "Saltea / Covoraș": "Saltea / Covoraș",
     "Salvează": "Salvează",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ Ghidează-mă pas cu pas ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "Explorează compendiul de exerciții ({n} mișcări pe niveluri)",
-    "Kettlebell": "Kettlebell",
     "Pentru confort la sol": "Pentru confort la sol",
     "Disponibil cu echipamentul tău actual": "Disponibil cu echipamentul tău actual",
     "Trunchi & Fesieri": "Trunchi & Fesieri",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Nimic de adus — azi lucrezi doar cu greutatea corpului.",
     "Gantere ușoare": "Gantere ușoare",
-    "Gantere grele": "Gantere grele"
+    "Gantere grele": "Gantere grele",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "Azi ai mișcări la sol — o saltea sau un covor fac diferența.",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi."
   }
 }

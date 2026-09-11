@@ -109,6 +109,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'glute_bridge_gentle',
     reps: {"lo":8,"hi":10,"unit":"reps"},
+    comfort: ["mat"],
     category: 'core_glutes',
     level: 0,
     equipment: ['bodyweight'],
@@ -208,6 +209,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'reverse_snow_angels',
     reps: {"lo":8,"hi":10,"unit":"reps"},
+    comfort: ["mat"],
     category: 'upper',
     level: 0,
     equipment: ['bodyweight'],
@@ -305,6 +307,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'knee_pushups',
     reps: {"lo":8,"hi":12,"unit":"reps"},
+    comfort: ["mat","cushion"],
     category: 'upper',
     level: 1,
     equipment: ['bodyweight'],
@@ -382,6 +385,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'prone_cobra',
     reps: {"lo":8,"hi":10,"unit":"reps","note":"hold2s"},
+    comfort: ["mat"],
     category: 'mobility',
     level: 1,
     equipment: ['bodyweight'],
@@ -406,6 +410,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'bird_dog_gentle',
     reps: {"lo":6,"hi":8,"unit":"reps","note":"eachSide"},
+    comfort: ["mat","cushion"],
     category: 'core_glutes',
     level: 1,
     equipment: ['bodyweight'],
@@ -429,6 +434,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'deadbug_assisted',
     reps: {"lo":8,"hi":8,"unit":"reps","note":"alternating"},
+    comfort: ["mat"],
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
@@ -451,6 +457,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'crunches_standard',
     reps: {"lo":10,"hi":15,"unit":"reps"},
+    comfort: ["mat"],
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
@@ -479,6 +486,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'side_plank',
     reps: {"lo":15,"hi":20,"unit":"seconds","note":"eachSide"},
+    comfort: ["mat","cushion"],
     category: 'core',
     level: 1,
     equipment: ['bodyweight'],
@@ -607,6 +615,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'standard_pushups',
     reps: {"lo":10,"hi":15,"unit":"reps"},
+    comfort: ["mat"],
     category: 'upper',
     level: 2,
     equipment: ['bodyweight'],
@@ -650,6 +659,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'forearm_plank',
     reps: {"lo":35,"hi":50,"unit":"seconds"},
+    comfort: ["mat"],
     category: 'core',
     level: 2,
     equipment: ['bodyweight'],
@@ -720,6 +730,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'mountain_climbers',
     reps: {"lo":30,"hi":40,"unit":"seconds"},
+    comfort: ["mat"],
     category: 'core',
     level: 2,
     equipment: ['bodyweight'],
@@ -766,6 +777,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'single_leg_glute_bridge',
     reps: {"lo":8,"hi":10,"unit":"reps","note":"perLeg"},
+    comfort: ["mat"],
     category: 'core_glutes',
     level: 2,
     equipment: ['bodyweight'],
@@ -913,6 +925,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'dumbbell_floor_press',
     reps: {"lo":10,"hi":12,"unit":"reps"},
+    comfort: ["mat"],
     category: 'upper',
     level: 2,
     equipment: ['adjustable_dumbbells'],
@@ -1009,6 +1022,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'diamond_pushups',
     reps: {"lo":10,"hi":12,"unit":"reps"},
+    comfort: ["mat"],
     category: 'upper',
     level: 3,
     equipment: ['bodyweight'],
@@ -1055,6 +1069,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'plank_shoulder_taps',
     reps: {"lo":16,"hi":20,"unit":"taps"},
+    comfort: ["mat"],
     category: 'core',
     level: 3,
     equipment: ['bodyweight'],
@@ -1077,6 +1092,7 @@ export const CLIENT_EXERCISES = [
   {
     id: 'burpees_clean',
     reps: {"lo":8,"hi":12,"unit":"reps"},
+    comfort: ["mat"],
     category: 'core',
     level: 3,
     equipment: ['bodyweight'],

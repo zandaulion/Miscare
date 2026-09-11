@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "只显示用现有器材就能做的动作",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "标准地面俯卧撑、可调哑铃（5-20公斤）、复合动作和一根单杠。",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "膝盖敏感（不做深蹲和跳跃）",
-    "Greutate cu mâner": "带把手的重物",
     "Hai puțin mai mult": "我们加一点点",
     "ID:": "ID：",
     "Instalare & Service Worker": "安装与 Service Worker",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "随时可做",
     "Jurnal și Progres": "日志与进度",
     "Limbă": "语言",
-    "Masaj și relaxare": "按摩与恢复",
     "Meniul ⋮ →": "⋮ 菜单 →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "⋮ 菜单 →「安装应用」或「添加到主屏幕」。",
     "Menținem același ritm prietenos și data viitoare.": "下次我们会保持同样舒服的节奏。",
@@ -478,8 +476,6 @@
     "repetări": "次",
     "Repetări realizate în această serie:": "这一组完成的次数：",
     "Resetează filtrele": "重置筛选条件",
-    "Rolă de spumă": "泡沫轴",
-    "Rolă spumă": "泡沫轴",
     "Rulare în browser": "正在浏览器中运行",
     "Saltea / Covoraș": "瑜伽垫",
     "Salvează": "保存",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "{n} 个动作按等级整理，附生物力学讲解和提示",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ 一步步引导我（{sets}）",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "浏览动作大全（{n} 个动作，按等级）",
-    "Kettlebell": "壶铃",
     "Pentru confort la sol": "让地面动作更舒适",
     "Disponibil cu echipamentul tău actual": "用你现有的器材就能做",
     "Trunchi & Fesieri": "躯干与臀部",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "先准备好，免得中途去找而打断训练。",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "不用准备什么 — 今天只用自重。",
     "Gantere ușoare": "轻哑铃",
-    "Gantere grele": "重哑铃"
+    "Gantere grele": "重哑铃",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "今天有地面动作 — 一块垫子或地毯会舒服很多。",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "膝盖下垫个软垫，跪姿动作会轻松很多。"
   }
 }

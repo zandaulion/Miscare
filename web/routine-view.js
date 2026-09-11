@@ -2,7 +2,7 @@ import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
 import { t, exText, repWords } from './i18n.js';
 import { levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
-import { equipmentForExercises, equipmentInfo } from './equipment.js';
+import { equipmentForExercises, comfortForExercises, equipmentInfo } from './equipment.js';
 import { formatReps } from '/format-reps.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
 
@@ -546,23 +546,43 @@ let closePreview = null;
  * dreptunghi gol.
  */
 function renderGearCard(exercises) {
-  const needed = equipmentForExercises(
-    exercises.map((ex) => getExerciseById(ex.id) || ex));
+  const full = exercises.map((ex) => getExerciseById(ex.id) || ex);
+  const needed = equipmentForExercises(full);
 
+  /*
+   * Confortul nu blochează nimic.
+   *
+   * Salteaua și perna sunt sugestii, nu cerințe: cine are un covor poate face
+   * bird-dog, iar „de la 0, cu ce ai" ar suna fals dacă mișcările la sol s-ar
+   * debloca prin cumpărături. Ce are omul apare ca pastilă -- deci bifarea
+   * chiar schimbă cardul -- iar ce n-are apare ca o vorbă bună, cu alternativa
+   * la îndemână.
+   */
+  const owned = new Set(state.profile?.equipment || ['bodyweight', 'chair', 'wall']);
+  const comfort = comfortForExercises(full);
+  const bring = comfort.filter((id) => owned.has(id));
+  const hints = comfort.filter((id) => !owned.has(id));
+
+  const pill = (id) => {
+    const info = equipmentInfo(id);
+    return `<span class="gear-pill">${info.icon} ${escapeHtml(t(info.name))}</span>`;
+  };
+  const HINT = {
+    yoga_mat: 'Azi ai mișcări la sol — o saltea sau un covor fac diferența.',
+    cushion: 'O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.'
+  };
+
+  const all = [...needed, ...bring];
   return `
     <div class="gear-card">
       <div class="gear-card-title">🎒 ${t('De pregătit pentru azi')}</div>
-      ${needed.length ? `
-        <div class="gear-list">
-          ${needed.map((id) => {
-            const info = equipmentInfo(id);
-            return `<span class="gear-pill">${info.icon} ${escapeHtml(t(info.name))}</span>`;
-          }).join('')}
-        </div>
+      ${all.length ? `
+        <div class="gear-list">${all.map(pill).join('')}</div>
         <p class="gear-note">${t('Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.')}</p>
       ` : `
         <p class="gear-note">${t('Nimic de adus — azi lucrezi doar cu greutatea corpului.')}</p>
       `}
+      ${hints.map((id) => `<p class="gear-note gear-hint">${t(HINT[id])}</p>`).join('')}
     </div>
   `;
 }

@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "केवल वे व्यायाम दिखाएँ जो आप अपने मौजूदा सामान से कर सकते हैं",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "फ़र्श पर पूरे पुश-अप, समायोज्य डंबल (5-20 किग्रा), संयुक्त लिफ़्ट और एक पुल-अप बार।",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "संवेदनशील घुटने (गहरे स्क्वाट या छलाँग नहीं)",
-    "Greutate cu mâner": "हैंडल वाला वज़न",
     "Hai puțin mai mult": "थोड़ा बढ़ाते हैं",
     "ID:": "आईडी:",
     "Instalare & Service Worker": "इंस्टॉल और सर्विस वर्कर",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "हमेशा उपलब्ध",
     "Jurnal și Progres": "डायरी और प्रगति",
     "Limbă": "भाषा",
-    "Masaj și relaxare": "मालिश और रिकवरी",
     "Meniul ⋮ →": "⋮ मेन्यू →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "⋮ मेन्यू → «ऐप इंस्टॉल करें» या «होम स्क्रीन पर जोड़ें»।",
     "Menținem același ritm prietenos și data viitoare.": "अगली बार भी हम यही सुखद रफ़्तार बनाए रखेंगे।",
@@ -478,8 +476,6 @@
     "repetări": "दोहराव",
     "Repetări realizate în această serie:": "इस सेट में पूरे किए गए दोहराव:",
     "Resetează filtrele": "फ़िल्टर रीसेट करें",
-    "Rolă de spumă": "फ़ोम रोलर",
-    "Rolă spumă": "फ़ोम रोलर",
     "Rulare în browser": "ब्राउज़र में चल रहा है",
     "Saltea / Covoraș": "चटाई",
     "Salvează": "सहेजें",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "सभी {n} गतियाँ स्तर के अनुसार, बायोमैकेनिकल मार्गदर्शन और सुझावों के साथ",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ मुझे क़दम-दर-क़दम मार्गदर्शन करें ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "व्यायाम संग्रह देखें ({n} गतियाँ स्तर के अनुसार)",
-    "Kettlebell": "केटलबेल",
     "Pentru confort la sol": "फ़र्श पर आराम के लिए",
     "Disponibil cu echipamentul tău actual": "आपके मौजूदा सामान से संभव",
     "Trunchi & Fesieri": "धड़ और नितंब",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "इन्हें अभी इकट्ठा कर लें, ताकि बीच सत्र में ढूँढ़ना न पड़े।",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "कुछ लाने की ज़रूरत नहीं — आज सिर्फ़ शरीर का भार।",
     "Gantere ușoare": "हल्के डंबल",
-    "Gantere grele": "भारी डंबल"
+    "Gantere grele": "भारी डंबल",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "आज फ़र्श पर काम है — एक चटाई या कालीन फ़र्क़ डालता है।",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "घुटनों के नीचे एक गद्दी घुटनों वाले व्यायामों में मदद करती है।"
   }
 }

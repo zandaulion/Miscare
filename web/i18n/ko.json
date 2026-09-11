@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "지금 가진 장비로 할 수 있는 운동만 보기",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "바닥에서 하는 정식 푸시업, 조절식 덤벨(5~20kg), 복합 운동, 철봉.",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "무릎이 약함 (깊은 스쿼트나 점프 없이)",
-    "Greutate cu mâner": "손잡이 달린 무게추",
     "Hai puțin mai mult": "조금만 올려 볼까요",
     "ID:": "ID:",
     "Instalare & Service Worker": "설치 및 서비스 워커",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "언제나 가능",
     "Jurnal și Progres": "기록과 진행",
     "Limbă": "언어",
-    "Masaj și relaxare": "마사지와 회복",
     "Meniul ⋮ →": "⋮ 메뉴 →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "⋮ 메뉴 → 「앱 설치」 또는 「홈 화면에 추가」.",
     "Menținem același ritm prietenos și data viitoare.": "다음에도 똑같이 편안한 속도를 유지할게요.",
@@ -478,8 +476,6 @@
     "repetări": "회",
     "Repetări realizate în această serie:": "이 세트에서 해낸 횟수:",
     "Resetează filtrele": "조건 초기화",
-    "Rolă de spumă": "폼롤러",
-    "Rolă spumă": "폼롤러",
     "Rulare în browser": "브라우저에서 실행 중",
     "Saltea / Covoraș": "매트",
     "Salvează": "저장",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "{n}개 동작을 레벨별로 정리, 생체역학 설명과 팁 포함",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ 단계별로 안내해 주세요 ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "운동 모음 보기 ({n}개 동작, 레벨별)",
-    "Kettlebell": "케틀벨",
     "Pentru confort la sol": "바닥에서 편하게",
     "Disponibil cu echipamentul tău actual": "현재 장비로 가능",
     "Trunchi & Fesieri": "몸통 & 둔근",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "미리 챙겨 두면 중간에 찾느라 끊기지 않습니다.",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "가져올 것 없습니다 — 오늘은 맨몸만.",
     "Gantere ușoare": "가벼운 덤벨",
-    "Gantere grele": "무거운 덤벨"
+    "Gantere grele": "무거운 덤벨",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "오늘은 바닥 동작이 있어요 — 매트나 러그가 있으면 훨씬 편합니다.",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "무릎 밑에 쿠션을 두면 무릎 대는 동작이 한결 편합니다."
   }
 }

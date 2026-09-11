@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "اعرض فقط التمارين التي يمكنك أداؤها بمعداتك الحالية",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "ضغط كامل على الأرض، ودمبلات قابلة للتعديل (5-20 كجم)، وحركات مركّبة، وعقلة.",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "ركبتان حسّاستان (دون سكوات عميق أو قفز)",
-    "Greutate cu mâner": "ثقل بمقبض",
     "Hai puțin mai mult": "لنضف قليلًا",
     "ID:": "المعرّف:",
     "Instalare & Service Worker": "التثبيت وعامل الخدمة",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "متاح دائمًا",
     "Jurnal și Progres": "السجل والتقدّم",
     "Limbă": "اللغة",
-    "Masaj și relaxare": "التدليك والتعافي",
     "Meniul ⋮ →": "القائمة ⋮ ←",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "القائمة ⋮ ← «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».",
     "Menținem același ritm prietenos și data viitoare.": "سنحافظ على الإيقاع المريح نفسه في المرة القادمة.",
@@ -478,8 +476,6 @@
     "repetări": "تكرار",
     "Repetări realizate în această serie:": "التكرارات المنجزة في هذه المجموعة:",
     "Resetează filtrele": "إعادة ضبط عوامل التصفية",
-    "Rolă de spumă": "أسطوانة تدليك",
-    "Rolă spumă": "أسطوانة تدليك",
     "Rulare în browser": "يعمل في المتصفح",
     "Saltea / Covoraș": "سجادة",
     "Salvează": "حفظ",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "كل الحركات الـ{n} مرتّبة حسب المستوى، مع شرح حركي ونصائح",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ أرشدني خطوة بخطوة ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "تصفّح دليل التمارين ({n} حركة حسب المستوى)",
-    "Kettlebell": "كيتلبل",
     "Pentru confort la sol": "للراحة على الأرض",
     "Disponibil cu echipamentul tău actual": "متاح بمعداتك الحالية",
     "Trunchi & Fesieri": "الجذع والأرداف",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "اجمعها الآن حتى لا تقطع الجلسة بحثًا عنها.",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "لا شيء لإحضاره — اليوم بوزن الجسم فقط.",
     "Gantere ușoare": "دمبلات خفيفة",
-    "Gantere grele": "دمبلات ثقيلة"
+    "Gantere grele": "دمبلات ثقيلة",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "اليوم فيه تمارين على الأرض — سجادة أو بساط يُحدثان فرقًا.",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "وسادة تحت الركبتين تساعد في الحركات التي تعتمد على الركوع."
   }
 }

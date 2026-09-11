@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Показувати лише вправи, які можна зробити з наявним інвентарем",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Повні віджимання від підлоги, розбірні гантелі (5-20 кг), багатосуглобові рухи та турнік.",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Чутливі коліна (без глибоких присідань і стрибків)",
-    "Greutate cu mâner": "Вага з ручкою",
     "Hai puțin mai mult": "Додаймо трішки",
     "ID:": "ID:",
     "Instalare & Service Worker": "Встановлення та service worker",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "Завжди доступно",
     "Jurnal și Progres": "Щоденник і прогрес",
     "Limbă": "Мова",
-    "Masaj și relaxare": "Масаж і відновлення",
     "Meniul ⋮ →": "Меню ⋮ →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "Меню ⋮ → «Встановити застосунок» або «Додати на головний екран».",
     "Menținem același ritm prietenos și data viitoare.": "Наступного разу збережемо той самий приємний темп.",
@@ -478,8 +476,6 @@
     "repetări": "повт.",
     "Repetări realizate în această serie:": "Повторень у цьому підході:",
     "Resetează filtrele": "Скинути фільтри",
-    "Rolă de spumă": "Масажний ролик",
-    "Rolă spumă": "Масажний ролик",
     "Rulare în browser": "Працює у браузері",
     "Saltea / Covoraș": "Килимок",
     "Salvează": "Зберегти",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "Усі {n} рухів за рівнями, з біомеханічними поясненнями та порадами",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ Веди мене крок за кроком ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "Переглянь збірник вправ ({n} рухів за рівнями)",
-    "Kettlebell": "Гиря",
     "Pentru confort la sol": "Для зручності на підлозі",
     "Disponibil cu echipamentul tău actual": "Доступно з твоїм інвентарем",
     "Trunchi & Fesieri": "Корпус і сідниці",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "Збери їх зараз, щоб не переривати заняття пошуками.",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Нічого не треба — сьогодні лише вага тіла.",
     "Gantere ușoare": "Легкі гантелі",
-    "Gantere grele": "Важкі гантелі"
+    "Gantere grele": "Важкі гантелі",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "Сьогодні є робота на підлозі — килимок або килим змінюють усе.",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "Подушка під коліна допомагає у вправах з опорою на коліна."
   }
 }

@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "いま持っている道具でできる種目だけを表示する",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "床での本格的な腕立て伏せ、可変式ダンベル（5〜20kg）、複合種目、懸垂バー。",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "ひざが弱い（深いスクワットやジャンプなし）",
-    "Greutate cu mâner": "取っ手つきの重り",
     "Hai puțin mai mult": "少しだけ増やしましょう",
     "ID:": "ID：",
     "Instalare & Service Worker": "インストールとサービスワーカー",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "いつでもできます",
     "Jurnal și Progres": "記録と進捗",
     "Limbă": "言語",
-    "Masaj și relaxare": "マッサージと回復",
     "Meniul ⋮ →": "⋮ メニュー →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "⋮ メニュー →「アプリをインストール」または「ホーム画面に追加」。",
     "Menținem același ritm prietenos și data viitoare.": "次回も同じ心地よいペースを保ちます。",
@@ -478,8 +476,6 @@
     "repetări": "回",
     "Repetări realizate în această serie:": "このセットでできた回数：",
     "Resetează filtrele": "条件をリセット",
-    "Rolă de spumă": "フォームローラー",
-    "Rolă spumă": "フォームローラー",
     "Rulare în browser": "ブラウザーで実行中",
     "Saltea / Covoraș": "マット",
     "Salvează": "保存",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "{n}種目をレベル別に整理、動作の解説とコツつき",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ 一歩ずつ案内して（{sets}）",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "種目リストを見る（レベル別{n}種目）",
-    "Kettlebell": "ケトルベル",
     "Pentru confort la sol": "床での快適さのために",
     "Disponibil cu echipamentul tău actual": "いまの道具でできます",
     "Trunchi & Fesieri": "体幹＆お尻",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "先に用意しておくと、探すために中断せずにすみます。",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "用意するものはありません — 今日は自重だけです。",
     "Gantere ușoare": "軽いダンベル",
-    "Gantere grele": "重いダンベル"
+    "Gantere grele": "重いダンベル",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "今日は床での動きがあります — マットやラグがあると快適です。",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "ひざの下にクッションがあると、ひざをつく動きが楽になります。"
   }
 }

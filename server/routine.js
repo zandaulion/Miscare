@@ -1,5 +1,16 @@
 import { expandEquipment } from '../web/equipment.js';
 
+/*
+ * `comfort` nu e o cerință, e o sugestie.
+ *
+ * Salteaua și perna n-au voie să blocheze un exercițiu: cine are un covor
+ * poate face bird-dog, iar „de la 0, cu ce ai" ar suna fals dacă mișcările la
+ * sol s-ar debloca prin cumpărături. Câmpul spune doar ce ar face ziua mai
+ * comodă, iar cardul de echipament o transmite mai departe.
+ *
+ * Legătura există și în text: două descrieri spun deja „pe o saltea", în timp
+ * ce lista de echipament o trata ca irelevantă.
+ */
 export const EXERCISES = [
   // Structura exercițiilor. Textul -- nume, descriere, accent, sfat --
   // trăiește în web/i18n/<limbă>.json, sub cheia exercițiului: era scris de
@@ -47,6 +58,7 @@ export const EXERCISES = [
   },
   {
     id: "glute_bridge_gentle",
+    comfort: ["mat"],
     pattern: "hinge",
     category: "core_glutes",
     level: 0,
@@ -87,6 +99,7 @@ export const EXERCISES = [
   },
   {
     id: "knee_pushups",
+    comfort: ["mat", "cushion"],
     pattern: "push",
     category: "upper",
     level: 1,
@@ -117,6 +130,7 @@ export const EXERCISES = [
   },
   {
     id: "prone_cobra",
+    comfort: ["mat"],
     pattern: "mobility",
     category: "mobility",
     level: 1,
@@ -127,6 +141,7 @@ export const EXERCISES = [
   },
   {
     id: "bird_dog_gentle",
+    comfort: ["mat", "cushion"],
     pattern: "core",
     category: "core_glutes",
     level: 1,
@@ -137,6 +152,7 @@ export const EXERCISES = [
   },
   {
     id: "deadbug_assisted",
+    comfort: ["mat"],
     pattern: "core",
     category: "core",
     level: 1,
@@ -147,6 +163,7 @@ export const EXERCISES = [
   },
   {
     id: "crunches_standard",
+    comfort: ["mat"],
     pattern: "core",
     category: "core",
     level: 1,
@@ -157,6 +174,7 @@ export const EXERCISES = [
   },
   {
     id: "side_plank",
+    comfort: ["mat", "cushion"],
     pattern: "core",
     category: "core",
     level: 1,
@@ -197,6 +215,7 @@ export const EXERCISES = [
   },
   {
     id: "reverse_snow_angels",
+    comfort: ["mat"],
     pattern: "pull",
     category: "upper",
     level: 0,
@@ -247,6 +266,7 @@ export const EXERCISES = [
   },
   {
     id: "standard_pushups",
+    comfort: ["mat"],
     pattern: "push",
     category: "upper",
     level: 2,
@@ -267,6 +287,7 @@ export const EXERCISES = [
   },
   {
     id: "forearm_plank",
+    comfort: ["mat"],
     pattern: "core",
     category: "core",
     level: 2,
@@ -297,6 +318,7 @@ export const EXERCISES = [
   },
   {
     id: "mountain_climbers",
+    comfort: ["mat"],
     pattern: "core",
     category: "core",
     level: 2,
@@ -317,6 +339,7 @@ export const EXERCISES = [
   },
   {
     id: "single_leg_glute_bridge",
+    comfort: ["mat"],
     pattern: "hinge",
     category: "core_glutes",
     level: 2,
@@ -377,6 +400,7 @@ export const EXERCISES = [
   },
   {
     id: "dumbbell_floor_press",
+    comfort: ["mat"],
     pattern: "push",
     category: "upper",
     level: 2,
@@ -407,6 +431,7 @@ export const EXERCISES = [
   },
   {
     id: "diamond_pushups",
+    comfort: ["mat"],
     pattern: "push",
     category: "upper",
     level: 3,
@@ -427,6 +452,7 @@ export const EXERCISES = [
   },
   {
     id: "plank_shoulder_taps",
+    comfort: ["mat"],
     pattern: "core",
     category: "core",
     level: 3,
@@ -437,6 +463,7 @@ export const EXERCISES = [
   },
   {
     id: "burpees_clean",
+    comfort: ["mat"],
     pattern: "core",
     category: "core",
     level: 3,
