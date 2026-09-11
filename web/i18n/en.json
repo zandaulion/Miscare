@@ -123,7 +123,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Show only exercises you can do with your current equipment",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Full floor push-ups, adjustable dumbbells (5–20 kg), compound lifts and a pull-up bar.",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Sensitive knees (no deep squats or jumping)",
-    "Greutate cu mâner": "A weight with a handle",
     "Hai puțin mai mult": "Let's add a little",
     "ID:": "ID:",
     "Instalare & Service Worker": "Install & service worker",
@@ -147,7 +146,6 @@
     "Întotdeauna disponibilă": "Always available",
     "Jurnal și Progres": "Journal and progress",
     "Limbă": "Language",
-    "Masaj și relaxare": "Massage and recovery",
     "Meniul ⋮ →": "The ⋮ menu →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "The ⋮ menu → “Install app” or “Add to home screen”.",
     "Menținem același ritm prietenos și data viitoare.": "We'll keep the same friendly pace next time.",
@@ -206,8 +204,6 @@
     "repetări": "reps",
     "Repetări realizate în această serie:": "Reps completed in this set:",
     "Resetează filtrele": "Reset filters",
-    "Rolă de spumă": "Foam roller",
-    "Rolă spumă": "Foam roller",
     "Rulare în browser": "Running in the browser",
     "Saltea / Covoraș": "Mat",
     "Salvează": "Save",
@@ -266,7 +262,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "All {n} movements organised by level, with biomechanical guidance and tips",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ Guide me step by step ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "Browse the exercise compendium ({n} movements by level)",
-    "Kettlebell": "Kettlebell",
     "Pentru confort la sol": "For comfort on the floor",
     "Disponibil cu echipamentul tău actual": "Available with your current equipment",
     "Trunchi & Fesieri": "Trunk & glutes",
@@ -277,7 +272,9 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "Gather them now, so you don’t break the session looking for them.",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "Nothing to fetch — today is bodyweight only.",
     "Gantere ușoare": "Light dumbbells",
-    "Gantere grele": "Heavy dumbbells"
+    "Gantere grele": "Heavy dumbbells",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "You have floor work today — a mat or a rug makes a difference.",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "A cushion under the knees helps with the kneeling movements."
   },
   "ex": {
     "wall_pushups": {

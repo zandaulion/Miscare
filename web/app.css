@@ -1928,3 +1928,11 @@ nav.app-nav {
 [dir='rtl'] .gear-card-title {
   letter-spacing: normal;
 }
+
+/* Sugestia de confort: o vorbă bună, nu o cerință. Mai ștearsă decât nota de
+ * strâns lucrurile, ca să se vadă că nu blochează nimic. */
+.gear-note.gear-hint {
+  margin-top: 6px;
+  opacity: 0.85;
+  font-style: italic;
+}

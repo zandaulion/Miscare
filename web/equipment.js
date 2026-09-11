@@ -11,6 +11,19 @@
  * Cheile sunt românești, ca peste tot; traducerea se face la desenare.
  */
 
+/*
+ * Ce lipsește de aici, și de ce.
+ *
+ * Kettlebell-ul și rola de spumă erau în listă, dar niciun exercițiu nu le
+ * cerea și nicio zi nu se schimba dacă le bifai. Un rând care nu face nimic nu
+ * e neutru: slăbește încrederea în cele care chiar filtrează. Se pun înapoi
+ * când catalogul are ce să ofere pentru ele -- kettlebell-ul merită, e o
+ * unealtă serioasă de forță; rola ar cere o categorie de recuperare, care nu
+ * există încă.
+ *
+ * Salteaua și perna au rămas, dar au trecut de la cerințe la sugestii: vezi
+ * `comfort` în catalogul de exerciții.
+ */
 export const EQUIPMENT = {
   bodyweight: { icon: '🧘', name: 'Greutatea corpului', short: 'Corp liber', desc: 'Întotdeauna disponibilă' },
   chair: { icon: '🪑', name: 'Scaun stabil', short: 'Scaun', desc: 'Pentru sprijin și așezare' },
@@ -19,9 +32,7 @@ export const EQUIPMENT = {
   dumbbells: { icon: '🏋️', name: 'Gantere ușoare', short: 'Gantere ușoare', desc: '1 - 5 kg (brațe & mobilitate)' },
   adjustable_dumbbells: { icon: '🏋️‍♂️', name: 'Gantere grele', short: 'Gantere grele', desc: '5 - 20 kg (forță & picioare)' },
   resistance_band: { icon: '🎗️', name: 'Bandă elastică', short: 'Bandă elastică', desc: 'Textilă sau cauciuc' },
-  kettlebell: { icon: '🔔', name: 'Kettlebell', short: 'Kettlebell', desc: 'Greutate cu mâner' },
   pullup_bar: { icon: '🪜', name: 'Bară de tracțiuni', short: 'Bară tracțiuni', desc: 'Montată la ușă/perete' },
-  foam_roller: { icon: '🪵', name: 'Rolă de spumă', short: 'Rolă spumă', desc: 'Masaj și relaxare' },
   cushion: { icon: '🛋️', name: 'Pernă moale', short: 'Pernă', desc: 'Protecție genunchi' }
 };
 
@@ -77,3 +88,19 @@ export function equipmentForExercises(exercises = []) {
   }
   return EQUIPMENT_ORDER.filter((id) => needed.has(id));
 }
+
+/**
+ * Ce ar face ziua mai comodă, fără să fie cerut.
+ *
+ * Se citește din câmpul `comfort` al exercițiilor, nu din textul lor. Am mai
+ * avut o dată o regulă care citea proza -- pasul de progresie căuta cuvântul
+ * „secunde" -- și s-a rupt la prima traducere. Aici e câmp.
+ */
+export function comfortForExercises(exercises = []) {
+  const wanted = new Set();
+  for (const ex of exercises) for (const id of ex?.comfort || []) wanted.add(id);
+  return ['yoga_mat', 'cushion'].filter((id) => wanted.has(COMFORT_ID[id]));
+}
+
+/** `comfort` vorbește despre lucruri, echipamentul are identificatori. */
+const COMFORT_ID = { yoga_mat: 'mat', cushion: 'cushion' };

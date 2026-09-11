@@ -19,9 +19,7 @@ const CATEGORY = {
   dumbbells: 'weights',
   adjustable_dumbbells: 'weights',
   resistance_band: 'bands',
-  kettlebell: 'weights',
   pullup_bar: 'bar',
-  foam_roller: 'recovery',
   cushion: 'floor'
 };
 

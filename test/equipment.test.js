@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { equipmentForExercises, equipmentInfo, expandEquipment, EQUIPMENT, EQUIPMENT_ORDER } from '../web/equipment.js';
+import { equipmentForExercises, comfortForExercises, equipmentInfo, expandEquipment, EQUIPMENT, EQUIPMENT_ORDER } from '../web/equipment.js';
 import { filterSafeExercises } from '../server/routine.js';
 import { EXERCISES } from '../server/routine.js';
 
@@ -97,5 +97,38 @@ test('the equipment offered is equipment the app can use', async (t) => {
     for (const row of EQUIPMENT_CATALOG) {
       assert.equal(row.name_ro, EQUIPMENT[row.id].name, `${row.id}: nume diferit faţă de tabel`);
     }
+  });
+});
+
+test('comfort suggests, it never gates', async (t) => {
+  await t.test('a mat is suggested when the day touches the floor', () => {
+    assert.deepEqual(comfortForExercises([{ comfort: ['mat'] }]), ['yoga_mat']);
+    assert.deepEqual(comfortForExercises([{ comfort: ['mat', 'cushion'] }]), ['yoga_mat', 'cushion']);
+    assert.deepEqual(comfortForExercises([{ equipment: ['bodyweight'] }]), []);
+  });
+
+  await t.test('owning a mat unlocks nothing, and lacking one blocks nothing', () => {
+    // Miezul deciziei: „de la 0, cu ce ai" ar suna fals dacă mișcările la sol
+    // s-ar debloca prin cumpărături. Cine are un covor face bird-dog.
+    const base = { level: 'intermediate', daily_time: 15, equipment: ['bodyweight', 'chair', 'wall'] };
+    const fara = filterSafeExercises(EXERCISES, base).map((e) => e.id);
+    const cu = filterSafeExercises(EXERCISES, { ...base, equipment: [...base.equipment, 'yoga_mat', 'cushion'] }).map((e) => e.id);
+    assert.deepEqual(cu, fara, 'confortul nu are voie să schimbe ce se poate face');
+  });
+
+  await t.test('every comfort value names something the app knows', () => {
+    const known = new Set(['mat', 'cushion']);
+    for (const ex of EXERCISES) {
+      for (const c of ex.comfort || []) assert.ok(known.has(c), `${ex.id}: confort necunoscut „${c}”`);
+    }
+  });
+
+  await t.test('nothing is offered that no exercise can use', () => {
+    // Kettlebell-ul și rola erau în listă fără ca vreo zi să se schimbe dacă
+    // le bifai. Un rând care nu face nimic slăbește încrederea în restul.
+    const cerute = new Set(EXERCISES.flatMap((e) => e.equipment));
+    const confort = new Set(EXERCISES.flatMap((e) => e.comfort || []).map((c) => ({ mat: 'yoga_mat', cushion: 'cushion' })[c]));
+    const inutile = EQUIPMENT_ORDER.filter((id) => !cerute.has(id) && !confort.has(id));
+    assert.deepEqual(inutile, [], 'echipament oferit pe care nimic nu-l folosește');
   });
 });

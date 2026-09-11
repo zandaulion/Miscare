@@ -1,5 +1,6 @@
 /**
- * Copiază efortul din catalogul serverului în cel al clientului.
+ * Copiază din catalogul serverului în cel al clientului câmpurile de care are
+ * nevoie interfața: efortul și sugestiile de confort.
  *
  * Sunt două cataloage fiindcă fiecare știe altceva: serverul are efortul,
  * tiparul și zonele sigure; clientul are desenul, fotografia, animația și
@@ -26,10 +27,12 @@ for (const ex of EXERCISES) {
     process.exitCode = 1;
     continue;
   }
-  const line = `    reps: ${JSON.stringify(ex.reps)},`;
+  const fields = [`reps: ${JSON.stringify(ex.reps)}`];
+  if (ex.comfort && ex.comfort.length) fields.push(`comfort: ${JSON.stringify(ex.comfort)}`);
+  const line = fields.map((f) => `    ${f},`).join('\n');
   // Câmpul generat stă imediat sub id, ca să se vadă că nu se editează aici.
   const after = src.indexOf('\n', at) + 1;
-  const existing = /^ {4}reps: .*\n/.exec(src.slice(after));
+  const existing = /^(?: {4}(?:reps|comfort): .*\n)+/.exec(src.slice(after));
   if (existing) {
     if (existing[0] === line + '\n') continue;
     src = src.slice(0, after) + line + '\n' + src.slice(after + existing[0].length);
@@ -41,4 +44,4 @@ for (const ex of EXERCISES) {
 }
 
 fs.writeFileSync(file, src);
-console.log(`efort sincronizat: ${added} adăugate, ${updated} actualizate, din ${EXERCISES.length}`);
+console.log(`catalog sincronizat: ${added} adăugate, ${updated} actualizate, din ${EXERCISES.length}`);

@@ -395,7 +395,6 @@
     "Filtrează doar exercițiile ce pot fi făcute cu echipamentul tău actual": "Mostrar solo los ejercicios que puedas hacer con el material que tienes",
     "Flotări clasice la podea, gantere reglabile (5-20 kg), greutăți compuse și bară de tracțiuni.": "Flexiones completas en el suelo, mancuernas regulables (5-20 kg), levantamientos compuestos y una barra de dominadas.",
     "Genunchi sensibili (fără genuflexiuni adânci sau sărituri)": "Rodillas sensibles (sin sentadillas profundas ni saltos)",
-    "Greutate cu mâner": "Una pesa con asa",
     "Hai puțin mai mult": "Vamos a subir un poco",
     "ID:": "ID:",
     "Instalare & Service Worker": "Instalación y service worker",
@@ -419,7 +418,6 @@
     "Întotdeauna disponibilă": "Siempre disponible",
     "Jurnal și Progres": "Diario y progreso",
     "Limbă": "Idioma",
-    "Masaj și relaxare": "Masaje y recuperación",
     "Meniul ⋮ →": "El menú ⋮ →",
     "Meniul ⋮ → „Instalează aplicația” sau „Adaugă la ecranul principal”.": "El menú ⋮ → «Instalar aplicación» o «Añadir a la pantalla de inicio».",
     "Menținem același ritm prietenos și data viitoare.": "Mantendremos el mismo ritmo agradable la próxima vez.",
@@ -478,8 +476,6 @@
     "repetări": "rep.",
     "Repetări realizate în această serie:": "Repeticiones completadas en esta serie:",
     "Resetează filtrele": "Restablecer los filtros",
-    "Rolă de spumă": "Rodillo de espuma",
-    "Rolă spumă": "Rodillo de espuma",
     "Rulare în browser": "Ejecutándose en el navegador",
     "Saltea / Covoraș": "Esterilla",
     "Salvează": "Guardar",
@@ -538,7 +534,6 @@
     "Toate cele {n} de mișcări structurate pe niveluri, cu ghid biomecanic și sfaturi": "Los {n} movimientos organizados por nivel, con guía biomecánica y consejos",
     "▶️ Ghidează-mă pas cu pas ({sets})": "▶️ Guíame paso a paso ({sets})",
     "Explorează compendiul de exerciții ({n} mișcări pe niveluri)": "Explora el compendio de ejercicios ({n} movimientos por nivel)",
-    "Kettlebell": "Kettlebell",
     "Pentru confort la sol": "Para estar cómodo en el suelo",
     "Disponibil cu echipamentul tău actual": "Disponible con tu material actual",
     "Trunchi & Fesieri": "Tronco y glúteos",
@@ -549,6 +544,8 @@
     "Strânge-le acum, ca să nu întrerupi sesiunea căutându-le.": "Reúnelos ahora, para no interrumpir la sesión buscándolos.",
     "Nimic de adus — azi lucrezi doar cu greutatea corpului.": "No hace falta nada: hoy solo peso corporal.",
     "Gantere ușoare": "Mancuernas ligeras",
-    "Gantere grele": "Mancuernas pesadas"
+    "Gantere grele": "Mancuernas pesadas",
+    "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "Hoy hay trabajo en el suelo: una esterilla o una alfombra marcan la diferencia.",
+    "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "Un cojín bajo las rodillas ayuda en los ejercicios de rodillas."
   }
 }

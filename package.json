@@ -10,7 +10,7 @@
     "test": "node --test \"test/**/*.test.js\"",
     "i18n": "node scripts/i18n-index.mjs && node scripts/i18n-check.mjs",
     "i18n:check": "node scripts/i18n-index.mjs && node scripts/i18n-check.mjs --check",
-    "catalogue:sync": "node scripts/sync-client-reps.mjs"
+    "catalogue:sync": "node scripts/sync-client-catalogue.mjs"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
