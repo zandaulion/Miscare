@@ -7,6 +7,7 @@ import { t, exText, repWords } from './i18n.js';
 import { formatReps } from './format-reps.js';
 import { state } from './server-client.js';
 import { LEVEL_LABEL, levelBadge } from './levels.js';
+import { makeDismissable } from './dismissable.js';
 
 // Tabelele țin chei, nu texte traduse.
 //
@@ -470,89 +471,25 @@ function openExerciseSheet(id, container, { replace = false } = {}) {
   `;
   document.body.appendChild(overlay);
 
-  /*
-   * Foaia ocupă o poziție în istoric.
-   *
-   * Altfel butonul înapoi al telefonului ieșea din aplicație cu foaia încă pe
-   * ecran -- gestul pe care toată lumea îl face ca să închidă ceva deschis
-   * peste conținut. O mișcare înrudită înlocuiește poziția în loc să adauge
-   * una nouă, ca să nu se strângă un teanc de foi prin care trebuie apăsat
-   * înapoi de cinci ori.
-   */
-  if (replace) history.replaceState({ exSheet: id }, '');
-  else history.pushState({ exSheet: id }, '');
-
   const sheet = overlay.querySelector('.ex-sheet');
-  const body = overlay.querySelector('.ex-sheet-body');
 
-  // Scoate foaia de pe ecran, fără să atingă istoricul.
-  const dismiss = () => {
-    overlay.remove();
-    document.removeEventListener('keydown', onKey);
-    window.removeEventListener('popstate', onPop);
-    if (dismissOpenSheet === dismiss) dismissOpenSheet = null;
-  };
+  // Înapoi, Escape, clic pe fundal și trasul în jos -- toate din același loc.
+  // O mișcare înrudită înlocuiește poziția în loc să adauge una, ca să nu se
+  // strângă un teanc de foi prin care trebuie apăsat înapoi de cinci ori.
+  const { close, dismiss } = makeDismissable({
+    name: 'ex-sheet',
+    overlay,
+    panel: sheet,
+    scroller: overlay.querySelector('.ex-sheet-body'),
+    onDismiss: () => {
+      overlay.remove();
+      if (dismissOpenSheet === dismiss) dismissOpenSheet = null;
+    },
+    replace
+  });
   dismissOpenSheet = dismiss;
 
-  // Închiderea din interfață derulează poziția din istoric; `popstate` face
-  // apoi scoaterea propriu-zisă. Așa cele două căi ajung în același loc.
-  const close = () => {
-    if (history.state && history.state.exSheet) history.back();
-    else dismiss();
-  };
-  function onPop() { dismiss(); }
-  function onKey(e) { if (e.key === 'Escape') close(); }
-
-  window.addEventListener('popstate', onPop);
-  document.addEventListener('keydown', onKey);
   overlay.querySelector('#ex-sheet-close').addEventListener('click', close);
-  // Doar fundalul închide; un clic în interiorul foii nu trebuie s-o piardă.
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-
-  /*
-   * Trasul în jos închide.
-   *
-   * Pornește doar cu corpul derulat până sus. Altfel gestul ar fura
-   * derularea: ai vrea să urci în text și foaia ar pleca de sub deget.
-   */
-  let startY = 0;
-  let dy = 0;
-  let dragging = false;
-  const DISMISS_AFTER = 110;
-
-  sheet.addEventListener('touchstart', (e) => {
-    if (e.touches.length !== 1 || body.scrollTop > 0) return;
-    startY = e.touches[0].clientY;
-    dy = 0;
-    dragging = true;
-    sheet.style.transition = 'none';
-  }, { passive: true });
-
-  sheet.addEventListener('touchmove', (e) => {
-    if (!dragging) return;
-    dy = e.touches[0].clientY - startY;
-    if (dy <= 0 || body.scrollTop > 0) {
-      dragging = false;
-      sheet.style.transform = '';
-      return;
-    }
-    e.preventDefault();
-    sheet.style.transform = `translateY(${dy}px)`;
-    // Fundalul se limpezește pe măsură ce foaia coboară, ca să se vadă că
-    // gestul chiar duce undeva.
-    overlay.style.background = `rgba(0, 0, 0, ${(0.7 * Math.max(0, 1 - dy / 420)).toFixed(3)})`;
-  }, { passive: false });
-
-  const endDrag = () => {
-    if (!dragging) return;
-    dragging = false;
-    sheet.style.transition = '';
-    overlay.style.background = '';
-    if (dy > DISMISS_AFTER) close();
-    else sheet.style.transform = '';
-  };
-  sheet.addEventListener('touchend', endDrag);
-  sheet.addEventListener('touchcancel', endDrag);
 
   // Mișcările înrudite iau locul acesteia, nu se adaugă peste ea.
   overlay.querySelectorAll('.swap-jump-btn').forEach((btn) => {
@@ -689,8 +626,8 @@ function updateResults(container) {
 // ---------------------------------------------------------------------------
 // MODAL DE PRACTICĂ RAPIDĂ
 // ---------------------------------------------------------------------------
-/** Ascultătorul de `popstate` al modalului de exersare, cât timp e deschis. */
-let practicePopHandler = null;
+/** Închide modalul de exersare, cât timp e deschis. */
+let closePractice = null;
 
 function openPracticeModal(exercise, container, { replace = false } = {}) {
   currentPracticeExercise = exercise;
@@ -703,12 +640,14 @@ function openPracticeModal(exercise, container, { replace = false } = {}) {
   // cu cronometrul pornit -- mai supărător decât la foaie, fiindcă omul e în
   // mijlocul unei mișcări și se întoarce la un ecran gol.
   //
-  // Aici nu se trage în jos ca să se închidă: modalul ține un cronometru care
-  // merge, iar o atingere greșită în timpul exercițiului l-ar pierde.
-  if (replace) history.replaceState({ practice: exercise.id }, '');
-  else history.pushState({ practice: exercise.id }, '');
-  practicePopHandler = () => hidePracticeModal(modal);
-  window.addEventListener('popstate', practicePopHandler);
+  // Fără `panel`, deci fără tras în jos: modalul ține un cronometru care merge,
+  // iar o atingere greșită în timpul exercițiului l-ar pierde.
+  ({ close: closePractice } = makeDismissable({
+    name: 'practice',
+    overlay: modal,
+    onDismiss: () => hidePracticeModal(modal),
+    replace
+  }));
 
   container.querySelector('#practice-title').textContent = exText(exercise.id, 'name');
   const practiceBox = container.querySelector('#practice-svg-wrapper');
@@ -757,15 +696,11 @@ function hidePracticeModal(modal) {
   practiceIsRunning = false;
   currentPracticeExercise = null;
   modal.classList.add('hidden');
-  if (practicePopHandler) {
-    window.removeEventListener('popstate', practicePopHandler);
-    practicePopHandler = null;
-  }
+  closePractice = null;
 }
 
-/** Închiderea din interfață derulează poziția; `popstate` face ascunderea. */
 function closePracticeModal(modal) {
-  if (history.state && history.state.practice) history.back();
+  if (closePractice) closePractice();
   else hidePracticeModal(modal);
 }
 

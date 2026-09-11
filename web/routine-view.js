@@ -1,6 +1,7 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
 import { t, exText, repWords } from './i18n.js';
 import { levelBadge } from './levels.js';
+import { makeDismissable } from './dismissable.js';
 import { formatReps } from '/format-reps.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
 
@@ -363,17 +364,6 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   container.innerHTML = html;
 
   // Event handlers
-  const previewModal = container.querySelector('#exercise-preview-modal');
-  const btnClosePreview = container.querySelector('#btn-close-preview');
-  if (btnClosePreview && previewModal) {
-    btnClosePreview.addEventListener('click', () => {
-      previewModal.classList.add('hidden');
-    });
-    previewModal.addEventListener('click', (e) => {
-      if (e.target === previewModal) previewModal.classList.add('hidden');
-    });
-  }
-
   container.querySelectorAll('.exercise-card').forEach((card) => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
@@ -537,6 +527,9 @@ function swapExercise(index, container) {
   notifyToast(`🔄 Schimbat cu: ${exText(next.id, 'name')}`);
 }
 
+/** Închide previzualizarea de pe „Azi", cât timp e deschisă. */
+let closePreview = null;
+
 function openExercisePreview(full, container) {
   const modal = container.querySelector('#exercise-preview-modal');
   if (!modal) return;
@@ -568,6 +561,20 @@ function openExercisePreview(full, container) {
     `;
   }
   modal.classList.remove('hidden');
+
+  // Înapoi, Escape, clic pe fundal și trasul în jos, ca la foaia din compendiu.
+  ({ close: closePreview } = makeDismissable({
+    name: 'preview',
+    overlay: modal,
+    panel: modal.querySelector('.practice-modal-card'),
+    scroller: body,
+    onDismiss: () => {
+      modal.classList.add('hidden');
+      closePreview = null;
+    }
+  }));
+
+  container.querySelector('#btn-close-preview').onclick = () => closePreview?.();
 }
 
 // ---------------------------------------------------------------- Guided Workout Runner
