@@ -283,12 +283,32 @@ app.get('/api/routine/today', requireDevice, (req, res) => {
       total_sessions: profileRow.total_sessions || 0
     };
 
+    // Ce s-a făcut chiar ieri, din jurnal -- nu reconstituit.
+    //
+    // Generatorul își putea deduce singur sesiunea precedentă, rulându-se cu o
+    // rotație mai puțin. Numai că, pentru a opri recursivitatea, o rula cu
+    // `avoid` gol, adică fără regula pe care tocmai o aplica. Ieșea altă
+    // sesiune decât cea servită cu adevărat, deci se ocolea o zi care nu
+    // existase și se repeta cea care existase.
+    //
+    // Jurnalul știe exact ce s-a servit, inclusiv exercițiile schimbate manual
+    // cu „Schimbă cu altul" -- pe care nicio reconstituire nu le-ar fi ghicit.
+    let avoid = null;
+    if (lastLog && daysSinceLast <= 1) {
+      try {
+        const done = JSON.parse(lastLog.exercises_done_json || '[]');
+        const ids = done.map((e) => e && e.id).filter(Boolean);
+        if (ids.length) avoid = new Set(ids);
+      } catch { /* jurnal ilizibil: generatorul se descurcă și fără */ }
+    }
+
     const routine = generateDailyRoutine(profile, {
       forceDurationMinutes: forceDuration,
       daysSinceLastSession: daysSinceLast,
       lastFeedback: profile.last_feedback,
       repStep: profile.rep_step,
-      rotation: profile.total_sessions
+      rotation: profile.total_sessions,
+      avoid
     });
 
     // Cel mult o întrebare, și niciodată aplicată din oficiu: sesiunea de mai
