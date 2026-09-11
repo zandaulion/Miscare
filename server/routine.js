@@ -490,8 +490,19 @@ export function filterSafeExercises(allExercises, profile) {
       return false;
     }
 
-    // Exercițiile nu trebuie să depășească nivelul utilizatorului
+    // Nivelul e plafon, dar și prag.
+    //
+    // Plafonul e evident: nu servim ce omul încă nu poate face. Pragul e mai
+    // subtil. Cu un nivel mai jos e în regulă -- mișcarea aceea joacă rolul de
+    // încălzire, iar catalogul ar fi prea sărac fără ea. Cu două niveluri mai
+    // jos nu mai e sesiunea nivelului declarat: cineva la Nivel 2 primea
+    // flotări la perete drept mișcare principală de împins, având în bazin și
+    // flotări clasice, și împins cu gantere.
+    //
+    // Mușcă doar de la Nivel 2 în sus. La 0 și 1 pragul cade sub catalog, deci
+    // nu schimbă nimic.
     if (ex.level > targetLevel) return false;
+    if (ex.level < targetLevel - 1) return false;
 
     return true;
   });
@@ -680,6 +691,7 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     }
     return null;
   };
+
 
   const take = (ex) => {
     if (ex && chosen.length < exerciseCount && !chosen.includes(ex)) chosen.push(ex);
