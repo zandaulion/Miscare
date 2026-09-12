@@ -7,3 +7,13 @@ data/*.db-shm
 __pycache__/
 *.pyc
 
+# Atelierul de grafică: cadre intermediare, previzualizări, variante.
+# 248 MB care se regenerează din scripturile din scripts/.
+experiments/
+
+# GIF-urile exercițiilor: 50 MB pe care nimic nu le cere.
+# Catalogul cere `.jpg` pentru fotografie și `.webp` pentru animație; niciun
+# `.gif` nu e referit în cod, marcaj sau stil -- singurele mențiuni sunt în
+# scripturile care le produc. Rămân ignorate ca să nu reapară la următoarea
+# rulare a pipeline-ului.
+web/images/exercises/*.gif
