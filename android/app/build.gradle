@@ -33,8 +33,12 @@ android {
     buildTypes {
         release {
             if (signingFile.exists()) signingConfig signingConfigs.release
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // R8 shrinks and obfuscates the release. Play marks an app whose
+            // DEX is under 25% optimised in any category as low quality.
+            // Capacitor's own rules keep LocalDataPlugin's @PluginMethods.
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
