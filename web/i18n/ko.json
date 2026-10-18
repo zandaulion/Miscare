@@ -547,6 +547,19 @@
     "Gantere grele": "무거운 덤벨",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "오늘은 바닥 동작이 있어요 — 매트나 러그가 있으면 훨씬 편합니다.",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "무릎 밑에 쿠션을 두면 무릎 대는 동작이 한결 편합니다.",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "목록에서 동작을 고르면 자세히 볼 수 있어요."
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "목록에서 동작을 고르면 자세히 볼 수 있어요.",
+    "Setări": "설정",
+    "Datele tale": "내 데이터",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "기록과 설정은 이 휴대전화에 저장됩니다. 계정은 필요하지 않습니다.",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "앱을 삭제하거나 휴대전화를 바꾸기 전에 사본을 저장하세요. 파일에는 기록과 설정이 포함됩니다.",
+    "Exportă datele": "데이터 내보내기",
+    "Importă datele": "데이터 가져오기",
+    "Șterge toate datele": "모든 데이터 삭제",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "현재 기록과 설정이 바뀝니다. 계속할까요?",
+    "Fișier de backup invalid": "잘못된 백업 파일입니다",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "이 휴대전화의 기록과 모든 설정을 영구적으로 삭제할까요?",
+    "Revino la intensitatea anterioară": "이전 강도로 돌아가기",
+    "Nu am putut salva datele. Încearcă din nou.": "데이터를 저장하지 못했습니다. 다시 시도해 주세요.",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "로컬 데이터를 열지 못했습니다. 앱을 닫았다가 다시 열어 주세요."
   }
 }

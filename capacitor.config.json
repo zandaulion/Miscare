@@ -1,0 +1,8 @@
+{
+  "appId": "com.zandaulion.miscare",
+  "appName": "Mișcare",
+  "webDir": "dist/android",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false, "zoomEnabled": true },
+  "plugins": { "CapacitorHttp": { "enabled": false } }
+}

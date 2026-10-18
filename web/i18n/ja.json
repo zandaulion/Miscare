@@ -547,6 +547,19 @@
     "Gantere grele": "重いダンベル",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "今日は床での動きがあります — マットやラグがあると快適です。",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "ひざの下にクッションがあると、ひざをつく動きが楽になります。",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "一覧から動きを選ぶと詳細が見られます。"
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "一覧から動きを選ぶと詳細が見られます。",
+    "Setări": "設定",
+    "Datele tale": "あなたのデータ",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "記録と設定はこの端末に保存されます。アカウントは不要です。",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "アプリの削除や機種変更の前にコピーを保存してください。ファイルには記録と設定が含まれます。",
+    "Exportă datele": "データを書き出す",
+    "Importă datele": "データを読み込む",
+    "Șterge toate datele": "すべてのデータを削除",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "現在の記録と設定が置き換わります。続けますか？",
+    "Fișier de backup invalid": "無効なバックアップファイルです",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "この端末の記録とすべての設定を完全に削除しますか？",
+    "Revino la intensitatea anterioară": "以前の強度に戻す",
+    "Nu am putut salva datele. Încearcă din nou.": "データを保存できませんでした。もう一度お試しください。",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "端末のデータを開けませんでした。アプリを閉じて再度開いてください。"
   }
 }

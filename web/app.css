@@ -2173,3 +2173,4 @@ nav.app-nav {
     box-shadow: 0 0 0 2px var(--primary-border);
   }
 }
+.local-data-actions { display: grid; gap: 12px; margin-top: 16px; }

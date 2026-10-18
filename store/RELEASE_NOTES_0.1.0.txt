@@ -1,0 +1,108 @@
+<en-US>
+Welcome to Mișcare!
+• Follow short, guided home workouts.
+• Adapt routines to your level and equipment.
+• Choose when to increase difficulty.
+• Keep your workout journal offline, without an account.
+• Export, import or delete your data.
+• Choose from 12 interface languages.
+</en-US>
+<ar>
+مرحبًا بك في Mișcare!
+• اتبع تمارين منزلية قصيرة مع إرشادات واضحة.
+• خصّص التمارين حسب مستواك والمعدات المتاحة.
+• اختر متى تزيد صعوبة التمارين.
+• احتفظ بسجل تمارينك دون إنترنت أو حساب.
+• صدّر بياناتك أو استوردها أو احذفها.
+• اختر من بين 12 لغة للواجهة.
+</ar>
+<de-DE>
+Willkommen bei Mișcare!
+• Kurze, geführte Übungen für zu Hause.
+• Routinen passend zu deinem Niveau und deiner Ausrüstung.
+• Entscheide selbst, wann du die Schwierigkeit erhöhst.
+• Führe dein Trainingstagebuch offline und ohne Konto.
+• Exportiere, importiere oder lösche deine Daten.
+• Wähle aus 12 Oberflächensprachen.
+</de-DE>
+<es-ES>
+¡Bienvenido a Mișcare!
+• Sigue sesiones cortas y guiadas en casa.
+• Adapta las rutinas a tu nivel y material.
+• Elige cuándo aumentar la dificultad.
+• Guarda tu diario de ejercicio sin conexión ni cuenta.
+• Exporta, importa o elimina tus datos.
+• Elige entre 12 idiomas para la interfaz.
+</es-ES>
+<fr-FR>
+Bienvenue dans Mișcare !
+• Suivez de courtes séances guidées à la maison.
+• Adaptez les routines à votre niveau et à votre matériel.
+• Choisissez quand augmenter la difficulté.
+• Gardez votre journal d'exercice hors ligne, sans compte.
+• Exportez, importez ou supprimez vos données.
+• Choisissez parmi 12 langues d'interface.
+</fr-FR>
+<hi-IN>
+Mișcare में आपका स्वागत है!
+• घर पर छोटे, निर्देशित व्यायाम सत्र करें।
+• अपने स्तर और उपकरण के अनुसार दिनचर्या चुनें।
+• कठिनाई कब बढ़ानी है, यह खुद तय करें।
+• बिना खाते के अपनी व्यायाम डायरी ऑफ़लाइन रखें।
+• अपना डेटा निर्यात, आयात या मिटाएँ।
+• इंटरफ़ेस के लिए 12 भाषाओं में से चुनें।
+</hi-IN>
+<ja-JP>
+Mișcare へようこそ！
+• 自宅で短いガイド付きエクササイズ。
+• レベルや使える器具に合わせてメニューを調整。
+• 難易度を上げるタイミングは自分で選択。
+• アカウント不要で、運動日記をオフライン保存。
+• データの書き出し、読み込み、削除に対応。
+• 12 言語から表示言語を選択。
+</ja-JP>
+<ko-KR>
+Mișcare에 오신 것을 환영합니다!
+• 집에서 짧은 가이드 운동을 따라 하세요.
+• 수준과 보유 기구에 맞게 루틴을 조절하세요.
+• 난이도를 높일 시점을 직접 선택하세요.
+• 계정 없이 운동 일지를 오프라인으로 보관하세요.
+• 데이터를 내보내거나 가져오고 삭제하세요.
+• 12개 언어 중에서 화면 언어를 선택하세요.
+</ko-KR>
+<pt-BR>
+Boas-vindas ao Mișcare!
+• Faça sessões curtas e guiadas em casa.
+• Adapte as rotinas ao seu nível e aos seus equipamentos.
+• Escolha quando aumentar a dificuldade.
+• Guarde seu diário de exercícios offline, sem conta.
+• Exporte, importe ou apague seus dados.
+• Escolha entre 12 idiomas para a interface.
+</pt-BR>
+<ro>
+Bun venit la Mișcare!
+• Urmează sesiuni scurte de exerciții ghidate, acasă.
+• Adaptează rutina la nivelul tău și la echipamentul disponibil.
+• Alege când crești dificultatea.
+• Păstrează jurnalul de exerciții offline, fără cont.
+• Exportă, importă sau șterge datele tale.
+• Alege dintre 12 limbi pentru interfață.
+</ro>
+<uk>
+Вітаємо в Mișcare!
+• Виконуйте короткі домашні заняття з підказками.
+• Адаптуйте програму до свого рівня та спорядження.
+• Самі обирайте, коли підвищувати складність.
+• Ведіть щоденник тренувань офлайн, без облікового запису.
+• Експортуйте, імпортуйте або видаляйте свої дані.
+• Обирайте серед 12 мов інтерфейсу.
+</uk>
+<zh-CN>
+欢迎使用 Mișcare！
+• 跟随指导，在家进行短时锻炼。
+• 根据自身水平和可用器材调整练习。
+• 自主选择何时提高难度。
+• 无需账户，离线保存运动日记。
+• 导出、导入或删除自己的数据。
+• 界面支持 12 种语言。
+</zh-CN>

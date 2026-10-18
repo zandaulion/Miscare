@@ -1,0 +1,27 @@
+A little movement, at your own pace.
+
+Mișcare helps you start exercising at home, whether you are beginning from zero or returning after a break. Choose a short session, follow clear visual instructions and record what you did. There is no lost streak and no guilt for taking a day off.
+
+A SESSION READY FOR YOU
+Your daily routine reflects your level, available equipment and preferences. Choose a target of 5, 10 or 15 minutes. Exercises rotate as you complete sessions, so a skipped day does not push you behind a schedule.
+
+GUIDANCE, ONE STEP AT A TIME
+See exercise illustrations and animations, follow a timer, adjust your completed repetitions and take a rest between sets. If the app is interrupted, your guided session can reopen paused so you can continue when you are ready.
+
+START WITH WHAT YOU HAVE
+Begin with bodyweight movements, a sturdy chair and a clear wall. Add a mat, dumbbells, a resistance band or a pull-up bar when they are available. Browse 45 exercises across four levels, with equipment filters and practical instructions.
+
+PROGRESSION YOU CHOOSE
+Tell the app whether a session felt easy, just right, hard or only partly completed. Hard sessions reduce the next effort. Increases are offered for you to accept or decline, and accepted changes can be undone.
+
+A JOURNAL WITHOUT PRESSURE
+Record a guided session or use quick logging. Your active days and minutes add up over time, and a break does not erase them. Review completed sessions and remove entries recorded by mistake.
+
+ON YOUR PHONE, WITHOUT AN ACCOUNT
+The Android app works offline and stores your workout journal and preferences locally. No account or invitation code is needed. Export a JSON backup when you want a copy, import it on another installation, or delete your local data from Settings. Save a backup before uninstalling or changing phones.
+
+No ads, subscriptions or in-app purchases.
+
+Choose from 12 interface languages: English, Romanian, Arabic, German, Spanish, French, Hindi, Japanese, Korean, Portuguese, Ukrainian and Chinese.
+
+Mișcare is a general exercise app, not a medical device or a substitute for individual medical advice. Exercise within your abilities and stop a movement if it hurts.

@@ -1,4 +1,4 @@
-import { getLogs, state, updateProfile, deleteLog } from './server-client.js';
+import { getLogs, state, updateProfile, deleteLog } from './client.js';
 import { t, exText, repWords } from './i18n.js';
 
 export async function renderLogView(container) {

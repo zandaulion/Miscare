@@ -1,0 +1,36 @@
+{
+  "title": "Mișcare: Exerciții de la zero",
+  "short_description": "Exerciții acasă, ghidaj pas cu pas și jurnal offline, în ritmul tău",
+  "full_description": "Puțină mișcare, în ritmul tău.\n\nMișcare te ajută să începi să faci exerciții acasă, fie că pornești de la zero, fie că revii după o pauză. Alegi o sesiune scurtă, urmezi instrucțiunile vizuale și notezi ce ai făcut. Fără serii de zile pierdute și fără vinovăție pentru o zi de odihnă.\n\nSESIUNEA ESTE DEJA PREGĂTITĂ\nProgramul ține cont de nivelul tău, de echipamentul disponibil și de preferințe. Alege o durată țintă de 5, 10 sau 15 minute. Exercițiile se rotesc odată cu sesiunile făcute: o zi sărită nu te lasă în urma unui calendar.\n\nGHIDAJ PAS CU PAS\nVezi ilustrații și animații, urmărește timerul, ajustează repetările realizate și odihnește-te între serii. Dacă aplicația este întreruptă, sesiunea ghidată se poate redeschide în pauză, ca să continui când ești pregătit.\n\nÎNCEPI CU CE AI\nPoți porni cu greutatea corpului, un scaun stabil și un perete liber. Adaugă o saltea, gantere, o bandă elastică sau o bară de tracțiuni atunci când le ai la dispoziție. Explorează 45 de exerciții pe patru niveluri, cu filtre de echipament și instrucțiuni practice.\n\nPROGRESUL SE ALEGE\nSpune dacă sesiunea a fost ușoară, tocmai bine, cam grea sau făcută doar parțial. După o sesiune grea, efortul următor se reduce. Creșterile sunt propuneri pe care le poți accepta sau refuza, iar schimbările acceptate pot fi anulate.\n\nUN JURNAL FĂRĂ PRESIUNE\nSalvează o sesiune ghidată sau folosește bifarea rapidă. Zilele active și minutele se adună în timp, iar o pauză nu le șterge. Vezi sesiunile făcute și elimină înregistrările adăugate din greșeală.\n\nPE TELEFON, FĂRĂ CONT\nVersiunea Android funcționează offline și păstrează jurnalul și preferințele local. Nu ai nevoie de cont sau cod de invitație. Exportă o copie JSON când vrei un backup, import-o pe altă instalare sau șterge datele locale din Setări. Salvează o copie înainte de dezinstalare sau de schimbarea telefonului.\n\nFără reclame, abonamente sau achiziții în aplicație.\n\nInterfața este disponibilă în 12 limbi: română, engleză, arabă, germană, spaniolă, franceză, hindi, japoneză, coreeană, portugheză, ucraineană și chineză.\n\nMișcare este o aplicație generală de exerciții, nu un dispozitiv medical și nu înlocuiește sfatul medical individual. Alege efortul potrivit posibilităților tale și oprește o mișcare dacă provoacă durere.",
+  "locale": "ro-RO",
+  "assets": {
+    "icon": "../graphics/icon-512.png",
+    "feature_graphic": "feature-graphic.png",
+    "phone_screenshots": [
+      "phone-screenshots/01-today.png",
+      "phone-screenshots/02-guided-session.png",
+      "phone-screenshots/03-exercise-library.png",
+      "phone-screenshots/04-equipment.png",
+      "phone-screenshots/05-journal.png",
+      "phone-screenshots/06-your-data.png"
+    ],
+    "tablet_7_screenshots": [
+      "tablet-7-screenshots/01-today.png",
+      "tablet-7-screenshots/02-guided-session.png",
+      "tablet-7-screenshots/03-exercise-library.png",
+      "tablet-7-screenshots/04-equipment.png",
+      "tablet-7-screenshots/05-journal.png",
+      "tablet-7-screenshots/06-your-data.png"
+    ],
+    "tablet_10_screenshots": [
+      "tablet-10-screenshots/01-today.png",
+      "tablet-10-screenshots/02-guided-session.png",
+      "tablet-10-screenshots/03-exercise-library.png",
+      "tablet-10-screenshots/04-equipment.png",
+      "tablet-10-screenshots/05-journal.png",
+      "tablet-10-screenshots/06-your-data.png"
+    ],
+    "hero": "hero-1920x1080.png",
+    "alt_text": "alt-text.json"
+  }
+}

@@ -547,6 +547,19 @@
     "Gantere grele": "دمبلات ثقيلة",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "اليوم فيه تمارين على الأرض — سجادة أو بساط يُحدثان فرقًا.",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "وسادة تحت الركبتين تساعد في الحركات التي تعتمد على الركوع.",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "اختر حركة من القائمة لعرض تفاصيلها."
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "اختر حركة من القائمة لعرض تفاصيلها.",
+    "Setări": "الإعدادات",
+    "Datele tale": "بياناتك",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "تُحفظ سجلاتك وتفضيلاتك على هذا الهاتف. لا تحتاج إلى حساب.",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "احفظ نسخة قبل إزالة التطبيق أو تغيير الهاتف. يحتوي الملف على سجلاتك وتفضيلاتك.",
+    "Exportă datele": "تصدير البيانات",
+    "Importă datele": "استيراد البيانات",
+    "Șterge toate datele": "حذف جميع البيانات",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "سيحل الاستيراد محل سجلاتك وتفضيلاتك الحالية. هل تريد المتابعة؟",
+    "Fișier de backup invalid": "ملف النسخة الاحتياطية غير صالح",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "هل تريد حذف سجلاتك وجميع تفضيلاتك نهائيًا من هذا الهاتف؟",
+    "Revino la intensitatea anterioară": "العودة إلى الشدة السابقة",
+    "Nu am putut salva datele. Încearcă din nou.": "تعذر حفظ بياناتك. حاول مرة أخرى.",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "تعذر فتح البيانات المحلية. أغلق التطبيق وافتحه مجددًا."
   }
 }

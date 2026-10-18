@@ -1,4 +1,4 @@
-import { state, updateProfile } from './server-client.js';
+import { state, updateProfile } from './client.js';
 import { t, exText, repWords } from './i18n.js';
 import { EQUIPMENT_ORDER, equipmentInfo } from './equipment.js';
 

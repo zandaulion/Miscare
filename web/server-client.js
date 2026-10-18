@@ -118,6 +118,14 @@ export async function redeem(code) {
   return probe();
 }
 
+export async function updateDeviceLabel(label) {
+  const result = await api('/api/auth/label', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ label })
+  });
+  state.device.label = label;
+  return result;
+}
+
 export async function getProfile() {
   if (state.linked) {
     try {

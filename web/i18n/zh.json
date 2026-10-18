@@ -547,6 +547,19 @@
     "Gantere grele": "重哑铃",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "今天有地面动作 — 一块垫子或地毯会舒服很多。",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "膝盖下垫个软垫，跪姿动作会轻松很多。",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "从列表中选择一个动作即可查看详情。"
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "从列表中选择一个动作即可查看详情。",
+    "Setări": "设置",
+    "Datele tale": "你的数据",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "记录和偏好保存在这部手机上，无需账户。",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "卸载应用或更换手机前，请保存副本。文件包含你的记录和偏好。",
+    "Exportă datele": "导出数据",
+    "Importă datele": "导入数据",
+    "Șterge toate datele": "删除全部数据",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "导入将替换现有记录和偏好。继续吗？",
+    "Fișier de backup invalid": "无效的备份文件",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "确定从这部手机永久删除记录和全部偏好吗？",
+    "Revino la intensitatea anterioară": "恢复之前的强度",
+    "Nu am putut salva datele. Încearcă din nou.": "无法保存数据，请重试。",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "无法打开本地数据，请关闭应用后重新打开。"
   }
 }

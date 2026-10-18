@@ -547,6 +547,19 @@
     "Gantere grele": "Важкі гантелі",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "Сьогодні є робота на підлозі — килимок або килим змінюють усе.",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "Подушка під коліна допомагає у вправах з опорою на коліна.",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "Вибери рух зі списку, щоб побачити подробиці."
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "Вибери рух зі списку, щоб побачити подробиці.",
+    "Setări": "Налаштування",
+    "Datele tale": "Твої дані",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "Щоденник і налаштування зберігаються на цьому телефоні. Обліковий запис не потрібен.",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "Збережи копію перед видаленням застосунку або зміною телефону. Файл містить твій щоденник і налаштування.",
+    "Exportă datele": "Експортувати дані",
+    "Importă datele": "Імпортувати дані",
+    "Șterge toate datele": "Видалити всі дані",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "Імпорт замінить поточний щоденник і налаштування. Продовжити?",
+    "Fișier de backup invalid": "Недійсний файл резервної копії",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "Назавжди видалити щоденник і всі налаштування з цього телефону?",
+    "Revino la intensitatea anterioară": "Повернутися до попередньої інтенсивності",
+    "Nu am putut salva datele. Încearcă din nou.": "Не вдалося зберегти дані. Спробуй ще раз.",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Не вдалося відкрити локальні дані. Закрий і знову відкрий застосунок."
   }
 }

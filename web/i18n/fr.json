@@ -547,6 +547,19 @@
     "Gantere grele": "Haltères lourds",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "Il y a du travail au sol aujourd’hui — un tapis change tout.",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "Un coussin sous les genoux aide pour les mouvements à genoux.",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "Choisissez un mouvement dans la liste pour voir le détail."
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "Choisissez un mouvement dans la liste pour voir le détail.",
+    "Setări": "Réglages",
+    "Datele tale": "Tes données",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "Ton journal et tes préférences sont conservés sur ce téléphone. Aucun compte nécessaire.",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "Enregistre une copie avant de désinstaller l’application ou de changer de téléphone. Le fichier contient ton journal et tes préférences.",
+    "Exportă datele": "Exporter les données",
+    "Importă datele": "Importer les données",
+    "Șterge toate datele": "Supprimer toutes les données",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "L’importation remplacera ton journal et tes préférences actuels. Continuer ?",
+    "Fișier de backup invalid": "Fichier de sauvegarde invalide",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "Supprimer définitivement ton journal et toutes tes préférences de ce téléphone ?",
+    "Revino la intensitatea anterioară": "Revenir à l’intensité précédente",
+    "Nu am putut salva datele. Încearcă din nou.": "Impossible d’enregistrer tes données. Réessaie.",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Impossible d’ouvrir les données locales. Ferme puis rouvre l’application."
   }
 }

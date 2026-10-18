@@ -1,8 +1,9 @@
 import { installUpdates } from '/pwa-update.js';
 import { t, load as loadLocale, loadFallback, apply as applyI18n,
          setLocale, locale, available } from './i18n.js';
-import { probe, redeem, state, updateProfile } from './server-client.js';
-import { renderRoutineView } from './routine-view.js';
+import { probe, redeem, state, updateDeviceLabel, exportData, importData, resetData } from './client.js';
+import { LOCAL_MODE } from './runtime.js';
+import { renderRoutineView, restoreWorkout } from './routine-view.js';
 import { renderCompendiumView } from './compendium-view.js';
 import { renderEquipmentView } from './equipment-view.js';
 import { renderLogView } from './log-view.js';
@@ -19,7 +20,7 @@ export function showToast(message) {
 
 // Check if running as installed PWA
 export function isStandalone() {
-  return window.matchMedia('(display-mode: standalone)').matches ||
+  return LOCAL_MODE || window.matchMedia('(display-mode: standalone)').matches ||
          window.navigator.standalone === true ||
          document.referrer.includes('android-app://');
 }
@@ -35,7 +36,7 @@ async function init() {
   // sincron, în prima clipă a lui installUpdates; pornit mai devreme, mesajul
   // se compunea dintr-un catalog încă gol și ieșea în engleză peste un ecran
   // arab sau japonez -- exact cazul pe care mesajul traductibil îl evită.
-  installUpdates({
+  if (!LOCAL_MODE) installUpdates({
     appName: t('Mișcare'),
     message: t('Mișcare a fost actualizată la ultima versiune'),
     toast: (message) => showToast(message),
@@ -43,6 +44,10 @@ async function init() {
   });
 
   await probe();
+  if (LOCAL_MODE) {
+    document.querySelector('[data-tab="settings"] [data-i18n]')?.setAttribute('data-i18n', 'Setări');
+    applyI18n();
+  }
   updateDeviceBadge();
 
   // Check URL query parameters for invite code
@@ -88,13 +93,27 @@ async function init() {
 
   // Acolo unde rămăsese, nu neapărat acasă.
   switchTab(rememberedTab());
+  await restoreWorkout();
+  if (LOCAL_MODE && window.MiscareNative) {
+    window.MiscareNative.onBack(() => {
+      const exit = document.querySelector('#guided-close');
+      if (exit) { exit.click(); return; }
+      if (document.querySelector('#feedback-modal')) return;
+      if (history.state?.overlay) { history.back(); return; }
+      if (document.querySelector('.nav-item.active')?.dataset.tab !== 'today') switchTab('today');
+      else window.MiscareNative.exit();
+    });
+  }
 }
 
 function updateDeviceBadge() {
   const badge = document.getElementById('device-badge');
   if (!badge) return;
 
-  if (state.linked) {
+  if (LOCAL_MODE) {
+    badge.className = 'device-badge linked';
+    badge.textContent = `⚙️ ${t('Setări')}`;
+  } else if (state.linked) {
     badge.className = 'device-badge linked';
     badge.innerHTML = `🟢 ${escapeHtml(state.device?.label || t('Conectat'))}`;
   } else {
@@ -150,7 +169,7 @@ export function switchTab(tab, options = {}) {
 
   switch (tab) {
     case 'today':
-      renderRoutineView(main);
+      renderRoutineView(main).catch(showError);
       break;
     case 'compendium':
       renderCompendiumView(main, options);
@@ -159,7 +178,7 @@ export function switchTab(tab, options = {}) {
       renderEquipmentView(main);
       break;
     case 'progress':
-      renderLogView(main);
+      renderLogView(main).catch(showError);
       break;
     case 'settings':
       renderSettingsView(main);
@@ -170,7 +189,7 @@ export function switchTab(tab, options = {}) {
 
 function renderSettingsView(container) {
   container.innerHTML = `
-    <div class="card">
+    ${LOCAL_MODE ? '' : `<div class="card">
       <div class="card-header">
         <h2 class="card-title">${t('Acces & Dispozitiv')}</h2>
       </div>
@@ -212,7 +231,7 @@ function renderSettingsView(container) {
           <button id="btn-redeem" class="btn btn-primary">${t('Activează acum')}</button>
         </div>
       `}
-    </div>
+    </div>`}
 
       <div class="card">
         <div class="card-header">
@@ -224,7 +243,17 @@ function renderSettingsView(container) {
         <select id="select-language" class="select-input" aria-label="${t('Limbă')}"></select>
       </div>
 
+    ${LOCAL_MODE ? `
     <div class="card">
+      <h2 class="card-title">${t('Datele tale')}</h2>
+      <p>${t('Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.')}</p>
+      <p>${t('Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.')}</p>
+      <div class="local-data-actions">
+        <button id="export-data" class="btn btn-secondary">${t('Exportă datele')}</button>
+        <button id="import-data" class="btn btn-secondary">${t('Importă datele')}</button>
+        <button id="reset-data" class="btn btn-secondary">${t('Șterge toate datele')}</button>
+      </div>
+    </div>` : `<div class="card">
       <div class="card-header">
         <h2 class="card-title">${t('Instalare & Service Worker')}</h2>
       </div>
@@ -250,8 +279,43 @@ function renderSettingsView(container) {
           ${t('🧹 Curăță memoria cache (/bust)')}
         </a>
       </div>
-    </div>
+    </div>`}
   `;
+
+  container.querySelector('#export-data')?.addEventListener('click', async () => {
+    try {
+      const text = JSON.stringify(await exportData(), null, 2);
+      if (window.MiscareNative) await window.MiscareNative.exportData(text);
+      else {
+        const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+        const link = document.createElement('a'); link.href = url; link.download = 'miscare-backup.json'; link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+    } catch (err) { showError(err); }
+  });
+  container.querySelector('#import-data')?.addEventListener('click', async () => {
+    if (!confirm(t('Importul va înlocui jurnalul și preferințele actuale. Continui?'))) return;
+    try {
+      if (window.MiscareNative) {
+        const text = await window.MiscareNative.importData();
+        if (text !== null) { await importData(JSON.parse(text)); location.reload(); }
+      } else {
+        const picker = document.createElement('input'); picker.type = 'file'; picker.accept = 'application/json,.json';
+        picker.onchange = async () => {
+          try {
+            const file = picker.files[0];
+            if (!file || file.size > 20 * 1024 * 1024) throw new Error(t('Fișier de backup invalid'));
+            await importData(JSON.parse(await file.text())); location.reload();
+          } catch (err) { showError(err); }
+        };
+        picker.click();
+      }
+    } catch (err) { showError(err); }
+  });
+  container.querySelector('#reset-data')?.addEventListener('click', async () => {
+    if (!confirm(t('Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?'))) return;
+    try { await resetData(); localStorage.clear(); location.reload(); } catch (err) { showError(err); }
+  });
 
   // Bind redeem
   /**
@@ -299,19 +363,9 @@ function renderSettingsView(container) {
     const label = container.querySelector('#device-label-input')?.value.trim();
     if (!label) return;
     try {
-      const res = await fetch('/api/auth/label', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${state.token}`
-        },
-        body: JSON.stringify({ label })
-      });
-      if (res.ok) {
-        state.device.label = label;
-        updateDeviceBadge();
-        showToast('Nume actualizat!');
-      }
+      await updateDeviceLabel(label);
+      updateDeviceBadge();
+      showToast('Nume actualizat!');
     } catch {}
   });
 }
@@ -382,4 +436,15 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-window.addEventListener('DOMContentLoaded', init);
+function showError(err) {
+  showToast(err.message ? t(err.message) : t('Nu am putut salva datele. Încearcă din nou.'));
+}
+
+const start = () => init().catch(err => {
+  const main = document.getElementById('main-content');
+  main.textContent = t('Nu am putut deschide datele locale. Închide și redeschide aplicația.');
+  showError(err);
+});
+// Dynamic local/server selection may finish after DOMContentLoaded.
+if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', start, { once: true });
+else start();

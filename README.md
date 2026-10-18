@@ -1,5 +1,10 @@
 # Mișcare — PWA
 
+Versiunea Android locală este în dezvoltare: program adaptiv și jurnal pe telefon,
+fără server. Vezi [configurarea și stadiul Android](docs/android-development.md).
+
+Materialele pentru Google Play sunt în [store/](store/README.md).
+
 Aplicație web progresivă (PWA) de exerciții concepută să te ia **de la zero**, să îți ofere un program zilnic **fără nicio fricțiune**, să permită **configurarea simplă a echipamentului** disponibil și **logarea ultra-ușoară** a ceea ce ai făcut, sub principiul: **fără vinovăție (no shaming), doar ajustare**.
 
 Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru actualizări automate instante fără întreruperea utilizatorului și cu **[pwa-invite-console](https://github.com/zandaulion/pwa-invite-console)** pentru administrarea dispozitivelor și generarea de invitații de acces.

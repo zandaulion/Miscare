@@ -1,16 +1,18 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
-import { t, exText, repWords } from './i18n.js';
+import { t, exText, repWords, locale } from './i18n.js';
 import { levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
 import { equipmentForExercises, comfortForExercises, equipmentInfo } from './equipment.js';
 import { formatReps } from '/format-reps.js';
-import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal} from './server-client.js';
+import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal,
+  revertProgression, getActiveWorkout, saveActiveWorkout } from './client.js';
 
 let currentRoutine = null;
 let userSelectedSets = 2; // Implicit 2 serii
 
 let wakeLockSentinel = null;
 async function requestWakeLock() {
+  if (state.local) window.MiscareNative?.keepAwake(true).catch(() => {});
   if (typeof navigator !== 'undefined' && 'wakeLock' in navigator) {
     try {
       wakeLockSentinel = await navigator.wakeLock.request('screen');
@@ -22,6 +24,7 @@ async function requestWakeLock() {
 }
 
 function releaseWakeLock() {
+  if (state.local) window.MiscareNative?.keepAwake(false).catch(() => {});
   if (wakeLockSentinel) {
     try { wakeLockSentinel.release(); } catch {}
     wakeLockSentinel = null;
@@ -30,6 +33,14 @@ function releaseWakeLock() {
 
 if (typeof document !== 'undefined') {
   document.addEventListener('visibilitychange', () => {
+    if (guidedState.active && document.visibilityState === 'hidden') {
+      // Background time is a pause, never exercise time the user did not do.
+      guidedState.isPaused = true;
+      const button = document.getElementById('guided-pause-btn');
+      if (button) button.textContent = t('▶️ Continuă');
+      checkpoint();
+      releaseWakeLock();
+    }
     if (guidedState.active && document.visibilityState === 'visible') {
       requestWakeLock();
     }
@@ -39,6 +50,13 @@ if (typeof document !== 'undefined') {
 let soundEnabled = typeof localStorage !== 'undefined'
   ? localStorage.getItem('miscare_sound_enabled') !== 'false'
   : true;
+
+let audioContext;
+function audio() {
+  audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
+  if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
+  return audioContext;
+}
 
 /** „2 Serii", în limba curentă. Pluralul vine din catalog, nu dintr-un `if`. */
 function setsLabel(n) {
@@ -66,7 +84,7 @@ function updateSoundButtons() {
 function playBeep(freq = 440, duration = 0.08) {
   if (!soundEnabled || typeof window === 'undefined') return;
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = audio();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.type = 'sine';
@@ -83,7 +101,7 @@ function playBeep(freq = 440, duration = 0.08) {
 function playGentleChime() {
   if (!soundEnabled || typeof window === 'undefined') return;
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = audio();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.type = 'sine';
@@ -101,7 +119,7 @@ function playGentleChime() {
 function playRestStartSound() {
   if (!soundEnabled || typeof window === 'undefined') return;
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = audio();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.type = 'sine';
@@ -121,10 +139,11 @@ function speakVoice(text) {
   try {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ro-RO';
+    utterance.lang = locale();
     utterance.rate = 1.05;
     const voices = window.speechSynthesis.getVoices();
-    const roVoice = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('ro'));
+    const roVoice = voices.find((v) => v.localService && v.lang?.toLowerCase().startsWith(locale()));
+    if (state.local && !roVoice) return;
     if (roVoice) utterance.voice = roVoice;
     window.speechSynthesis.speak(utterance);
   } catch {}
@@ -166,6 +185,40 @@ let guidedState = {
   repUnit: 'repetări',
   exercisesDone: []
 };
+
+function checkpoint() {
+  if (!state.local) return;
+  const { timerInterval, ...snapshot } = guidedState;
+  saveActiveWorkout(snapshot).catch(err => {
+    // A failed checkpoint must not masquerade as a saved session.
+    guidedState.isPaused = true;
+    const button = document.getElementById('guided-pause-btn');
+    if (button) button.textContent = t('▶️ Continuă');
+    let notice = document.getElementById('checkpoint-error');
+    if (!notice) {
+      notice = document.createElement('p'); notice.id = 'checkpoint-error'; notice.setAttribute('role', 'alert');
+      document.querySelector('#guided-overlay .guided-body')?.prepend(notice);
+    }
+    notice.textContent = t('Nu am putut salva datele. Încearcă din nou.');
+    console.error('Workout checkpoint failed', err);
+  });
+}
+
+export async function restoreWorkout() {
+  const saved = await getActiveWorkout();
+  if (!saved?.routine) return;
+  guidedState = { ...saved, timerInterval: null, isPaused: true };
+  if (saved.feedback) {
+    openFeedbackModal(saved.routine, saved.elapsedSeconds, saved.exercisesDone);
+  } else if (saved.active) {
+    const overlay = document.createElement('div');
+    overlay.id = 'guided-overlay'; overlay.className = 'guided-overlay';
+    document.body.appendChild(overlay);
+    if (saved.isResting) renderRestStep(true);
+    else renderGuidedStep(true);
+    requestWakeLock();
+  }
+}
 
 /**
  * Întrebarea zilei, când există una.
@@ -271,6 +324,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
     ${renderDoneToday(doneToday)}
     ${renderProposal(currentProposal)}
+    ${currentRoutine.__can_revert ? `<button id="revert-progression" class="btn btn-secondary">${t('Revino la intensitatea anterioară')}</button>` : ''}
 
     <div class="card">
       <div class="card-header">
@@ -365,6 +419,11 @@ export async function renderRoutineView(container, { forceDuration = null, routi
   `;
 
   container.innerHTML = html;
+
+  container.querySelector('#revert-progression')?.addEventListener('click', async () => {
+    try { await revertProgression(); await renderRoutineView(container); }
+    catch (err) { alert(err.message); }
+  });
 
   // Event handlers
   container.querySelectorAll('.exercise-card').forEach((card) => {
@@ -638,6 +697,7 @@ function openExercisePreview(full, container) {
 
 function startGuidedWorkout(routine, sets = userSelectedSets) {
   guidedState = {
+    id: crypto.randomUUID(),
     active: true,
     routine: routine,
     totalSets: Math.max(1, sets || 2),
@@ -663,7 +723,7 @@ function startGuidedWorkout(routine, sets = userSelectedSets) {
   renderGuidedStep();
 }
 
-function renderGuidedStep() {
+function renderGuidedStep(restoring = false) {
   guidedState.isResting = false;
   const overlay = document.getElementById('guided-overlay');
   if (!overlay || !guidedState.routine) return;
@@ -673,15 +733,17 @@ function renderGuidedStep() {
 
   // Reps parsing
   const repInfo = parseDefaultReps(formatReps(currentEx.reps, repWords()));
-  guidedState.currentActualReps = repInfo.count;
-  guidedState.repUnit = repInfo.unit;
+  if (!restoring) {
+    guidedState.currentActualReps = repInfo.count;
+    guidedState.repUnit = repInfo.unit;
+  }
 
   // Step progress
   const totalSteps = guidedState.routine.exercises.length * guidedState.totalSets;
   const currentStepNum = guidedState.exerciseIndex * guidedState.totalSets + (guidedState.currentSet - 1);
   const progressPercent = Math.round((currentStepNum / totalSteps) * 100);
 
-  guidedState.timerSeconds = currentEx.duration_s || 45;
+  if (!restoring) guidedState.timerSeconds = currentEx.duration_s || 45;
   clearInterval(guidedState.timerInterval);
 
   overlay.innerHTML = `
@@ -739,7 +801,7 @@ function renderGuidedStep() {
     <div class="guided-footer">
       <div style="display: flex; gap: 10px;">
         <button id="guided-pause-btn" class="btn btn-secondary" style="flex: 1;">
-          ${t('⏸️ Pauză')}
+          ${guidedState.isPaused ? t('▶️ Continuă') : t('⏸️ Pauză')}
         </button>
         <button id="guided-done-btn" class="btn btn-primary" style="flex: 2;">
           ${(guidedState.exerciseIndex === guidedState.routine.exercises.length - 1 && guidedState.currentSet === guidedState.totalSets)
@@ -763,6 +825,7 @@ function renderGuidedStep() {
   overlay.querySelector('#rep-minus-btn')?.addEventListener('click', () => {
     if (guidedState.currentActualReps > 0) {
       guidedState.currentActualReps--;
+      checkpoint();
       if (repValueEl) repValueEl.textContent = guidedState.currentActualReps;
       playBeep(330, 0.04);
     }
@@ -770,21 +833,24 @@ function renderGuidedStep() {
 
   overlay.querySelector('#rep-plus-btn')?.addEventListener('click', () => {
     guidedState.currentActualReps++;
+    checkpoint();
     if (repValueEl) repValueEl.textContent = guidedState.currentActualReps;
     playBeep(520, 0.04);
   });
 
   startExerciseTimer();
+  checkpoint();
 
   // Close handler
   overlay.querySelector('#guided-close')?.addEventListener('click', () => {
     if (confirm(t('Vrei să oprești sesiunea? Ce ai făcut până acum contează!'))) {
       stopTimer();
+      guidedState.active = false;
       releaseWakeLock();
       overlay.remove();
       if (guidedState.exercisesDone.length > 0) {
         openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
-      }
+      } else saveActiveWorkout(null).catch(err => alert(err.message));
     }
   });
 
@@ -793,6 +859,7 @@ function renderGuidedStep() {
   pauseBtn?.addEventListener('click', () => {
     guidedState.isPaused = !guidedState.isPaused;
     pauseBtn.innerHTML = guidedState.isPaused ? t('▶️ Continuă') : t('⏸️ Pauză');
+    checkpoint();
   });
 
   // Done handler
@@ -823,6 +890,7 @@ function startExerciseTimer() {
         if (display) display.textContent = 'Gata seria!';
       }
     }
+    checkpoint();
   }, 1000);
 }
 
@@ -850,6 +918,7 @@ function completeExerciseStep() {
     guidedState.currentSet === guidedState.totalSets;
 
   if (isLastSetOfLastExercise) {
+    guidedState.active = false;
     releaseWakeLock();
     const overlay = document.getElementById('guided-overlay');
     if (overlay) overlay.remove();
@@ -861,7 +930,7 @@ function completeExerciseStep() {
   }
 }
 
-function renderRestStep() {
+function renderRestStep(restoring = false) {
   guidedState.isResting = true;
   const overlay = document.getElementById('guided-overlay');
   if (!overlay || !guidedState.routine) return;
@@ -874,7 +943,7 @@ function renderRestStep() {
   const nextFull = getExerciseById(nextEx.id) || nextEx;
 
   // 30s rest between sets of same exercise, 40s between different exercises
-  guidedState.timerSeconds = sameExerciseNext ? 30 : 40;
+  if (!restoring) guidedState.timerSeconds = sameExerciseNext ? 30 : 40;
   clearInterval(guidedState.timerInterval);
 
   const totalSteps = guidedState.routine.exercises.length * guidedState.totalSets;
@@ -918,6 +987,7 @@ function renderRestStep() {
         </div>
 
         <div class="rest-actions-row">
+          <button id="guided-pause-btn" class="btn btn-secondary">${guidedState.isPaused ? t('▶️ Continuă') : t('⏸️ Pauză')}</button>
           <button id="rest-add-time-btn" class="btn btn-secondary" style="flex: 1;">
             ${t('+15s Pauză')}
           </button>
@@ -937,6 +1007,12 @@ function renderRestStep() {
 
   playRestStartSound();
   speakVoice(t('Pauză de odihnă'));
+  checkpoint();
+  overlay.querySelector('#guided-pause-btn')?.addEventListener('click', event => {
+    guidedState.isPaused = !guidedState.isPaused;
+    event.currentTarget.textContent = guidedState.isPaused ? t('▶️ Continuă') : t('⏸️ Pauză');
+    checkpoint();
+  });
 
   overlay.querySelector('#guided-sound-toggle')?.addEventListener('click', () => {
     toggleSound();
@@ -944,6 +1020,7 @@ function renderRestStep() {
 
   overlay.querySelector('#rest-add-time-btn')?.addEventListener('click', () => {
     guidedState.timerSeconds += 15;
+    checkpoint();
     const restTimerEl = document.getElementById('guided-rest-timer');
     if (restTimerEl) restTimerEl.textContent = formatSeconds(guidedState.timerSeconds);
     playBeep(440, 0.05);
@@ -956,11 +1033,12 @@ function renderRestStep() {
   overlay.querySelector('#guided-close')?.addEventListener('click', () => {
     if (confirm(t('Vrei să oprești sesiunea? Ce ai făcut până acum contează!'))) {
       stopTimer();
+      guidedState.active = false;
       releaseWakeLock();
       overlay.remove();
       if (guidedState.exercisesDone.length > 0) {
         openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
-      }
+      } else saveActiveWorkout(null).catch(err => alert(err.message));
     }
   });
 
@@ -989,6 +1067,7 @@ function startRestTimer() {
         advanceToNextSet();
       }
     }
+    checkpoint();
   }, 1000);
 }
 
@@ -1006,6 +1085,13 @@ function advanceToNextSet() {
 // ---------------------------------------------------------------- Feedback & Celebration Modal
 
 function openFeedbackModal(routine, durationSeconds, exercisesDone) {
+  let selectedFeedback = state.local && guidedState.feedback ? guidedState.selectedFeedback || 'just_right' : 'just_right';
+  if (state.local) {
+    // Keep the unsaved feedback screen recoverable too; a retry uses the same ID.
+    guidedState = { ...guidedState, id: guidedState.active || guidedState.feedback ? guidedState.id : crypto.randomUUID(),
+      active: false, feedback: true, selectedFeedback, routine, elapsedSeconds: durationSeconds, exercisesDone: exercisesDone || routine.exercises };
+    checkpoint();
+  }
   const modal = document.createElement('div');
   modal.id = 'feedback-modal';
   modal.className = 'guided-overlay';
@@ -1073,7 +1159,6 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
 
   document.body.appendChild(modal);
 
-  let selectedFeedback = 'just_right';
   const hintEl = modal.querySelector('#feedback-hint');
 
   const hints = {
@@ -1084,20 +1169,26 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
   };
 
   modal.querySelectorAll('.feedback-btn').forEach((btn) => {
+    btn.classList.toggle('selected', btn.dataset.feedback === selectedFeedback);
     btn.addEventListener('click', () => {
       modal.querySelectorAll('.feedback-btn').forEach((b) => b.classList.remove('selected'));
       btn.classList.add('selected');
       selectedFeedback = btn.dataset.feedback;
+      guidedState.selectedFeedback = selectedFeedback;
+      checkpoint();
       if (hintEl) hintEl.textContent = hints[selectedFeedback] || '';
     });
   });
+  if (hintEl) hintEl.textContent = hints[selectedFeedback] || '';
 
   modal.querySelector('#btn-save-log')?.addEventListener('click', async () => {
     const btn = modal.querySelector('#btn-save-log');
     btn.disabled = true;
     btn.textContent = t('Se salvează...');
 
+    try {
     await logWorkout({
+      ...(state.local ? { id: guidedState.id } : {}),
       routine_title: routine.title,
       duration_seconds: durationSeconds,
       completion_status: selectedFeedback === 'partial' ? 'partial' : 'completed',
@@ -1107,11 +1198,17 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
         ? t('Ajustat automat mai blând pentru data viitoare.')
         : null
     });
+    guidedState.feedback = false;
 
     modal.remove();
 
     // Redirecționează spre tab-ul Progres
     document.querySelector('[data-tab="progress"]')?.click();
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = t('Salvează în jurnal');
+      alert(err.message || t('Nu am putut salva datele. Încearcă din nou.'));
+    }
   });
 }
 

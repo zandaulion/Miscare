@@ -275,7 +275,20 @@
     "Gantere grele": "Heavy dumbbells",
     "Azi ai mișcări la sol — o saltea sau un covor fac diferența.": "You have floor work today — a mat or a rug makes a difference.",
     "O pernă sub genunchi ajută la mișcările cu sprijin pe genunchi.": "A cushion under the knees helps with the kneeling movements.",
-    "Alege o mișcare din listă ca să-i vezi detaliile.": "Pick a movement from the list to see its details."
+    "Alege o mișcare din listă ca să-i vezi detaliile.": "Pick a movement from the list to see its details.",
+    "Setări": "Settings",
+    "Datele tale": "Your data",
+    "Jurnalul și preferințele sunt păstrate pe acest telefon. Nu este necesar un cont.": "Your journal and preferences are stored on this phone. No account is needed.",
+    "Salvează o copie înainte să dezinstalezi aplicația sau să schimbi telefonul. Fișierul conține jurnalul și preferințele tale.": "Save a copy before uninstalling the app or changing phones. The file contains your journal and preferences.",
+    "Exportă datele": "Export data",
+    "Importă datele": "Import data",
+    "Șterge toate datele": "Delete all data",
+    "Importul va înlocui jurnalul și preferințele actuale. Continui?": "Importing will replace your current journal and preferences. Continue?",
+    "Fișier de backup invalid": "Invalid backup file",
+    "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "Permanently delete your journal and all preferences from this phone?",
+    "Revino la intensitatea anterioară": "Return to the previous intensity",
+    "Nu am putut salva datele. Încearcă din nou.": "Could not save your data. Try again.",
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Could not open local data. Close and reopen the app."
   },
   "ex": {
     "wall_pushups": {

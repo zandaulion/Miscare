@@ -5,7 +5,7 @@
 import { CLIENT_EXERCISES, getExerciseById } from './exercises.js';
 import { t, exText, repWords } from './i18n.js';
 import { formatReps } from './format-reps.js';
-import { state } from './server-client.js';
+import { state } from './client.js';
 import { LEVEL_LABEL, levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
 import { EQUIPMENT_ORDER, equipmentInfo, expandEquipment } from './equipment.js';
