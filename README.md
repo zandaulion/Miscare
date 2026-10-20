@@ -11,6 +11,46 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
 
 ---
 
+
+## In English
+
+Mișcare is a Romanian exercise app for beginners, with adaptive routines,
+equipment/limitation filters and a workout journal. This repo contains two paths:
+the self-hosted PWA and a local Android build in development. The Android app’s
+storage, activation and release status differ from the PWA; start with
+[Android development](docs/android-development.md) for that platform.
+[Project overview](https://zandaulion.com/miscare.html) · [Store preview](store/README.md).
+
+### PWA local setup
+
+Use Node.js 24 or newer, npm and `openssl`. In a fresh checkout:
+
+```bash
+npm ci
+npm test
+umask 077
+printf 'ADMIN_TOKEN=%s\nPUBLIC_BASE_URL=http://127.0.0.1:3098\nPORT=3098\nCOOKIE_SECURE=false\n' \
+  "$(openssl rand -hex 32)" > .env
+set -a
+. ./.env
+set +a
+npm start
+```
+
+Do not overwrite an existing `.env`. In another terminal, load that same file
+with `set -a; . ./.env; set +a`, then create the first device invitation:
+
+```bash
+curl --fail http://127.0.0.1:3098/api/admin/invites \
+  -H "X-Admin-Token: $ADMIN_TOKEN" -H 'Content-Type: application/json' \
+  --data '{"label":"Demo device"}'
+```
+
+Open the returned invitation URL. Use HTTPS and `COOKIE_SECURE=true` for deployment;
+block public `/api/admin/*` access and strip caller-supplied admin headers.
+The PWA stores data on the server; the Android app stores it on-device. Do not
+assume a PWA account or database is automatically imported into Android.
+
 ## Caracteristici Cheie
 
 1. **Să te ia de la 0**:
@@ -63,7 +103,7 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
 
 ## Integrare pwa-invite-console
 
-Aplicația implementează contractul complet cerut de [pwa-invite-console]:
+Aplicația implementează contractul complet cerut de [pwa-invite-console](https://github.com/zandaulion/pwa-invite-console):
 
 | Endpoint | Descriere |
 |---|---|
@@ -75,7 +115,8 @@ Aplicația implementează contractul complet cerut de [pwa-invite-console]:
 | `POST /api/admin/invites` | Creează cod invitație (`XXXX-YYYY-ZZZZ`) |
 | `POST /api/admin/invites/:id/revoke` | Anulează o invitație nefolosită |
 
-Rutele de admin sunt protejate prin header-ul `X-Admin` sau `X-Admin-Token`.
+Serverul cere secretul `ADMIN_TOKEN` în header-ul `X-Admin-Token`. Un marker
+`X-Admin` injectat de un proxy vechi nu autentifică direct serverul.
 
 ### Rută publică de activare:
 - `POST /api/auth/redeem` (sau `/api/invites/redeem`): consumă codul de invitație, șterge textul clar din DB și emite un cookie securizat `miscare_device` pe 400 de zile.
@@ -108,7 +149,8 @@ npm start
 handle /miscare/api/* {
     uri strip_prefix /miscare
     reverse_proxy 127.0.0.1:3098 {
-        header_up X-Admin 1
+        header_up -X-Admin
+        header_up X-Admin-Token {env.MISCARE_ADMIN_TOKEN}
     }
 }
 
@@ -117,6 +159,7 @@ handle /miscare/* {
     uri strip_prefix /miscare
     reverse_proxy 127.0.0.1:3098 {
         header_up -X-Admin
+        header_up -X-Admin-Token
     }
 }
 ```
@@ -127,3 +170,11 @@ handle /miscare/* {
 
 Acest proiect este licențiat sub termenii licenței **GNU General Public License v3.0 or later** (GPL-3.0-or-later). Consultă fișierul [LICENSE](LICENSE) pentru detalii complete.
 
+
+## Support and contributions
+
+Use this repository’s Issues for reproducible bugs and focused feature requests. Include the version, relevant runtime/browser, expected behavior and a minimal synthetic example. Remove credentials, personal records, device identifiers and deployment-specific values before sharing logs or screenshots.
+
+Run `npm test` for server/engine changes and follow `docs/android-development.md` for local Android and browser validation. Use only synthetic workout/profile data.
+
+Keep changes focused and update the affected documentation. Security-sensitive reports should follow [SECURITY.md](SECURITY.md).
