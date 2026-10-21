@@ -1,7 +1,9 @@
-# Mișcare — PWA
+# Mișcare — Android & PWA
 
-Versiunea Android locală este în dezvoltare: program adaptiv și jurnal pe telefon,
-fără server. Vezi [configurarea și stadiul Android](docs/android-development.md).
+[Descarcă versiunea Android de test](https://github.com/zandaulion/Miscare/releases)
+(Android 7.0+): program adaptiv și jurnal pe telefon, fără cont sau server.
+Vezi [instalarea, copiile de siguranță și limitele versiunii](docs/android-release.md)
+și [configurarea Android](docs/android-development.md).
 
 Materialele pentru Google Play sunt în [store/](store/README.md).
 
@@ -20,6 +22,14 @@ the self-hosted PWA and a local Android build in development. The Android app’
 storage, activation and release status differ from the PWA; start with
 [Android development](docs/android-development.md) for that platform.
 [Project overview](https://zandaulion.com/miscare.html) · [Store preview](store/README.md).
+
+### Android download
+
+[Download the Android preview](https://github.com/zandaulion/Miscare/releases).
+The signed APK works offline, without an account or Internet permission. It is
+an early-access build; the [installation and build guide](docs/android-release.md)
+explains checksums, local storage, backups, differences from the PWA and remaining
+validation. Existing PWA history is not imported automatically.
 
 ### PWA local setup
 

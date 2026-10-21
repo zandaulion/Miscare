@@ -1,4 +1,7 @@
-# Android local — first development build
+# Android local — development and preview builds
+
+For the downloadable preview, checksums, signing and test instructions, see
+[Android release](android-release.md).
 
 The Android app bundles the existing UI in Capacitor. Routine selection, rotation,
 feedback and progression run from `web/engine/`, shared with the PWA server.
@@ -54,8 +57,9 @@ For a signed release, configure ignored `android/keystore.properties` with
 `npm run android:sync` must run before building after web changes. Generated
 assets, native plugin integration and output APKs are intentionally ignored.
 
-This is a first development version, not a Play submission. Remaining release
-work includes real-device lifecycle and upgrade testing, document picker tests,
-TalkBack, large fonts, foldables, backup behavior across Android versions,
-motion preferences, privacy/store material, and a deliberate PWA-data migration.
-Reminders are not implemented. No Play publication is performed by these scripts.
+This is an early-access Android preview, not a Play submission. The release
+notes describe the verified device workflows. Remaining coverage includes
+TalkBack, large fonts, physical fold/unfold transitions, backup behavior across
+Android versions and manufacturers, motion preferences, and a deliberate
+PWA-data migration. Reminders are not implemented. No Play publication is
+performed by these scripts.
