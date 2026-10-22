@@ -39,8 +39,10 @@ jobs:
         with:
           node-version: '24'
           cache: npm
-      - name: Install Capacitor sources used by the Gradle build
-        run: npm ci
+      - name: Install Capacitor and generate the native project files
+        run: |
+          npm ci
+          npm run android:sync
       - name: Android unit tests
         working-directory: android
         run: ./gradlew --no-daemon testDebugUnitTest
