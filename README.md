@@ -188,6 +188,9 @@ override selects Xcode 4, which uses Node's built-in UUID generation. The test
 suite parses, edits and round-trips a synthetic project to check this override;
 remove it once Capacitor's own dependency range includes the patched editor.
 
+The Node test runner gives each worker a fresh temporary data directory, so
+parallel database tests do not share a file or open existing workout data.
+
 Use this repository’s Issues for reproducible bugs and focused feature requests. Include the version, relevant runtime/browser, expected behavior and a minimal synthetic example. Remove credentials, personal records, device identifiers and deployment-specific values before sharing logs or screenshots.
 
 Run `npm test` for server/engine changes and follow `docs/android-development.md` for local Android and browser validation. Use only synthetic workout/profile data.
