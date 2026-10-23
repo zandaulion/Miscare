@@ -183,6 +183,11 @@ Acest proiect este licențiat sub termenii licenței **GNU General Public Licens
 
 ## Support and contributions
 
+Capacitor CLI currently declares the older Xcode project editor. A scoped npm
+override selects Xcode 4, which uses Node's built-in UUID generation. The test
+suite parses, edits and round-trips a synthetic project to check this override;
+remove it once Capacitor's own dependency range includes the patched editor.
+
 Use this repository’s Issues for reproducible bugs and focused feature requests. Include the version, relevant runtime/browser, expected behavior and a minimal synthetic example. Remove credentials, personal records, device identifiers and deployment-specific values before sharing logs or screenshots.
 
 Run `npm test` for server/engine changes and follow `docs/android-development.md` for local Android and browser validation. Use only synthetic workout/profile data.
