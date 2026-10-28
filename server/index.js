@@ -558,8 +558,8 @@ app.use(express.static(webDir, {
   }
 }));
 
-// SPA Fallback
-app.get('*', (req, res) => {
+// SPA Fallback. Express 5 nu mai acceptă '*' gol: wildcard-ul trebuie numit.
+app.get('/{*rest}', (req, res) => {
   if (req.path.startsWith('/api/')) {
     return res.status(404).json({ error: 'Endpoint inexistent' });
   }
