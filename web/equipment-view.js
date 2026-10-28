@@ -80,10 +80,10 @@ export function renderEquipmentView(container) {
     await updateProfile({ equipment: selected });
 
     const btn = container.querySelector('#btn-save-equipment');
-    btn.textContent = '✅ Salvat!';
+    btn.textContent = t('✅ Salvat!');
     setTimeout(() => { btn.textContent = t('💾 Salvează selecția'); }, 1500);
 
-    showAppToast('Echipamentul a fost actualizat!');
+    showAppToast(t('Echipamentul a fost actualizat!'));
   });
 }
 

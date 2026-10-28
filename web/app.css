@@ -27,8 +27,14 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* Tema întunecată.
+ *
+ * Urmează sistemul, dacă omul n-a ales altceva în Setări. Alegerea pune
+ * `data-theme` pe <html>: `light` oprește regula din media query, `dark` o
+ * aplică oricum. Tokenii stau de două ori fiindcă o regulă nu poate fi și în
+ * media query, și în afara lui; țineți-le identice. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --level-0-bg: #12301F; --level-0-fg: #6EE7B7;
     --level-1-bg: #14243D; --level-1-fg: #93C5FD;
     --level-2-bg: #33260C; --level-2-fg: #FCD34D;
@@ -50,6 +56,34 @@
     --shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
   }
+}
+
+:root[data-theme="dark"] {
+  --level-0-bg: #12301F; --level-0-fg: #6EE7B7;
+  --level-1-bg: #14243D; --level-1-fg: #93C5FD;
+  --level-2-bg: #33260C; --level-2-fg: #FCD34D;
+  --level-3-bg: #3A1717; --level-3-fg: #FCA5A5;
+  --bg: #111713;
+  --surface: #1A231D;
+  --surface-subtle: #222E26;
+  --text: #EEF4F0;
+  --text-muted: #95A69B;
+  --primary: #34D399;
+  --primary-hover: #10B981;
+  --primary-light: #163624;
+  --primary-border: #1F4D33;
+  --accent: #FBBF24;
+  --accent-light: #342810;
+  --border: #28372D;
+  --border-strong: #384C3F;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+:root { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; }
 }
 
 * {
@@ -447,8 +481,14 @@ header.app-header {
 }
 
 .guided-visual {
-  width: 140px;
-  height: 140px;
+  /* Pătrat, și nu se strânge. Cutia stă într-o coloană flex care derulează;
+   * fără `flex-shrink: 0`, pe un ecran scund flex-ul îi lua din înălțime și
+   * îi lăsa lățimea, iar desenul pătrat ajungea între două benzi negre (raportul
+   * de testare închisă, oct. 2026) -- sau dispărea de tot. Mărimea se adaptează în
+   * schimb la înălțimea ecranului, ca restul să încapă fără derulare. */
+  flex-shrink: 0;
+  width: clamp(96px, 20vh, 140px);
+  height: clamp(96px, 20vh, 140px);
   background: var(--surface);
   border-radius: 24px;
   box-shadow: var(--shadow);
@@ -2176,3 +2216,11 @@ nav.app-nav {
   }
 }
 .local-data-actions { display: grid; gap: 12px; margin-top: 16px; }
+
+/* Descrierea nivelului, sub lista din Progres. */
+.level-hint {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}

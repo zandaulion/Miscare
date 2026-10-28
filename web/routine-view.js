@@ -1,9 +1,9 @@
 import { getExerciseById, CLIENT_EXERCISES } from './exercises.js';
-import { t, exText, repWords, locale } from './i18n.js';
+import { t, tn, exText, repWords, locale } from './i18n.js';
 import { levelBadge } from './levels.js';
 import { makeDismissable } from './dismissable.js';
 import { equipmentForExercises, comfortForExercises, equipmentInfo } from './equipment.js';
-import { formatReps } from '/format-reps.js';
+import { formatReps, unitKey } from '/format-reps.js';
 import { getTodayRoutine, logWorkout, updateProfile, saveCachedRoutine, state, answerProposal,
   revertProgression, getActiveWorkout, saveActiveWorkout } from './client.js';
 
@@ -58,9 +58,24 @@ function audio() {
   return audioContext;
 }
 
-/** „2 Serii", în limba curentă. Pluralul vine din catalog, nu dintr-un `if`. */
+/**
+ * Cât durează sesiunea ghidată cu atâtea serii, în minute.
+ *
+ * Aceeași socoteală ca sesiunea însăși: timpul fiecărei serii, 30 de secunde
+ * de pauză între seriile aceluiași exercițiu, 40 între exerciții. Estimarea
+ * din motor presupune mereu două serii, așa că „aprox. 6 minute" stătea lângă
+ * „2 serii (10 min)" și nu se potrivea cu niciuna.
+ */
+function estimateMinutes(exercises = [], sets = 2) {
+  if (!exercises.length) return 0;
+  const work = exercises.reduce((acc, ex) => acc + (ex.duration_s || 45) * sets, 0);
+  const rest = exercises.length * (sets - 1) * 30 + (exercises.length - 1) * 40;
+  return Math.max(1, Math.round((work + rest) / 60));
+}
+
+/** „2 serii", în limba curentă. Pluralul vine din catalog, nu dintr-un `if`. */
 function setsLabel(n) {
-  return t(`${n} ${n === 1 ? 'Serie' : 'Serii'}`);
+  return tn('{n} serii', n);
 }
 
 function toggleSound() {
@@ -149,23 +164,25 @@ function speakVoice(text) {
   } catch {}
 }
 
-function parseDefaultReps(repsStr) {
-  if (!repsStr) return { count: 10, unit: t('repetări') };
-  const str = String(repsStr).toLowerCase();
-  const isSeconds = str.includes('secund') || str.includes('sec');
-  const isPerSide = str.includes('pe parte');
-
-  const match = str.match(/(\d+)\s*-\s*(\d+)/);
-  let count = 10;
-  if (match) {
-    count = parseInt(match[1], 10);
-  } else {
-    const single = str.match(/(\d+)/);
-    if (single) count = parseInt(single[1], 10);
+/**
+ * Ținta unui exercițiu pentru contorul din sesiunea ghidată.
+ *
+ * Unitatea vine din câmpul `reps.unit`, nu din text. Înainte se căuta
+ * „secund" în efortul deja tradus: în germană „Sekunden" nu se potrivea, deci
+ * o ținere de 30 de secunde ajungea numărată ca 30 de repetări -- iar în
+ * română unitatea se afișa „secunde" orice limbă ar fi fost aleasă.
+ */
+function effortTarget(reps) {
+  if (reps && typeof reps === 'object') {
+    return { count: Math.max(1, Number(reps.lo) || 10), unit: unitKey(reps.unit) };
   }
+  const match = String(reps ?? '').match(/(\d+)/);
+  return { count: match ? Math.max(1, parseInt(match[1], 10)) : 10, unit: unitKey(reps) };
+}
 
-  const unit = isSeconds ? 'secunde' : isPerSide ? 'pe parte' : t('repetări');
-  return { count: Math.max(1, count), unit };
+/** Cuvântul unității, în limba curentă. */
+function unitWord(key) {
+  return repWords()?.reps?.unit?.[key] ?? key;
 }
 
 let guidedState = {
@@ -180,9 +197,9 @@ let guidedState = {
   isPaused: false,
   elapsedSeconds: 0,
   currentActualReps: 10,
-  // Cheie, nu traducere: obiectul e un `const` de modul, evaluat înainte de
-  // încărcarea limbii. Se suprascrie oricum la primul exercițiu.
-  repUnit: 'repetări',
+  // Cheia unității (`reps`, `seconds`, `taps`), nu cuvântul: se traduce la
+  // desenare, iar sumarul trebuie să știe ce adună.
+  repUnit: 'reps',
   exercisesDone: []
 };
 
@@ -243,29 +260,32 @@ export async function restoreWorkout() {
 function renderDoneToday(done) {
   if (!done || !done.sessions) return '';
   const n = done.sessions;
-  const cate = n === 1 ? 'O sesiune' : `${n} sesiuni`;
-  const minute = done.minutes >= 1
-    ? ` — aproximativ ${done.minutes} ${done.minutes === 1 ? 'minut' : 'minute'}`
-    : '';
+  const sub = done.minutes >= 1
+    ? tn('{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.', n, { m: done.minutes })
+    : tn('{n} sesiuni bifate. Ziua e câștigată.', n);
   return `
     <div class="card done-today-card">
       <div class="done-today-icon">✅</div>
       <div>
         <div class="done-today-title">${t('Ai făcut mișcare azi.')}</div>
-        <div class="done-today-sub">${cate} bifat${n === 1 ? 'ă' : 'e'}${minute}. Ziua e câștigată.</div>
+        <div class="done-today-sub">${sub}</div>
       </div>
     </div>`;
 }
 
 function renderProposal(proposal) {
   if (!proposal) return '';
+  // Numele nivelurilor din `vars` sunt și ele chei; numerele trec neatinse.
+  const vars = Object.fromEntries(Object.entries(proposal.vars || {})
+    .map(([k, v]) => [k, typeof v === 'string' ? t(v) : v]));
+  const say = (key) => (typeof vars.n === 'number' ? tn(key, vars.n, vars) : t(key, vars));
   return `
     <div class="card proposal-card" id="proposal-card">
-      <div class="proposal-question">${escapeHtml(t(proposal.question))}</div>
-      <div class="proposal-note">${escapeHtml(proposal.note ? t(proposal.note) : '')}</div>
+      <div class="proposal-question">${escapeHtml(say(proposal.question))}</div>
+      <div class="proposal-note">${escapeHtml(proposal.note ? say(proposal.note) : '')}</div>
       <div class="proposal-actions">
-        <button class="btn btn-primary btn-sm" data-proposal="accept">${escapeHtml(t(proposal.accept_label))}</button>
-        <button class="btn btn-secondary btn-sm" data-proposal="decline">${escapeHtml(t(proposal.decline_label))}</button>
+        <button class="btn btn-primary btn-sm" data-proposal="accept">${escapeHtml(say(proposal.accept_label))}</button>
+        <button class="btn btn-secondary btn-sm" data-proposal="decline">${escapeHtml(say(proposal.decline_label))}</button>
       </div>
     </div>`;
 }
@@ -332,7 +352,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
           <h2 class="card-title">${alreadyDone ? t('Încă o rundă?') : escapeHtml(t(currentRoutine.title))}</h2>
           <p class="card-subtitle">${alreadyDone
             ? t('Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.')
-            : t('Durată estimată: aprox. {n} minute', { n: currentRoutine.target_minutes })}</p>
+            : `<span id="routine-estimate">${tn('Durată estimată: aprox. {n} minute', estimateMinutes(currentRoutine.exercises, userSelectedSets))}</span>`}</p>
         </div>
         <button id="btn-shorten" class="btn btn-secondary btn-sm">
           ${t('⏱️ Fă-o de 5 min')}
@@ -377,15 +397,15 @@ export async function renderRoutineView(container, { forceDuration = null, routi
         <div class="sets-selector-group">
           <button type="button" class="btn-set-choice ${userSelectedSets === 1 ? 'active' : ''}" data-sets="1">
             ${t('1 Serie')}
-            <span class="set-sub">${t('Rapid (5 min)')}</span>
+            <span class="set-sub">${t('Rapid')} · ${t('~{n} min', { n: estimateMinutes(currentRoutine.exercises, 1) })}</span>
           </button>
           <button type="button" class="btn-set-choice ${userSelectedSets === 2 ? 'active' : ''}" data-sets="2">
             ${t('2 Serii')}
-            <span class="set-sub">${t('Optim (10 min)')}</span>
+            <span class="set-sub">${t('Optim')} · ${t('~{n} min', { n: estimateMinutes(currentRoutine.exercises, 2) })}</span>
           </button>
           <button type="button" class="btn-set-choice ${userSelectedSets === 3 ? 'active' : ''}" data-sets="3">
             ${t('3 Serii')}
-            <span class="set-sub">${t('Intens (15 min)')}</span>
+            <span class="set-sub">${t('Intens')} · ${t('~{n} min', { n: estimateMinutes(currentRoutine.exercises, 3) })}</span>
           </button>
         </div>
       </div>
@@ -422,7 +442,7 @@ export async function renderRoutineView(container, { forceDuration = null, routi
 
   container.querySelector('#revert-progression')?.addEventListener('click', async () => {
     try { await revertProgression(); await renderRoutineView(container); }
-    catch (err) { alert(err.message); }
+    catch (err) { alert(t(err.message)); }
   });
 
   // Event handlers
@@ -450,6 +470,10 @@ export async function renderRoutineView(container, { forceDuration = null, routi
       const startBtn = container.querySelector('#btn-start-guided');
       if (startBtn) {
         startBtn.textContent = t('▶️ Ghidează-mă pas cu pas ({sets})', { sets: setsLabel(userSelectedSets) });
+      }
+      const estimate = container.querySelector('#routine-estimate');
+      if (estimate) {
+        estimate.textContent = tn('Durată estimată: aprox. {n} minute', estimateMinutes(currentRoutine.exercises, userSelectedSets));
       }
     });
   });
@@ -709,7 +733,7 @@ function startGuidedWorkout(routine, sets = userSelectedSets) {
     isPaused: false,
     elapsedSeconds: 0,
     currentActualReps: 10,
-    repUnit: t('repetări'),
+    repUnit: 'reps',
     exercisesDone: []
   };
 
@@ -732,11 +756,14 @@ function renderGuidedStep(restoring = false) {
   const full = getExerciseById(currentEx.id) || currentEx;
 
   // Reps parsing
-  const repInfo = parseDefaultReps(formatReps(currentEx.reps, repWords()));
+  const repInfo = effortTarget(currentEx.reps);
   if (!restoring) {
     guidedState.currentActualReps = repInfo.count;
     guidedState.repUnit = repInfo.unit;
   }
+  // O sesiune întreruptă înainte de chei are aici „secunde" sau „repetări".
+  guidedState.repUnit = unitKey(guidedState.repUnit);
+  const timed = guidedState.repUnit === 'seconds';
 
   // Step progress
   const totalSteps = guidedState.routine.exercises.length * guidedState.totalSets;
@@ -751,10 +778,10 @@ function renderGuidedStep(restoring = false) {
       <button id="guided-close" class="btn btn-secondary btn-sm">${t('✕ Ieși')}</button>
       <div style="text-align: center;">
         <div style="font-weight: 700; font-size: 0.92rem; color: var(--text);">
-          Exercițiul ${guidedState.exerciseIndex + 1} din ${guidedState.routine.exercises.length}
+          ${t('Exercițiul {i} din {n}', { i: guidedState.exerciseIndex + 1, n: guidedState.routine.exercises.length })}
         </div>
         <div style="font-size: 0.78rem; font-weight: 700; color: var(--primary);">
-          Seria ${guidedState.currentSet} din ${guidedState.totalSets}
+          ${t('Seria {i} din {n}', { i: guidedState.currentSet, n: guidedState.totalSets })}
         </div>
       </div>
       <button id="guided-sound-toggle" class="btn-sound-toggle" title="${t('Comută sunetul')}">
@@ -780,12 +807,12 @@ function renderGuidedStep(restoring = false) {
 
       <!-- Rep Counter Interactive -->
       <div class="rep-counter-container">
-        <div class="rep-counter-label">${t('Repetări realizate în această serie:')}</div>
+        <div class="rep-counter-label">${timed ? t('Secunde ținute în această serie:') : t('Repetări realizate în această serie:')}</div>
         <div class="rep-counter-box">
           <button id="rep-minus-btn" class="rep-btn" aria-label="${t('Scade repetări')}">−</button>
           <div class="rep-display">
             <span id="rep-value" class="rep-value">${guidedState.currentActualReps}</span>
-            <span class="rep-unit">${t(guidedState.repUnit)}</span>
+            <span class="rep-unit">${escapeHtml(unitWord(guidedState.repUnit))}</span>
           </div>
           <button id="rep-plus-btn" class="rep-btn" aria-label="${t('Crește repetări')}">+</button>
         </div>
@@ -813,7 +840,7 @@ function renderGuidedStep(restoring = false) {
   `;
 
   // Start voice prompt
-  speakVoice(`${exText(currentEx.id, 'name')}, seria ${guidedState.currentSet}`);
+  speakVoice(t('{name}, seria {i}', { name: exText(currentEx.id, 'name'), i: guidedState.currentSet }));
 
   // Sound toggle button
   overlay.querySelector('#guided-sound-toggle')?.addEventListener('click', () => {
@@ -850,7 +877,7 @@ function renderGuidedStep(restoring = false) {
       overlay.remove();
       if (guidedState.exercisesDone.length > 0) {
         openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
-      } else saveActiveWorkout(null).catch(err => alert(err.message));
+      } else saveActiveWorkout(null).catch(err => alert(t(err.message)));
     }
   });
 
@@ -887,7 +914,7 @@ function startExerciseTimer() {
 
       if (guidedState.timerSeconds === 0) {
         playGentleChime();
-        if (display) display.textContent = 'Gata seria!';
+        if (display) display.textContent = t('Gata seria!');
       }
     }
     checkpoint();
@@ -982,7 +1009,7 @@ function renderRestStep(restoring = false) {
           <div class="rest-preview-info">
             <div class="rest-preview-sub">${t('Urmează:')}</div>
             <div class="rest-preview-name">${escapeHtml(exText(nextEx.id, 'name'))}</div>
-            <div class="rest-preview-target">Seria ${nextSetNum} din ${guidedState.totalSets} • ${escapeHtml(formatReps(nextEx.reps, repWords()))}</div>
+            <div class="rest-preview-target">${t('Seria {i} din {n}', { i: nextSetNum, n: guidedState.totalSets })} • ${escapeHtml(formatReps(nextEx.reps, repWords()))}</div>
           </div>
         </div>
 
@@ -1038,7 +1065,7 @@ function renderRestStep(restoring = false) {
       overlay.remove();
       if (guidedState.exercisesDone.length > 0) {
         openFeedbackModal(guidedState.routine, guidedState.elapsedSeconds, guidedState.exercisesDone);
-      } else saveActiveWorkout(null).catch(err => alert(err.message));
+      } else saveActiveWorkout(null).catch(err => alert(t(err.message)));
     }
   });
 
@@ -1098,9 +1125,14 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
 
   const minutesDone = Math.max(1, Math.round(durationSeconds / 60));
   const totalSets = Array.isArray(exercisesDone) ? exercisesDone.length : 0;
-  const totalReps = Array.isArray(exercisesDone)
-    ? exercisesDone.reduce((acc, curr) => acc + (parseInt(curr.actual_reps, 10) || 0), 0)
-    : 0;
+  // Repetările și secundele se adună separat. Adunate laolaltă, o ținere de
+  // 30 de secunde apărea în sumar drept „30 de repetări".
+  const done = Array.isArray(exercisesDone) ? exercisesDone : [];
+  const sumOf = (wanted) => done
+    .filter((ex) => (unitKey(ex.unit) === 'seconds') === wanted)
+    .reduce((acc, ex) => acc + (parseInt(ex.actual_reps, 10) || 0), 0);
+  const totalReps = sumOf(false);
+  const totalHeld = sumOf(true);
 
   modal.innerHTML = `
     <div class="guided-body">
@@ -1109,13 +1141,14 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
         ${t('Bravo! Ai făcut mișcare azi.')}
       </h2>
       <p style="color: var(--text-muted); margin-bottom: 12px;">
-        ${t('Aproximativ')} <strong>${minutesDone} minute</strong> ${t('dedicate stării tale de bine.')}
+        ${t('Aproximativ')} <strong>${t('{n} min', { n: minutesDone })}</strong> ${t('dedicate stării tale de bine.')}
       </p>
 
       ${totalSets > 0 ? `
         <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-          <span class="badge badge-reps">🔁 ${totalSets} ${totalSets === 1 ? t('serie finalizată') : 'serii finalizate'}</span>
-          ${totalReps > 0 ? `<span class="badge">🔢 ${totalReps} repetări totale</span>` : ''}
+          <span class="badge badge-reps">🔁 ${tn('{n} serii finalizate', totalSets)}</span>
+          ${totalReps > 0 ? `<span class="badge">🔢 ${tn('{n} repetări în total', totalReps)}</span>` : ''}
+          ${totalHeld > 0 ? `<span class="badge">⏱️ ${tn('{n} secunde de menținere', totalHeld)}</span>` : ''}
         </div>
       ` : ''}
 
@@ -1207,7 +1240,7 @@ function openFeedbackModal(routine, durationSeconds, exercisesDone) {
     } catch (err) {
       btn.disabled = false;
       btn.textContent = t('Salvează în jurnal');
-      alert(err.message || t('Nu am putut salva datele. Încearcă din nou.'));
+      alert(err.message ? t(err.message) : t('Nu am putut salva datele. Încearcă din nou.'));
     }
   });
 }

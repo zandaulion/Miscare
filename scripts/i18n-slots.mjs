@@ -28,7 +28,12 @@ export function slots() {
   for (const n of Object.keys(ro.reps.note)) out.push(['note', n, null, ro.reps.note[n]]);
   for (const [id, fields] of Object.entries(ro.ex))
     for (const f of EX_FIELDS) out.push(['ex', id, f, fields[f] ?? '']);
-  for (const k of Object.keys(ro.ui)) out.push(['ui', k, null, ro.ui[k]]);
+  // Un plural ocupă un singur slot, ca obiect JSON pe o linie: formele diferă
+  // de la o limbă la alta, deci nu pot avea sloturi fixe.
+  for (const k of Object.keys(ro.ui)) {
+    const v = ro.ui[k];
+    out.push(['ui', k, null, typeof v === 'object' ? JSON.stringify(v) : v]);
+  }
   return out;
 }
 
@@ -44,7 +49,7 @@ export function build(values, meta) {
     if (kind === 'unit') out.reps.unit[key] = v;
     else if (kind === 'note') out.reps.note[key] = v;
     else if (kind === 'ex') (out.ex[key] ??= {})[sub] = v;
-    else out.ui[key] = v;
+    else out.ui[key] = v.startsWith('{"') ? JSON.parse(v) : v;
   });
   return out;
 }

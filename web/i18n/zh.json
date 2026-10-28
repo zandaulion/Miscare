@@ -376,7 +376,9 @@
     "Dispozitiv activat": "设备已激活",
     "Doar greutatea corpului": "只用自重",
     "Doar o parte": "只做了一部分",
-    "Durată estimată: aprox. {n} minute": "预计：大约 {n} 分钟",
+    "Durată estimată: aprox. {n} minute": {
+      "other": "预计：大约 {n} 分钟"
+    },
     "Durată țintă zilnică:": "每天的目标时长：",
     "E bine așa": "就这样挺好",
     "Echipament": "器材",
@@ -400,7 +402,6 @@
     "Instalare & Service Worker": "安装与 Service Worker",
     "Instalat pe ecranul principal": "已安装到主屏幕",
     "Instalează": "安装",
-    "Intens (15 min)": "高强度（15分钟）",
     "Intensitate maximă, control total. Dă tot ce ai!": "最大强度，完全掌控。全力以赴！",
     "Intermediar": "中级",
     "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "输入管理控制台给出的验证码（格式：ABCD-EFGH-JKLM）。",
@@ -435,12 +436,8 @@
     "Necesită echipament suplimentar": "需要额外器材",
     "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "没关系！下次我们会自动减少次数。",
     "Niciun exercițiu găsit": "未找到任何动作",
-    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "0级 — 完全从零开始（椅子、墙面、轻柔活动度）",
     "Nivel 1 — Începător": "1级 — 初级",
-    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "1级 — 轻松的初级（斜面俯卧撑、地面动作、哑铃）",
     "Nivel 1 (Începător)": "1级（初级）",
-    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "2级 — 中级／活跃（地面俯卧撑、全蹲、平板支撑、箭步蹲）",
-    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "3级 — 高级／高强度（钻石俯卧撑、跳跃深蹲、波比跳、引体向上）",
     "Nivel de intensitate:": "强度等级：",
     "Nivelul tău actual:": "你当前的等级：",
     "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "我们没有为你勾选的部位找到任何安全的动作。",
@@ -449,7 +446,6 @@
     "Nume:": "名称：",
     "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "动作名称和说明会随界面一起切换。",
     "Odihnă & Respirație": "休息与呼吸",
-    "Optim (10 min)": "均衡（10分钟）",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "可做可不做，看你想不想。就此停下也不会失去什么。",
     "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "无论你怎么选，你积累下来的一切都不会消失。",
     "Parțial": "部分完成",
@@ -469,7 +465,6 @@
     "Progres": "进度",
     "propunerea nu mai este valabilă": "那条建议已经不再适用",
     "Protecție genunchi": "膝盖保护",
-    "Rapid (5 min)": "快速（5分钟）",
     "Redenumește dispozitivul:": "重命名这台设备：",
     "Reglaje & Punct de pornire": "设置与起点",
     "Reluăm mai ușor": "慢慢重新开始",
@@ -483,7 +478,6 @@
     "Scade repetări": "减少次数",
     "Se încarcă jurnalul...": "正在加载日志…",
     "Se salvează...": "正在保存…",
-    "serie finalizată": "完成一组",
     "Sesiune blândă de reacomodare": "温和复出的训练",
     "Sesiune calibrată pentru reacomodare ușoară.": "已按温和复出调整本次训练。",
     "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "这是一次较短的训练：针对你勾选的部位，我们只能安全地安排到这些。",
@@ -537,7 +531,9 @@
     "Pentru confort la sol": "让地面动作更舒适",
     "Disponibil cu echipamentul tău actual": "用你现有的器材就能做",
     "Trunchi & Fesieri": "躯干与臀部",
-    "{n} înregistrări": "{n} 条记录",
+    "{n} înregistrări": {
+      "other": "{n} 条记录"
+    },
     "{n} min": "{n} 分钟",
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "在这里不会丢失任何「连续天数」。休息 3 天还是 30 天，你积累的一切都还在。我们随时用一次温和的训练迎接你。",
     "De pregătit pentru azi": "今天需要准备",
@@ -560,6 +556,67 @@
     "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "确定从这部手机永久删除记录和全部偏好吗？",
     "Revino la intensitatea anterioară": "恢复之前的强度",
     "Nu am putut salva datele. Încearcă din nou.": "无法保存数据，请重试。",
-    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "无法打开本地数据，请关闭应用后重新打开。"
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "无法打开本地数据，请关闭应用后重新打开。",
+    "Eroare la activare": "激活失败",
+    "Eroare": "出错了",
+    "Temă": "主题",
+    "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.": "深色主题在清晨或晚上对眼睛更友好。",
+    "Ca telefonul": "跟随手机",
+    "Luminoasă": "浅色",
+    "Întunecată": "深色",
+    "~{n} s": "约 {n} 秒",
+    "~{n} min": "约 {n} 分钟",
+    "✓ Finalizat": "✓ 完成",
+    "✅ Salvat!": "✅ 已保存！",
+    "Echipamentul a fost actualizat!": "器材已更新！",
+    "Ștergi sesiunea din {date}?": "删除 {date} 的训练？",
+    "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.": "分钟数和天数会相应扣除。级别和强度保持不变。",
+    "Exercițiul {i} din {n}": "第 {i} 个动作，共 {n} 个",
+    "Seria {i} din {n}": "第 {i} 组，共 {n} 组",
+    "Secunde ținute în această serie:": "这一组保持的秒数：",
+    "{name}, seria {i}": "{name}，第 {i} 组",
+    "Gata seria!": "这一组完成！",
+    "Durată invalidă": "时长无效",
+    "Sesiunea nu există": "这次训练不存在",
+    "Propunerea nu mai este valabilă": "这个建议已失效",
+    "Nu există o schimbare de anulat": "没有可撤销的更改",
+    "Aplicația locală nu necesită activare": "离线版无需激活",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "你勾选的部位排除了目录中的所有动作。请在设置中检查，或咨询专业人士哪些动作对你是安全的。",
+    "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?": "你最近几次训练都觉得轻松，而且在{from}的次数已经很高了。要升到{to}吗？",
+    "Trec la {to}": "升到{to}",
+    "Rămân aici deocamdată": "先留在这里",
+    "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.": "{to}意味着新的动作，而不是强行加重。你随时可以一键回到{from}。",
+    "{n} serii": {
+      "other": "{n} 组"
+    },
+    "{n} serii finalizate": {
+      "other": "完成 {n} 组"
+    },
+    "{n} repetări în total": {
+      "other": "共 {n} 次"
+    },
+    "{n} secunde de menținere": {
+      "other": "保持 {n} 秒"
+    },
+    "{n} sesiuni bifate. Ziua e câștigată.": {
+      "other": "已完成 {n} 次训练。今天达成了。"
+    },
+    "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.": {
+      "other": "已完成 {n} 次训练——约 {m} 分钟。今天达成了。"
+    },
+    "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?": {
+      "other": "距离上次活动已经 {n} 天了。要比上次更轻松地重新开始，还是从中断的地方继续？"
+    },
+    "Rapid": "快速",
+    "Optim": "均衡",
+    "Intens": "高强度",
+    "Nivel 0": "0级",
+    "Nivel 1": "1级",
+    "Nivel 2": "2级",
+    "Nivel 3": "3级",
+    "Scaun, perete, mobilitate ușoară.": "椅子、墙面、轻柔活动度。",
+    "Flotări înclinate, podea, gantere.": "斜面俯卧撑、地面动作、哑铃。",
+    "Flotări la podea, genuflexiuni libere, plank, fandări.": "地面俯卧撑、全蹲、平板支撑、箭步蹲。",
+    "Flotări diamant, jump squats, burpees, tracțiuni.": "钻石俯卧撑、跳跃深蹲、波比跳、引体向上。"
   }
 }

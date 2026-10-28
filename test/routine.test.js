@@ -65,6 +65,26 @@ test('routine generation & adaptive no-shaming logic', async (t) => {
     }
   });
 
+  await t.test('from zero never serves a Beginner move, whatever the equipment', () => {
+    // Găsit la testarea închisă din oct. 2026: doar cu greutatea corpului, planul
+    // „De la 0" deschidea cu cobra la sol, marcată Începător. Completarea pentru
+    // varietate împrumuta de la nivelul următor și la Nivel 0.
+    const equipments = [['bodyweight'], ['bodyweight', 'chair'], ['bodyweight', 'wall'],
+      ['bodyweight', 'chair', 'wall'], ['bodyweight', 'yoga_mat'], ['bodyweight', 'resistance_band']];
+    for (const equipment of equipments) {
+      for (const daily_time of [5, 10, 15]) {
+        for (let rotation = 0; rotation < 24; rotation++) {
+          const routine = generateDailyRoutine({ level: 'zero', equipment, daily_time }, { rotation });
+          assert.ok(routine.exercises.length > 0, `sesiune goală (${equipment.join('+')})`);
+          for (const ex of routine.exercises) {
+            assert.equal(ex.level, 0,
+              `${ex.id} (Nivel ${ex.level}) servit la De la 0 cu ${equipment.join('+')}, rotația ${rotation}`);
+          }
+        }
+      }
+    }
+  });
+
   await t.test('a restrictive profile still gets a usable session', () => {
     // Siguranța nu trebuie să însemne un ecran gol: lărgim echipamentul, care
     // e o preferință, și abia apoi servim mai puțin.

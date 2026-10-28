@@ -376,7 +376,9 @@
     "Dispozitiv activat": "端末を有効化しました",
     "Doar greutatea corpului": "自重のみ",
     "Doar o parte": "一部だけ",
-    "Durată estimată: aprox. {n} minute": "目安：およそ {n} 分",
+    "Durată estimată: aprox. {n} minute": {
+      "other": "目安：およそ {n} 分"
+    },
     "Durată țintă zilnică:": "1日の目標時間：",
     "E bine așa": "このままで大丈夫",
     "Echipament": "道具",
@@ -400,7 +402,6 @@
     "Instalare & Service Worker": "インストールとサービスワーカー",
     "Instalat pe ecranul principal": "ホーム画面にインストール済み",
     "Instalează": "インストール",
-    "Intens (15 min)": "高強度（15分）",
     "Intensitate maximă, control total. Dă tot ce ai!": "最大強度、完全なコントロール。すべてを出し切って！",
     "Intermediar": "中級",
     "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "管理コンソールで受け取ったコードを入力してください（形式：ABCD-EFGH-JKLM）。",
@@ -435,12 +436,8 @@
     "Necesită echipament suplimentar": "追加の道具が必要",
     "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "問題ありません！ 次回は自動で回数を減らします。",
     "Niciun exercițiu găsit": "種目が見つかりません",
-    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "レベル0 — 完全なゼロから（椅子、壁、やさしい可動性）",
     "Nivel 1 — Începător": "レベル1 — 初級",
-    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "レベル1 — 無理のない初級（傾斜腕立て伏せ、床でのトレーニング、ダンベル）",
     "Nivel 1 (Începător)": "レベル1（初級）",
-    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "レベル2 — 中級／活動的（床での腕立て伏せ、フルスクワット、プランク、ランジ）",
-    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "レベル3 — 上級／高強度（ダイヤモンド腕立て伏せ、ジャンプスクワット、バーピー、懸垂）",
     "Nivel de intensitate:": "強度レベル：",
     "Nivelul tău actual:": "現在のレベル：",
     "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "チェックされた部位に対して、安全な動きが見つかりませんでした。",
@@ -449,7 +446,6 @@
     "Nume:": "名前：",
     "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "種目名と説明も、画面表示と一緒に切り替わります。",
     "Odihnă & Respirație": "休息と呼吸",
-    "Optim (10 min)": "バランス（10分）",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "やりたければどうぞ。ここでやめても失うものはありません。",
     "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "どちらを選んでも、積み上げてきたものは失われません。",
     "Parțial": "一部",
@@ -469,7 +465,6 @@
     "Progres": "進捗",
     "propunerea nu mai este valabilă": "その提案はもう有効ではありません",
     "Protecție genunchi": "ひざの保護",
-    "Rapid (5 min)": "短時間（5分）",
     "Redenumește dispozitivul:": "この端末の名前を変更：",
     "Reglaje & Punct de pornire": "設定と出発点",
     "Reluăm mai ușor": "おだやかに再開する",
@@ -483,7 +478,6 @@
     "Scade repetări": "回数を減らす",
     "Se încarcă jurnalul...": "記録を読み込んでいます…",
     "Se salvează...": "保存しています…",
-    "serie finalizată": "セット完了",
     "Sesiune blândă de reacomodare": "おだやかな再開のセッション",
     "Sesiune calibrată pentru reacomodare ușoară.": "おだやかな復帰に合わせて調整しました。",
     "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "短めのセッションです：チェックされた部位に対して、安全に用意できたのはここまででした。",
@@ -537,7 +531,9 @@
     "Pentru confort la sol": "床での快適さのために",
     "Disponibil cu echipamentul tău actual": "いまの道具でできます",
     "Trunchi & Fesieri": "体幹＆お尻",
-    "{n} înregistrări": "{n}件",
+    "{n} înregistrări": {
+      "other": "{n}件"
+    },
     "{n} min": "{n}分",
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "ここでは「連続記録」を失うことはありません。3日休んでも30日休んでも、積み上げたものはそのまま残ります。いつでもやさしいセッションでお迎えします。",
     "De pregătit pentru azi": "今日の準備",
@@ -560,6 +556,67 @@
     "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "この端末の記録とすべての設定を完全に削除しますか？",
     "Revino la intensitatea anterioară": "以前の強度に戻す",
     "Nu am putut salva datele. Încearcă din nou.": "データを保存できませんでした。もう一度お試しください。",
-    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "端末のデータを開けませんでした。アプリを閉じて再度開いてください。"
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "端末のデータを開けませんでした。アプリを閉じて再度開いてください。",
+    "Eroare la activare": "有効化できませんでした",
+    "Eroare": "エラーが発生しました",
+    "Temă": "テーマ",
+    "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.": "ダークテーマは早朝や夜に目にやさしくなります。",
+    "Ca telefonul": "スマートフォンに合わせる",
+    "Luminoasă": "ライト",
+    "Întunecată": "ダーク",
+    "~{n} s": "約{n}秒",
+    "~{n} min": "約{n}分",
+    "✓ Finalizat": "✓ 完了",
+    "✅ Salvat!": "✅ 保存しました！",
+    "Echipamentul a fost actualizat!": "用具を更新しました！",
+    "Ștergi sesiunea din {date}?": "{date} のセッションを削除しますか？",
+    "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.": "分数と日数は差し引かれます。レベルと強度はそのままです。",
+    "Exercițiul {i} din {n}": "種目 {i} / {n}",
+    "Seria {i} din {n}": "セット {i} / {n}",
+    "Secunde ținute în această serie:": "このセットでキープした秒数：",
+    "{name}, seria {i}": "{name}、セット{i}",
+    "Gata seria!": "セット終了！",
+    "Durată invalidă": "無効な時間です",
+    "Sesiunea nu există": "そのセッションは存在しません",
+    "Propunerea nu mai este valabilă": "この提案はもう有効ではありません",
+    "Nu există o schimbare de anulat": "元に戻す変更はありません",
+    "Aplicația locală nu necesită activare": "オフライン版は有効化の必要がありません",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "チェックした部位により、カタログのすべての動きが除外されています。設定で確認するか、専門家に安全な運動を相談してください。",
+    "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?": "最近のセッションは楽に感じられ、{from}としては回数ももう十分です。{to}に進みますか？",
+    "Trec la {to}": "{to}に進む",
+    "Rămân aici deocamdată": "いまはこのまま",
+    "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.": "{to}は新しい動きであって、無理に重くするものではありません。{from}にはいつでもワンタップで戻れます。",
+    "{n} serii": {
+      "other": "{n}セット"
+    },
+    "{n} serii finalizate": {
+      "other": "{n}セット完了"
+    },
+    "{n} repetări în total": {
+      "other": "合計 {n} 回"
+    },
+    "{n} secunde de menținere": {
+      "other": "キープ {n} 秒"
+    },
+    "{n} sesiuni bifate. Ziua e câștigată.": {
+      "other": "{n}回のセッションを記録。今日も達成です。"
+    },
+    "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.": {
+      "other": "{n}回のセッションを記録 — 約{m}分。今日も達成です。"
+    },
+    "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?": {
+      "other": "前回体を動かしてから {n} 日たちました。前回より軽めに再開しますか、それとも続きから始めますか？"
+    },
+    "Rapid": "短時間",
+    "Optim": "バランス",
+    "Intens": "高強度",
+    "Nivel 0": "レベル0",
+    "Nivel 1": "レベル1",
+    "Nivel 2": "レベル2",
+    "Nivel 3": "レベル3",
+    "Scaun, perete, mobilitate ușoară.": "椅子、壁、やさしい可動性。",
+    "Flotări înclinate, podea, gantere.": "傾斜腕立て伏せ、床でのトレーニング、ダンベル。",
+    "Flotări la podea, genuflexiuni libere, plank, fandări.": "床での腕立て伏せ、フルスクワット、プランク、ランジ。",
+    "Flotări diamant, jump squats, burpees, tracțiuni.": "ダイヤモンド腕立て伏せ、ジャンプスクワット、バーピー、懸垂。"
   }
 }

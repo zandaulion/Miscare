@@ -53,3 +53,17 @@ export function formatReps(reps, strings = {}) {
   const note = reps.note ? (strings?.reps?.note?.[reps.note] ?? '') : '';
   return [range, unit, note].filter(Boolean).join(' ');
 }
+
+/**
+ * Cheia unității: `reps`, `seconds` sau `taps`.
+ *
+ * Jurnalul și sesiunile întrerupte păstrează uneori cuvântul, nu cheia --
+ * „secunde", „repetări", „pe parte", sau cuvântul deja tradus -- fiindcă așa
+ * se salva înainte. Aici se întorc la cheie, ca să poată fi traduse din nou și
+ * adunate corect.
+ */
+export function unitKey(unit) {
+  const u = String(unit ?? '').toLowerCase();
+  if (UNITS.includes(u)) return u;
+  return /sec|sek|seg|秒|초|सेक|сек|ثاني|ثوان/.test(u) ? 'seconds' : 'reps';
+}

@@ -58,11 +58,11 @@ async function init() {
     if (isStandalone()) {
       try {
         await redeem(inviteCode);
-        showToast('Aplicație activată cu succes!');
+        showToast(t('Aplicație activată cu succes!'));
         // Clean URL
         window.history.replaceState({}, document.title, window.location.pathname);
       } catch (err) {
-        showToast(err.message || 'Eroare la activare');
+        showToast(err.message ? t(err.message) : t('Eroare la activare'));
       }
     } else {
       // Opened in browser: show install banner with prefilled code
@@ -94,6 +94,8 @@ async function init() {
   // Acolo unde rămăsese, nu neapărat acasă.
   switchTab(rememberedTab());
   await restoreWorkout();
+  // Puntea nativă există abia acum; tema a fost aplicată paginii din <head>.
+  window.MiscareTheme?.sync();
   if (LOCAL_MODE && window.MiscareNative) {
     window.MiscareNative.onBack(() => {
       const exit = document.querySelector('#guided-close');
@@ -243,6 +245,19 @@ function renderSettingsView(container) {
         <select id="select-language" class="select-input" aria-label="${t('Limbă')}"></select>
       </div>
 
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">${t('Temă')}</h2>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4;">
+          ${t('Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.')}
+        </p>
+        <select id="select-theme" class="select-input" aria-label="${t('Temă')}">
+          ${[['auto', 'Ca telefonul'], ['light', 'Luminoasă'], ['dark', 'Întunecată']].map(([value, label]) =>
+            `<option value="${value}"${(window.MiscareTheme?.get() || 'auto') === value ? ' selected' : ''}>${t(label)}</option>`).join('')}
+        </select>
+      </div>
+
     ${LOCAL_MODE ? `
     <div class="card">
       <h2 class="card-title">${t('Datele tale')}</h2>
@@ -329,6 +344,10 @@ function renderSettingsView(container) {
    * prin marcaj rescris, iar o schimbare parțială ar lăsa jumătate din pagină
    * în limba veche.
    */
+  container.querySelector('#select-theme')?.addEventListener('change', (e) => {
+    window.MiscareTheme?.set(e.target.value);
+  });
+
   const picker = container.querySelector('#select-language');
   if (picker) {
     available().then((langs) => {
@@ -354,7 +373,7 @@ function renderSettingsView(container) {
       updateDeviceBadge();
       renderSettingsView(container);
     } catch (err) {
-      showToast(err.message || 'Eroare la activare');
+      showToast(err.message ? t(err.message) : t('Eroare la activare'));
     }
   });
 
@@ -418,7 +437,7 @@ function showInstallInvitePrompt(code) {
       modal.remove();
       updateDeviceBadge();
     } catch (err) {
-      showToast(err.message || 'Eroare');
+      showToast(err.message ? t(err.message) : t('Eroare'));
     }
   });
 

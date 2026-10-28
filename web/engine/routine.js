@@ -650,6 +650,14 @@ export function generateDailyRoutine(profile = {}, options = {}) {
     const upKey = LEVEL_ORDER[targetLevel + 1];
     const patterns = new Set(base.map((e) => e.pattern));
     if (!upKey) return base;
+    // Nivelul 0 nu împrumută de la Începător. Cu doar greutatea corpului --
+    // fără scaun, fără perete -- completarea servea cobra la sol, flotări pe
+    // genunchi și abdomene clasice cuiva care pornește de la zero: varietate
+    // plătită cu exact pragul pe care nivelul promite să nu-l treacă. Un
+    // testator a dat de asta în octombrie 2026. O sesiune mai repetitivă e
+    // prețul corect; remediul adevărat sunt mai multe mișcări de Nivel 0 fără
+    // echipament, nu mișcări mai grele.
+    if (targetLevel === 0) return base;
     if (base.length >= MIN_PER_CATEGORY && patterns.size >= MIN_PATTERNS) return base;
 
     const wider = filterSafeExercises(EXERCISES, { ...profile, level: upKey });
@@ -890,18 +898,20 @@ export function generateDailyRoutine(profile = {}, options = {}) {
       : 'Nu am găsit nicio mișcare sigură pentru zonele bifate.';
     if (!chosen.length) {
       supportiveMessage =
-        'Zonele pe care le-ai bifat exclud toate mișcările din catalog. '
-        + 'Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.';
+        'Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.';
     }
   }
 
   const estimatedSeconds = chosen.reduce((acc, curr) => acc + (curr.duration_s || 50) * 2 + 30, 0);
 
-  const levelNames = {
-    zero: 'Nivel 0 (De la 0)',
-    beginner: 'Nivel 1 (Începător)',
-    intermediate: 'Nivel 2 (Intermediar)',
-    advanced: 'Nivel 3 (Avansat)'
+  // Titluri întregi, nu lipite din bucăți: titlul e cheie de traducere, iar
+  // o cheie compusă la rulare nu poate fi găsită de nimic care verifică
+  // cataloagele.
+  const levelTitles = {
+    zero: 'Mișcarea ta de azi — Nivel 0 (De la 0)',
+    beginner: 'Mișcarea ta de azi — Nivel 1 (Începător)',
+    intermediate: 'Mișcarea ta de azi — Nivel 2 (Intermediar)',
+    advanced: 'Mișcarea ta de azi — Nivel 3 (Avansat)'
   };
 
   return {
@@ -910,7 +920,7 @@ export function generateDailyRoutine(profile = {}, options = {}) {
       ? 'Micro-sesiune de 5 minute'
       : isReentry
       ? 'Sesiune blândă de reacomodare'
-      : `Mișcarea ta de azi — ${levelNames[profile.level] || 'Nivel 0'}`,
+      : levelTitles[profile.level] || levelTitles.zero,
     level: profile.level || 'zero',
     target_minutes: Math.round(estimatedSeconds / 60) || targetMinutes,
     supportive_message: supportiveMessage,

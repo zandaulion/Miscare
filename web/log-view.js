@@ -1,5 +1,18 @@
 import { getLogs, state, updateProfile, deleteLog } from './client.js';
-import { t, exText, repWords } from './i18n.js';
+import { t, tn, exText, repWords } from './i18n.js';
+import { unitKey } from './format-reps.js';
+
+const LEVEL_CHOICES = [
+  ['zero', 'Nivel 0 — De la 0 absolut', 'Scaun, perete, mobilitate ușoară.'],
+  ['beginner', 'Nivel 1 — Începător', 'Flotări înclinate, podea, gantere.'],
+  ['intermediate', 'Nivel 2 — Intermediar', 'Flotări la podea, genuflexiuni libere, plank, fandări.'],
+  ['advanced', 'Nivel 3 — Avansat', 'Flotări diamant, jump squats, burpees, tracțiuni.']
+];
+
+function levelHint(level) {
+  const choice = LEVEL_CHOICES.find(([value]) => value === level) || LEVEL_CHOICES[0];
+  return t(choice[2]);
+}
 
 export async function renderLogView(container) {
   container.innerHTML = `
@@ -42,7 +55,7 @@ export async function renderLogView(container) {
     <div class="card">
       <div class="card-header">
         <h2 class="card-title">${t('Istoric recent')}</h2>
-        <span style="font-size: 0.8rem; color: var(--text-muted);">${t('{n} înregistrări', { n: logs.length })}</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">${tn('{n} înregistrări', logs.length)}</span>
       </div>
 
       <div id="logs-list">
@@ -54,7 +67,7 @@ export async function renderLogView(container) {
         ` : logs.map((log) => {
           const minutes = Math.max(1, Math.round((log.duration_seconds || 600) / 60));
           const emoji = log.feedback === 'easy' ? '😊' : log.feedback === 'hard' ? '🥵' : log.feedback === 'partial' ? '⏱️' : '👍';
-          const feedbackText = log.feedback === 'easy' ? t('Ușor') : log.feedback === 'hard' ? 'Cam greu' : log.feedback === 'partial' ? t('Parțial') : 'Tocmai bine';
+          const feedbackText = log.feedback === 'easy' ? t('Ușor') : log.feedback === 'hard' ? t('Cam greu') : log.feedback === 'partial' ? t('Parțial') : t('Tocmai bine');
 
           let exercisesList = [];
           if (Array.isArray(log.exercises_done)) {
@@ -65,11 +78,12 @@ export async function renderLogView(container) {
 
           const grouped = {};
           exercisesList.forEach((ex) => {
-            const name = ex.name || ex.id;
+            // Numele se traduce la afișare: cel salvat e în limba de atunci.
+            const name = (ex.id && exText(ex.id, 'name')) || ex.name || ex.id;
             if (!name) return;
             if (!grouped[name]) grouped[name] = [];
             if (ex.actual_reps !== undefined) {
-              grouped[name].push(`${ex.actual_reps} ${ex.unit || 'rep'}`);
+              grouped[name].push(`${ex.actual_reps} ${repWords()?.reps?.unit?.[unitKey(ex.unit)] ?? ''}`.trim());
             } else if (ex.reps) {
               grouped[name].push(ex.reps);
             }
@@ -97,8 +111,8 @@ export async function renderLogView(container) {
                   ${groupKeys.map((name) => {
                     const setsInfo = grouped[name];
                     const setsLabel = setsInfo.length > 1
-                      ? `${setsInfo.length} serii (${setsInfo.join(', ')})`
-                      : setsInfo[0] || '1 serie';
+                      ? `${tn('{n} serii', setsInfo.length)} (${setsInfo.join(', ')})`
+                      : setsInfo[0] || tn('{n} serii', 1);
                     return `
                       <div class="log-exercise-item">
                         <span class="log-exercise-name">✓ ${escapeHtml(name)}</span>
@@ -123,20 +137,16 @@ export async function renderLogView(container) {
         <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">
           ${t('Nivelul tău actual:')}
         </label>
+        <!--
+          Numele scurt în listă, descrierea dedesubt: textul lung era tăiat în
+          lista închisă („Level 0 — From absolute zero (chair, w").
+        -->
         <select id="select-level" class="btn btn-secondary" style="width: 100%; text-align: left; padding: 10px 14px;">
-          <option value="zero" ${profile.level === 'zero' ? 'selected' : ''}>
-            ${t('Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)')}
-          </option>
-          <option value="beginner" ${profile.level === 'beginner' ? 'selected' : ''}>
-            ${t('Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)')}
-          </option>
-          <option value="intermediate" ${profile.level === 'intermediate' ? 'selected' : ''}>
-            ${t('Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)')}
-          </option>
-          <option value="advanced" ${profile.level === 'advanced' ? 'selected' : ''}>
-            ${t('Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)')}
-          </option>
+          ${LEVEL_CHOICES.map(([value, name]) => `
+            <option value="${value}" ${(profile.level || 'zero') === value ? 'selected' : ''}>${t(name)}</option>
+          `).join('')}
         </select>
+        <p id="select-level-hint" class="level-hint">${levelHint(profile.level)}</p>
       </div>
 
       <div style="margin-bottom: 16px;">
@@ -191,7 +201,7 @@ export async function renderLogView(container) {
       const id = btn.dataset.delLog;
       const item = container.querySelector(`.log-item[data-log-id="${CSS.escape(id)}"]`);
       const when = item?.querySelector('.log-date')?.textContent?.trim() || '';
-      if (!confirm(`Ștergi sesiunea din ${when}?\n\nMinutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.`)) return;
+      if (!confirm(`${t('Ștergi sesiunea din {date}?', { date: when })}\n\n${t('Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.')}`)) return;
 
       btn.disabled = true;
       try {
@@ -199,7 +209,7 @@ export async function renderLogView(container) {
         renderLogView(container);
       } catch (err) {
         btn.disabled = false;
-        alert(err.message || t('Nu am putut șterge sesiunea.'));
+        alert(err.message ? t(err.message) : t('Nu am putut șterge sesiunea.'));
       }
     });
   });
@@ -216,6 +226,11 @@ export async function renderLogView(container) {
       btn.classList.remove('btn-secondary');
       selectedDuration = parseInt(btn.dataset.mins, 10);
     });
+  });
+
+  container.querySelector('#select-level')?.addEventListener('change', (e) => {
+    const hint = container.querySelector('#select-level-hint');
+    if (hint) hint.textContent = levelHint(e.currentTarget.value);
   });
 
   // Handle save profile

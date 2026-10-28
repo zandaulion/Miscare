@@ -94,7 +94,10 @@ export function proposeChange({
     const zile = daysSinceLastSession;
     return {
       kind: 'ease_back',
-      question: `Au trecut ${zile} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?`,
+      // Textele sunt chei de traducere; numerele și nivelurile vin în `vars`
+      // și se pun la locul lor după traducere, nu înainte.
+      question: 'Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?',
+      vars: { n: zile },
       accept_label: 'Reluăm mai ușor',
       decline_label: 'Continui de unde am rămas',
       note: 'Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.',
@@ -110,10 +113,11 @@ export function proposeChange({
   if (step >= MAX_STEP && up) {
     return {
       kind: 'level_up',
-      question: `Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru ${LEVEL_NAMES[level]}. Treci la ${LEVEL_NAMES[up]}?`,
-      accept_label: `Trec la ${LEVEL_NAMES[up]}`,
+      question: 'Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?',
+      accept_label: 'Trec la {to}',
       decline_label: 'Rămân aici deocamdată',
-      note: `${LEVEL_NAMES[up]} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la ${LEVEL_NAMES[level]} oricând, dintr-o atingere.`,
+      note: '{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.',
+      vars: { from: LEVEL_NAMES[level], to: LEVEL_NAMES[up] },
       to: { level: up, rep_step: 0 }
     };
   }

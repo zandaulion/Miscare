@@ -376,7 +376,10 @@
     "Dispozitiv activat": "डिवाइस सक्रिय हुआ",
     "Doar greutatea corpului": "केवल शरीर का भार",
     "Doar o parte": "केवल कुछ हिस्सा",
-    "Durată estimată: aprox. {n} minute": "अनुमान: लगभग {n} मिनट",
+    "Durată estimată: aprox. {n} minute": {
+      "one": "अनुमान: लगभग {n} मिनट",
+      "other": "अनुमान: लगभग {n} मिनट"
+    },
     "Durată țintă zilnică:": "रोज़ाना का लक्ष्य समय:",
     "E bine așa": "ऐसे ही ठीक है",
     "Echipament": "सामान",
@@ -400,7 +403,6 @@
     "Instalare & Service Worker": "इंस्टॉल और सर्विस वर्कर",
     "Instalat pe ecranul principal": "होम स्क्रीन पर इंस्टॉल किया गया",
     "Instalează": "इंस्टॉल करें",
-    "Intens (15 min)": "तीव्र (15 मिनट)",
     "Intensitate maximă, control total. Dă tot ce ai!": "अधिकतम तीव्रता, पूरा नियंत्रण। पूरी ताक़त लगाएँ!",
     "Intermediar": "मध्यम",
     "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "प्रशासन कंसोल से मिला कोड डालें (प्रारूप: ABCD-EFGH-JKLM)।",
@@ -435,12 +437,8 @@
     "Necesită echipament suplimentar": "अतिरिक्त सामान चाहिए",
     "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "कोई बात नहीं! अगली बार हम अपने आप दोहराव कम कर देंगे।",
     "Niciun exercițiu găsit": "कोई व्यायाम नहीं मिला",
-    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "स्तर 0 — बिल्कुल शून्य से (कुर्सी, दीवार, हल्की गतिशीलता)",
     "Nivel 1 — Începător": "स्तर 1 — शुरुआती",
-    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "स्तर 1 — सहज शुरुआती (ढलान वाले पुश-अप, फ़र्श पर काम, डंबल)",
     "Nivel 1 (Începător)": "स्तर 1 (शुरुआती)",
-    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "स्तर 2 — मध्यम / सक्रिय (फ़र्श पर पुश-अप, पूरे स्क्वाट, प्लैंक, लंज)",
-    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "स्तर 3 — उन्नत / तीव्र (डायमंड पुश-अप, जंप स्क्वाट, बर्पी, पुल-अप)",
     "Nivel de intensitate:": "तीव्रता स्तर:",
     "Nivelul tău actual:": "आपका मौजूदा स्तर:",
     "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "आपने जिन हिस्सों पर निशान लगाया, उनके लिए हमें कोई सुरक्षित गति नहीं मिली।",
@@ -449,7 +447,6 @@
     "Nume:": "नाम:",
     "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "व्यायामों के नाम और निर्देश इंटरफ़ेस के साथ ही बदल जाते हैं।",
     "Odihnă & Respirație": "आराम और साँस",
-    "Optim (10 min)": "संतुलित (10 मिनट)",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "वैकल्पिक, अगर मन हो। यहीं रुकने पर कुछ नहीं खोता।",
     "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "आप जो भी चुनें, आपने जो बनाया है उसमें से कुछ नहीं खोता।",
     "Parțial": "आंशिक",
@@ -469,7 +466,6 @@
     "Progres": "प्रगति",
     "propunerea nu mai este valabilă": "वह सुझाव अब मान्य नहीं है",
     "Protecție genunchi": "घुटनों की सुरक्षा",
-    "Rapid (5 min)": "तेज़ (5 मिनट)",
     "Redenumește dispozitivul:": "इस डिवाइस का नाम बदलें:",
     "Reglaje & Punct de pornire": "सेटिंग्स और शुरुआती बिंदु",
     "Reluăm mai ușor": "धीरे से फिर शुरू करें",
@@ -483,7 +479,6 @@
     "Scade repetări": "दोहराव घटाएँ",
     "Se încarcă jurnalul...": "डायरी लोड हो रही है…",
     "Se salvează...": "सहेजा जा रहा है…",
-    "serie finalizată": "सेट पूरा",
     "Sesiune blândă de reacomodare": "नरम वापसी का सत्र",
     "Sesiune calibrată pentru reacomodare ușoară.": "नरम वापसी के लिए सत्र समायोजित किया गया।",
     "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "एक छोटा सत्र: आपने जिन हिस्सों पर निशान लगाया, उनके लिए सुरक्षित रूप से हमें बस इतना ही मिला।",
@@ -537,7 +532,10 @@
     "Pentru confort la sol": "फ़र्श पर आराम के लिए",
     "Disponibil cu echipamentul tău actual": "आपके मौजूदा सामान से संभव",
     "Trunchi & Fesieri": "धड़ और नितंब",
-    "{n} înregistrări": "{n} प्रविष्टियाँ",
+    "{n} înregistrări": {
+      "one": "{n} प्रविष्टि",
+      "other": "{n} प्रविष्टियाँ"
+    },
     "{n} min": "{n} मिनट",
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "यहाँ कोई «स्ट्रीक» नहीं टूटती। आप 3 दिन का ब्रेक लें या 30 दिन का — जो कुछ आपने बनाया है वह आपका ही रहता है। हम कभी भी एक नरम सत्र के साथ आपका स्वागत करेंगे।",
     "De pregătit pentru azi": "आज के लिए तैयार रखें",
@@ -560,6 +558,74 @@
     "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "क्या इस फ़ोन से डायरी और सभी प्राथमिकताएँ स्थायी रूप से मिटाएँ?",
     "Revino la intensitatea anterioară": "पिछली तीव्रता पर लौटें",
     "Nu am putut salva datele. Încearcă din nou.": "डेटा सहेजा नहीं जा सका। फिर से कोशिश करें।",
-    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "स्थानीय डेटा नहीं खोला जा सका। ऐप बंद करके फिर से खोलें।"
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "स्थानीय डेटा नहीं खोला जा सका। ऐप बंद करके फिर से खोलें।",
+    "Eroare la activare": "सक्रिय करने में त्रुटि",
+    "Eroare": "कुछ गड़बड़ हो गई",
+    "Temă": "थीम",
+    "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.": "डार्क थीम सुबह-सुबह या शाम को आँखों के लिए ज़्यादा आरामदायक है।",
+    "Ca telefonul": "फ़ोन के अनुसार",
+    "Luminoasă": "लाइट",
+    "Întunecată": "डार्क",
+    "~{n} s": "~{n} सेकंड",
+    "~{n} min": "~{n} मिनट",
+    "✓ Finalizat": "✓ पूरा",
+    "✅ Salvat!": "✅ सहेजा गया!",
+    "Echipamentul a fost actualizat!": "उपकरण अपडेट हो गए!",
+    "Ștergi sesiunea din {date}?": "{date} का सत्र मिटाएँ?",
+    "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.": "मिनट और दिन वापस घटा दिए जाएँगे। स्तर और तीव्रता वैसे ही रहेंगे।",
+    "Exercițiul {i} din {n}": "व्यायाम {i} / {n}",
+    "Seria {i} din {n}": "सेट {i} / {n}",
+    "Secunde ținute în această serie:": "इस सेट में होल्ड किए गए सेकंड:",
+    "{name}, seria {i}": "{name}, सेट {i}",
+    "Gata seria!": "सेट पूरा!",
+    "Durată invalidă": "अमान्य अवधि",
+    "Sesiunea nu există": "यह सत्र मौजूद नहीं है",
+    "Propunerea nu mai este valabilă": "यह सुझाव अब मान्य नहीं है",
+    "Nu există o schimbare de anulat": "पूर्ववत करने के लिए कोई बदलाव नहीं है",
+    "Aplicația locală nu necesită activare": "ऑफ़लाइन ऐप को सक्रिय करने की ज़रूरत नहीं है",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "आपके चुने गए हिस्से कैटलॉग की सभी गतिविधियों को बाहर कर देते हैं। सेटिंग्स में इन्हें जाँचें — या किसी विशेषज्ञ से पूछें कि आपके लिए क्या सुरक्षित है।",
+    "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?": "आपके पिछले सत्र आसान लगे, और {from} के लिए दोहराव पहले से ही ऊँचे हैं। क्या {to} पर चलें?",
+    "Trec la {to}": "{to} पर जाएँ",
+    "Rămân aici deocamdată": "अभी यहीं रहें",
+    "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.": "{to} का मतलब है नई गतिविधियाँ, ज़बरदस्ती भारी नहीं। आप कभी भी एक टैप से {from} पर लौट सकते हैं।",
+    "{n} serii": {
+      "one": "{n} सेट",
+      "other": "{n} सेट"
+    },
+    "{n} serii finalizate": {
+      "one": "{n} सेट पूरा",
+      "other": "{n} सेट पूरे"
+    },
+    "{n} repetări în total": {
+      "one": "कुल {n} दोहराव",
+      "other": "कुल {n} दोहराव"
+    },
+    "{n} secunde de menținere": {
+      "one": "{n} सेकंड होल्ड",
+      "other": "{n} सेकंड होल्ड"
+    },
+    "{n} sesiuni bifate. Ziua e câștigată.": {
+      "one": "{n} सत्र पूरा। आज का दिन आपका रहा।",
+      "other": "{n} सत्र पूरे। आज का दिन आपका रहा।"
+    },
+    "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.": {
+      "one": "{n} सत्र पूरा — लगभग {m} मिनट। आज का दिन आपका रहा।",
+      "other": "{n} सत्र पूरे — लगभग {m} मिनट। आज का दिन आपका रहा।"
+    },
+    "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?": {
+      "one": "आपकी पिछली हलचल को {n} दिन हो गया। क्या पिछली बार से धीरे फिर शुरू करें, या जहाँ छोड़ा था वहीं से जारी रखें?",
+      "other": "आपकी पिछली हलचल को {n} दिन हो गए। क्या पिछली बार से धीरे फिर शुरू करें, या जहाँ छोड़ा था वहीं से जारी रखें?"
+    },
+    "Rapid": "तेज़",
+    "Optim": "संतुलित",
+    "Intens": "तीव्र",
+    "Nivel 0": "स्तर 0",
+    "Nivel 1": "स्तर 1",
+    "Nivel 2": "स्तर 2",
+    "Nivel 3": "स्तर 3",
+    "Scaun, perete, mobilitate ușoară.": "कुर्सी, दीवार, हल्की गतिशीलता।",
+    "Flotări înclinate, podea, gantere.": "ढलान वाले पुश-अप, फ़र्श पर काम, डंबल।",
+    "Flotări la podea, genuflexiuni libere, plank, fandări.": "फ़र्श पर पुश-अप, पूरे स्क्वाट, प्लैंक, लंज।",
+    "Flotări diamant, jump squats, burpees, tracțiuni.": "डायमंड पुश-अप, जंप स्क्वाट, बर्पी, पुल-अप।"
   }
 }

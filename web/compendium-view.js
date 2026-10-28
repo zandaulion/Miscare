@@ -3,7 +3,7 @@
 // cu filtre avansate, căutare live, verificarea compatibilității cu echipamentul și mod de practică rapidă.
 
 import { CLIENT_EXERCISES, getExerciseById } from './exercises.js';
-import { t, exText, repWords } from './i18n.js';
+import { t, exText, repWords, locale } from './i18n.js';
 import { formatReps } from './format-reps.js';
 import { state } from './client.js';
 import { LEVEL_LABEL, levelBadge } from './levels.js';
@@ -422,7 +422,7 @@ function renderSheetBody(ex, userEquipment) {
             <span class="metric-chip-icon">⏱️</span>
             <div>
               <div class="metric-chip-label">${t('Timp per serie')}</div>
-              <div class="metric-chip-val">~${ex.duration_s || 45} secunde</div>
+              <div class="metric-chip-val">${t('~{n} s', { n: ex.duration_s || 45 })}</div>
             </div>
           </div>
         </div>
@@ -744,9 +744,9 @@ function startPracticeCountdown(container) {
     if (practiceSecondsRemaining <= 0) {
       clearInterval(practiceTimerInterval);
       playPracticeChime();
-      speakVoicePrompt('Bravo! Mișcare finalizată cu succes.');
+      speakVoicePrompt(t('Bravo! Mișcare finalizată cu succes.'));
       const btnToggle = container.querySelector('#btn-toggle-practice');
-      if (btnToggle) btnToggle.innerHTML = '✓ Finalizat';
+      if (btnToggle) btnToggle.innerHTML = t('✓ Finalizat');
       practiceIsRunning = false;
     }
   }, 1000);
@@ -800,11 +800,13 @@ function speakVoicePrompt(text) {
   try {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ro-RO';
+    // Vocea limbii alese, nu româna: altfel un text tradus e citit cu
+    // pronunție românească.
+    utterance.lang = locale();
     utterance.rate = 1.05;
     const voices = window.speechSynthesis.getVoices();
-    const roVoice = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('ro'));
-    if (roVoice) utterance.voice = roVoice;
+    const voice = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith(locale()));
+    if (voice) utterance.voice = voice;
     window.speechSynthesis.speak(utterance);
   } catch {}
 }

@@ -104,7 +104,10 @@
     "Dispozitiv activat": "Device activated",
     "Doar greutatea corpului": "Bodyweight only",
     "Doar o parte": "Only part of it",
-    "Durată estimată: aprox. {n} minute": "Estimated: about {n} minutes",
+    "Durată estimată: aprox. {n} minute": {
+      "one": "Estimated: about {n} minute",
+      "other": "Estimated: about {n} minutes"
+    },
     "Durată țintă zilnică:": "Daily target duration:",
     "E bine așa": "It's fine as it is",
     "Echipament": "Equipment",
@@ -128,7 +131,6 @@
     "Instalare & Service Worker": "Install & service worker",
     "Instalat pe ecranul principal": "Installed on the home screen",
     "Instalează": "Install",
-    "Intens (15 min)": "Intense (15 min)",
     "Intensitate maximă, control total. Dă tot ce ai!": "Maximum intensity, full control. Give it everything!",
     "Intermediar": "Intermediate",
     "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "Enter the code from the admin console (format: ABCD-EFGH-JKLM).",
@@ -163,12 +165,8 @@
     "Necesită echipament suplimentar": "Needs extra equipment",
     "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "No problem! Next time we'll automatically reduce the reps.",
     "Niciun exercițiu găsit": "No exercise found",
-    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "Level 0 — From absolute zero (chair, wall, gentle mobility)",
     "Nivel 1 — Începător": "Level 1 — Beginner",
-    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "Level 1 — Comfortable beginner (incline push-ups, floor work, dumbbells)",
     "Nivel 1 (Începător)": "Level 1 (Beginner)",
-    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "Level 2 — Intermediate / active (floor push-ups, full squats, plank, lunges)",
-    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "Level 3 — Advanced / intense (diamond push-ups, jump squats, burpees, pull-ups)",
     "Nivel de intensitate:": "Intensity level:",
     "Nivelul tău actual:": "Your current level:",
     "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "We found no safe movement for the areas you ticked.",
@@ -177,7 +175,6 @@
     "Nume:": "Name:",
     "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Exercise names and instructions change along with the interface.",
     "Odihnă & Respirație": "Rest & breathe",
-    "Optim (10 min)": "Balanced (10 min)",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Optional, if you feel like it. Nothing is lost if you stop here.",
     "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Whatever you choose, nothing you've built is lost.",
     "Parțial": "Partial",
@@ -197,7 +194,6 @@
     "Progres": "Progress",
     "propunerea nu mai este valabilă": "that suggestion is no longer valid",
     "Protecție genunchi": "Knee protection",
-    "Rapid (5 min)": "Quick (5 min)",
     "Redenumește dispozitivul:": "Rename this device:",
     "Reglaje & Punct de pornire": "Settings & starting point",
     "Reluăm mai ușor": "Start back gently",
@@ -211,7 +207,6 @@
     "Scade repetări": "Decrease reps",
     "Se încarcă jurnalul...": "Loading the journal…",
     "Se salvează...": "Saving…",
-    "serie finalizată": "set completed",
     "Sesiune blândă de reacomodare": "Gentle easing-back session",
     "Sesiune calibrată pentru reacomodare ușoară.": "Session calibrated for a gentle return.",
     "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "A shorter session: this is all we found safely for the areas you ticked.",
@@ -265,7 +260,10 @@
     "Pentru confort la sol": "For comfort on the floor",
     "Disponibil cu echipamentul tău actual": "Available with your current equipment",
     "Trunchi & Fesieri": "Trunk & glutes",
-    "{n} înregistrări": "{n} entries",
+    "{n} înregistrări": {
+      "one": "{n} entry",
+      "other": "{n} entries"
+    },
     "{n} min": "{n} min",
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "You can’t lose a “streak” here. Take a break of 3 days or 30 — everything you’ve built stays yours. We’ll welcome you back any time with a gentle session.",
     "De pregătit pentru azi": "Get ready for today",
@@ -288,7 +286,75 @@
     "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "Permanently delete your journal and all preferences from this phone?",
     "Revino la intensitatea anterioară": "Return to the previous intensity",
     "Nu am putut salva datele. Încearcă din nou.": "Could not save your data. Try again.",
-    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Could not open local data. Close and reopen the app."
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Could not open local data. Close and reopen the app.",
+    "Eroare la activare": "Activation failed",
+    "Eroare": "Something went wrong",
+    "Temă": "Theme",
+    "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.": "The dark theme is easier on the eyes early in the morning or in the evening.",
+    "Ca telefonul": "Same as phone",
+    "Luminoasă": "Light",
+    "Întunecată": "Dark",
+    "~{n} s": "~{n} s",
+    "~{n} min": "~{n} min",
+    "✓ Finalizat": "✓ Done",
+    "✅ Salvat!": "✅ Saved!",
+    "Echipamentul a fost actualizat!": "Equipment updated!",
+    "Ștergi sesiunea din {date}?": "Delete the session from {date}?",
+    "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.": "Its minutes and its day are taken back off. Your level and intensity stay as they are.",
+    "Exercițiul {i} din {n}": "Exercise {i} of {n}",
+    "Seria {i} din {n}": "Set {i} of {n}",
+    "Secunde ținute în această serie:": "Seconds held in this set:",
+    "{name}, seria {i}": "{name}, set {i}",
+    "Gata seria!": "Time's up for this set!",
+    "Durată invalidă": "Invalid duration",
+    "Sesiunea nu există": "That session doesn't exist",
+    "Propunerea nu mai este valabilă": "That suggestion is no longer available",
+    "Nu există o schimbare de anulat": "There is no change to undo",
+    "Aplicația locală nu necesită activare": "The offline app does not need activating",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "The areas you ticked rule out every movement in the catalogue. Check them in settings — or ask a specialist what is safe for you.",
+    "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?": "Your recent sessions felt easy, and your reps are already high for {from}. Move up to {to}?",
+    "Trec la {to}": "Move up to {to}",
+    "Rămân aici deocamdată": "Stay here for now",
+    "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.": "{to} means new movements, not heavier ones forced on you. You can go back to {from} any time, with one tap.",
+    "{n} serii": {
+      "one": "{n} set",
+      "other": "{n} sets"
+    },
+    "{n} serii finalizate": {
+      "one": "{n} set completed",
+      "other": "{n} sets completed"
+    },
+    "{n} repetări în total": {
+      "one": "{n} rep in total",
+      "other": "{n} reps in total"
+    },
+    "{n} secunde de menținere": {
+      "one": "{n} second held",
+      "other": "{n} seconds held"
+    },
+    "{n} sesiuni bifate. Ziua e câștigată.": {
+      "one": "One session done. The day is won.",
+      "other": "{n} sessions done. The day is won."
+    },
+    "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.": {
+      "one": "One session done — about {m} min. The day is won.",
+      "other": "{n} sessions done — about {m} min. The day is won."
+    },
+    "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?": {
+      "one": "It's been a day since you last moved. Shall we start back more gently than last time, or carry on where you left off?",
+      "other": "It's been {n} days since you last moved. Shall we start back more gently than last time, or carry on where you left off?"
+    },
+    "Rapid": "Quick",
+    "Optim": "Balanced",
+    "Intens": "Intense",
+    "Nivel 0": "Level 0",
+    "Nivel 1": "Level 1",
+    "Nivel 2": "Level 2",
+    "Nivel 3": "Level 3",
+    "Scaun, perete, mobilitate ușoară.": "Chair, wall, gentle mobility.",
+    "Flotări înclinate, podea, gantere.": "Incline push-ups, floor work, dumbbells.",
+    "Flotări la podea, genuflexiuni libere, plank, fandări.": "Floor push-ups, full squats, plank, lunges.",
+    "Flotări diamant, jump squats, burpees, tracțiuni.": "Diamond push-ups, jump squats, burpees, pull-ups."
   },
   "ex": {
     "wall_pushups": {

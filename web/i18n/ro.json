@@ -376,7 +376,11 @@
     "Dispozitiv activat": "Dispozitiv activat",
     "Doar greutatea corpului": "Doar greutatea corpului",
     "Doar o parte": "Doar o parte",
-    "Durată estimată: aprox. {n} minute": "Durată estimată: aprox. {n} minute",
+    "Durată estimată: aprox. {n} minute": {
+      "one": "Durată estimată: aprox. {n} minut",
+      "few": "Durată estimată: aprox. {n} minute",
+      "other": "Durată estimată: aprox. {n} de minute"
+    },
     "Durată țintă zilnică:": "Durată țintă zilnică:",
     "E bine așa": "E bine așa",
     "Echipament": "Echipament",
@@ -400,7 +404,6 @@
     "Instalare & Service Worker": "Instalare & Service Worker",
     "Instalat pe ecranul principal": "Instalat pe ecranul principal",
     "Instalează": "Instalează",
-    "Intens (15 min)": "Intens (15 min)",
     "Intensitate maximă, control total. Dă tot ce ai!": "Intensitate maximă, control total. Dă tot ce ai!",
     "Intermediar": "Intermediar",
     "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).",
@@ -435,12 +438,8 @@
     "Necesită echipament suplimentar": "Necesită echipament suplimentar",
     "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "Nicio problemă! Data viitoare reducem automat numărul de repetări.",
     "Niciun exercițiu găsit": "Niciun exercițiu găsit",
-    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)",
     "Nivel 1 — Începător": "Nivel 1 — Începător",
-    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)",
     "Nivel 1 (Începător)": "Nivel 1 (Începător)",
-    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)",
-    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)",
     "Nivel de intensitate:": "Nivel de intensitate:",
     "Nivelul tău actual:": "Nivelul tău actual:",
     "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "Nu am găsit nicio mișcare sigură pentru zonele bifate.",
@@ -449,7 +448,6 @@
     "Nume:": "Nume:",
     "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.",
     "Odihnă & Respirație": "Odihnă & Respirație",
-    "Optim (10 min)": "Optim (10 min)",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.",
     "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.",
     "Parțial": "Parțial",
@@ -469,7 +467,6 @@
     "Progres": "Progres",
     "propunerea nu mai este valabilă": "propunerea nu mai este valabilă",
     "Protecție genunchi": "Protecție genunchi",
-    "Rapid (5 min)": "Rapid (5 min)",
     "Redenumește dispozitivul:": "Redenumește dispozitivul:",
     "Reglaje & Punct de pornire": "Reglaje & Punct de pornire",
     "Reluăm mai ușor": "Reluăm mai ușor",
@@ -483,7 +480,6 @@
     "Scade repetări": "Scade repetări",
     "Se încarcă jurnalul...": "Se încarcă jurnalul...",
     "Se salvează...": "Se salvează...",
-    "serie finalizată": "serie finalizată",
     "Sesiune blândă de reacomodare": "Sesiune blândă de reacomodare",
     "Sesiune calibrată pentru reacomodare ușoară.": "Sesiune calibrată pentru reacomodare ușoară.",
     "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.",
@@ -537,7 +533,11 @@
     "Pentru confort la sol": "Pentru confort la sol",
     "Disponibil cu echipamentul tău actual": "Disponibil cu echipamentul tău actual",
     "Trunchi & Fesieri": "Trunchi & Fesieri",
-    "{n} înregistrări": "{n} înregistrări",
+    "{n} înregistrări": {
+      "one": "{n} înregistrare",
+      "few": "{n} înregistrări",
+      "other": "{n} de înregistrări"
+    },
     "{n} min": "{n} min",
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.",
     "De pregătit pentru azi": "De pregătit pentru azi",
@@ -560,6 +560,81 @@
     "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?",
     "Revino la intensitatea anterioară": "Revino la intensitatea anterioară",
     "Nu am putut salva datele. Încearcă din nou.": "Nu am putut salva datele. Încearcă din nou.",
-    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Nu am putut deschide datele locale. Închide și redeschide aplicația."
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "Nu am putut deschide datele locale. Închide și redeschide aplicația.",
+    "Eroare la activare": "Eroare la activare",
+    "Eroare": "Eroare",
+    "Temă": "Temă",
+    "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.": "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.",
+    "Ca telefonul": "Ca telefonul",
+    "Luminoasă": "Luminoasă",
+    "Întunecată": "Întunecată",
+    "~{n} s": "~{n} s",
+    "~{n} min": "~{n} min",
+    "✓ Finalizat": "✓ Finalizat",
+    "✅ Salvat!": "✅ Salvat!",
+    "Echipamentul a fost actualizat!": "Echipamentul a fost actualizat!",
+    "Ștergi sesiunea din {date}?": "Ștergi sesiunea din {date}?",
+    "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.": "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.",
+    "Exercițiul {i} din {n}": "Exercițiul {i} din {n}",
+    "Seria {i} din {n}": "Seria {i} din {n}",
+    "Secunde ținute în această serie:": "Secunde ținute în această serie:",
+    "{name}, seria {i}": "{name}, seria {i}",
+    "Gata seria!": "Gata seria!",
+    "Durată invalidă": "Durată invalidă",
+    "Sesiunea nu există": "Sesiunea nu există",
+    "Propunerea nu mai este valabilă": "Propunerea nu mai este valabilă",
+    "Nu există o schimbare de anulat": "Nu există o schimbare de anulat",
+    "Aplicația locală nu necesită activare": "Aplicația locală nu necesită activare",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.",
+    "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?": "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?",
+    "Trec la {to}": "Trec la {to}",
+    "Rămân aici deocamdată": "Rămân aici deocamdată",
+    "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.": "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.",
+    "{n} serii": {
+      "one": "{n} serie",
+      "few": "{n} serii",
+      "other": "{n} de serii"
+    },
+    "{n} serii finalizate": {
+      "one": "{n} serie finalizată",
+      "few": "{n} serii finalizate",
+      "other": "{n} de serii finalizate"
+    },
+    "{n} repetări în total": {
+      "one": "{n} repetare în total",
+      "few": "{n} repetări în total",
+      "other": "{n} de repetări în total"
+    },
+    "{n} secunde de menținere": {
+      "one": "{n} secundă de menținere",
+      "few": "{n} secunde de menținere",
+      "other": "{n} de secunde de menținere"
+    },
+    "{n} sesiuni bifate. Ziua e câștigată.": {
+      "one": "O sesiune bifată. Ziua e câștigată.",
+      "few": "{n} sesiuni bifate. Ziua e câștigată.",
+      "other": "{n} de sesiuni bifate. Ziua e câștigată."
+    },
+    "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.": {
+      "one": "O sesiune bifată — aproximativ {m} min. Ziua e câștigată.",
+      "few": "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.",
+      "other": "{n} de sesiuni bifate — aproximativ {m} min. Ziua e câștigată."
+    },
+    "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?": {
+      "one": "A trecut o zi de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?",
+      "few": "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?",
+      "other": "Au trecut {n} de zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?"
+    },
+    "Rapid": "Rapid",
+    "Optim": "Optim",
+    "Intens": "Intens",
+    "Nivel 0": "Nivel 0",
+    "Nivel 1": "Nivel 1",
+    "Nivel 2": "Nivel 2",
+    "Nivel 3": "Nivel 3",
+    "Scaun, perete, mobilitate ușoară.": "Scaun, perete, mobilitate ușoară.",
+    "Flotări înclinate, podea, gantere.": "Flotări înclinate, podea, gantere.",
+    "Flotări la podea, genuflexiuni libere, plank, fandări.": "Flotări la podea, genuflexiuni libere, plank, fandări.",
+    "Flotări diamant, jump squats, burpees, tracțiuni.": "Flotări diamant, jump squats, burpees, tracțiuni."
   }
 }

@@ -46,7 +46,8 @@ test('progression', async (t) => {
     const p = proposeChange({ level: 'zero', repStep: 2, easyStreak: 0, daysSinceLastSession: 8 });
     assert.equal(p.kind, 'ease_back');
     assert.equal(p.to.rep_step, 1, 'propune mai ușor, nu impune');
-    assert.match(p.question, /8 zile/);
+    assert.equal(p.vars.n, 8);
+    assert.match(p.question, /\{n\} zile/);
     assert.ok(p.decline_label.length, 'trebuie să se poată continua de unde a rămas');
   });
 

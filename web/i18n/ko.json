@@ -376,7 +376,9 @@
     "Dispozitiv activat": "기기가 활성화되었습니다",
     "Doar greutatea corpului": "맨몸만",
     "Doar o parte": "일부만",
-    "Durată estimată: aprox. {n} minute": "예상: 약 {n}분",
+    "Durată estimată: aprox. {n} minute": {
+      "other": "예상: 약 {n}분"
+    },
     "Durată țintă zilnică:": "하루 목표 시간:",
     "E bine așa": "지금 이대로 괜찮아요",
     "Echipament": "장비",
@@ -400,7 +402,6 @@
     "Instalare & Service Worker": "설치 및 서비스 워커",
     "Instalat pe ecranul principal": "홈 화면에 설치됨",
     "Instalează": "설치",
-    "Intens (15 min)": "고강도 (15분)",
     "Intensitate maximă, control total. Dă tot ce ai!": "최대 강도, 완전한 통제. 전부 쏟아부으세요!",
     "Intermediar": "중급",
     "Introdu codul primit din consola de administrare (format: ABCD-EFGH-JKLM).": "관리 콘솔에서 받은 코드를 입력하세요 (형식: ABCD-EFGH-JKLM).",
@@ -435,12 +436,8 @@
     "Necesită echipament suplimentar": "추가 장비가 필요합니다",
     "Nicio problemă! Data viitoare reducem automat numărul de repetări.": "괜찮아요! 다음번에는 횟수를 자동으로 줄일게요.",
     "Niciun exercițiu găsit": "운동을 찾을 수 없습니다",
-    "Nivel 0 — De la zero absolut (scaun, perete, mobilitate ușoară)": "레벨 0 — 완전한 0에서 (의자, 벽, 부드러운 가동성)",
     "Nivel 1 — Începător": "레벨 1 — 초급",
-    "Nivel 1 — Începător confortabil (flotări înclinate, podea, gantere)": "레벨 1 — 편안한 초급 (경사 푸시업, 바닥 운동, 덤벨)",
     "Nivel 1 (Începător)": "레벨 1 (초급)",
-    "Nivel 2 — Intermediar / Activ (flotări la podea, genuflexiuni libere, plank, fandări)": "레벨 2 — 중급 / 활동적 (바닥 푸시업, 풀 스쿼트, 플랭크, 런지)",
-    "Nivel 3 — Avansat / Intens (flotări diamant, jump squats, burpees, tracțiuni)": "레벨 3 — 고급 / 고강도 (다이아몬드 푸시업, 점프 스쿼트, 버피, 턱걸이)",
     "Nivel de intensitate:": "강도 수준:",
     "Nivelul tău actual:": "현재 수준:",
     "Nu am găsit nicio mișcare sigură pentru zonele bifate.": "체크하신 부위에 맞는 안전한 동작을 찾지 못했습니다.",
@@ -449,7 +446,6 @@
     "Nume:": "이름:",
     "Numele exercițiilor și instrucțiunile se schimbă odată cu interfața.": "운동 이름과 설명도 화면 언어와 함께 바뀝니다.",
     "Odihnă & Respirație": "휴식과 호흡",
-    "Optim (10 min)": "균형 (10분)",
     "Opțional, dacă mai ai chef. Nimic nu se pierde dacă te oprești aici.": "내키면 하세요. 여기서 멈춰도 잃는 것은 없습니다.",
     "Oricare ar fi răspunsul, nimic din ce ai adunat nu se pierde.": "무엇을 고르든, 쌓아 온 것은 사라지지 않습니다.",
     "Parțial": "일부",
@@ -469,7 +465,6 @@
     "Progres": "진행",
     "propunerea nu mai este valabilă": "그 제안은 더 이상 유효하지 않습니다",
     "Protecție genunchi": "무릎 보호",
-    "Rapid (5 min)": "짧게 (5분)",
     "Redenumește dispozitivul:": "이 기기 이름 바꾸기:",
     "Reglaje & Punct de pornire": "설정과 출발점",
     "Reluăm mai ușor": "부드럽게 다시 시작",
@@ -483,7 +478,6 @@
     "Scade repetări": "횟수 줄이기",
     "Se încarcă jurnalul...": "기록을 불러오는 중…",
     "Se salvează...": "저장하는 중…",
-    "serie finalizată": "세트 완료",
     "Sesiune blândă de reacomodare": "부드러운 복귀 세션",
     "Sesiune calibrată pentru reacomodare ușoară.": "부드러운 복귀에 맞춰 조정했습니다.",
     "Sesiune mai scurtă: atât am găsit în siguranță pentru zonele pe care le-ai bifat.": "조금 짧은 세션입니다: 체크하신 부위에 대해 안전하게 찾은 것은 여기까지입니다.",
@@ -537,7 +531,9 @@
     "Pentru confort la sol": "바닥에서 편하게",
     "Disponibil cu echipamentul tău actual": "현재 장비로 가능",
     "Trunchi & Fesieri": "몸통 & 둔근",
-    "{n} înregistrări": "{n}건",
+    "{n} înregistrări": {
+      "other": "{n}건"
+    },
     "{n} min": "{n}분",
     "Aici nu pierzi niciun „streak”. Dacă iei o pauză de 3 sau 30 de zile, tot ce ai acumulat rămâne câștigat. Te întâmpinăm oricând cu o sesiune blândă de reacomodare.": "여기서는 「연속 기록」을 잃지 않습니다. 3일을 쉬든 30일을 쉬든, 쌓아 온 것은 그대로 남습니다. 언제든 부드러운 세션으로 맞이할게요.",
     "De pregătit pentru azi": "오늘 준비물",
@@ -560,6 +556,67 @@
     "Ștergi definitiv jurnalul și toate preferințele de pe acest telefon?": "이 휴대전화의 기록과 모든 설정을 영구적으로 삭제할까요?",
     "Revino la intensitatea anterioară": "이전 강도로 돌아가기",
     "Nu am putut salva datele. Încearcă din nou.": "데이터를 저장하지 못했습니다. 다시 시도해 주세요.",
-    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "로컬 데이터를 열지 못했습니다. 앱을 닫았다가 다시 열어 주세요."
+    "Nu am putut deschide datele locale. Închide și redeschide aplicația.": "로컬 데이터를 열지 못했습니다. 앱을 닫았다가 다시 열어 주세요.",
+    "Eroare la activare": "활성화하지 못했습니다",
+    "Eroare": "오류가 발생했습니다",
+    "Temă": "테마",
+    "Tema întunecată e mai blândă cu ochii dimineața devreme sau seara.": "어두운 테마는 이른 아침이나 저녁에 눈이 덜 피로해요.",
+    "Ca telefonul": "휴대폰 설정 따르기",
+    "Luminoasă": "밝게",
+    "Întunecată": "어둡게",
+    "~{n} s": "약 {n}초",
+    "~{n} min": "약 {n}분",
+    "✓ Finalizat": "✓ 완료",
+    "✅ Salvat!": "✅ 저장했어요!",
+    "Echipamentul a fost actualizat!": "장비를 업데이트했어요!",
+    "Ștergi sesiunea din {date}?": "{date} 세션을 삭제할까요?",
+    "Minutele și ziua se scad la loc. Nivelul și intensitatea rămân neschimbate.": "분과 날짜는 다시 빠집니다. 레벨과 강도는 그대로예요.",
+    "Exercițiul {i} din {n}": "운동 {i} / {n}",
+    "Seria {i} din {n}": "세트 {i} / {n}",
+    "Secunde ținute în această serie:": "이 세트에서 버틴 시간(초):",
+    "{name}, seria {i}": "{name}, {i}세트",
+    "Gata seria!": "세트 끝!",
+    "Durată invalidă": "잘못된 시간입니다",
+    "Sesiunea nu există": "해당 세션이 없습니다",
+    "Propunerea nu mai este valabilă": "이 제안은 더 이상 유효하지 않습니다",
+    "Nu există o schimbare de anulat": "되돌릴 변경 사항이 없습니다",
+    "Aplicația locală nu necesită activare": "오프라인 앱은 활성화가 필요 없습니다",
+    "Zonele pe care le-ai bifat exclud toate mișcările din catalog. Verifică-le în setări — sau întreabă un specialist ce e sigur pentru tine.": "선택한 부위 때문에 카탈로그의 모든 동작이 제외됐어요. 설정에서 확인하거나, 전문가에게 안전한 운동을 물어보세요.",
+    "Ultimele sesiuni ți s-au părut ușoare, iar repetările sunt deja sus pentru {from}. Treci la {to}?": "최근 세션이 가볍게 느껴졌고, {from}에서는 횟수도 이미 충분히 높아요. {to}(으)로 올라갈까요?",
+    "Trec la {to}": "{to}(으)로 올리기",
+    "Rămân aici deocamdată": "일단 여기 머물기",
+    "{to} înseamnă mișcări noi, nu mai grele cu forța. Te poți întoarce la {from} oricând, dintr-o atingere.": "{to}은(는) 억지로 더 힘든 동작이 아니라 새로운 동작이에요. 언제든 한 번의 탭으로 {from}(으)로 돌아갈 수 있어요.",
+    "{n} serii": {
+      "other": "{n}세트"
+    },
+    "{n} serii finalizate": {
+      "other": "{n}세트 완료"
+    },
+    "{n} repetări în total": {
+      "other": "총 {n}회"
+    },
+    "{n} secunde de menținere": {
+      "other": "{n}초 유지"
+    },
+    "{n} sesiuni bifate. Ziua e câștigată.": {
+      "other": "세션 {n}회 완료. 오늘도 해냈어요."
+    },
+    "{n} sesiuni bifate — aproximativ {m} min. Ziua e câștigată.": {
+      "other": "세션 {n}회 완료 — 약 {m}분. 오늘도 해냈어요."
+    },
+    "Au trecut {n} zile de la ultima mișcare. Reluăm mai ușor decât data trecută, sau continuăm de unde ai rămas?": {
+      "other": "마지막으로 움직인 지 {n}일이 지났어요. 지난번보다 가볍게 다시 시작할까요, 아니면 멈춘 곳부터 이어갈까요?"
+    },
+    "Rapid": "짧게",
+    "Optim": "균형",
+    "Intens": "고강도",
+    "Nivel 0": "레벨 0",
+    "Nivel 1": "레벨 1",
+    "Nivel 2": "레벨 2",
+    "Nivel 3": "레벨 3",
+    "Scaun, perete, mobilitate ușoară.": "의자, 벽, 부드러운 가동성.",
+    "Flotări înclinate, podea, gantere.": "경사 푸시업, 바닥 운동, 덤벨.",
+    "Flotări la podea, genuflexiuni libere, plank, fandări.": "바닥 푸시업, 풀 스쿼트, 플랭크, 런지.",
+    "Flotări diamant, jump squats, burpees, tracțiuni.": "다이아몬드 푸시업, 점프 스쿼트, 버피, 턱걸이."
   }
 }

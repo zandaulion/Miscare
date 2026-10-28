@@ -87,6 +87,34 @@ export function setLocale(next) {
  */
 export function t(key, vars) {
   let out = strings?.ui?.[key] ?? key;
+  // O formă de plural cerută fără număr: se ia forma generală.
+  if (out && typeof out === 'object') out = out.other ?? key;
+  return fill(out, vars);
+}
+
+/**
+ * Un text care depinde de un număr: „1 înregistrare", „3 înregistrări",
+ * „20 de înregistrări".
+ *
+ * `n === 1 ? a : b` mergea pentru engleză și aproape pentru română, dar nu și
+ * pentru arabă, ucraineană sau japoneză, care au alte forme sau niciuna. Așa
+ * că valoarea din catalog poate fi un obiect cu formele limbii (`one`, `few`,
+ * `many`, `other`...), iar forma o alege Intl.PluralRules. Cheia rămâne
+ * forma generală românească, cu `{n}` în ea.
+ */
+export function tn(key, n, vars = {}) {
+  const entry = strings?.ui?.[key] ?? FALLBACK?.ui?.[key] ?? key;
+  let out = entry;
+  if (entry && typeof entry === 'object') {
+    let form = 'other';
+    try { form = new Intl.PluralRules(current).select(n); } catch { /* rămâne other */ }
+    out = entry[form] ?? entry.other ?? key;
+  }
+  return fill(out, { n, ...vars });
+}
+
+function fill(text, vars) {
+  let out = String(text);
   if (vars) {
     for (const [name, value] of Object.entries(vars)) {
       out = out.replaceAll(`{${name}}`, String(value));

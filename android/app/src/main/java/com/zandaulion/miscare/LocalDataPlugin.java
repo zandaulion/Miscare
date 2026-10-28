@@ -2,8 +2,13 @@ package com.zandaulion.miscare;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.view.Window;
 import android.view.WindowManager;
 import androidx.activity.result.ActivityResult;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -25,6 +30,33 @@ public class LocalDataPlugin extends Plugin {
         getActivity().runOnUiThread(() -> {
             if (enabled) getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             else getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            call.resolve();
+        });
+    }
+
+    /**
+     * Status and navigation bars follow the app's theme, not the phone's.
+     * The page can pick dark while the phone is light, and the bars belong to
+     * the window, so the page cannot reach them on its own: dark icons on a
+     * dark header simply disappear.
+     */
+    @PluginMethod public void systemBars(PluginCall call) {
+        boolean dark = call.getBoolean("dark", false);
+        String color = call.getString("color");
+        getActivity().runOnUiThread(() -> {
+            Window window = getActivity().getWindow();
+            WindowInsetsControllerCompat bars = WindowCompat.getInsetsController(window, window.getDecorView());
+            bars.setAppearanceLightStatusBars(!dark);
+            bars.setAppearanceLightNavigationBars(!dark);
+            // From Android 15 the app draws edge to edge and the bars are
+            // transparent; before that they have a colour of their own.
+            if (Build.VERSION.SDK_INT < 35 && color != null && !color.isEmpty()) {
+                try {
+                    int parsed = Color.parseColor(color);
+                    window.setStatusBarColor(parsed);
+                    window.setNavigationBarColor(parsed);
+                } catch (IllegalArgumentException ignored) { }
+            }
             call.resolve();
         });
     }
