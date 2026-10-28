@@ -98,7 +98,7 @@ body {
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.5;
-  padding-top: var(--safe-top);
+  /* Fără padding sus: zona barei de stare o ține antetul, vezi mai jos. */
   padding-bottom: calc(72px + var(--safe-bottom));
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -110,7 +110,11 @@ header.app-header {
   top: 0;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 12px 20px;
+  /* Zona barei de stare e a antetului, nu a paginii. Cu padding-ul pe body,
+   * antetul lipit sus aluneca la derulare sub ceas și pictograme (Android 15+
+   * desenează sub bara de stare), iar dedesubtul barei se vedea fundalul
+   * paginii, de altă culoare decât antetul. */
+  padding: calc(12px + var(--safe-top)) 20px 12px;
   z-index: 50;
 }
 
