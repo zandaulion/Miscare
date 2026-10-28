@@ -1,0 +1,84 @@
+<en-US>
+Fixes from testing, and a dark theme.
+• Every screen now appears in your chosen language, including guided sessions and the journal.
+• Timed holds are counted as seconds held, not as repetitions.
+• "From zero" stays at your level, even with bodyweight only.
+• New: Settings → Theme → Dark. The time estimate now follows the sets you choose.
+</en-US>
+<ar>
+إصلاحات من الاختبار، ومظهر داكن.
+• تظهر كل الشاشات الآن باللغة التي اخترتها، بما فيها الجلسات الموجّهة والسجل.
+• تُحسب تمارين الثبات بالثواني، لا كتكرارات.
+• يبقى مستوى «من الصفر» مناسبًا لك، حتى بوزن الجسم فقط.
+• جديد: الإعدادات ← المظهر ← داكن. ويتبع الوقت التقديري الآن عدد المجموعات الذي تختاره.
+</ar>
+<de-DE>
+Korrekturen aus dem Test und ein dunkles Farbschema.
+• Alle Bildschirme erscheinen jetzt in deiner gewählten Sprache, auch die geführten Einheiten und das Journal.
+• Gehaltene Übungen zählen als gehaltene Sekunden, nicht als Wiederholungen.
+• „Bei null“ bleibt auf deinem Niveau, auch nur mit dem eigenen Körpergewicht.
+• Neu: Einstellungen → Farbschema → Dunkel. Die geschätzte Dauer folgt jetzt den gewählten Sätzen.
+</de-DE>
+<es-ES>
+Correcciones de las pruebas y un tema oscuro.
+• Todas las pantallas aparecen ahora en el idioma que elijas, también las sesiones guiadas y el diario.
+• Los ejercicios de mantener cuentan como segundos mantenidos, no como repeticiones.
+• «Desde cero» se mantiene en tu nivel, incluso solo con tu peso corporal.
+• Nuevo: Ajustes → Tema → Oscuro. La duración estimada sigue ahora las series que elijas.
+</es-ES>
+<fr-FR>
+Corrections issues des tests, et un thème sombre.
+• Tous les écrans s'affichent désormais dans la langue choisie, y compris les séances guidées et le journal.
+• Les exercices de maintien comptent en secondes tenues, et non en répétitions.
+• « Depuis zéro » reste à votre niveau, même avec le seul poids du corps.
+• Nouveau : Réglages → Thème → Sombre. La durée estimée suit désormais le nombre de séries choisi.
+</fr-FR>
+<hi-IN>
+परीक्षण से मिले सुधार, और डार्क थीम।
+• अब हर स्क्रीन आपकी चुनी हुई भाषा में दिखती है, निर्देशित सत्र और डायरी भी।
+• होल्ड वाले व्यायाम अब सेकंड में गिने जाते हैं, दोहराव में नहीं।
+• "शून्य से" आपके स्तर पर ही रहता है, सिर्फ़ शरीर के वज़न के साथ भी।
+• नया: सेटिंग्स → थीम → डार्क। अनुमानित समय अब चुने गए सेट के अनुसार बदलता है।
+</hi-IN>
+<ja-JP>
+テストで見つかった不具合の修正と、ダークテーマ。
+• ガイド付きセッションや記録を含め、すべての画面が選んだ言語で表示されるようになりました。
+• キープする運動は回数ではなく、キープした秒数として数えます。
+• 「ゼロから」は自重だけの場合でもレベルに合ったままです。
+• 新機能：設定 → テーマ → ダーク。目安の時間が選んだセット数に合わせて変わります。
+</ja-JP>
+<ko-KR>
+테스트에서 발견된 문제 수정과 어두운 테마.
+• 가이드 세션과 기록을 포함한 모든 화면이 이제 선택한 언어로 표시됩니다.
+• 버티는 운동은 반복 횟수가 아니라 버틴 시간(초)으로 셉니다.
+• "0에서"는 맨몸만 있어도 내 레벨에 맞게 유지됩니다.
+• 새 기능: 설정 → 테마 → 어둡게. 예상 시간이 선택한 세트 수에 맞춰 바뀝니다.
+</ko-KR>
+<pt-BR>
+Correções vindas dos testes e um tema escuro.
+• Todas as telas agora aparecem no idioma escolhido, inclusive as sessões guiadas e o diário.
+• Exercícios de sustentação contam como segundos mantidos, não como repetições.
+• "Do zero" continua no seu nível, mesmo só com o peso do corpo.
+• Novo: Definições → Tema → Escuro. A duração estimada agora acompanha as séries escolhidas.
+</pt-BR>
+<ro>
+Corecturi din testare și o temă întunecată.
+• Fiecare ecran apare acum în limba aleasă, inclusiv sesiunile ghidate și jurnalul.
+• Exercițiile de menținere se numără în secunde, nu în repetări.
+• „De la 0” rămâne la nivelul tău, chiar și doar cu greutatea corpului.
+• Nou: Setări → Temă → Întunecată. Durata estimată urmează acum numărul de serii ales.
+</ro>
+<uk>
+Виправлення за результатами тестування і темна тема.
+• Усі екрани тепер показуються вибраною мовою, зокрема заняття з підказками та щоденник.
+• Вправи на утримання рахуються в секундах утримання, а не в повтореннях.
+• «З нуля» залишається на вашому рівні, навіть лише з власною вагою.
+• Нове: Налаштування → Тема → Темна. Орієнтовний час тепер залежить від вибраної кількості підходів.
+</uk>
+<zh-CN>
+测试中发现的问题已修复，并新增深色主题。
+• 所有界面现在都以你选择的语言显示，包括引导训练和日志。
+• 保持类动作按保持的秒数计算，而不是按次数。
+• 只用自身体重时，“从零开始”也会保持在你的级别。
+• 新增：设置 → 主题 → 深色。预计时长现在会随所选组数变化。
+</zh-CN>

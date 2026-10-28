@@ -8,6 +8,14 @@ Prepared for the Android 0.1.0 app. Text listings for all 12 interface languages
 are in `LISTINGS.md`; localized artwork is supplied in English (`en-US`) and
 Romanian (`ro-RO`).
 
+## Releases
+
+The next upload is **0.1.1** (versionCode 2): fixes from closed testing and a
+dark theme. Its Play release notes, one block per language, are in
+`RELEASE_NOTES_0.1.1.txt`; paste the file into the release notes box.
+Before it, 0.1.0 (versionCode 1) went to closed testing with
+`RELEASE_NOTES_0.1.0.txt`.
+
 ## All-language text import
 
 Use `LISTINGS.md` for Play Console's **Import translations with AI** action.
