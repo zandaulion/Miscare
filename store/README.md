@@ -10,9 +10,10 @@ Romanian (`ro-RO`).
 
 ## Releases
 
-The next upload is **0.1.1** (versionCode 2): fixes from closed testing and a
-dark theme. Its Play release notes, one block per language, are in
-`RELEASE_NOTES_0.1.1.txt`; paste the file into the release notes box.
+**0.1.1** (versionCode 2), fixes from closed testing and a dark theme, was sent
+for production review on 2026-11-03 as a full rollout to every country and
+region. Its Play release notes, one block per language, are in
+`RELEASE_NOTES_0.1.1.txt`.
 The bundle was built on 2026-10-28 at 08:52 from commit `9cae96c` and signed
 with the Play upload key; its SHA-256 is
 `601379f05fc38a025e2237a454953b02036e50a122336644a8008d372df05e9b`.
