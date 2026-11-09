@@ -1,7 +1,8 @@
 # Mișcare — Android & PWA
 
-[Descarcă versiunea Android de test](https://github.com/zandaulion/Miscare/releases)
-(Android 7.0+): program adaptiv și jurnal pe telefon, fără cont sau server.
+[Mișcare pe Google Play](https://play.google.com/store/apps/details?id=com.zandaulion.miscare) (Android 7.0+): program adaptiv și jurnal
+pe telefon, fără cont sau server. Un APK semnat pentru instalare manuală e în
+[GitHub Releases](https://github.com/zandaulion/Miscare/releases).
 Vezi [instalarea, copiile de siguranță și limitele versiunii](docs/android-release.md)
 și [configurarea Android](docs/android-development.md).
 
@@ -18,18 +19,20 @@ Integrată nativ cu **[pwa-kit](https://github.com/zandaulion/pwa-kit)** pentru 
 
 Mișcare is a Romanian exercise app for beginners, with adaptive routines,
 equipment/limitation filters and a workout journal. This repo contains two paths:
-the self-hosted PWA and a local Android build in development. The Android app’s
-storage, activation and release status differ from the PWA; start with
-[Android development](docs/android-development.md) for that platform.
-[Project overview](https://zandaulion.com/miscare.html) · [Store preview](store/README.md).
+the self-hosted PWA and the Android app, which is published on Google Play.
+The Android app stores everything on the phone and needs no activation, unlike
+the PWA; start with [Android development](docs/android-development.md) for that
+platform.
+[Project overview](https://zandaulion.com/miscare.html) · [Play Store assets](store/README.md).
 
 ### Android download
 
-[Download the Android preview](https://github.com/zandaulion/Miscare/releases).
-The signed APK works offline, without an account or Internet permission. It is
-an early-access build; the [installation and build guide](docs/android-release.md)
-explains checksums, local storage, backups, differences from the PWA and remaining
-validation. Existing PWA history is not imported automatically.
+[Get Mișcare on Google Play](https://play.google.com/store/apps/details?id=com.zandaulion.miscare), or download the signed APK from
+[GitHub Releases](https://github.com/zandaulion/Miscare/releases) to install it
+by hand. The app works offline, without an account or Internet permission. The
+[installation and build guide](docs/android-release.md) explains checksums,
+local storage, backups, the two signing certificates, differences from the PWA
+and remaining validation. Existing PWA history is not imported automatically.
 
 ### PWA local setup
 
@@ -66,42 +69,44 @@ assume a PWA account or database is automatically imported into Android.
 1. **Să te ia de la 0**:
    - Creată special pentru începători absoluți sau persoane care nu au mai făcut sport de mult timp.
    - Mișcări de bază sigure: flotări la perete, ridicări de pe scaun, întinderi de umeri, pod fesier blând.
-   - Ghid vizual ilustrat / animat și instrucțiuni clare în limba română (fără termeni tehnici complicați).
+   - Ghid vizual ilustrat / animat și instrucțiuni clare, fără termeni tehnici complicați, în 12 limbi: română, engleză, arabă, germană, spaniolă, franceză, hindi, japoneză, coreeană, portugheză, ucraineană și chineză.
    - Filtre pentru protecția zonelor sensibile (genunchi, spate, încheieturi).
 
 2. **Sesiuni care nu se repetă**:
    - Mișcările se rotesc: fiecare sesiune făcută avansează rotația cu o poziție, așa că treci prin tot catalogul potrivit ție și te întorci.
    - Rotația e legată de sesiunile făcute, nu de calendar — cine se mișcă de două ori pe săptămână vede la fel de multe mișcări, doar mai lent. O zi sărită îți dă înapoi sesiunea nefăcută, nu următoarea.
    - Forma zilei rămâne aceeași (încălzire → sus → jos → centru); se schimbă cine ocupă fiecare loc.
-   - O categorie cu o singură opțiune se completează din nivelul imediat următor — o singură mișcare nu e o alegere. Filtrele de excludere rămân neatinse.
+   - O categorie cu o singură opțiune se completează din nivelul imediat următor — o singură mișcare nu e o alegere. Filtrele de excludere rămân neatinse. Excepție: la nivelul „De la 0” nu se împrumută nimic de la Începător, chiar dacă sesiunea iese mai repetitivă.
+   - Exercițiile pe timp (ținerile) se numără în secunde, nu în repetări, în sesiunea ghidată, în sumar și în jurnal.
    - **Se rotesc și grupele, nu doar exercițiile.** Fiecare mișcare e etichetată cu tiparul ei (împinge, trage, genuflexiune, șold, centru, gambe, cărat), iar sesiunea alternează perechile: fiecare grupă apare în două sesiuni din trei, nu în toate. Motivul e practic, nu fiziologic — cine împinge trei zile la rând se trezește cu pieptul înțepenit și sare o zi, iar ziua sărită e exact ce încearcă aplicația să prevină.
    - În aceeași sesiune nu apar două mișcări cu același tipar.
-   - Catalogul are 45 de exerciții, dintre care patru tracțiuni fără echipament (prosop, îngerași la sol, ramat la tocul ușii, cobra) — fără ele, cine n-are bandă sau bară împingea în fiecare sesiune, fiindcă orice mișcare de sus cu greutatea corpului e o împingere.
+   - Catalogul are 45 de exerciții, dintre care trei tracțiuni fără bandă sau bară (prosop și îngerași la sol, fără niciun echipament; ramat la tocul ușii, cu un perete) — fără ele, cine n-are bandă sau bară împingea în fiecare sesiune, fiindcă orice mișcare de sus cu greutatea corpului e o împingere.
 
 3. **Program fără fricțiuni**:
    - Pe ecranul principal apare direct: **„Sesiunea de azi”** — gata de pornire cu 1 singur tap.
    - Fără setări laborioase de seturi, kilograme sau scheme de antrenament.
-   - Opțiuni rapide: *„Fă-o de 5 min”* sau *„Schimbă exercițiul”*.
+   - Opțiuni rapide: *„Fă-o de 5 min”* sau *„Schimbă cu altul”*.
+   - Alegi 1, 2 sau 3 serii, iar durata estimată se recalculează pentru alegerea ta.
    - Mod ghidat cu timer discret și sunet blând de finalizare prin Web Audio API.
 
-3. **Checklist curat pentru echipament**:
+4. **Checklist curat pentru echipament**:
    - Bifezi rapid ce ai acasă (gantere, saltea, bandă elastică, bară de tracțiuni).
    - Dacă nu ai niciun echipament, ești încurajat — greutatea corpului și un scaun/perete sunt suficiente!
 
-4. **Logare foarte ușoară**:
+5. **Logare foarte ușoară**:
    - Bife rapide pentru exerciții sau buton *„Am făcut tot!”*.
    - Feedback cu 1 atingere: 😊 *Ușor și revigorant*, 👍 *Tocmai bine*, 🥵 *Cam greu*, ⏱️ *Doar o parte*.
 
-5. **No shaming, doar ajustare**:
+6. **No shaming, doar ajustare**:
    - **Fără streaks pierdute**: zilele active se adună ca realizări permanente; nu există pedepse pentru zile de pauză.
-   - Dacă revii după 5 zile: *„Bine ai revenit!”* + sesiune automată de reacomodare cu volum mai redus.
+   - Dacă revii după 4 zile sau mai mult: *„Bine ai revenit!”* + sesiune automată de reacomodare cu volum mai redus.
    - Dacă ultima sesiune a fost bifată ca *„Cam greu”*, intensitatea următoarei sesiuni este diminuată automat.
 
 ---
 
 ## Arhitectură & Tehnologie
 
-- **Frontend**: Vanilla JS (ES Modules) fără build step, design tokens responsive, suport Dark/Light mode automat, `pwa-kit` update hooks (`installUpdates`), cache offline IndexedDB / LocalStorage.
+- **Frontend**: Vanilla JS (ES Modules) fără build step, design tokens responsive, temă luminoasă sau întunecată (ca telefonul ori aleasă în Setări), `pwa-kit` update hooks (`installUpdates`), cache offline IndexedDB / LocalStorage.
 - **Backend**: Node.js v24 (`DatabaseSync` nativ din `node:sqlite`), Express.
 - **PWA Kit**:
   - `web/sw.js` (network-first caching cu version stamping `miscare-__BUILD_VERSION__`).
@@ -138,10 +143,13 @@ Serverul cere secretul `ADMIN_TOKEN` în header-ul `X-Admin-Token`. Un marker
 
 ```bash
 # Instalare dependențe
-npm install
+npm ci
 
 # Rulare teste unitare (contract consolă + motor adaptiv)
 npm test
+
+# Verificare traduceri: cataloage complete și niciun text de ecran în afara lor
+npm run i18n:check
 
 # Pornire server de dezvoltare
 npm run dev

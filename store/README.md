@@ -4,7 +4,8 @@ All listing materials live in this dedicated `store/` folder.
 `Miscare-Play-Store.zip` contains the complete package.
 `Miscare-Screenshots.zip` contains just the 36 screenshots and their alt text.
 
-Prepared for the Android 0.1.0 app. Text listings for all 12 interface languages
+Prepared for the Android app; the screenshots were retaken from 0.1.1 on
+9 November 2026. Text listings for all 12 interface languages
 are in `LISTINGS.md`; localized artwork is supplied in English (`en-US`) and
 Romanian (`ro-RO`).
 
@@ -14,6 +15,9 @@ Romanian (`ro-RO`).
 theme, live since 2026-11-03 as a full rollout to every country and region.
 Its Play release notes, one block per language, are in
 `RELEASE_NOTES_0.1.1.txt`. The next upload needs versionCode 3.
+The 36 screenshots were retaken from 0.1.1 on 2026-11-09: the 0.1.0 set showed
+Romanian labels in the English guided session. Re-upload them in Play Console
+(see the upload mapping below); the listing text is unchanged.
 The bundle was built on 2026-10-28 at 08:52 from commit `9cae96c` and signed
 with the Play upload key; its SHA-256 is
 `601379f05fc38a025e2237a454953b02036e50a122336644a8008d372df05e9b`.
@@ -61,7 +65,7 @@ ordered files from each screenshot folder into the corresponding device section:
 | --- | --- | --- |
 | Phone screenshots | `phone-screenshots/` | 1080 × 1920, portrait |
 | 7-inch tablet screenshots | `tablet-7-screenshots/` | 1440 × 2560, portrait |
-| 10-inch tablet screenshots | `tablet-10-screenshots/` | 2560 × 1440 landscape; guided session 1440 × 2560 portrait |
+| 10-inch tablet screenshots | `tablet-10-screenshots/` | 2560 × 1440, landscape |
 
 Each folder contains six ordered PNG files: daily routine, guided session,
 exercise library, equipment, journal, and local data settings. Both `en-US` and
@@ -81,7 +85,7 @@ The shared store icon is
 | Feature graphic | 1024 × 500 PNG, RGB |
 | Phone screenshots | Six per locale, 1080 × 1920 PNG, RGB |
 | 7-inch tablet screenshots | Six per locale, 1440 × 2560 PNG, RGB |
-| 10-inch tablet screenshots | Six per locale, 2560 × 1440 or 1440 × 2560 PNG, RGB |
+| 10-inch tablet screenshots | Six per locale, 2560 × 1440 PNG, RGB |
 | Additional landscape hero | 1920 × 1080 PNG, RGB, one per locale |
 
 `hero-1920x1080.png` is additional promotional artwork. Use `feature-graphic.png`
@@ -92,14 +96,10 @@ sheets for review; upload the individual screenshots.
 
 Screenshots show the actual HTML/CSS/JavaScript extracted from the signed Android
 APK, rendered in Chromium at 2× density. CSS viewports are 540 × 960 for phones,
-720 × 1280 for 7-inch tablets, and 1280 × 720 for 10-inch tablets. The 10-inch
-guided session is captured after rotating to 720 × 1280. Each device
+720 × 1280 for 7-inch tablets, and 1280 × 720 for 10-inch tablets. Each device
 set is rendered independently at its viewport; tablet images are not resized
 phone images. The 10-inch library capture opens the actual side-by-side exercise
 detail panel provided by the app's responsive layout.
-The current build compresses the exercise illustration in landscape guided
-sessions; those captures use portrait orientation to keep the illustration and
-controls visible. No CSS changes are used to conceal that limitation.
 
 These are app captures from the packaged interface, not photographs or OS
 screenshots from physical tablets or a personal phone. A temporary profile and explicitly synthetic session history
@@ -113,8 +113,7 @@ and horizontal overflow before accepting captures.
 
 The renderer supplies a local Noto Color Emoji fallback to match glyphs available
 on Android and waits for image decoding. It leaves the application layout and
-visible product strings intact. Some guided-session labels in the current
-English UI remain Romanian; the captures preserve that shipped behavior.
+visible product strings intact.
 
 The icon is rendered from the existing code-native Mișcare SVG mark with a full
 square cream background. The illustration was made with the built-in imagegen
@@ -125,8 +124,9 @@ HTML by `scripts/render-play-store-art.mjs`.
 
 ## Reproduction
 
-Run from the project root with the signed APK available at
-`artifacts/Miscare-0.1.0.apk`:
+Run from the project root with the signed APK of the version in
+`android/app/build.gradle` available as `artifacts/Miscare-<version>.apk`
+(for 0.1.1, `artifacts/Miscare-0.1.1.apk`):
 
 ```sh
 # EMOJI_FONT is a local NotoColorEmoji.ttf path; it is a rendering resource only.

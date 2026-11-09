@@ -1,27 +1,30 @@
-# Mișcare Android preview
+# Mișcare for Android
 
-[Download the Android preview](https://github.com/zandaulion/Miscare/releases).
-Version 0.1.0 is an early-access build for Android 7.0 or newer. It is not a
-Google Play submission or a claim that every accessibility and device scenario
-has been verified.
+[Get Mișcare on Google Play](https://play.google.com/store/apps/details?id=com.zandaulion.miscare). It has been in production since version
+0.1.1 (3 November 2026) and runs on Android 7.0 or newer. A signed APK for
+installing by hand is on [GitHub Releases](https://github.com/zandaulion/Miscare/releases).
+Neither is a claim that every accessibility and device scenario has been
+verified; see the remaining checks below.
 
-The APK includes the adaptive routine engine, guided sessions, equipment and
+The app includes the adaptive routine engine, guided sessions, equipment and
 limitation filters, progression choices, a local workout journal, 45 illustrated
-exercises, 12 interface languages, and JSON backup/import. It works without an
+exercises, 12 interface languages, a light or dark theme, and JSON backup/import. It works without an
 account or server and does not request Internet permission. Reminders are not
 implemented.
 
 ## Install and keep your data
 
-Download `Miscare-0.1.0.apk` and `SHA256SUMS` from the release page. Check them on
+Google Play installs and updates the app itself. To install by hand instead,
+download `Miscare-<version>.apk` and `SHA256SUMS` from the release page. Check them on
 Linux with `sha256sum --check SHA256SUMS`, or on macOS with
 `shasum -a 256 -c SHA256SUMS`. Open the APK and allow your browser or file manager
 to install it.
 
 GitHub releases use the public sideload signing certificate (`CN=Zandaulion`).
-Updates signed with the same certificate can retain local data. A Play-signed
-installation may use a different certificate; export your data before any
-uninstall or channel change. Never uninstall merely to solve an update error
+Updates signed with the same certificate can retain local data. Google Play
+installs carry Play's own signature, so an APK from GitHub cannot update a Play
+installation, or the other way round: export your data before any uninstall or
+channel change. Never uninstall merely to solve an update error
 without first preserving the records you want to keep.
 
 The Android app starts with a new local profile. It does not import an existing
@@ -106,9 +109,8 @@ build command without the init script to produce the distributable package.
 
 Remaining checks include TalkBack, 200% fonts, physical fold/unfold transitions,
 older Android/WebView combinations, cloud/device-transfer behavior on other
-manufacturers, and a deliberate PWA-data migration. Landscape guided sessions
-can compress the exercise illustration, and some guided labels still use
-Romanian in other interface languages. See
+manufacturers, and a deliberate PWA-data migration. In dark theme, Android's own
+confirmation dialogs (stop a session, delete an entry) stay light. See
 [Android development](android-development.md) for implementation details and
 [the Android privacy policy](../store/privacy-policy.md) for data handling.
 
