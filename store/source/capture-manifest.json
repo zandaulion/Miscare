@@ -1,6 +1,6 @@
 {
-  "source": "Web assets extracted from the signed Android 0.1.0 APK, rendered without OS chrome",
-  "apk_sha256": "98e747d0fd7f8f5f6916da979857547d9f2970f8d324ce59acc711a8ce1fc64d",
+  "source": "Web assets extracted from the signed Android 0.1.1 APK, rendered without OS chrome",
+  "apk_sha256": "a077f83bc3f5b1074591e39fc5aaf732fdb6c51709e730a7fc50668defb61240",
   "fixture": "Synthetic workout history generated exclusively for store screenshots",
   "profiles": [
     {
@@ -27,10 +27,6 @@
       "viewport": {
         "width": 1280,
         "height": 720
-      },
-      "guidedViewport": {
-        "width": 720,
-        "height": 1280
       },
       "scale": 2
     }

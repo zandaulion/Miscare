@@ -24,19 +24,19 @@ SCREENSHOT_SIZES = {
 ALT = {
     'en-US': [
         'Daily routine with intensity levels, suggested duration, equipment and exercise instructions.',
-        'Paused guided exercise with an illustration, timer, repetition counter and set controls.',
+        'Paused guided exercise with an illustration, timer, a counter for seconds held and set controls.',
         'Beginner exercise library with illustrated movements and equipment requirements.',
         'Equipment preferences for bodyweight exercise, a chair, a wall and optional home equipment.',
         'Sample workout journal with five active days, 35 minutes and completed sessions.',
-        'Local data settings with language selection and data export, import and deletion controls.'
+        'Settings for language and theme, with local data export, import and deletion controls.'
     ],
     'ro-RO': [
         'Sesiunea de azi cu nivelul de intensitate, durata, echipamentul și instrucțiunile exercițiilor.',
-        'Exercițiu ghidat în pauză, cu ilustrație, timer, contor de repetări și comenzi pentru serie.',
+        'Exercițiu ghidat în pauză, cu ilustrație, timer, contor pentru secundele ținute și comenzi pentru serie.',
         'Catalog de exerciții pentru începători, cu mișcări ilustrate și echipamentul necesar.',
         'Preferințe pentru greutatea corpului, scaun, perete și echipament opțional pentru acasă.',
         'Jurnal demonstrativ cu cinci zile active, 35 de minute și sesiunile înregistrate.',
-        'Setări pentru limbă și date locale, cu export, import și ștergerea datelor.'
+        'Setări pentru limbă și temă, cu export, import și ștergerea datelor locale.'
     ]
 }
 # Required channel encodings only: keep the rendered pixels unchanged.
@@ -124,8 +124,6 @@ for png in sorted(store_files('*.png')):
         else:
             assert png.parent.name in SCREENSHOT_SIZES, png
             expected_size = SCREENSHOT_SIZES[png.parent.name]
-            if png.parent.name == 'tablet-10-screenshots' and png.name == '02-guided-session.png':
-                expected_size = tuple(reversed(expected_size))
             assert image.size == expected_size and image.mode == 'RGB', png
             width, height = image.size
             assert min(width, height) >= 1080 and max(width, height) <= 3840

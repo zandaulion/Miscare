@@ -11,14 +11,17 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, 'store');
+// The signed APK of the version in build.gradle, e.g. artifacts/Miscare-0.1.1.apk.
+const version = (await readFile(path.join(root, 'android/app/build.gradle'), 'utf8'))
+  .match(/versionName "([^"]+)"/)[1];
+const apk = path.join(root, `artifacts/Miscare-${version}.apk`);
 const profiles = [
   { name: 'phone', folder: 'phone-screenshots', viewport: { width: 540, height: 960 }, scale: 2 },
   { name: 'tablet-7', folder: 'tablet-7-screenshots', viewport: { width: 720, height: 1280 }, scale: 2 },
-  { name: 'tablet-10', folder: 'tablet-10-screenshots', viewport: { width: 1280, height: 720 },
-    guidedViewport: { width: 720, height: 1280 }, scale: 2 }
+  { name: 'tablet-10', folder: 'tablet-10-screenshots', viewport: { width: 1280, height: 720 }, scale: 2 }
 ];
 const temporary = await mkdtemp(path.join(tmpdir(), 'miscare-store-'));
-execFileSync('unzip', ['-q', path.join(root, 'artifacts/Miscare-0.1.0.apk'), 'assets/public/*', '-d', temporary]);
+execFileSync('unzip', ['-q', apk, 'assets/public/*', '-d', temporary]);
 const app = express();
 app.use(express.static(path.join(temporary, 'assets/public')));
 app.use('/store', express.static(output));
@@ -28,8 +31,8 @@ const server = await new Promise(resolve => {
 });
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
-const metadata = { source: 'Web assets extracted from the signed Android 0.1.0 APK, rendered without OS chrome',
-  apk_sha256: createHash('sha256').update(await readFile(path.join(root, 'artifacts/Miscare-0.1.0.apk'))).digest('hex'),
+const metadata = { source: `Web assets extracted from the signed Android ${version} APK, rendered without OS chrome`,
+  apk_sha256: createHash('sha256').update(await readFile(apk)).digest('hex'),
   fixture: 'Synthetic workout history generated exclusively for store screenshots',
   profiles, screenshots: {} };
 try {
@@ -57,7 +60,7 @@ try {
     await page.locator('#btn-start-guided').waitFor();
     await page.evaluate(async () => {
       const { createLocalClient } = await import('/local-client.js');
-      const { exText, repWords } = await import('/i18n.js');
+      const { exText } = await import('/i18n.js');
       // These dates, sessions and feedback are fixtures, unrelated to any user.
       for (let i = 0; i < 5; i++) {
         const date = new Date(`2026-10-${String(8 + i * 2).padStart(2, '0')}T09:00:00Z`);
@@ -66,7 +69,7 @@ try {
         const routine = await client.getTodayRoutine();
         await client.logWorkout({ duration_seconds: i % 2 ? 600 : 300, feedback: 'just_right',
           routine_title: routine.title, exercises_done: routine.exercises.map(ex => ({
-            id: ex.id, name: exText(ex.id, 'name'), actual_reps: ex.reps.lo, unit: repWords().reps.unit[ex.reps.unit], set: 1, totalSets: 1
+            id: ex.id, name: exText(ex.id, 'name'), actual_reps: ex.reps.lo, unit: ex.reps.unit, set: 1, totalSets: 1
           })) });
       }
     });
@@ -93,16 +96,12 @@ try {
       console.log(`${language}/${profile.folder}/${name}`);
     }
     await shot('01-today.png');
-    // Rotate the large tablet for the guided session, as a user can in the app.
-    // Keep the packaged layout intact, including its landscape limitations.
-    if (profile.guidedViewport) await page.setViewportSize(profile.guidedViewport);
     await page.locator('#btn-start-guided').click();
     await page.locator('#guided-overlay').waitFor();
     await page.locator('#guided-pause-btn').click();
     await shot('02-guided-session.png');
     page.once('dialog', dialog => dialog.accept());
     await page.locator('#guided-close').click();
-    if (profile.guidedViewport) await page.setViewportSize(profile.viewport);
     await page.locator('[data-tab="compendium"]').click();
     await page.locator('.level-chip[data-level="0"]').click();
     await page.locator('#card-ex-wall_pushups').waitFor();

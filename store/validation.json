@@ -57,8 +57,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 293180,
-      "sha256": "985d1455ed5b342d58bab84d8930b485675f258a4f3c194e977542cc6b71b2e1"
+      "bytes": 290399,
+      "sha256": "788107b0565f41467cbfdf37879e3e07b4e78f1c7c27c8e2a8d5b99172841f61"
     },
     {
       "path": "en-US/phone-screenshots/02-guided-session.png",
@@ -67,8 +67,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 226870,
-      "sha256": "204e9c5c428e6dfee06367ca779c99a77c69eedb891a8f59bc407951f90a042c"
+      "bytes": 211552,
+      "sha256": "d600213928ffe5fd04b4861ebd108abce8df60861d74e771403fd336ad924f56"
     },
     {
       "path": "en-US/phone-screenshots/03-exercise-library.png",
@@ -77,8 +77,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 411991,
-      "sha256": "92d5e8e5490f42021459837d3d6b94c5bd1e39aa46605563fe25feaa4aa9ab67"
+      "bytes": 414144,
+      "sha256": "877fd865330ed22ef094779a3d3048da4697f445cd50b9e0b540894ee0436077"
     },
     {
       "path": "en-US/phone-screenshots/04-equipment.png",
@@ -87,8 +87,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 178255,
-      "sha256": "88e5c2ccfc3fa197ef770957d13b1f72cac2df240a57a5504637e4379f96efb9"
+      "bytes": 177624,
+      "sha256": "f97c7ebfba1e7f375d67054e0f814087297fd49d85039e12188e967b836be3fa"
     },
     {
       "path": "en-US/phone-screenshots/05-journal.png",
@@ -97,8 +97,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 242834,
-      "sha256": "d7318f883631983e658722dfee07d7a15f0daa0702b502c6344640c1b102376a"
+      "bytes": 242122,
+      "sha256": "227b3a597f004d90d3d8205f58f69ba9b2ff6659e4baf6f0b1d672ad3e565a6f"
     },
     {
       "path": "en-US/phone-screenshots/06-your-data.png",
@@ -107,8 +107,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 136112,
-      "sha256": "1abae7502ee124e30c84fbfabc21d89cc76bb24d34710793b263c4ea9bb40baf"
+      "bytes": 160792,
+      "sha256": "a0af7feddc9c25ea9a23fad3cf020a9383b744a0ad704b47c033e8946afd8f2b"
     },
     {
       "path": "en-US/tablet-10-screenshots/01-today.png",
@@ -117,18 +117,18 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 266360,
-      "sha256": "0ee91692a1284a63020b01bf11e709c7bebbb6052bc1c12c79bb1cb0450b0e72"
+      "bytes": 249942,
+      "sha256": "ddae8fb790e095595d236399b685effccf27df7ba198221d923b81b60e1fdfce"
     },
     {
       "path": "en-US/tablet-10-screenshots/02-guided-session.png",
       "size": [
-        1440,
-        2560
+        2560,
+        1440
       ],
       "mode": "RGB",
-      "bytes": 235278,
-      "sha256": "5f90cdbf0e444ae3f6f4e2f4b6ba2e1f15cf063e8ed39129f8f2c9ff8249de4d"
+      "bytes": 205442,
+      "sha256": "d2ad8bc7aa250fe3188961fbc79d4c45860118063a7fdc1d5385e20f551d4811"
     },
     {
       "path": "en-US/tablet-10-screenshots/03-exercise-library.png",
@@ -137,8 +137,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 567982,
-      "sha256": "161237c8297f45ca6eed52ec1fa416ee2f765e7da09bfb63cea8efdb21fcdb21"
+      "bytes": 568835,
+      "sha256": "a581de6cea354f28bd63c1c25ba4e148c55e734ed1b476702435cf309015d40e"
     },
     {
       "path": "en-US/tablet-10-screenshots/04-equipment.png",
@@ -147,8 +147,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 190356,
-      "sha256": "34600e996d35db8ec884aac895c6607dfc81f1cefd86fc6b788104c08dc21760"
+      "bytes": 190522,
+      "sha256": "920913db4330e903e67cee21b486c19f6ec9555c1b027a5ea31b7b4502048fae"
     },
     {
       "path": "en-US/tablet-10-screenshots/05-journal.png",
@@ -157,8 +157,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 221555,
-      "sha256": "21779dded5561a6aa76f6eb60d3394dc11c1d4dd8ee495767f8e71cc4386f97a"
+      "bytes": 218711,
+      "sha256": "6529263246a2894fe5cea74536c2c4fdda895ccfd7a7b269f0cbe6fe31ef3eee"
     },
     {
       "path": "en-US/tablet-10-screenshots/06-your-data.png",
@@ -167,8 +167,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 151929,
-      "sha256": "a071af576df9a5a32e571bbad0c1acd9fabaf82442621b5aa9464dbc246943b5"
+      "bytes": 168551,
+      "sha256": "961e4115cc4f9132e0df46a2a75a5c3b92d3966e61574c9c7e80c6d474f41345"
     },
     {
       "path": "en-US/tablet-7-screenshots/01-today.png",
@@ -177,8 +177,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 445975,
-      "sha256": "ed0d3b6a202bd6ded980fe36b0bc531207ab1b83b651e3292d318799d635bb8e"
+      "bytes": 431215,
+      "sha256": "e7f0b9a31f2d954e21f35fc95e16fa9bc7d7ffc362f3d10ec819431b5b349d11"
     },
     {
       "path": "en-US/tablet-7-screenshots/02-guided-session.png",
@@ -187,8 +187,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 235278,
-      "sha256": "5f90cdbf0e444ae3f6f4e2f4b6ba2e1f15cf063e8ed39129f8f2c9ff8249de4d"
+      "bytes": 220232,
+      "sha256": "9a88c358b52a28cf3515132c9b76a674084a5560b34b2105a18976cdde1ec327"
     },
     {
       "path": "en-US/tablet-7-screenshots/03-exercise-library.png",
@@ -197,8 +197,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 599152,
-      "sha256": "563f3d2a7e2f2842813f9270d98a75f345b4c28a048f8c8fd91cabc539ba0cfc"
+      "bytes": 601092,
+      "sha256": "b1e22e561adc7e81c04faa9fc207e54972aba64beb4c7c32624ea045afa8223c"
     },
     {
       "path": "en-US/tablet-7-screenshots/04-equipment.png",
@@ -207,8 +207,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 183860,
-      "sha256": "96cce608e803f3181dc6589f9dca93a615c5ab2ad811c74d43c3ad2ecdcf389d"
+      "bytes": 184007,
+      "sha256": "0f9075a00aa1bda38421da19e4a973081a963ee4846302c6edb2a20265636ed6"
     },
     {
       "path": "en-US/tablet-7-screenshots/05-journal.png",
@@ -217,8 +217,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 357218,
-      "sha256": "8e7a0623e7d6bd7df395210c361b69a99593e1ef537e7036eb81d62e0df2ceba"
+      "bytes": 354000,
+      "sha256": "9d17412238e4facdd6c7fe08c25db107542101a7704adc0cbce56c8ce1d4a0bc"
     },
     {
       "path": "en-US/tablet-7-screenshots/06-your-data.png",
@@ -227,8 +227,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 146094,
-      "sha256": "8f584a511824303ec243f046df3c10b8837c53caccf4fdb5be5acbf4b6f1ce0f"
+      "bytes": 169286,
+      "sha256": "22ef481966f9816101d2b541fee1a8e00aca55ae0aad87b0d9f3a14d8d0186cd"
     },
     {
       "path": "graphics/icon-512.png",
@@ -267,8 +267,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 301613,
-      "sha256": "4eae715a9d82706e6693a81c8bb970033a315e10555bf8e1816d18d5c70007f2"
+      "bytes": 293586,
+      "sha256": "a0286346f4bc457be5c614b4e30321362f407a36c7875e32e295fcc8244f2861"
     },
     {
       "path": "ro-RO/phone-screenshots/02-guided-session.png",
@@ -277,8 +277,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 226789,
-      "sha256": "40cfaf3818606cc8c434dcf8b5257dae017bfd87dfc75244de48bd9d05d98739"
+      "bytes": 215547,
+      "sha256": "aae6ed0720780f018b1e2b56847313446f635c197dc65aa4e8378be8c6478df2"
     },
     {
       "path": "ro-RO/phone-screenshots/03-exercise-library.png",
@@ -287,8 +287,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 404325,
-      "sha256": "68c020bab53261ea9265e6f876ad4f1532600f50f67fbb74dcf23e8868756ddc"
+      "bytes": 404680,
+      "sha256": "5c444781a46966c60fb4ac15a22cb6e15459cf0c1ed9d68292b0151f29ed2670"
     },
     {
       "path": "ro-RO/phone-screenshots/04-equipment.png",
@@ -297,8 +297,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 185955,
-      "sha256": "95554d3405d90fd03082cc8b00170e667cdd810dd0874a641ea79f57b6322e75"
+      "bytes": 185201,
+      "sha256": "b204badddedf57d0e009cedbcb53b480c00b800e56e3faa9a0182d37b0650599"
     },
     {
       "path": "ro-RO/phone-screenshots/05-journal.png",
@@ -307,8 +307,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 257856,
-      "sha256": "efe3479c6a7d83e3973fa722ccb8e0ae630b8c652036cdc458408adf7f19dbaa"
+      "bytes": 258906,
+      "sha256": "272097e1a68ead0e00b0100417c84c2b253e958c0f07b4d419fc71641dc78afd"
     },
     {
       "path": "ro-RO/phone-screenshots/06-your-data.png",
@@ -317,8 +317,8 @@
         1920
       ],
       "mode": "RGB",
-      "bytes": 139591,
-      "sha256": "a5d47ea5f2c3f6d1092732deb3dad5b13b76ed3d58a96da711abf992eda1c4a8"
+      "bytes": 162414,
+      "sha256": "8ff7d5a54191eea42c4203eb01f895d5648222e730dfddad3dccc9e03805a83a"
     },
     {
       "path": "ro-RO/tablet-10-screenshots/01-today.png",
@@ -327,18 +327,18 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 257648,
-      "sha256": "f6f497ac3b2a7ec88de50e71bae0eb61cba20f6430545a2cc9cb99bae20f9e63"
+      "bytes": 240374,
+      "sha256": "37f1919fd037308f28df81908a6d069085673bd0bcd502d3900614a04478f635"
     },
     {
       "path": "ro-RO/tablet-10-screenshots/02-guided-session.png",
       "size": [
-        1440,
-        2560
+        2560,
+        1440
       ],
       "mode": "RGB",
-      "bytes": 233071,
-      "sha256": "e5fef148805006203014f42e76aa9183598173d20da0c4317031e9b9b5cf92ed"
+      "bytes": 208711,
+      "sha256": "083d80be16d963911278ca8386e6aad4d3a14e403a929495a9e28801af9e1a71"
     },
     {
       "path": "ro-RO/tablet-10-screenshots/03-exercise-library.png",
@@ -347,8 +347,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 563258,
-      "sha256": "e5f14649c0374bade1f8718bbf8fbec34cb7e9caffb629012a607a9e84a03bb1"
+      "bytes": 560790,
+      "sha256": "80a323de6c3623e8e3f23907945120ed1842422b5a8134fdec4af9141884bf96"
     },
     {
       "path": "ro-RO/tablet-10-screenshots/04-equipment.png",
@@ -357,8 +357,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 194680,
-      "sha256": "50c869864756c219436e4d02b88ae68e625254f34d4ef800d3d7b601d0753a86"
+      "bytes": 194679,
+      "sha256": "a1d059822080c3bf94dc14c65b3a55c54bf764eb21af49b4618593d1bf136718"
     },
     {
       "path": "ro-RO/tablet-10-screenshots/05-journal.png",
@@ -367,8 +367,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 216691,
-      "sha256": "d946f869dc3d7b7eaca629d1e4bbb6ed2d18037e96a753133373bbe843bad6aa"
+      "bytes": 217686,
+      "sha256": "759ea78e29f98ab679dc1fa5492030b5f3e75293da3b64884c262df9dc7b662b"
     },
     {
       "path": "ro-RO/tablet-10-screenshots/06-your-data.png",
@@ -377,8 +377,8 @@
         1440
       ],
       "mode": "RGB",
-      "bytes": 151983,
-      "sha256": "b2cd0a6aae79d53abaacfd9248eebb6e06dcf696217030951245e3ab7c09c528"
+      "bytes": 164981,
+      "sha256": "810bfbf160a8ae156ebdb57c477aed182a4d1cd6dddfafbd7413a17df838aea8"
     },
     {
       "path": "ro-RO/tablet-7-screenshots/01-today.png",
@@ -387,8 +387,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 443038,
-      "sha256": "3dc94ed5cf0ddda86f0987ae8ed28b325978999a9036fc3f5492ece45b11679b"
+      "bytes": 427835,
+      "sha256": "c149da5054b9dc9338cc32a2a6ff69fb127e60c2f0c62c4c226f33e93061517b"
     },
     {
       "path": "ro-RO/tablet-7-screenshots/02-guided-session.png",
@@ -397,8 +397,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 233071,
-      "sha256": "e5fef148805006203014f42e76aa9183598173d20da0c4317031e9b9b5cf92ed"
+      "bytes": 222891,
+      "sha256": "764d019095ae68ecdbd8f02a696792e7e20238ea789c6cd512b655469442885e"
     },
     {
       "path": "ro-RO/tablet-7-screenshots/03-exercise-library.png",
@@ -407,8 +407,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 575884,
-      "sha256": "0e78750e82b0a8a360321bd4a99283faf595db7cd8ac86af62c57a6429be5edf"
+      "bytes": 575780,
+      "sha256": "67854e48909df610ab772ffd516e1cdd761e5107f2eabd9eea79542b021e408f"
     },
     {
       "path": "ro-RO/tablet-7-screenshots/04-equipment.png",
@@ -417,8 +417,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 189298,
-      "sha256": "e01a3112ebead2e87929e47aadfac10726878b73a70150b6ce3bc3f7752d2804"
+      "bytes": 189299,
+      "sha256": "93217b37a80acd7a784513971ccff901155b16518048550051e4b3da8fd1278e"
     },
     {
       "path": "ro-RO/tablet-7-screenshots/05-journal.png",
@@ -427,8 +427,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 356206,
-      "sha256": "eeeaad70a8b1af0534cdaf5d23a4783f632d8ddb9e031c1e5d94798f3875b191"
+      "bytes": 356301,
+      "sha256": "fae49055f33c485ac07c630a31d4e419bf2ed6b7a75c348b8e0ee9a6d67baac1"
     },
     {
       "path": "ro-RO/tablet-7-screenshots/06-your-data.png",
@@ -437,8 +437,8 @@
         2560
       ],
       "mode": "RGB",
-      "bytes": 147596,
-      "sha256": "c7f0a90ad640829249d97cd19dd675c35e204a40c776de4f782b5d1904d96325"
+      "bytes": 169339,
+      "sha256": "522a346ab7b4a4bd61e286e398b0d66cce86acd009df0be84c4062c80b56c3da"
     }
   ],
   "translations": {
